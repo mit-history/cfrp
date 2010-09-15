@@ -1,0 +1,35 @@
+<h1>Listing register_plays</h1>
+
+<table>
+  <tr>
+    <th>Register</th>
+    <th>Play</th>
+    <th>Firstrun</th>
+    <th>Newactor</th>
+    <th>Actorrole</th>
+    <th>Editor flag</th>
+    <th>Firstrun perfnum</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @register_plays.each do |register_play| %>
+  <tr>
+    <td><%= register_play.register_id %></td>
+    <td><%= register_play.play_id %></td>
+    <td><%= register_play.firstrun %></td>
+    <td><%= register_play.newactor %></td>
+    <td><%= register_play.actorrole %></td>
+    <td><%= register_play.editor_flag %></td>
+    <td><%= register_play.firstrun_perfnum %></td>
+    <td><%= link_to 'Show', register_play %></td>
+    <td><%= link_to 'Edit', edit_register_play_path(register_play) %></td>
+    <td><%= link_to 'Destroy', register_play, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Register play', new_register_play_path %>

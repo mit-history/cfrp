@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  register_type_id: 1
+  seating_category_id: 1
+  ordering: 1
+
+two:
+  register_type_id: 1
+  seating_category_id: 1
+  ordering: 1

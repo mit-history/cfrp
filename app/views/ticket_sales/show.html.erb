@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Total sold:</b>
+  <%= @ticket_sale.total_sold %>
+</p>
+
+<p>
+  <b>Register:</b>
+  <%= @ticket_sale.register_id %>
+</p>
+
+<p>
+  <b>Seating category:</b>
+  <%= @ticket_sale.seating_category_id %>
+</p>
+
+<p>
+  <b>Price per ticket l:</b>
+  <%= @ticket_sale.price_per_ticket_l %>
+</p>
+
+<p>
+  <b>Price per ticket s:</b>
+  <%= @ticket_sale.price_per_ticket_s %>
+</p>
+
+<p>
+  <b>Recorded total l:</b>
+  <%= @ticket_sale.recorded_total_l %>
+</p>
+
+<p>
+  <b>Recorded total s:</b>
+  <%= @ticket_sale.recorded_total_s %>
+</p>
+
+<p>
+  <b>Editor flag:</b>
+  <%= @ticket_sale.editor_flag %>
+</p>
+
+
+<%= link_to 'Edit', edit_ticket_sale_path(@ticket_sale) %> |
+<%= link_to 'Back', ticket_sales_path %>

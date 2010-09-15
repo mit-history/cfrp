@@ -1,0 +1,2 @@
+module SeatingCategoriesHelper
+end

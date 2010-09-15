@@ -1,0 +1,25 @@
+<%= form_for(@seating_category) do |f| %>
+  <% if @seating_category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@seating_category.errors.count, "error") %> prohibited this seating_category from being saved:</h2>
+
+      <ul>
+      <% @seating_category.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

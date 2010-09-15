@@ -1,0 +1,2 @@
+module RegisterPlaysHelper
+end

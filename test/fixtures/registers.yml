@@ -1,0 +1,57 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  date: 2010-08-09 17:15:13
+  weekday: MyString
+  season: MyString
+  register_num: 1
+  payment_notes: MyText
+  payment_notes: MyText
+  date_flag: false
+  season_flag: false
+  regnum_flag: false
+  totalreceipts_flag: false
+  payment_notes_flag: false
+  page_text: MyText
+  page_text_flag: false
+  total_receipts_recorded_l: 1
+  total_receipts_recorded_s: 1
+  representation: 1
+  signatory: MyString
+  signatory_flag: false
+  rep_flag: false
+  misc_notes: MyText
+  misc_notes_flag: false
+  for_editor_notes: MyText
+  ouverture: false
+  ouverture_flag: false
+  cloture: false
+  cloture_flag: false
+
+two:
+  date: 2010-08-09 17:15:13
+  weekday: MyString
+  season: MyString
+  register_num: 1
+  payment_notes: MyText
+  payment_notes: MyText
+  date_flag: false
+  season_flag: false
+  regnum_flag: false
+  totalreceipts_flag: false
+  payment_notes_flag: false
+  page_text: MyText
+  page_text_flag: false
+  total_receipts_recorded_l: 1
+  total_receipts_recorded_s: 1
+  representation: 1
+  signatory: MyString
+  signatory_flag: false
+  rep_flag: false
+  misc_notes: MyText
+  misc_notes_flag: false
+  for_editor_notes: MyText
+  ouverture: false
+  ouverture_flag: false
+  cloture: false
+  cloture_flag: false

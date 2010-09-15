@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @seating_category.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @seating_category.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_seating_category_path(@seating_category) %> |
+<%= link_to 'Back', seating_categories_path %>

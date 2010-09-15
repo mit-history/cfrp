@@ -1,0 +1,73 @@
+<h1>Listing registers</h1>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Weekday</th>
+    <th>Season</th>
+    <th>Register num</th>
+    <th>Payment notes</th>
+    <th>Payment notes</th>
+    <th>Date flag</th>
+    <th>Season flag</th>
+    <th>Regnum flag</th>
+    <th>Totalreceipts flag</th>
+    <th>Payment notes flag</th>
+    <th>Page text</th>
+    <th>Page text flag</th>
+    <th>Total receipts recorded l</th>
+    <th>Total receipts recorded s</th>
+    <th>Representation</th>
+    <th>Signatory</th>
+    <th>Signatory flag</th>
+    <th>Rep flag</th>
+    <th>Misc notes</th>
+    <th>Misc notes flag</th>
+    <th>For editor notes</th>
+    <th>Ouverture</th>
+    <th>Ouverture flag</th>
+    <th>Cloture</th>
+    <th>Cloture flag</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @registers.each do |register| %>
+  <tr>
+    <td><%= register.date %></td>
+    <td><%= register.weekday %></td>
+    <td><%= register.season %></td>
+    <td><%= register.register_num %></td>
+    <td><%= register.payment_notes %></td>
+    <td><%= register.payment_notes %></td>
+    <td><%= register.date_flag %></td>
+    <td><%= register.season_flag %></td>
+    <td><%= register.regnum_flag %></td>
+    <td><%= register.totalreceipts_flag %></td>
+    <td><%= register.payment_notes_flag %></td>
+    <td><%= register.page_text %></td>
+    <td><%= register.page_text_flag %></td>
+    <td><%= register.total_receipts_recorded_l %></td>
+    <td><%= register.total_receipts_recorded_s %></td>
+    <td><%= register.representation %></td>
+    <td><%= register.signatory %></td>
+    <td><%= register.signatory_flag %></td>
+    <td><%= register.rep_flag %></td>
+    <td><%= register.misc_notes %></td>
+    <td><%= register.misc_notes_flag %></td>
+    <td><%= register.for_editor_notes %></td>
+    <td><%= register.ouverture %></td>
+    <td><%= register.ouverture_flag %></td>
+    <td><%= register.cloture %></td>
+    <td><%= register.cloture_flag %></td>
+    <td><%= link_to 'Show', register %></td>
+    <td><%= link_to 'Edit', edit_register_path(register) %></td>
+    <td><%= link_to 'Destroy', register, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Register', new_register_path %>

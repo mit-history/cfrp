@@ -1,0 +1,121 @@
+<%= form_for(@register) do |f| %>
+  <% if @register.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@register.errors.count, "error") %> prohibited this register from being saved:</h2>
+
+      <ul>
+      <% @register.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :register_num %><br />
+    <%= f.text_field :register_num %>
+  </div>
+  <div class="field">
+    <%= f.label :season %><br />
+    <%= f.text_field :season %>
+  </div>
+  <div class="field">
+    <%= f.label :representation %><br />
+    <%= f.text_field :representation %>
+  </div>
+  <div class="field">
+    <%= f.label :ouverture_flag %><br />
+    <%= f.check_box :ouverture_flag %>
+  </div>
+  <div class="field">
+    <%= f.label :ouverture %><br />
+    <%= f.check_box :ouverture %>
+  </div>
+  <div class="field">
+    <%= f.label :cloture_flag %><br />
+    <%= f.check_box :cloture_flag %>
+  </div>
+  <div class="field">
+    <%= f.label :cloture %><br />
+    <%= f.check_box :cloture %>
+  </div>
+  <div class="field">
+    <%= f.label :weekday %><br />
+    <%= f.text_field :weekday %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br />
+    <%= f.datetime_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :payment_notes %><br />
+    <%= f.text_area :payment_notes %>
+  </div>
+  <div class="field">
+    <%= f.label :payment_notes %><br />
+    <%= f.text_area :payment_notes %>
+  </div>
+  <div class="field">
+    <%= f.label :date_flag %><br />
+    <%= f.check_box :date_flag %>
+  </div>
+  <div class="field">
+    <%= f.label :season_flag %><br />
+    <%= f.check_box :season_flag %>
+  </div>
+  <div class="field">
+    <%= f.label :regnum_flag %><br />
+    <%= f.check_box :regnum_flag %>
+  </div>
+  <div class="field">
+    <%= f.label :totalreceipts_flag %><br />
+    <%= f.check_box :totalreceipts_flag %>
+  </div>
+  <div class="field">
+    <%= f.label :payment_notes_flag %><br />
+    <%= f.check_box :payment_notes_flag %>
+  </div>
+  <div class="field">
+    <%= f.label :page_text %><br />
+    <%= f.text_area :page_text %>
+  </div>
+  <div class="field">
+    <%= f.label :page_text_flag %><br />
+    <%= f.check_box :page_text_flag %>
+  </div>
+  <div class="field">
+    <%= f.label :total_receipts_recorded_l %><br />
+    <%= f.text_field :total_receipts_recorded_l %>
+  </div>
+  <div class="field">
+    <%= f.label :total_receipts_recorded_s %><br />
+    <%= f.text_field :total_receipts_recorded_s %>
+  </div>
+  <div class="field">
+    <%= f.label :signatory %><br />
+    <%= f.text_field :signatory %>
+  </div>
+  <div class="field">
+    <%= f.label :signatory_flag %><br />
+    <%= f.check_box :signatory_flag %>
+  </div>
+  <div class="field">
+    <%= f.label :rep_flag %><br />
+    <%= f.check_box :rep_flag %>
+  </div>
+  <div class="field">
+    <%= f.label :misc_notes %><br />
+    <%= f.text_area :misc_notes %>
+  </div>
+  <div class="field">
+    <%= f.label :misc_notes_flag %><br />
+    <%= f.check_box :misc_notes_flag %>
+  </div>
+  <div class="field">
+    <%= f.label :for_editor_notes %><br />
+    <%= f.text_area :for_editor_notes %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,49 @@
+<%= form_for(@ticket_sale) do |f| %>
+  <% if @ticket_sale.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ticket_sale.errors.count, "error") %> prohibited this ticket_sale from being saved:</h2>
+
+      <ul>
+      <% @ticket_sale.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :total_sold %><br />
+    <%= f.text_field :total_sold %>
+  </div>
+  <div class="field">
+    <%= f.label :register_id %><br />
+    <%= f.text_field :register_id %>
+  </div>
+  <div class="field">
+    <%= f.label :seating_category_id %><br />
+    <%= f.text_field :seating_category_id %>
+  </div>
+  <div class="field">
+    <%= f.label :price_per_ticket_l %><br />
+    <%= f.text_field :price_per_ticket_l %>
+  </div>
+  <div class="field">
+    <%= f.label :price_per_ticket_s %><br />
+    <%= f.text_field :price_per_ticket_s %>
+  </div>
+  <div class="field">
+    <%= f.label :recorded_total_l %><br />
+    <%= f.text_field :recorded_total_l %>
+  </div>
+  <div class="field">
+    <%= f.label :recorded_total_s %><br />
+    <%= f.text_field :recorded_total_s %>
+  </div>
+  <div class="field">
+    <%= f.label :editor_flag %><br />
+    <%= f.check_box :editor_flag %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

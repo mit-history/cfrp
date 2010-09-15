@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  value: MyText
+  register_id: 1
+  comment_type_id: 1
+
+two:
+  name: MyString
+  value: MyText
+  register_id: 1
+  comment_type_id: 1

@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Author:</b>
+  <%= @play.author %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @play.title %>
+</p>
+
+<p>
+  <b>Genre:</b>
+  <%= @play.genre %>
+</p>
+
+
+<%= link_to 'Edit', edit_play_path(@play) %> |
+<%= link_to 'Back', plays_path %>

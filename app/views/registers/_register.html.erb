@@ -1,0 +1,12 @@
+<%# params: register %>
+<div class='register'>
+  <% if register.register_image != nil %>
+  <div><img src='<%= register.register_image.filepath %>' width='100' /></div>
+  <% end %>
+
+  <div><%= register.representation %> <%= register.date %></div>
+  <div><%= register.page_text %></div>
+  <div class='editor'><%= register.for_editor_notes %></div>
+  <div><%= register.misc_notes %></div>
+  <div style="clear:both"></div>
+</div>
