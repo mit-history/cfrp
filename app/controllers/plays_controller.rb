@@ -1,4 +1,6 @@
 class PlaysController < ApplicationController
+  before_filter :authenticate_user!
+
   # GET /plays
   # GET /plays.xml
   def index

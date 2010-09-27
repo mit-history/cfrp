@@ -3,10 +3,7 @@ Cfrp::Application.routes.draw do
 
   faceting_for :registers  # NB must be BEFORE any resources!
 
-  resources :ticket_sales
-  resources :seating_categories
-  resources :register_plays
-  resources :page_text_templates
+  match '/facets', :to => 'registers#facets'
   resources :registers
   resources :plays
 

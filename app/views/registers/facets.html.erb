@@ -1,0 +1,41 @@
+<% config = Cfrp::Application.config %>
+
+<script language="javascript">
+$().ready(function() {
+  // only necessary if using sub-uris
+  repertoire.defaults = { path_prefix: '<%= config.repertoire_assets.path_prefix %>' };
+
+  $('#registers').facet_context(function() {
+    return { 
+      search: $("#search").val()
+    }
+  });
+  $('.facet').facet();
+  $('.nested_facet').nested_facet();
+  $('#results').results();
+});
+</script>
+
+<form>
+Search: <input id='search' name='search' type='text' value='<%= @search %>'/>
+</form>
+
+<%#= render :partial => './navigation', :locals => { :highlight => :registers } %>
+
+<div id='registers'>
+  <div class='left'>
+    <div id='season' class='facet' title='Seasons'></div>
+    <div id='weekday' class='facet' title='Weekdays'></div>
+    <div id='total_receipts_recorded_l' class='facet' title='Total Receipts (Livre)'></div>
+    <!-- div id='nobel_year' class='facet' title='Year Awarded'></div>
+    <div id='degree' class='facet' title='Degree at MIT'></div -->
+  </div>
+
+  <!-- div id='results'></div -->
+
+  <div class='right'>
+    <div id='title' class='facet' title='Play 1'></div>
+    <div id='author' class='facet' title='Author 1'></div>
+    <!-- div id='season' class='facet' title='Season'></div -->
+  </div>
+</div>

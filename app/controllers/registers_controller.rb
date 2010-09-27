@@ -1,21 +1,17 @@
 class RegistersController < ApplicationController
+  before_filter :authenticate_user!, :unless => [:index, :counts, :results, :base]
 
   include Repertoire::Faceting::Controller
 
-  # GET /registers
-  # GET /registers.xml
   def index
     @search = params[:search] || ''
-    render
-
-    #@registers = Register.all
-
-    #respond_to do |format|
-    #  format.html # index.html.erb
-    #  format.xml  { render :xml => @registers }
-    #end
+    # @registers = Register.all
+    # @registers = Register.paginate(:page => params[:page])
   end
 
+  def facets
+    @search = params[:search] || ''
+  end
 
   # GET /registers/1
   # GET /registers/1.xml

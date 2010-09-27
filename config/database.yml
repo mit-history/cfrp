@@ -40,7 +40,7 @@ test: &test
   database: cfrp_test
   pool: 5
   username: cfrp
-  password:
+  password: cfrp$02139
 
 production:
   adapter: postgresql
