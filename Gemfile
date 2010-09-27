@@ -11,6 +11,8 @@ gem 'rep.jquery', :git => 'git@github.com:repertoire/rep.jquery'
 gem 'repertoire-assets', :git => 'git@github.com:repertoire/repertoire-assets.git'
 gem 'repertoire-faceting', :git => 'git@github.com:repertoire/repertoire-faceting.git', :branch => 'rails-3'
 
+# gem 'will_paginate', '3.0.pre2'
+
 gem 'pg'
 
 # Use unicorn as the web server
@@ -34,10 +36,14 @@ gem 'nokogiri', '1.4.1'
 group :development, :test do
 #  gem 'cucumber-rails'
 #  gem 'cucumber'
-#  gem 'webrat'
-  gem 'capybara'
-  gem 'rspec-rails', ">= 2.0.0.beta.20"
+#  gem 'capybara'
+  gem 'webrat'
+  gem 'rspec', '2.0.0.beta.22'
   gem 'autotest'
+  gem 'autotest-growl'
+  gem 'autotest-fsevent'
+  gem 'rspec-rails', ">= 2.0.0.beta.20"
+  gem 'annotate-models', '1.0.4'
 end
 
 gem 'devise'

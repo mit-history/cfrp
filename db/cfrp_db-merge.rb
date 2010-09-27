@@ -53,7 +53,7 @@ if res.count > 0
 
     print "#{user_array}\n\n"
 
-#    conn_dev.exec('INSERT INTO users (shortname, last_name, first_name, bio, email, institution, institution_code, created_at, updated_at, id, encrypted_password, password_salt) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)', user_array)
+    conn_dev.exec('INSERT INTO users (shortname, last_name, first_name, bio, email, institution, institution_code, created_at, updated_at, id, encrypted_password, password_salt) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)', user_array)
   end
 else
   print "FAILURE\n"
@@ -74,7 +74,7 @@ if res.count > 0
 
     print "#{register_array}\n\n"
 
-#    conn_dev.exec('INSERT INTO registers (id, date, weekday, season, register_num, payment_notes, date_flag, season_flag, regnum_flag, totalreceipts_flag, payment_notes_flag, page_text, page_text_flag, total_receipts_recorded_l, total_receipts_recorded_s, representation, signatory, signatory_flag, rep_flag, misc_notes, misc_notes_flag, for_editor_notes, ouverture, ouverture_flag, cloture, cloture_flag, created_at, updated_at, register_image_id, register_period_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30)', register_array)
+    conn_dev.exec('INSERT INTO registers (id, date, weekday, season, register_num, payment_notes, date_flag, season_flag, regnum_flag, totalreceipts_flag, payment_notes_flag, page_text, page_text_flag, total_receipts_recorded_l, total_receipts_recorded_s, representation, signatory, signatory_flag, rep_flag, misc_notes, misc_notes_flag, for_editor_notes, ouverture, ouverture_flag, cloture, cloture_flag, created_at, updated_at, register_image_id, register_period_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30)', register_array)
   end
 else
   print "FAILURE\n"
@@ -94,7 +94,7 @@ if res.count > 0
 
     print "#{comment_array}\n\n"
 
-#    conn_dev.exec('INSERT INTO comments (id, name, value, register_id, comment_type_id) VALUES ($1, $2, $3, $4, $5)', comment_array)
+    conn_dev.exec('INSERT INTO comments (id, name, value, register_id, comment_type_id) VALUES ($1, $2, $3, $4, $5)', comment_array)
   end
 else
   print "FAILURE\n"
@@ -115,7 +115,7 @@ if res.count > 0
 
     print "#{play_array}\n\n"
 
-#    conn_dev.exec('INSERT INTO plays (id, title, author, genre) VALUES ($1, $2, $3, $4)', play_array)
+    conn_dev.exec('INSERT INTO plays (id, title, author, genre) VALUES ($1, $2, $3, $4)', play_array)
   end
 else
   print "FAILURE\n"
@@ -136,7 +136,7 @@ if res.count > 0
 
     print "#{reg_image_array}\n\n"
 
-#    conn_dev.exec('INSERT INTO register_images (id, filepath, user_id) VALUES ($1, $2, $3)', reg_image_array)
+    conn_dev.exec('INSERT INTO register_images (id, filepath, user_id) VALUES ($1, $2, $3)', reg_image_array)
   end
 else
   print "FAILURE\n"
@@ -157,7 +157,7 @@ if res.count > 0
 
     print "#{reg_play_array}\n\n"
 
-#    conn_dev.exec('INSERT INTO register_plays (id, register_id, play_id, firstrun, newactor, actorrole, editor_flag, firstrun_perfnum) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)', reg_play_array)
+    conn_dev.exec('INSERT INTO register_plays (id, register_id, play_id, firstrun, newactor, actorrole, editor_flag, firstrun_perfnum) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)', reg_play_array)
   end
 else
   print "FAILURE\n"
@@ -179,7 +179,7 @@ if res.count > 0
 
     print "#{reg_contrib_array}\n\n"
 
-#    conn_dev.exec('INSERT INTO register_contributors (register_id, user_id, task_id) VALUES ($1, $2, $3)', reg_contrib_array)
+    conn_dev.exec('INSERT INTO register_contributors (register_id, user_id, task_id) VALUES ($1, $2, $3)', reg_contrib_array)
   end
 else
   print "FAILURE\n"
@@ -200,7 +200,7 @@ if res.count > 0
 
     print "#{ticket_sale_array}\n\n"
 
-#    conn_dev.exec('INSERT INTO ticket_sales (id, total_sold, register_id, seating_category_id, price_per_ticket_l, price_per_ticket_s, recorded_total_l, recorded_total_s, editor_flag) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)', ticket_sale_array)
+    conn_dev.exec('INSERT INTO ticket_sales (id, total_sold, register_id, seating_category_id, price_per_ticket_l, price_per_ticket_s, recorded_total_l, recorded_total_s, editor_flag) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)', ticket_sale_array)
   end
 else
   print "FAILURE\n"
