@@ -9,18 +9,23 @@ $().ready(function() {
     return { 
       search: $("#search").val(),
       limit: 4,
+      offset: 10,
       utf8: "%E2%9C%93"
     }
   });
 
   $('.facet').facet();
   $('.nested_facet').nested_facet();
-  $('#results').results();
+  $('#results').results_custom({
+    limit: 4,
+    offset: 0
+  });
+
 });
 </script>
 
 <form>
-Search: <input id='search' name='search' type='text' value='<%= @search %>'/>
+Results: <span class='results_count'></span> | Search: <input id='search' name='search' type='text' value='<%= @search %>'/>
 </form>
 
 <%#= render :partial => './navigation', :locals => { :highlight => :registers } %>

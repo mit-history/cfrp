@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git@github.com:repertoire/repertoire-faceting.git
-  revision: b303719835dc3552fd27fbf09825362497855297
+  revision: 73827650cf2bccc714966a6c1184090d0b0f8558
   specs:
     repertoire-faceting (0.5.4)
       pg (~> 0.9.0)

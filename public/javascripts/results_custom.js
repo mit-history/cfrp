@@ -1,68 +1,65 @@
 /*
-* Repertoire faceting ajax widgets
+* Customization of Repertoire Faceting Results widget
 *
-* Copyright (c) 2009 MIT Hyperstudio
-* Christopher York, 09/2009
+* Copyright (c) 2011 MIT Hyperstudio
+* Dave Della costa, 05/2011
 *
 * Requires jquery 1.3.2+
 * Support: Firefox 3+ & Safari 4+.  IE emphatically not supported.
 *
 *
-* A barebones faceting results widget.  HTML rendering is done on the server side.
-*
 * Usage:
 *
-*   $('#my_results').results(<options>)
+*   $('#my_results').results_custom(<options>)
 *
 * Options:  As for basic faceting widgets
 *           - type:  return type for ajax query
 *           None are required.
 */
 
-//= require "facet_widget"
+repertoire.results_custom = function($results, options) {
 
-
-repertoire.results = function($results, options) {
-  // inherit basic facet widget behaviour
   var self = repertoire.facet_widget($results, options);
 
+  self.offset = options.offset || 0;
+  self.limit = options.limit || 5;
 
   //
   // pagination forward
   //
   self.handler('.rep #results_nav .next', function() {
     var context = self.context();
-    if (context.offset + context.limit <= self.count)
-      context.offset += context.limit;
+    if (self.offset + self.limit <= self.count)
+      self.offset += self.limit;
     self.refresh();
     return false;
   });
-
 
   //
   // pagination backwards
   //
   self.handler('.rep #results_nav .prev', function() {
     var context = self.context();
-    if (context.offset - context.limit >= 0)
-      context.offset -= context.limit;
+    if (self.offset - self.limit >= 0)
+      self.offset -= self.limit;
     self.refresh();
     return false;
   });
-
 
   //
   // Ajax callback for results
   //
   self.reload = function(callback) {
     var context  = self.context();
+    context.update_state({
+      limit: self.limit,
+      offset: self.offset
+    });
     context.results(options.type, callback, $results);
   }
 
-
   // Count of results, see below
   self.count = 0;
-
   
   //
   // Render fetched html
@@ -71,8 +68,7 @@ repertoire.results = function($results, options) {
   self.render = function(data) {
     var $markup = $template_fn();
 
-    // LAME INTERIM SOLUTION...
-    // REAL WAY TO DO THIS IS TO BUILD CUSTOM RESULTS WIDGET?
+    // Ugh.
     if (data.match(/\|count = (\d*)\|/)) {
       self.count = RegExp.$1;
       $('.results_count').html(self.count);
@@ -90,7 +86,6 @@ repertoire.results = function($results, options) {
     return $markup.prepend(self.result_nav());
   }
 
-
   //
   // Build results nav for prepending to results template:
   //
@@ -98,18 +93,18 @@ repertoire.results = function($results, options) {
     var context = self.context();
     var results_nav = "<div id='results_nav'>";
 
-    if (context.offset - context.limit >= 0) {
+    if (self.offset - self.limit >= 0) {
       results_nav = results_nav + "<a href='#' class='prev'>Previous page</a>";
     } else {
       results_nav = results_nav + "<span class='disable_link'>First page</span>";
     }
 
-    var page_count = Math.ceil(self.count / context.limit);
-    var page = (context.offset / context.limit) + 1;
+    var page_count = Math.ceil(self.count / self.limit);
+    var page = (self.offset / self.limit) + 1;
 
     results_nav = results_nav + " | Page " + page + " of " + page_count + " | ";
 
-    if (context.offset + context.limit < self.count) {
+    if (self.offset + self.limit < self.count) {
       results_nav = results_nav + "<a href='#' class='next'>Next page</a>";
     } else {
       results_nav = results_nav + "<span class='disable_link'>Last page</span>";
@@ -124,7 +119,7 @@ repertoire.results = function($results, options) {
 };
 
 // Results plugin
-$.fn.results = repertoire.plugin(repertoire.results);
-$.fn.results.defaults = {
+$.fn.results_custom = repertoire.plugin(repertoire.results_custom);
+$.fn.results_custom.defaults = {
   type: 'html'          /* jquery ajax type: html, json, xml */
 };
