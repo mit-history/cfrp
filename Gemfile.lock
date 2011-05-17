@@ -1,4 +1,12 @@
 GIT
+  remote: git@github.com:repertoire/rep.ajax.toolkit.git
+  revision: fea72644e913486530ae6e053fdc67288896251d
+  specs:
+    rep.ajax.toolkit (0.3.0)
+      rep.jquery (>= 1.3.2)
+      repertoire-assets (>= 0.1.0)
+
+GIT
   remote: git@github.com:repertoire/repertoire-faceting.git
   revision: b303719835dc3552fd27fbf09825362497855297
   specs:
@@ -8,13 +16,6 @@ GIT
       rep.ajax.toolkit (~> 0.3.0)
       rep.jquery (~> 1.4.3)
       repertoire-assets (~> 0.2.0)
-
-PATH
-  remote: /Library/WebServer/Deployment/rep.ajax.toolkit
-  specs:
-    rep.ajax.toolkit (0.3.0)
-      rep.jquery (>= 1.3.2)
-      repertoire-assets (>= 0.1.0)
 
 GEM
   remote: http://rubygems.org/
