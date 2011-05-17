@@ -48,7 +48,7 @@ Cfrp::Application.configure do
   config.active_support.deprecation = :notify
 
   # Repertoire Assets
-  config.repertoire_assets.path_prefix = '/usiranpublic'
+  config.repertoire_assets.path_prefix = '/cfrp'
   # config.repertoire_assets.compress = true
 
   # for devise mailer:
