@@ -4,59 +4,59 @@ describe RegistersController do
   render_views
 
   describe "for non-signed-in users" do
-    it "should allow access to facets" do
-      get :facets
+    it "should allow access to index" do
+      get :index
       response.should be_success
     end
 
     it "should have a season facet" do
-      get :facets
+      get :index
       response.should have_selector("div#season")
     end
 
     it "should have a weekday facet" do
-      get :facets
+      get :index
       response.should have_selector("div#weekday")
     end
 
     it "should have a play 1 author facet" do
-      get :facets
-      response.should have_selector("div#author1")
+      get :index
+      response.should have_selector("div#author")
     end
 
-    it "should have a play 2 author facet" do
-      get :facets
-      response.should have_selector("div#author2")
-    end
+    it "should have a play 2 author facet"
+#      get :index
+#      response.should have_selector("div#author2")
+#    end
 
     it "should have a play 1 title facet" do
-      get :facets
-      response.should have_selector("div#title1")
+      get :index
+      response.should have_selector("div#title")
     end
 
-    it "should have a play 2 title facet" do
-      get :facets
-      response.should have_selector("div#title2")
-    end
+    it "should have a play 2 title facet"
+#      get :index
+#      response.should have_selector("div#title2")
+#    end
 
-    it "should have a first balcony facet" do
-      get :facets
-      response.should have_selector("div#firstbalcony")
-    end
+    it "should have a first balcony facet"
+#      get :index
+#      response.should have_selector("div#firstbalcony")
+#    end
 
-    it "should have parterre facet" do
-      get :facets
-      response.should have_selector("div#parterre")
-    end
+    it "should have parterre facet"
+#      get :index
+#      response.should have_selector("div#parterre")
+#    end
 
-    it "should have total spectators facet" do
-      get :facets
-      response.should have_selector("div#total_spectators")
-    end
+    it "should have total spectators facet"
+#      get :index
+#      response.should have_selector("div#total_spectators")
+#    end
 
     it "should have total receipts facet" do
-      get :facets
-      response.should have_selector("div#total_receipts")
+      get :index
+      response.should have_selector("div#total_receipts_recorded_l")
     end
   end
 

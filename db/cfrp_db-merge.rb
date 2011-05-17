@@ -3,7 +3,9 @@
 
 require 'pg'
 
-conn = PGconn.open(:user => 'cfrp', :password => 'cfrp$02139', :dbname => 'hyperstudio_development', :host => 'hs-dev.mit.edu')
+# this is just not working.
+#conn = PGconn.open(:user => 'cfrp', :password => 'cfrp$02139', :dbname => 'hyperstudio_development', :host => 'hs-dev.mit.edu')
+conn = PGconn.open(:user => 'cfrp', :password => 'cfrp$02139', :dbname => 'older_cfrp_development')
 conn_dev = PGconn.open(:user => 'cfrp', :password => 'cfrp$02139', :dbname => 'cfrp_development')
 
 

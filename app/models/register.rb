@@ -58,10 +58,4 @@ class Register < ActiveRecord::Base
 
 # what
 #  facet :total_receipts, Table(:registers).project("(total_receipts_recorded_l + total_receipts_recorded_s) as total_receipts")
-
-  # examples from nobelists example
-  # facet :nobel_year, order('nobel_year asc')
-  # facet :degree, joins(:affiliations).order('degree asc', 'count desc')
-  # facet :birth_place, group(:birth_country, :birth_state, :birth_city).order('count desc', 'birth_place asc')
-  # facet :birth_decade, group('((EXTRACT(year FROM birthdate)::integer / 10::integer) * 10)').order('birth_decade asc')
 end
