@@ -8,9 +8,9 @@ class AddPlayOrderingToPlays < ActiveRecord::Migration
       sorted = register_plays.sort { |a, b| a.id <=> b.id }
       ordering = 0
       sorted.each do |rp|
-        ordering += 1
         rp.ordering = ordering
         rp.save
+        ordering += 1
       end
     end
   end

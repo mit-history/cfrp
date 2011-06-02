@@ -24,8 +24,8 @@ $().ready(function() {
 });
 </script>
 
-<form>
-Results: <span class='results_count'></span> | Search: <input id='search' name='search' type='text' value='<%= @search %>'/>
+<form id='search_field'>
+<span class="results">Results: <span class='results_count'></span></span> <!-- | Search: <input id='search' name='search' type='text' value='<%= @search %>'/> -->
 </form>
 
 <%#= render :partial => './navigation', :locals => { :highlight => :registers } %>
@@ -42,8 +42,11 @@ Results: <span class='results_count'></span> | Search: <input id='search' name='
   <div id='results'></div>
 
   <div class='right'>
-    <div id='title' class='facet' title='Play 1'></div>
-    <div id='author' class='facet' title='Author 1'></div>
+    <div id='title1' class='facet' title='Play 1'></div>
+    <div id='author1' class='facet' title='Author 1'></div>
+    <div class='clear'></div>
+    <div id='title2' class='facet' title='Play 2'></div>
+    <div id='author2' class='facet' title='Author 2'></div>
     <!-- div id='season' class='facet' title='Season'></div -->
   </div>
 </div>

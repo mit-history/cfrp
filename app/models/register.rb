@@ -53,8 +53,10 @@ class Register < ActiveRecord::Base
   facet :weekday
   facet :total_receipts_recorded_l
   facet :newactor, joins(:register_plays)
-  facet :title, joins(:register_plays).joins(:plays)
-  facet :author, joins(:register_plays).joins(:plays)
+  facet :title1, joins(:plays).joins(:register_plays).where('register_plays.ordering = 0').group('plays.title')
+  facet :title2, joins(:plays).joins(:register_plays).where('register_plays.ordering = 1').group('plays.title')
+  facet :author1, joins(:plays).joins(:register_plays).where('register_plays.ordering = 0').group('plays.author')
+  facet :author2, joins(:plays).joins(:register_plays).where('register_plays.ordering = 1').group('plays.author')
 
 # what
 #  facet :total_receipts, Table(:registers).project("(total_receipts_recorded_l + total_receipts_recorded_s) as total_receipts")

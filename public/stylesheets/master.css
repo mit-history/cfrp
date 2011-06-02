@@ -2,7 +2,7 @@ html, body, ul {margin:0; padding:0;}
 
 /* 72.5% and then 1.2em will default browsers to 12px, and allow em -> px correlated values */
 body {font-family:Arial, Helvetica, sans-serif; font-size:72.5%;}
-#container {font-size:1.2em; margin-bottom: 3.6em;}
+#container {font-size:1.2em; margin-bottom: 3.6em; border-top: 5px solid black; }
 
 input, textarea {font:Verdana, Geneva, sans-serif; border:1px solid #ccc;}
 input, textarea {}
@@ -102,8 +102,8 @@ body.registerNew.conditional #container {overflow:visible;}
 
 
 /* main index page divs */
-div#registers { width: 80% }
-table#registers_listing { width: 100% }
+/* div#registers { width: 80% } */
+/* table#registers_listing { width: 100% } */
 
 a.no_pad { padding: 0px; margin: 0px }
 
@@ -120,11 +120,15 @@ form.delete-btn input { width: 7em; }
 /* tr#no_second_play td { border: 1px solid black; } */
 input#no_second_play { width: 20px }
 
+form#search_field .results { font-weight: bold; font-size: 18px; color: #999; }
+form#search_field .results_count { color: #000; }
 
 /* faceting results */
+#results { float:left; clear: none; width: 400px; padding-bottom: 35px; }
+#results span.label { font-weight: bold; }
+.right { float:left; clear: right; margin: 10px; width: 500px; }
+.right .facet { float: left; margin-left: 3px; }
 .left { float:left; clear: left; margin: 10px; }
-#results { float:left; clear: none; width: 500px;}
-.right { float:left; clear: right; margin: 10px; }
 .register { clear: both; margin: 10px; border: 1px black dotted; padding: 5px; }
 .register img { float: left; margin: 5px; }
 .editor { font-weight: bold; color: #f00; }
