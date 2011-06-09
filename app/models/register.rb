@@ -50,7 +50,10 @@ class Register < ActiveRecord::Base
   accepts_nested_attributes_for :plays
 
   facet :season
-  facet :weekday
+
+  # Thank you: http://postgresql.1045698.n5.nabble.com/GENERAL-sort-character-data-in-arbitrary-order-td1855410.html
+  facet :weekday, order("weekday = 'Dimanche'").order("weekday = 'Samedy'").order("weekday = 'Vendredy'").order("weekday = 'Jeudy'").order("weekday = 'Mercredy'").order("weekday = 'Mardy'").order("weekday = 'Lundy'")
+
   facet :total_receipts_recorded_l
   facet :newactor, joins(:register_plays)
   facet :title1, joins(:plays).joins(:register_plays).where('register_plays.ordering = 0').group('plays.title')
