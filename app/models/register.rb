@@ -52,7 +52,7 @@ class Register < ActiveRecord::Base
   facet :season
 
   # Thank you: http://postgresql.1045698.n5.nabble.com/GENERAL-sort-character-data-in-arbitrary-order-td1855410.html
-  facet :weekday, order("weekday = 'Dimanche'").order("weekday = 'Samedy'").order("weekday = 'Vendredy'").order("weekday = 'Jeudy'").order("weekday = 'Mercredy'").order("weekday = 'Mardy'").order("weekday = 'Lundy'")
+  facet :weekday, order("weekday = 'Dimanche'").order("weekday = 'Samedi'").order("weekday = 'Vendredi'").order("weekday = 'Jeudi'").order("weekday = 'Mercredi'").order("weekday = 'Mardi'").order("weekday = 'Lundi'")
 
   facet :total_receipts_recorded_l
   facet :newactor, joins(:register_plays)
