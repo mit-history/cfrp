@@ -12,4 +12,6 @@
 #
 
 class RegisterContributor < ActiveRecord::Base
+  belongs_to :register
+  has_one :user
 end

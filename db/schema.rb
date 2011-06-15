@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100927135806) do
+ActiveRecord::Schema.define(:version => 20110614135453) do
 
   create_table "comment_types", :force => true do |t|
     t.string   "name"
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(:version => 20100927135806) do
     t.datetime "updated_at"
     t.integer  "register_image_id"
     t.integer  "register_period_id"
+    t.integer  "verification_state_id"
   end
 
   create_table "seating_categories", :force => true do |t|
@@ -166,5 +167,15 @@ ActiveRecord::Schema.define(:version => 20100927135806) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "verification_states", :force => true do |t|
+    t.string "name"
+    t.string "description"
+  end
+
+  create_table "weekday_ordering", :force => true do |t|
+    t.string  "name"
+    t.integer "ordering"
+  end
 
 end

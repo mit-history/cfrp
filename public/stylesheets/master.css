@@ -132,3 +132,10 @@ form#search_field .results_count { color: #000; }
 .register { clear: both; margin: 10px; border: 1px black dotted; padding: 5px; }
 .register img { float: left; margin: 5px; }
 .editor { font-weight: bold; color: #f00; }
+
+div#verification_state div.title, div#register_contributor_name div.title { font-weight: bold; color: #c32; background-color: #ccc }
+
+span.verification_needed { color: #f00; font-weight: bold; }
+span.verified { color: #0f0; font-weight: bold; }
+span.revision_needed { color: #f90; font-weight: bold; }
+

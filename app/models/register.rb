@@ -38,9 +38,13 @@
 class Register < ActiveRecord::Base
   include Repertoire::Faceting::Model
 
-  belongs_to :register_image
-
   has_many :ticket_sales
+
+  belongs_to :register_image
+  belongs_to :verification_state
+
+  has_one :register_contributor
+  has_one :user, :through => :register_contributor
 
   # Association through plays
   has_many :register_plays
@@ -49,12 +53,26 @@ class Register < ActiveRecord::Base
   accepts_nested_attributes_for :register_plays
   accepts_nested_attributes_for :plays
 
+  #######################################################
+  # FACETING
   facet :season, order(:season)
 
   # Thank you: http://postgresql.1045698.n5.nabble.com/GENERAL-sort-character-data-in-arbitrary-order-td1855410.html
   facet :weekday, order("weekday = 'Dimanche'").order("weekday = 'Samedi'").order("weekday = 'Vendredi'").order("weekday = 'Jeudi'").order("weekday = 'Mercredi'").order("weekday = 'Mardi'").order("weekday = 'Lundi'")
 
   facet :total_receipts_recorded_l, order('total_receipts_recorded_l DESC')
+  # facet :total_receipts_recorded_l, group('total_receipts_recorded_l HAVING total_receipts_recorded_l > 100 AND total_receipts_recorded_l < 500')
+
+  #     SELECT users.first_name, users.last_name
+  #       FROM register_contributors
+  # INNER JOIN registers ON registers.id = register_contributors.register_id
+  # INNER JOIN users ON users.id = register_contributors.user_id
+  #   GROUP BY users.first_name, users.last_name;
+
+  facet :register_contributor_name, joins('INNER JOIN register_contributors ON registers.id = register_contributors.register_id').joins('INNER JOIN users ON users.id = register_contributors.user_id').group("users.first_name || ' ' || users.last_name")
+
+  facet :verification_state, joins(:verification_state).group('verification_states.name')
+
   facet :newactor, joins(:register_plays)
   facet :title1, joins(:plays).joins(:register_plays).where('register_plays.ordering = 0').group('plays.title')
   facet :title2, joins(:plays).joins(:register_plays).where('register_plays.ordering = 1').group('plays.title')
@@ -62,5 +80,5 @@ class Register < ActiveRecord::Base
   facet :author2, joins(:plays).joins(:register_plays).where('register_plays.ordering = 1').group('plays.author')
 
 # what
-#  facet :total_receipts, Table(:registers).project("(total_receipts_recorded_l + total_receipts_recorded_s) as total_receipts")
+#  facet :total_receipts, Table(:register).project("(total_receipts_recorded_l + total_receipts_recorded_s) as total_receipts")
 end
