@@ -47,11 +47,31 @@ Cfrp::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
+  # What does this do for us?
   # Repertoire Assets
-  config.repertoire_assets.path_prefix = '/cfrp'
-  # config.repertoire_assets.compress = true
+  # config.repertoire_assets.path_prefix = '/cfrp'
+  config.path_prefix = '/cfrp'
 
   # for devise mailer:
   config.action_mailer.delivery_method = :sendmail
   config.action_mailer.default_url_options = { :host => 'hyperstudio.mit.edu/cfrp' }
+
+  # Upgrading to 3.1/3.2: http://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html
+  # Compress JavaScripts and CSS
+  config.assets.compress = true
+  
+  # Don't fallback to assets pipeline if a precompiled asset is missed
+  config.assets.compile = false
+  
+  # Generate digests for assets URLs
+  config.assets.digest = true
+  
+  # Defaults to Rails.root.join("public/assets")
+  # config.assets.manifest = YOUR_PATH
+  
+  # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
+  # config.assets.precompile += %w( search.js )
+  
+  # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
+  # config.force_ssl = true
 end

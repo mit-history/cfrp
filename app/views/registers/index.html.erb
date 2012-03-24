@@ -3,7 +3,7 @@
 <script language="javascript">
 $().ready(function() {
   // only necessary if using sub-uris
-  repertoire.defaults = { path_prefix: '<%= config.repertoire_assets.path_prefix %>' };
+  repertoire.defaults = { path_prefix: '<%= config.path_prefix %>' };
 
   $('#registers').facet_context(function() {
     return { 

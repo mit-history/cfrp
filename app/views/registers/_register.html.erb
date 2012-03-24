@@ -5,7 +5,7 @@
 <%# params: register %>
 <div class='register'>
   <% if register.register_image != nil %>
-  <div><a href="<%= config.repertoire_assets.path_prefix %>/<%= register.register_image.filepath %>" target="_blank"><img src='<%= config.repertoire_assets.path_prefix %>/<%= register.register_image.filepath %>' width='100' /></a></div>
+  <div><a href="<%= config.path_prefix %>/<%= register.register_image.filepath %>" target="_blank"><img src='<%= config.path_prefix %>/<%= register.register_image.filepath %>' width='100' /></a></div>
   <% end %>
 
   <div><input type='submit' value='edit' name='edit' /><input type='submit' value='delete' name='delete' /></div>

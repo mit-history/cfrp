@@ -1,10 +1,22 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~>3.0.7'
-gem 'pg'
+gem 'rails', '= 3.2.2'
+gem 'pg', '0.11.0'
 gem 'devise'
 gem 'cancan'
+
+# jQuery is the default JavaScript library in Rails 3.1
+gem 'jquery-rails'
+
+group :assets do
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'uglifier',     '>= 1.0.3'
+end
+
+# Repertoire Gems
 gem 'repertoire-faceting', :git => 'git@github.com:repertoire/repertoire-faceting.git', :branch => '0.5.5.dev'
+gem 'repertoire-groups', :git => 'git@github.com:repertoire/Repertoire-Groups.git'
 gem 'rep.ajax.toolkit', :git => 'git@github.com:repertoire/rep.ajax.toolkit.git'
 
 # Bundle gems for the local environment. Make sure to

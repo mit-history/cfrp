@@ -20,6 +20,9 @@ Cfrp::Application.configure do
   # Disable request forgery protection in test environment
   config.action_controller.allow_forgery_protection    = false
 
+  # Gotta get this working with Rails 3.1+ assets pipeline.
+  config.path_prefix = '/cfrp'
+
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
@@ -32,4 +35,12 @@ Cfrp::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  # Upgrading to 3.1/3.2 http://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html
+  # Raise exception on mass assignment protection for Active Record models
+  config.active_record.mass_assignment_sanitizer = :strict
+
+  # Configure static asset server for tests with Cache-Control for performance
+  config.serve_static_assets = true
+  config.static_cache_control = "public, max-age=3600"
 end
