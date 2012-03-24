@@ -4,7 +4,7 @@ gem 'rails', '~>3.0.7'
 gem 'pg'
 gem 'devise'
 gem 'cancan'
-gem 'repertoire-faceting', :git => 'git@github.com:repertoire/repertoire-faceting.git'
+gem 'repertoire-faceting', :git => 'git@github.com:repertoire/repertoire-faceting.git', :branch => '0.5.5.dev'
 gem 'rep.ajax.toolkit', :git => 'git@github.com:repertoire/rep.ajax.toolkit.git'
 
 # Bundle gems for the local environment. Make sure to
@@ -17,5 +17,5 @@ group :development, :test do
   gem 'autotest-fsevent'
   gem 'rspec'
   gem 'rspec-rails'
-  gem 'annotate-models'
+  gem 'annotate'
 end

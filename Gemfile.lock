@@ -8,7 +8,8 @@ GIT
 
 GIT
   remote: git@github.com:repertoire/repertoire-faceting.git
-  revision: 73827650cf2bccc714966a6c1184090d0b0f8558
+  revision: 0dc19dd2cbe5b81657dcae58a1f5ed5dbc29227e
+  branch: 0.5.5.dev
   specs:
     repertoire-faceting (0.5.4)
       pg (~> 0.9.0)
@@ -47,7 +48,7 @@ GEM
       activemodel (= 3.0.7)
       activesupport (= 3.0.7)
     activesupport (3.0.7)
-    annotate-models (1.0.4)
+    annotate (2.4.0)
     arel (2.0.9)
     autotest (4.3.2)
     autotest-fsevent (0.2.5)
@@ -123,7 +124,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  annotate-models
+  annotate
   autotest
   autotest-fsevent
   autotest-growl
