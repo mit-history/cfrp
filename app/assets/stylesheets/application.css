@@ -1,0 +1,6 @@
+/* ...
+*= require_self
+*= require_tree .
+*= require rep.ajax-validate
+*= require rep.faceting
+*/

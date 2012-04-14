@@ -41,7 +41,7 @@ module Cfrp
     config.filter_parameters += [:password]
 
     # Upgrading to 3.1/3.2: http://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html
-    config.assets.enabled = false # turning this off for now to test
+    config.assets.enabled = true # turning this off for now to test
     config.assets.version = '1.0'
   end
 end

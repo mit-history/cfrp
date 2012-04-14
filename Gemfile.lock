@@ -6,13 +6,13 @@ GIT
 
 GIT
   remote: git@github.com:repertoire/rep.ajax.toolkit.git
-  revision: 603a80dea63dafa9dfaacd6596e65d844d66b925
+  revision: 8c2cb3da3e7903a7fb213a81378c580d0964caf4
   specs:
-    rep.ajax.toolkit (0.3.1)
+    rep.ajax.toolkit (0.3.2)
 
 GIT
   remote: git@github.com:repertoire/repertoire-faceting.git
-  revision: 2623bb3313d3731547d0494d28695339dd3a8fbb
+  revision: 4970f2ee598e464d9568835ce5e3e85b8dde75fb
   branch: 0.5.5.dev
   specs:
     repertoire-faceting (0.5.4)
