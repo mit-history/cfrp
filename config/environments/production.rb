@@ -27,10 +27,6 @@ Cfrp::Application.configure do
   # Use a different cache store in production
   # config.cache_store = :mem_cache_store
 
-  # Disable Rails's static asset server
-  # In production, Apache or nginx will already do this
-  config.serve_static_assets = false
-
   # Enable serving of images, stylesheets, and javascripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
 
@@ -56,12 +52,16 @@ Cfrp::Application.configure do
   config.action_mailer.delivery_method = :sendmail
   config.action_mailer.default_url_options = { :host => 'hyperstudio.mit.edu/cfrp' }
 
+  # Disable Rails's static asset server
+  # In production, Apache or nginx will already do this
+  config.serve_static_assets = false
+
   # Upgrading to 3.1/3.2: http://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html
   # Compress JavaScripts and CSS
   config.assets.compress = true
   
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = false
+  config.assets.compile = true
   
   # Generate digests for assets URLs
   config.assets.digest = true
@@ -74,4 +74,6 @@ Cfrp::Application.configure do
   
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
+
+  config.assets.debug = true
 end
