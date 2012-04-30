@@ -4,6 +4,7 @@
 // ...
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require rep.widgets
 //= require rep.faceting
 //= require "results_custom.js"

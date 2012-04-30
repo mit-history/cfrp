@@ -21,23 +21,23 @@ describe RegistersController do
 
     it "should have a play 1 author facet" do
       get :index
-      response.should have_selector("div#author")
+      response.should have_selector("div#author1")
     end
 
-    it "should have a play 2 author facet"
-#      get :index
-#      response.should have_selector("div#author2")
-#    end
+    it "should have a play 2 author facet" do
+      get :index
+      response.should have_selector("div#author2")
+    end
 
     it "should have a play 1 title facet" do
       get :index
-      response.should have_selector("div#title")
+      response.should have_selector("div#title1")
     end
 
-    it "should have a play 2 title facet"
-#      get :index
-#      response.should have_selector("div#title2")
-#    end
+    it "should have a play 2 title facet" do
+      get :index
+      response.should have_selector("div#title2")
+    end
 
     it "should have a first balcony facet"
 #      get :index

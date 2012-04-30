@@ -8,26 +8,33 @@
   <div><a href="<%= config.path_prefix %>/<%= register.register_image.filepath %>" target="_blank"><img src='<%= config.path_prefix %>/<%= register.register_image.filepath %>' width='100' /></a></div>
   <% end %>
 
-  <div><input type='submit' value='edit' name='edit' /><input type='submit' value='delete' name='delete' /></div>
+  <ul class='register_nav nav nav-list'>
+    <li><%= link_to '<i class="icon-pencil"></i> Edit'.html_safe, edit_register_path(register) %></li>
+    <li><%= link_to '<i class="icon-remove"></i> Remove'.html_safe, register, :confirm => 'Are you sure?', :method => :delete %></li>
+  </ul>
 
-  <div><span class='label'>Repr&#233;sentation:</span> <%= register.representation %></div>
-  <div><span class='label'>Date:</span> <%= sprintf('%02d', register.date.day) %>/<%= sprintf('%02d', register.date.month) %>/<%= register.date.year %></div>
+  <dl class="dl-horizontal">
+    <dt>Repr&#233;sentation:</dt>
+    <dd><%= register.representation %></dd>
+
+    <dt>Date:</dt>
+    <dd><%= sprintf('%02d', register.date.day) %>/<%= sprintf('%02d', register.date.month) %>/<%= register.date.year %></dd>
 
   <% register.register_plays.sort {|a, b| a.ordering <=> b.ordering }.each do |rp| %>
-  <div><span class='label'>Play, Author <%= rp.ordering + 1 %>:</span><br /> <%= rp.play.title %>, <%= rp.play.author %></div>
+    <dt>Play, Author <%= rp.ordering + 1 %>:</dt>
+    <dd><%= rp.play.title %>, <%= rp.play.author %></dd>
   <% end %>
 
-  <div><span class='label'>Page Text:</span></div>
-  <div><%= register.page_text %></div>
+    <dt>Page Text:</dt>
+    <dd><%= register.page_text %></dd>
 
-  <br />
-  <div><span class='label'>Status:</span> <span class='<%= register.verification_state.name.gsub(/\s/, '_') %>'><%= register.verification_state.name %></span></div>
+    <dt>Status:</dt>
+    <dd class='<%= register.verification_state.name.gsub(/\s/, '_') %>'><%= register.verification_state.name %></dd>
 
-  <% if (register.misc_notes !~ /^\s*$/ || register.for_editor_notes !~ /^\s*$/) %>
-  <br />
-  <div><span class='label'>Notes:</span></div>
-  <div class='editor'><%= register.for_editor_notes %></div>
-  <div><%= register.misc_notes %></div>
+    <% if (register.misc_notes !~ /^\s*$/ || register.for_editor_notes !~ /^\s*$/) %>
+    <dt>Notes:</dt>
+    <dd class='editor'><%= register.for_editor_notes %></dd>
+    <dd><%= register.misc_notes %></dd>
+  </dl>
   <% end %>
-  <div style="clear:both"></div>
 </div>

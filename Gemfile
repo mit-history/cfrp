@@ -8,6 +8,8 @@ gem 'cancan'
 
 # jQuery is the default JavaScript library in Rails 3.1
 gem 'jquery-rails'
+gem 'twitter-bootstrap-rails'
+gem 'therubyracer' # bundle can't find this one, even though it's a dependency?
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

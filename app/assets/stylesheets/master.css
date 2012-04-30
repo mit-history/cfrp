@@ -1,141 +1,22 @@
-html, body, ul {margin:0; padding:0;}
+/* Mostly overridding default bootstrap .label 
+   styles so it looks like Christopher intended */
+.rep .facet .values .value .label {
+  position: static; /* Not sure why this is needed, as it *isn't overriding anything in bootstrap...? */
+  background-color: #fff;
+  color: #000099;
+  padding: 0px;
+  font-size: 12px;
+  line-height: 18px;
+  text-shadow: 0 0 0 rgba(0, 0, 0, 0.25);
+  font-weight: normal;
+  white-space: wrap;
+}
 
-/* 72.5% and then 1.2em will default browsers to 12px, and allow em -> px correlated values */
-body {font-family:Arial, Helvetica, sans-serif; font-size:72.5%;}
-#container {font-size:1.2em; margin-bottom: 3.6em; border-top: 5px solid black; }
+ul.register_nav {
+  margin-top: 14px;
+  border-top: 1px solid black;
+}
 
-input, textarea {font:Verdana, Geneva, sans-serif; border:1px solid #ccc;}
-input, textarea {}
-input {padding:3px 6px;}
-textarea {padding:6px;}
+div#form {
 
-a {text-decoration:none; color:#03C}
-a:hover {color:#09F;}
-
-	a.button, input.button {border:1px solid #00911B; -moz-border-radius: 5px; -webkit-border-radius: 5px; background:#C9F2C7; float:left; padding:6px 12px; margin-top:20px; color:#000; cursor:pointer; cursor:hand; font-size:12px;}
-	a.button:hover, input.button:hover {background:#DEFFDE; border-color:#3C9; cursor:pointer; cursor:hand;}
-	
-	a.viewb, input.viewb {border:1px solid #06C; background:#D7F0FB}
-	a.viewb:hover, input.viewb:hover {border:1px solid #06C; background:#F5FAFF;}
-	
-	a.cancelb, input.cancelb {border:1px solid #900; background:#EF9686}
-	a.cancelb:hover, input.cancelb:hover {border:1px solid #900; background:#F2BCA7;}
-	
-	.delete-btn input {}
-	
-	.spaceright {margin-right:10px;}
-	
-	a.view{color:#03C;}
-	a.view:hover {color:#09F;}
-	
-	a.edit{color:#360;}
-	a.edit:hover {color:#0C3;}
-	
-	.delete-btn input, a.delete {color:#7B6464; border:none; background:none; font-family:Arial, Helvetica, sans-serif; font-size:14px; padding-right:1.5em; padding-left:1.5em;}
-	.delete-btn input:hover, a.delete:hover {color:#C00;}
-
-#header {width: 100%; background:#000; color:#fff; border-top:1px solid #000; position:fixed; z-index:100; bottom: 0px; left: 0px;}
-	#header ul {margin:0; padding:0; list-style:none;}
-		#header li {list-style:none; display:inline-block; float:left; border-right:1px solid #888;}
-		#header li.logout {float:right; border:none;}
-			#header li a {font-weight:bold;  display:inline-block; padding:1em 2.5em; margin:0;}
-			#header li a:link {color:#fff;}
-			#header li a:visited {color:#fff;}
-			#header li a:hover {color:#FF0;}
-			#header li a:active {color:#F90;}
-			#header li a.title {color:#FC3;}
-
-table {border:1px solid #ccc; border-right:none; border-bottom:none; border-collapse: collapse;}
-	table td {padding:1em 0; border:1px solid #ccc; position:relative;}
-	table th {background:#efefef; border-right:1px solid #CCC !important;}
-		table td a, table td span.space, table.space td {padding:1em 1.5em; }
-		table td a:hover {}
-
-
-fieldset {margin:0; padding:0; border:none;}
-	fieldset legend {font-size:1.4em; margin:0 0 1em 0; padding:0;}
-	fieldset form label{display:inline-block; width:6em; text-align:right; margin-right:1em;}
-	fieldset form div{margin:1em 0;}
-		fieldset form div div{margin:0;}
-	fieldset form input.submit {margin-left:9em;}
-
-#main {margin:3em;}
-
-table.data tr td, table.data tr th {padding:10px;}
-table.data tr th {text-align:left}
-
-#moreLogin {margin-left:100px; font-size:11px;}
-/* #footer {margin-bottom:10px; clear:both;} */
-.error {color:#F00; margin-left:100px;}
-
-.clear {clear:both;}
-
-.miniLabel {font-size:10px; color:#666;}
-.inputBlock {float:left; margin-right:5px;}
-
-input {width:23em;}
-.seatingCounts input, #seating_categories input {width:3em;}
-.totalReceipts input {width:8em; margin-right:2em;}
-.play_info input {width:20em;}
-
-/* The following should become autocomplete */
-#register_play_2, #register_play_1 {width:36em;}
-
-
-/* Floating image */
-
-body.registerNew .regPage {width:100%; height:500px; overflow:auto; border-bottom:3px solid #C90; background:#fff; position:relative;}
-.regImage {width:100%; height:auto;}
-
-body.registerNew #container {width:100%; overflow:auto;}
-body.registerNew {overflow:hidden;}
-#register, #new_register {margin:0 auto;}
-
-/* For forms without images:  Thank you Brett! -DD 06/11/10 */
-body.registerNew.conditional {overflow:auto;}
-body.registerNew.conditional #container {overflow:visible;}
-
-
-/* For ticket sale calculations */
-.match      { color: green }
-.dont_match { color: red; font-weight: bold }
-
-
-/* main index page divs */
-/* div#registers { width: 80% } */
-/* table#registers_listing { width: 100% } */
-
-a.no_pad { padding: 0px; margin: 0px }
-
-# this has an annoying amount of space around it...
-# a.delete {padding: 0px margin: 0px; }
-#form.delete-btn { padding: 0px; margin: 0px; }
-form.delete-btn input { width: 7em; }
-
-.alert { color: #f00; size: 26px; }
-
-/* added by DD, 04/07/10 */
-.user_info { font-weight: bold; color: #09F }
-
-/* tr#no_second_play td { border: 1px solid black; } */
-input#no_second_play { width: 20px }
-
-form#search_field .results { font-weight: bold; font-size: 18px; color: #999; }
-form#search_field .results_count { color: #000; }
-
-/* faceting results */
-#results { float:left; clear: none; width: 400px; padding-bottom: 35px; }
-#results span.label { font-weight: bold; }
-.right { float:left; clear: right; margin: 10px; width: 500px; }
-.right .facet { float: left; margin-left: 3px; }
-.left { float:left; clear: left; margin: 10px; }
-.register { clear: both; margin: 10px; border: 1px black dotted; padding: 5px; }
-.register img { float: left; margin: 5px; }
-.editor { font-weight: bold; color: #f00; }
-
-div#verification_state div.title, div#register_contributor_name div.title { font-weight: bold; color: #c32; background-color: #ccc }
-
-span.verification_needed { color: #f00; font-weight: bold; }
-span.verified { color: #0f0; font-weight: bold; }
-span.revision_needed { color: #f90; font-weight: bold; }
-
+}

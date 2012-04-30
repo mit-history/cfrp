@@ -139,4 +139,9 @@ Devise.setup do |config|
   #   end
   #   manager.default_strategies(:scope => :user).unshift :twitter_oauth
   # end
+
+  # Changes after updating Devise, 04/2012
+  config.use_salt_as_remember_token = true
+  config.case_insensitive_keys = [:email]
+  config.reset_password_within = 6.hours
 end
