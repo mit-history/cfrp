@@ -1,4 +1,4 @@
-<div class='span8' id='form'>
+␎<div class='span8' id='register_form'>
 <%= form_for(@register, :html => {:class => 'form-horizontal'}) do |f| %>
 <fieldset>
   <legend><%= @register.register_num %></legend>
@@ -16,7 +16,7 @@
   <% end %>
 
   <div class="control-group">
-    <%= f.label :register_num, :class => 'control-label' %>
+    <%= f.label :register_num, 'Number', :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :register_num %>
     </div>
@@ -28,15 +28,9 @@
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :representation, :class => 'control-label' %>
+    <%= f.label :representation, 'Représentation', :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :representation %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :ouverture_flag, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :ouverture_flag %>
     </div>
   </div>
   <div class="control-group">
@@ -46,13 +40,7 @@
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :cloture_flag, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :cloture_flag %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :cloture, :class => 'control-label' %>
+    <%= f.label :cloture, 'Clôture', :class => 'control-label' %>
     <div class="controls">
       <%= f.check_box :cloture %>
     </div>
@@ -69,60 +57,40 @@
       <%= f.datetime_select :date, {}, { :class => 'span1' } %>
     </div>
   </div>
+
+<!-- PUT PLAYS, RECEIPT DATA HERE -->
+
+
+  <div id='play_fields'>
+
+  <%= f.fields_for :register_plays, @register.register_plays.sort {|rp| rp.ordering } do |rp| %>
   <div class="control-group">
-    <%= f.label :payment_notes, :class => 'control-label' %>
+    <%= rp.label :ordering, :class => 'control-label', :id => 'register_play_ordering' %>
     <div class="controls">
-      <%= f.text_area :payment_notes %>
+      <%= rp.text_field :ordering, :id => 'register_play_ordering' %>
     </div>
   </div>
+
+  <%= rp.fields_for :play, rp.object.play do |p| %>
   <div class="control-group">
-    <%= f.label :payment_notes, :class => 'control-label' %>
+    <%= p.label :title, :class => 'control-label', :id => 'play_title' %>
     <div class="controls">
-      <%= f.text_area :payment_notes %>
+      <%= p.text_field :title, :id => 'play_title' %>
     </div>
   </div>
+
   <div class="control-group">
-    <%= f.label :date_flag, :class => 'control-label' %>
+    <%= p.label :author, :class => 'control-label', :id => 'play_author' %>
     <div class="controls">
-      <%= f.check_box :date_flag %>
+      <%= p.text_field :author, :id => 'play_author' %>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label :season_flag, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :season_flag %>
-    </div>
+  <% end %>
+
+  <% end %>
+
   </div>
-  <div class="control-group">
-    <%= f.label :regnum_flag, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :regnum_flag %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :totalreceipts_flag, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :totalreceipts_flag %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :payment_notes_flag, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :payment_notes_flag %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :page_text, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :page_text %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :page_text_flag, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :page_text_flag %>
-    </div>
-  </div>
+
   <div class="control-group">
     <%= f.label :total_receipts_recorded_l, :class => 'control-label' %>
     <div class="controls">
@@ -136,33 +104,27 @@
     </div>
   </div>
   <div class="control-group">
+    <%= f.label :page_text, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :page_text %>
+    </div>
+  </div>
+  <div class="control-group">
     <%= f.label :signatory, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :signatory %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :signatory_flag, :class => 'control-label' %>
+    <%= f.label :payment_notes, 'Irregular Payment Notes', :class => 'control-label' %>
     <div class="controls">
-      <%= f.check_box :signatory_flag %>
+      <%= f.text_area :payment_notes %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :rep_flag, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :rep_flag %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :misc_notes, :class => 'control-label' %>
+    <%= f.label :misc_notes, 'Miscellaneous Play Information', :class => 'control-label' %>
     <div class="controls">
       <%= f.text_area :misc_notes %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :misc_notes_flag, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :misc_notes_flag %>
     </div>
   </div>
   <div class="control-group">
@@ -171,7 +133,7 @@
       <%= f.text_area :for_editor_notes %>
     </div>
   </div>
-  <div class="actions">
+  <div class="actions submit">
     <%= f.submit %>
   </div>
 

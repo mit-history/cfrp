@@ -1,5 +1,4 @@
 # == Schema Information
-# Schema version: 20100927135806
 #
 # Table name: register_plays
 #
@@ -9,7 +8,6 @@
 #  firstrun         :boolean
 #  newactor         :string(255)
 #  actorrole        :string(255)
-#  editor_flag      :boolean
 #  firstrun_perfnum :integer
 #  created_at       :datetime
 #  updated_at       :datetime

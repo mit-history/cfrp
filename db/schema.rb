@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120430110539) do
+ActiveRecord::Schema.define(:version => 20120503082950) do
 
   create_table "comment_types", :force => true do |t|
     t.string   "name"
@@ -69,7 +69,6 @@ ActiveRecord::Schema.define(:version => 20120430110539) do
     t.boolean  "firstrun"
     t.string   "newactor"
     t.string   "actorrole"
-    t.boolean  "editor_flag"
     t.integer  "firstrun_perfnum"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -97,26 +96,15 @@ ActiveRecord::Schema.define(:version => 20120430110539) do
     t.string   "season"
     t.integer  "register_num"
     t.text     "payment_notes"
-    t.boolean  "date_flag"
-    t.boolean  "season_flag"
-    t.boolean  "regnum_flag"
-    t.boolean  "totalreceipts_flag"
-    t.boolean  "payment_notes_flag"
     t.text     "page_text"
-    t.boolean  "page_text_flag"
     t.integer  "total_receipts_recorded_l"
     t.integer  "total_receipts_recorded_s"
     t.integer  "representation"
     t.string   "signatory"
-    t.boolean  "signatory_flag"
-    t.boolean  "rep_flag"
     t.text     "misc_notes"
-    t.boolean  "misc_notes_flag"
     t.text     "for_editor_notes"
     t.boolean  "ouverture"
-    t.boolean  "ouverture_flag"
     t.boolean  "cloture"
-    t.boolean  "cloture_flag"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "register_image_id"
@@ -139,7 +127,6 @@ ActiveRecord::Schema.define(:version => 20120430110539) do
     t.integer  "price_per_ticket_s",  :default => 0
     t.integer  "recorded_total_l",    :default => 0
     t.integer  "recorded_total_s",    :default => 0
-    t.boolean  "editor_flag",         :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,5 +1,4 @@
 # == Schema Information
-# Schema version: 20100927135806
 #
 # Table name: users
 #
@@ -8,7 +7,6 @@
 #  encrypted_password   :string(128)     default(""), not null
 #  password_salt        :string(255)     default(""), not null
 #  reset_password_token :string(255)
-#  remember_token       :string(255)
 #  remember_created_at  :datetime
 #  sign_in_count        :integer         default(0)
 #  current_sign_in_at   :datetime

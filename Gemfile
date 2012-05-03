@@ -26,7 +26,7 @@ gem 'rep.ajax.toolkit', :git => 'git@github.com:repertoire/rep.ajax.toolkit.git'
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development, :test do
-  gem 'webrat'
+  gem 'capybara'
   gem 'autotest'
   gem 'autotest-growl'
   gem 'autotest-fsevent'

@@ -17,6 +17,11 @@ ul.register_nav {
   border-top: 1px solid black;
 }
 
-div#form {
+div#register_form textarea {
+  width: 400px;
+  height: 150px;
+}
 
+div#register_form div.submit {
+  margin-bottom: 50px;
 }

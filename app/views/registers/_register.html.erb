@@ -9,8 +9,8 @@
   <% end %>
 
   <ul class='register_nav nav nav-list'>
-    <li><%= link_to '<i class="icon-pencil"></i> Edit'.html_safe, edit_register_path(register) %></li>
-    <li><%= link_to '<i class="icon-remove"></i> Remove'.html_safe, register, :confirm => 'Are you sure?', :method => :delete %></li>
+    <li><%= link_to '<i class="icon-pencil"></i> Edit'.html_safe, edit_register_path(register), :id => 'edit_action'  %></li>
+    <li><%= link_to '<i class="icon-remove"></i> Remove'.html_safe, register, :id => 'delete_action', :confirm => 'Are you sure?', :method => :delete %></li>
   </ul>
 
   <dl class="dl-horizontal">

@@ -1,5 +1,4 @@
 # == Schema Information
-# Schema version: 20100927135806
 #
 # Table name: registers
 #
@@ -9,30 +8,20 @@
 #  season                    :string(255)
 #  register_num              :integer
 #  payment_notes             :text
-#  date_flag                 :boolean
-#  season_flag               :boolean
-#  regnum_flag               :boolean
-#  totalreceipts_flag        :boolean
-#  payment_notes_flag        :boolean
 #  page_text                 :text
-#  page_text_flag            :boolean
 #  total_receipts_recorded_l :integer
 #  total_receipts_recorded_s :integer
 #  representation            :integer
 #  signatory                 :string(255)
-#  signatory_flag            :boolean
-#  rep_flag                  :boolean
 #  misc_notes                :text
-#  misc_notes_flag           :boolean
 #  for_editor_notes          :text
 #  ouverture                 :boolean
-#  ouverture_flag            :boolean
 #  cloture                   :boolean
-#  cloture_flag              :boolean
 #  created_at                :datetime
 #  updated_at                :datetime
 #  register_image_id         :integer
 #  register_period_id        :integer
+#  verification_state_id     :integer
 #
 
 class Register < ActiveRecord::Base
@@ -50,8 +39,7 @@ class Register < ActiveRecord::Base
   has_many :register_plays
   has_many :plays, :through => :register_plays
 
-  accepts_nested_attributes_for :register_plays
-  accepts_nested_attributes_for :plays
+  accepts_nested_attributes_for :register_plays, :plays
 
   #######################################################
   # FACETING
