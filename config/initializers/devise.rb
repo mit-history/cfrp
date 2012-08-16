@@ -141,7 +141,7 @@ Devise.setup do |config|
   # end
 
   # Changes after updating Devise, 04/2012
-  config.use_salt_as_remember_token = true
+  #config.use_salt_as_remember_token = true  #deprecated as of Devise 2.1.  Removed 2012/08/16
   config.case_insensitive_keys = [:email]
   config.reset_password_within = 6.hours
 end

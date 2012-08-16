@@ -33,4 +33,24 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :shortname, :password_confirmation, :remember_me
 
   belongs_to :register_contributor
+
+  alias :devise_valid_password? :valid_password?
+
+  # Moving from (very) old Merb sha1 password scheme to Devise w/bcrypt.
+  # These two stack overflow posts were extremely helpful:
+  # http://stackoverflow.com/questions/11037864/bcrypterrorsinvalidhash-when-trying-to-sign-in
+  # http://stackoverflow.com/questions/6113375/converting-existing-password-hash-to-devise
+  # And this is where I found the old Merb authentication code so I could get this working:
+  # https://github.com/wycats/merb/blob/master/merb-auth/merb-auth-more/lib/merb-auth-more/mixins/salted_user.rb
+  def valid_password?(password)
+    begin
+      super(password)
+    rescue BCrypt::Errors::InvalidHash
+      sha1_password = Digest::SHA1.hexdigest("--#{password_salt}--#{password}--")
+      return false unless sha1_password == encrypted_password
+      logger.info "User #{email} is using the old password hashing method, updating attribute."
+      self.password = password # = BCrypt::Password.create(sha1_password)
+      true
+    end
+  end
 end
