@@ -8,10 +8,12 @@
   <div><a href="<%= config.path_prefix %>/<%= register.register_image.filepath %>" target="_blank"><img src='<%= config.path_prefix %>/<%= register.register_image.filepath %>' width='100' /></a></div>
   <% end %>
 
+  <% if user_signed_in? %>
   <ul class='register_nav nav nav-list'>
     <li><%= link_to '<i class="icon-pencil"></i> Edit'.html_safe, edit_register_path(register), :id => 'edit_action'  %></li>
     <li><%= link_to '<i class="icon-remove"></i> Remove'.html_safe, register, :id => 'delete_action', :confirm => 'Are you sure?', :method => :delete %></li>
   </ul>
+  <% end %>
 
   <dl class="dl-horizontal">
     <dt>Repr&#233;sentation:</dt>

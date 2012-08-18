@@ -1,4 +1,9 @@
-␎<div class='span8' id='register_form'>
+<div class='span8' id='register_form'>
+
+  <% if @register.register_image != nil %>
+  <div id='register_image'><a target="top" href="<%= config.path_prefix %>/<%= @register.register_image.filepath %>" target="_blank"><img src='<%= config.path_prefix %>/<%= @register.register_image.filepath %>' width='100' /></a></div>
+  <% end %>
+
 <%= form_for(@register, :html => {:class => 'form-horizontal'}) do |f| %>
 <fieldset>
   <legend><%= @register.register_num %></legend>
@@ -54,7 +59,7 @@
   <div class="control-group">
     <%= f.label :date, :class => 'control-label' %>
     <div class="controls">
-      <%= f.datetime_select :date, {}, { :class => 'span1' } %>
+      <%= f.date_select :date, {}, { :class => 'span1' } %>
     </div>
   </div>
 
@@ -71,7 +76,7 @@
     </div>
   </div>
 
-  <%= rp.fields_for :play, rp.object.play do |p| %>
+  <%= rp.fields_for :play_attributes, rp.object.play do |p| %>
   <div class="control-group">
     <%= p.label :title, :class => 'control-label', :id => 'play_title' %>
     <div class="controls">
@@ -83,6 +88,13 @@
     <%= p.label :author, :class => 'control-label', :id => 'play_author' %>
     <div class="controls">
       <%= p.text_field :author, :id => 'play_author' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= p.label :genre, :class => 'control-label', :id => 'play_genre' %>
+    <div class="controls">
+      <%= p.text_field :genre, :id => 'play_genre' %>
     </div>
   </div>
   <% end %>

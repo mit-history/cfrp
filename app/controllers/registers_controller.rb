@@ -1,5 +1,5 @@
 class RegistersController < ApplicationController
-  before_filter :authenticate_user!, :unless => [:index, :counts, :results, :base]
+  before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
 
   include Repertoire::Faceting::Controller
 
@@ -27,6 +27,8 @@ class RegistersController < ApplicationController
 
   def update
     @register = Register.find(params[:id])
+    @register.update_attributes!(params[:register])
+    redirect_to @register, notice: 'Register was successfully updated.'
   end
 
   def destroy

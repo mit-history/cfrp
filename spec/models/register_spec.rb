@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # == Schema Information
 #
 # Table name: registers
@@ -46,5 +47,36 @@ describe Register do
 
   it "has play data for each register, if it exists." do
     @register.register_plays[0].play.title.should match('Bob\'s First Play')
+  end
+
+  it "updates related model data automatically" do
+    plays = { 
+      :register_plays_attributes => {
+        "0" => {
+          "id" => @register.register_plays[0].id,
+          "ordering" => "0",
+          "play_attributes" => {
+            "title" => "Les Femmes savantes",
+            "author" => "Bill Jones"
+          }
+        },
+
+        "1" => {
+          "id" => @register.register_plays[1].id,
+          "ordering" => "1",
+          "play_attributes" => {
+            "title" => "La Comtesse d'Escarbagnas",
+            "author" => "Jenny Smith"
+          },
+        }
+      }
+    }
+
+    @register.update_attributes!(plays)
+    register_plays = Register.find(@register.id).register_plays
+    register_plays[0].play.title.should match 'Les Femmes savantes'
+    register_plays[0].play.author.should match 'Bill Jones'
+    register_plays[1].play.title.should match 'La Comtesse d\'Escarbagnas'
+    register_plays[1].play.author.should match 'Jenny Smith'
   end
 end

@@ -23,7 +23,7 @@ Cfrp::Application.configure do
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
   # Gotta get this working with Rails 3.1+ assets pipeline.
-  config.path_prefix = '/cfrp'
+  config.path_prefix = ''
 
   # Upgrading to 3.2 http://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html
   # Raise exception on mass assignment protection for Active Record models

@@ -14,4 +14,6 @@
 class Play < ActiveRecord::Base
   has_many :register_plays
   has_many :registers, :through => :register_plays
+
+  attr_accessible :author, :title, :genre
 end

@@ -1,24 +1,14 @@
+# -*- coding: utf-8 -*-
 require 'spec_helper'
 
 describe RegistersController do
   render_views
 
-  describe "display for non-signed-in users" do
+  describe "index for non-signed-in users" do
     it "should allow access" do
       get :index
       response.should be_success
     end
-
-# Okay, these are rendered via JS, so I guess I need to test them w/Jasmine?
-#    it "should not have edit options" do
-#      get :index
-#      response.should_not have_selector("a#edit_action")
-#    end
-#
-#    it "should not have delete options" do
-#      get :index
-#      response.should_not have_selector("a#delete_action")
-#    end
 
     it "should have a season facet" do
       get :index
@@ -78,41 +68,129 @@ describe RegistersController do
 #        get :index
 #        response.should have_selector("a#delete_action")
 #      end
-
     end
 
-    describe "GET 'edit'" do
-
+    describe "Authenticated actions" do
       before(:each) do
-        @register = Register.new( :register_num => 1, :date => '1750-01-01', :season => '1749-1750' )
-        @play1 = Play.new( :author => 'Bob Smith', :title => 'Bob\'s First Play', :genre => 'tragedy' )
-        @play2 = Play.new( :author => 'Bob Smith', :title => 'Bob\'s Second Play', :genre => 'comedy' )
-        @register.register_plays << RegisterPlay.new( :play => @play2, :ordering => 2 )
-        @register.register_plays << RegisterPlay.new( :play => @play1, :ordering => 1 )
+        @register = Register.new( :register_num => 1,
+                                  :date => '1750-01-01',
+                                  :season => '1749-1750' )
+        @play1 = Play.new( :author => 'Bob Smith',
+                           :title => 'Bob\'s First Play',
+                           :genre => 'tragedy' )
+        @play2 = Play.new( :author => 'Bob Smith',
+                           :title => 'Bob\'s Second Play',
+                           :genre => 'comedy' )
+        @register.register_plays << RegisterPlay.new( :play => @play2,
+                                                      :ordering => 2 )
+        @register.register_plays << RegisterPlay.new( :play => @play1,
+                                                      :ordering => 1 )
         @register.save
       end
 
-      it "should be successful" do
-        get :edit, :id => @register.id
-        response.should be_success
+      describe "for non-signed-in users" do
+        it "redirects new to sign-in" do
+          sign_out @user
+          get :new
+          response.should be_redirect
+          response.header["Location"].should match 'sign_in$'
+        end
+
+        it "redirects edit to sign-in" do
+          sign_out @user
+          get :create, :id => @register.id
+          response.should be_redirect
+          response.header["Location"].should match 'sign_in$'
+        end
+
+        it "redirects create to sign-in" do
+          sign_out @user
+          get :create, :params => {}
+          response.should be_redirect
+          response.header["Location"].should match 'sign_in$'
+        end
+
+        it "redirects update to sign-in" do
+          sign_out @user
+          get :update, :id => @register.id, :params => {}
+          response.should be_redirect
+          response.header["Location"].should match 'sign_in$'
+        end
       end
 
-      it "should have the play titles" do
-        get :edit, :id => @register.id
-        response.body.should have_selector('input#play_title')
+      describe "GET 'new'" do
       end
 
-      it "should have the play authors" do
-        get :edit, :id => @register.id
-        response.body.should have_selector('input#play_author')
+      describe "GET 'edit'" do
+        it "should be successful" do
+          get :edit, :id => @register.id
+          response.should be_success
+        end
+
+        it "should have the play titles" do
+          get :edit, :id => @register.id
+          response.body.should have_selector('input#play_title')
+        end
+
+        it "should have the play authors" do
+          get :edit, :id => @register.id
+          response.body.should have_selector('input#play_author')
+        end
+
+        it "should be ordered by the play ordering" do
+          get :edit, :id => @register.id
+          # Kind of convoluted...easier way to do this? Probably...
+          doc = Nokogiri::XML::DocumentFragment.parse(response.body)
+          ordering = doc.css('div#play_fields').css('input#register_play_ordering').collect {|i| i[:value]}
+          ordering.should == ["1", "2"]
+        end
       end
 
-      it "should be ordered by the play ordering" do
-        get :edit, :id => @register.id
-        # Kind of convoluted...easier way to do this? Probably...
-        doc = Nokogiri::XML::DocumentFragment.parse(response.body)
-        ordering = doc.css('div#play_fields').css('input#register_play_ordering').collect {|i| i[:value]}
-        ordering.should == ["1", "2"]
+      describe "POST 'create'" do
+      end
+
+      describe "PUT 'update'" do
+        #it "does nothing with a message on failure" do
+        #  get :update, :id => @register.id, :register => {}
+        #  response. ?
+        #end
+
+        it "updates the date" do
+          date = { "date(1i)"=>"1751", "date(2i)"=>"3", "date(3i)"=>"2" }
+          get :update, :id => @register.id, :register => date
+          Register.find(@register.id).date.should == Date.new(1751, 3, 2)
+        end
+
+        it "updates the associated plays" do
+          plays = { 
+            :register_plays_attributes => {
+              "0" => {
+                "ordering" => "0",
+                "play_attributes" => {
+                  "title" => "Les Femmes savantes",
+                  "author" => "Jean-Baptiste Poquelin dit Molière" },
+                "id" => @register.register_plays[0]
+              },
+
+              "1" => {
+                "ordering" => "1",
+                "play_attributes" => {
+                  "title" => "La Comtesse d'Escarbagnas",
+                  "author" => "Jean-Baptiste Poquelin dit Molière" },
+                "id" => @register.register_plays[1]
+              }
+            }}
+
+          get :update, :id => @register.id, :register => plays
+          rps = Register.find(@register.id).register_plays
+          rps[0].play.title.should match 'Les Femmes savantes'
+          rps[0].play.author.should match 'Jean-Baptiste Poquelin dit Molière'
+          rps[1].play.title.should match 'La Comtesse d\'Escarbagnas'
+          rps[1].play.author.should match 'Jean-Baptiste Poquelin dit Molière'
+        end
+      end
+
+      describe "DELETE 'destroy'" do
       end
     end
   end

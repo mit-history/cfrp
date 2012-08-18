@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+  <% if @register.register_image != nil %>
+  <div id='register_image'><a href="<%= config.path_prefix %>/<%= @register.register_image.filepath %>" target="_blank"><img src='<%= config.path_prefix %>/<%= @register.register_image.filepath %>' width='100' /></a></div>
+  <% end %>
+
 <p>
   <b>Date:</b>
   <%= @register.date %>
@@ -31,38 +35,8 @@
 </p>
 
 <p>
-  <b>Date flag:</b>
-  <%= @register.date_flag %>
-</p>
-
-<p>
-  <b>Season flag:</b>
-  <%= @register.season_flag %>
-</p>
-
-<p>
-  <b>Regnum flag:</b>
-  <%= @register.regnum_flag %>
-</p>
-
-<p>
-  <b>Totalreceipts flag:</b>
-  <%= @register.totalreceipts_flag %>
-</p>
-
-<p>
-  <b>Payment notes flag:</b>
-  <%= @register.payment_notes_flag %>
-</p>
-
-<p>
   <b>Page text:</b>
   <%= @register.page_text %>
-</p>
-
-<p>
-  <b>Page text flag:</b>
-  <%= @register.page_text_flag %>
 </p>
 
 <p>
@@ -86,23 +60,8 @@
 </p>
 
 <p>
-  <b>Signatory flag:</b>
-  <%= @register.signatory_flag %>
-</p>
-
-<p>
-  <b>Rep flag:</b>
-  <%= @register.rep_flag %>
-</p>
-
-<p>
   <b>Misc notes:</b>
   <%= @register.misc_notes %>
-</p>
-
-<p>
-  <b>Misc notes flag:</b>
-  <%= @register.misc_notes_flag %>
 </p>
 
 <p>
@@ -116,20 +75,9 @@
 </p>
 
 <p>
-  <b>Ouverture flag:</b>
-  <%= @register.ouverture_flag %>
-</p>
-
-<p>
   <b>Cloture:</b>
   <%= @register.cloture %>
 </p>
-
-<p>
-  <b>Cloture flag:</b>
-  <%= @register.cloture_flag %>
-</p>
-
 
 <%= link_to 'Edit', edit_register_path(@register) %> |
 <%= link_to 'Back', registers_path %>

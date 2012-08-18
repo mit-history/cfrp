@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120816055551) do
+ActiveRecord::Schema.define(:version => 20120818044353) do
 
   create_table "comment_types", :force => true do |t|
     t.string   "name"
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(:version => 20120816055551) do
   end
 
   create_table "registers", :force => true do |t|
-    t.datetime "date"
+    t.date     "date"
     t.string   "weekday"
     t.string   "season"
     t.integer  "register_num"
