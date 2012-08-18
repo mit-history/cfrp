@@ -27,7 +27,7 @@
 class Register < ActiveRecord::Base
   include Repertoire::Faceting::Model
 
-  attr_accessible :date, :weekday, :season, :register_num, :payment_notes, :page_text, :total_receipts_recorded_l, :total_receipts_recorded_s, :representation, :signatory, :misc_notes, :for_editor_notes, :ouverture, :cloture, :register_image_id, :register_period_id, :verification_state_id, :register_plays_attributes
+  attr_accessible :date, :weekday, :season, :register_num, :payment_notes, :page_text, :total_receipts_recorded_l, :total_receipts_recorded_s, :representation, :signatory, :misc_notes, :for_editor_notes, :ouverture, :cloture, :register_image_id, :register_period_id, :verification_state_id, :register_plays_attributes, :ticket_sales_attributes
 
   has_many :ticket_sales
 
@@ -41,7 +41,7 @@ class Register < ActiveRecord::Base
   has_many :register_plays
   has_many :plays, :through => :register_plays
 
-  accepts_nested_attributes_for :register_plays, :plays
+  accepts_nested_attributes_for :register_plays, :plays, :ticket_sales
 
 #  def register_plays_attributes params
 #    print params.inspect

@@ -12,9 +12,26 @@
   white-space: wrap;
 }
 
-ul.register_nav {
-  margin-top: 14px;
+h2 {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+div.register_data {
   border-top: 1px solid black;
+  font-size: 14px;
+}
+
+div#register_form table {
+  font-size: 14px;
+}
+
+div#register_form label.control-label {
+  padding-bottom: 7px;
+  padding-right: 7px;
+  background-color: #ffffe0;
+  //color: #8b4513;
+  color: #a52a2a;
 }
 
 div#register_form textarea {
@@ -24,4 +41,21 @@ div#register_form textarea {
 
 div#register_form div.submit {
   margin-bottom: 50px;
+}
+
+div#results {
+  margin-top: 18px;
+}
+
+div#results_nav {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+div#results div.rep {
+  margin-bottom: 40px;
+}
+
+.rep div.facet {
+  width: 205px;
 }

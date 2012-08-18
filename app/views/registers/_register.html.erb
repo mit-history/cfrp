@@ -3,13 +3,21 @@
 <% config = Cfrp::Application.config %>
 
 <%# params: register %>
-<div class='register'>
-  <% if register.register_image != nil %>
-  <div><a href="<%= config.path_prefix %>/<%= register.register_image.filepath %>" target="_blank"><img src='<%= config.path_prefix %>/<%= register.register_image.filepath %>' width='100' /></a></div>
-  <% end %>
+
+<div class="register_all row">
+
+<% if register.register_image != nil %>
+  <div class='register_image span1'>
+    <a href="<%= config.path_prefix %>/<%= register.register_image.filepath %>" target="_blank"><img src='<%= config.path_prefix %>/<%= register.register_image.filepath %>' width='100' /></a>
+  </div>
+
+  <div class='register_data span5'>
+<% else %>
+  <div class='register_data offset1 span5'>
+<% end %>
 
   <% if user_signed_in? %>
-  <ul class='register_nav nav nav-list'>
+  <ul class='register_nav nav nav-pills pull-right'>
     <li><%= link_to '<i class="icon-pencil"></i> Edit'.html_safe, edit_register_path(register), :id => 'edit_action'  %></li>
     <li><%= link_to '<i class="icon-remove"></i> Remove'.html_safe, register, :id => 'delete_action', :confirm => 'Are you sure?', :method => :delete %></li>
   </ul>
@@ -38,5 +46,7 @@
     <dd class='editor'><%= register.for_editor_notes %></dd>
     <dd><%= register.misc_notes %></dd>
   </dl>
+
   <% end %>
+  </div>
 </div>

@@ -24,32 +24,36 @@ $().ready(function() {
 });
 </script>
 
-<form id='search_field'>
-<span class="results">Results: <span class='results_count'></span></span> <!-- | Search: <input id='search' name='search' type='text' value='<%= @search %>'/> -->
-</form>
+<!-- form id='search_field'
+<span class="results">Results: <span class='results_count'></span></span> <!-- | Search: <input id='search' name='search' type='text' value='<%= @search %>'/> 
+</form> -->
 
 <%#= render :partial => './navigation', :locals => { :highlight => :registers } %>
 
 <div class='row-fluid' id='registers'>
-  <div class='span2 left'>
+  <div class='span2 left' id='left_facets'>
     <div id='season' class='facet' title='Seasons'></div>
     <div id='weekday' class='facet' title='Weekdays'></div>
     <div id='total_receipts_recorded_l' class='facet' title='Total Receipts (Livre)'></div>
   </div>
 
-  <div class='span4' id='results'></div>
+  <div class='span6' id='results'></div>
 
-  <div class='span6 right'>
-    
-    <div class='span3'>
+  <div class='row-fluid'>
+    <div class='span2'>
+  <% if user_signed_in? %>
+      <div id='verification_state' class='facet' title='Verification State (DUMMY DATA)'></div>
+  <% end %>
       <div id='title1' class='facet' title='Play 1'></div>
       <div id='author1' class='facet' title='Author 1'></div>
-      <div id='title2' class='facet' title='Play 2'></div>
     </div>
-    <div class='span3'>
-      <div id='author2' class='facet' title='Author 2'></div>
-      <div id='verification_state' class='facet' title='Verification State (DUMMY DATA)'></div>
+
+    <div class='span2'>
+  <% if user_signed_in? %>
       <div id='register_contributor_name' class='facet' title='Register Contributor/Verifier' ></div>
+  <% end %>
+      <div id='title2' class='facet' title='Play 2'></div>
+      <div id='author2' class='facet' title='Author 2'></div>
       <!-- div id='total_receipts' class='facet' title='Total Receipts'></div -->
     </div>
   </div>

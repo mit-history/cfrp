@@ -11,4 +11,7 @@
 #
 
 class SeatingCategory < ActiveRecord::Base
+  has_many :ticket_sales
+
+  attr_accessible :name, :description
 end

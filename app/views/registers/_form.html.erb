@@ -1,12 +1,15 @@
-<div class='span8' id='register_form'>
+<div class='row-fluid'>
 
+<div class='offset1' id='register_form'>
   <% if @register.register_image != nil %>
+<!--
   <div id='register_image'><a target="top" href="<%= config.path_prefix %>/<%= @register.register_image.filepath %>" target="_blank"><img src='<%= config.path_prefix %>/<%= @register.register_image.filepath %>' width='100' /></a></div>
+-->
   <% end %>
 
-<%= form_for(@register, :html => {:class => 'form-horizontal'}) do |f| %>
+<%= form_for @register, :html => {:class => 'form-horizontal'} do |f| %>
 <fieldset>
-  <legend><%= @register.register_num %></legend>
+  <legend>Editing Register #<%= @register.register_num %> | <%= link_to 'Back to All Registers', registers_path %></legend>
 
   <% if @register.errors.any? %>
     <div id="error_explanation">
@@ -103,6 +106,50 @@
 
   </div>
 
+  <div class='row-fluid'>
+  <table id='ticket_sales_fields' class='table table-bordered span8'>
+  <thead>
+    <tr>
+      <th>Seating Category</th>
+      <th>Tickets Sold</th>
+      <th>Price Per Ticket (Livre/Sous)</th>
+      <th>Total Take, <strong>as Recorded</strong> (Livre/Sous)</th>
+    </tr>
+  <thead>
+
+  <tbody>
+  <%= f.fields_for :ticket_sales do |ts| %>
+    <tr>
+      <td class='seating_category'>
+	<%= ts.object.seating_category.name %>
+      </td>
+
+      <td class='total_sold'>
+	<%#= ts.label :total_sold, :class => 'control-label', :id => 'ticket_sale_total_sold' %>
+	<%= ts.text_field :total_sold, :id => 'ticket_sales_total_sold', :class => 'span1' %>
+      </td>
+
+      <td class='price_per_ticket'>
+	<%#= ts.label :price_per_ticket_l, :class => 'control-label', :id => 'ticket_sale_price_per_ticket_l' %>
+	<%= ts.text_field :price_per_ticket_l, :id => 'ticket_sales_price_per_ticket_l', :class => 'form-inline span1' %>
+
+	<%#= ts.label :price_per_ticket_s, :class => 'control-label', :id => 'ticket_sale_price_per_ticket_s' %>
+	<%= ts.text_field :price_per_ticket_s, :id => 'ticket_sales_price_per_ticket_s', :class => 'form-inline span1' %>
+      </td>
+
+      <td class='recorded_total'>
+	<%#= ts.label :recorded_total_l, :class => 'control-label', :id => 'ticket_sale_recorded_total_l' %>
+	<%= ts.text_field :recorded_total_l, :id => 'ticket_sales_recorded_total_l', :class => 'form-inline span1' %>
+
+	<%#= ts.label :recorded_total_s, :class => 'control-label', :id => 'ticket_sale_recorded_total_s' %>
+	<%= ts.text_field :recorded_total_s, :id => 'ticket_sales_recorded_total_s', :class => 'form-inline span1' %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+  </table>
+  </div>
+
   <div class="control-group">
     <%= f.label :total_receipts_recorded_l, :class => 'control-label' %>
     <div class="controls">
@@ -151,4 +198,5 @@
 
 </fieldset>
 <% end %>
+</div>
 </div>

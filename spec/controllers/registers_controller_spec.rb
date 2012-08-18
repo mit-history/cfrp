@@ -57,17 +57,6 @@ describe RegistersController do
         get :index
         response.should be_success
       end
-
-# (See above also) test with Jasmine?
-#      it "should have edit options" do
-#        get :index
-#        response.should have_selector("a#edit_action")
-#      end
-
-#      it "should have delete options" do
-#        get :index
-#        response.should have_selector("a#delete_action")
-#      end
     end
 
     describe "Authenticated actions" do
@@ -85,6 +74,23 @@ describe RegistersController do
                                                       :ordering => 2 )
         @register.register_plays << RegisterPlay.new( :play => @play1,
                                                       :ordering => 1 )
+
+        @sc1 = SeatingCategory.create(:name => 'Petites Loges')
+        @sc2 = SeatingCategory.create(:name => 'Places de Parterre')
+
+        @register.ticket_sales.build({:total_sold => 0,
+                                       :price_per_ticket_l => 0,
+                                       :price_per_ticket_s => 0,
+                                       :recorded_total_l => 0,
+                                       :recorded_total_s => 0,
+                                       :seating_category_id => @sc1.id})
+
+        @register.ticket_sales.build({:total_sold => 1,
+                                       :price_per_ticket_l => 1,
+                                       :price_per_ticket_s => 1,
+                                       :recorded_total_l => 1,
+                                       :recorded_total_s => 1,
+                                       :seating_category_id => @sc2.id})
         @register.save
       end
 
@@ -150,6 +156,7 @@ describe RegistersController do
       end
 
       describe "PUT 'update'" do
+        # TEST FOR FAILURE!
         #it "does nothing with a message on failure" do
         #  get :update, :id => @register.id, :register => {}
         #  response. ?
@@ -157,7 +164,7 @@ describe RegistersController do
 
         it "updates the date" do
           date = { "date(1i)"=>"1751", "date(2i)"=>"3", "date(3i)"=>"2" }
-          get :update, :id => @register.id, :register => date
+          put :update, :id => @register.id, :register => date
           Register.find(@register.id).date.should == Date.new(1751, 3, 2)
         end
 
@@ -181,12 +188,52 @@ describe RegistersController do
               }
             }}
 
-          get :update, :id => @register.id, :register => plays
+          put :update, :id => @register.id, :register => plays
           rps = Register.find(@register.id).register_plays
           rps[0].play.title.should match 'Les Femmes savantes'
           rps[0].play.author.should match 'Jean-Baptiste Poquelin dit Molière'
           rps[1].play.title.should match 'La Comtesse d\'Escarbagnas'
           rps[1].play.author.should match 'Jean-Baptiste Poquelin dit Molière'
+        end
+
+        it "updates the ticket sales" do
+          register = {
+            :ticket_sales_attributes => {
+              "0" => {
+                "total_sold" => "1",
+                "price_per_ticket_l" => "2",
+                "price_per_ticket_s" => "3",
+                "recorded_total_l" => "4",
+                "recorded_total_s" => "5",
+                "id" => @register.ticket_sales[0].id
+              },
+
+              "1" => {
+                "total_sold" => "10",
+                "price_per_ticket_l" => "10",
+                "price_per_ticket_s" => "10",
+                "recorded_total_l" => "10",
+                "recorded_total_s" => "10",
+                "id" => @register.ticket_sales[1].id
+              }
+            }
+          }
+
+          put :update, :id => @register.id, :register => register
+
+          ts = Register.find(@register.id).ticket_sales[0]
+          ts.total_sold.should == 1
+          ts.price_per_ticket_l.should == 2
+          ts.price_per_ticket_s.should == 3
+          ts.recorded_total_l.should == 4
+          ts.recorded_total_s.should == 5
+
+          ts2 = Register.find(@register.id).ticket_sales[1]
+          ts2.total_sold.should == 10
+          ts2.price_per_ticket_l.should == 10
+          ts2.price_per_ticket_s.should == 10
+          ts2.recorded_total_l.should == 10
+          ts2.recorded_total_s.should == 10
         end
       end
 
