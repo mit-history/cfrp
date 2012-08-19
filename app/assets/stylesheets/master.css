@@ -59,3 +59,53 @@ div#results div.rep {
 .rep div.facet {
   width: 205px;
 }
+
+/*
+.ui-resizable-s {
+    width: 100%;
+    height: 8px;
+    background: black;
+}
+*/
+/*
+element.style {
+    -moz-user-select: none;
+    bottom: 0;
+    height: 10px;
+}
+*/
+.ui-resizable-s {
+    bottom: -5px;
+    cursor: s-resize;
+    height: 20px;
+    left: 0;
+    width: 100%;
+}
+.ui-resizable-handle {
+    display: block;
+    font-size: 0.1px;
+    position: absolute;
+    z-index: 99999;
+}
+
+div#ri_resizer {
+  overflow: auto;
+  position: relative;
+  height: 100px;
+  width: 100%;
+  background: none repeat scroll 0 0 #FFFFFF;
+  border-bottom: 5px solid #000;
+  margin-bottom: 8px;
+}
+
+div#form-wrapper {
+  height: 500px;
+  position: relative;
+  overflow: scroll;
+}
+
+img#register_image {
+  width: 100%;
+  height: auto;
+}
+

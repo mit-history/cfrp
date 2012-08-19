@@ -1,30 +1,4 @@
 # -*- coding: utf-8 -*-
-# == Schema Information
-#
-# Table name: registers
-#
-#  id                        :integer         not null, primary key
-#  date                      :datetime
-#  weekday                   :string(255)
-#  season                    :string(255)
-#  register_num              :integer
-#  payment_notes             :text
-#  page_text                 :text
-#  total_receipts_recorded_l :integer
-#  total_receipts_recorded_s :integer
-#  representation            :integer
-#  signatory                 :string(255)
-#  misc_notes                :text
-#  for_editor_notes          :text
-#  ouverture                 :boolean
-#  cloture                   :boolean
-#  created_at                :datetime
-#  updated_at                :datetime
-#  register_image_id         :integer
-#  register_period_id        :integer
-#  verification_state_id     :integer
-#
-
 require 'spec_helper'
 
 describe Register do
@@ -80,3 +54,30 @@ describe Register do
     register_plays[1].play.author.should match 'Jenny Smith'
   end
 end
+
+# == Schema Information
+#
+# Table name: registers
+#
+#  id                        :integer         not null, primary key
+#  date                      :date
+#  weekday                   :string(255)
+#  season                    :string(255)
+#  register_num              :integer
+#  payment_notes             :text
+#  page_text                 :text
+#  total_receipts_recorded_l :integer
+#  total_receipts_recorded_s :integer
+#  representation            :integer
+#  signatory                 :string(255)
+#  misc_notes                :text
+#  for_editor_notes          :text
+#  ouverture                 :boolean
+#  cloture                   :boolean
+#  created_at                :datetime
+#  updated_at                :datetime
+#  register_image_id         :integer
+#  register_period_id        :integer
+#  verification_state_id     :integer
+#
+

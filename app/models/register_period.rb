@@ -10,4 +10,8 @@
 #
 
 class RegisterPeriod < ActiveRecord::Base
+  has_many :register_period_seating_categories
+  has_many :registers
+
+  attr_accessible :period
 end

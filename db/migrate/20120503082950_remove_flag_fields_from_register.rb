@@ -38,6 +38,6 @@ class RemoveFlagFieldsFromRegister < ActiveRecord::Migration
     add_column :register_plays, :editor_flag, :boolean
 
     # ticket_sales table flags
-    remove_column :ticket_sales, :editor_flag, :boolean
+    add_column :ticket_sales, :editor_flag, :boolean
   end
 end

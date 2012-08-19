@@ -61,9 +61,13 @@ describe RegistersController do
 
     describe "Authenticated actions" do
       before(:each) do
+        @rp = RegisterPeriod.create(:period => 'testing!')
+
         @register = Register.new( :register_num => 1,
                                   :date => '1750-01-01',
-                                  :season => '1749-1750' )
+                                  :season => '1749-1750',
+                                  :register_period_id => @rp.id)
+
         @play1 = Play.new( :author => 'Bob Smith',
                            :title => 'Bob\'s First Play',
                            :genre => 'tragedy' )
@@ -77,6 +81,17 @@ describe RegistersController do
 
         @sc1 = SeatingCategory.create(:name => 'Petites Loges')
         @sc2 = SeatingCategory.create(:name => 'Places de Parterre')
+        @sc3 = SeatingCategory.create(:name => 'Fake Seating Category')
+        @rt_sc1 = RegisterPeriodSeatingCategory.create({:ordering => 0,
+                                                      :register_period_id => @rp.id,
+                                                      :seating_category_id => @sc3.id})
+        @rt_sc2 = RegisterPeriodSeatingCategory.create({:ordering => 1,
+                                                      :register_period_id => @rp.id,
+                                                      :seating_category_id => @sc2.id})
+        @rt_sc3 = RegisterPeriodSeatingCategory.create({:ordering => 2,
+                                                      :register_period_id => @rp.id,
+                                                      :seating_category_id => @sc1.id})
+
 
         @register.ticket_sales.build({:total_sold => 0,
                                        :price_per_ticket_l => 0,
@@ -91,6 +106,13 @@ describe RegistersController do
                                        :recorded_total_l => 1,
                                        :recorded_total_s => 1,
                                        :seating_category_id => @sc2.id})
+
+        @register.ticket_sales.build({:total_sold => 5,
+                                       :price_per_ticket_l => 5,
+                                       :price_per_ticket_s => 5,
+                                       :recorded_total_l => 5,
+                                       :recorded_total_s => 5,
+                                       :seating_category_id => @sc3.id})
         @register.save
       end
 
@@ -143,12 +165,22 @@ describe RegistersController do
           response.body.should have_selector('input#play_author')
         end
 
-        it "should be ordered by the play ordering" do
+        it "should present plays ordered by the register_play ordering" do
           get :edit, :id => @register.id
           # Kind of convoluted...easier way to do this? Probably...
           doc = Nokogiri::XML::DocumentFragment.parse(response.body)
           ordering = doc.css('div#play_fields').css('input#register_play_ordering').collect {|i| i[:value]}
           ordering.should == ["1", "2"]
+        end
+
+        it "should present ticket sales ordered by the seating categories" do
+          get :edit, :id => @register.id
+          ordering = []
+          response.body.split("\n").each do |l|
+            n = [@sc1.name, @sc2.name, @sc3.name].detect {|n| l.include? n}
+            ordering << n if n
+          end
+          ordering.should == [@sc3.name, @sc2.name, @sc1.name]
         end
       end
 
@@ -197,6 +229,9 @@ describe RegistersController do
         end
 
         it "updates the ticket sales" do
+          ts1_id = @register.ticket_sales[0].id
+          ts2_id = @register.ticket_sales[1].id
+
           register = {
             :ticket_sales_attributes => {
               "0" => {
@@ -205,7 +240,7 @@ describe RegistersController do
                 "price_per_ticket_s" => "3",
                 "recorded_total_l" => "4",
                 "recorded_total_s" => "5",
-                "id" => @register.ticket_sales[0].id
+                "id" => ts1_id
               },
 
               "1" => {
@@ -214,21 +249,21 @@ describe RegistersController do
                 "price_per_ticket_s" => "10",
                 "recorded_total_l" => "10",
                 "recorded_total_s" => "10",
-                "id" => @register.ticket_sales[1].id
+                "id" => ts2_id
               }
             }
           }
 
           put :update, :id => @register.id, :register => register
 
-          ts = Register.find(@register.id).ticket_sales[0]
+          ts = TicketSale.find(ts1_id)
           ts.total_sold.should == 1
           ts.price_per_ticket_l.should == 2
           ts.price_per_ticket_s.should == 3
           ts.recorded_total_l.should == 4
           ts.recorded_total_s.should == 5
 
-          ts2 = Register.find(@register.id).ticket_sales[1]
+          ts2 = TicketSale.find(ts2_id)
           ts2.total_sold.should == 10
           ts2.price_per_ticket_l.should == 10
           ts2.price_per_ticket_s.should == 10

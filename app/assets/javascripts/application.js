@@ -4,6 +4,7 @@
 // ...
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui.min
 //= require twitter/bootstrap
 //= require rep.widgets
 //= require rep.faceting

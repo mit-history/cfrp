@@ -1,1 +1,18 @@
+<% if @register.register_image != nil %>
+
+<script>
+$(function() {
+$( "div#ri_resizer" ).resizable({ handles: "s" });
+
+
+  console.log('getting here?');
+});
+</script>
+
+  <div id="ri_resizer">
+    <img id="register_image" src='<%= config.path_prefix %>/<%= @register.register_image.filepath %>' />
+  </div>
+
+<% end %>
+
 <%= render 'form' %>

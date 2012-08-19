@@ -8,7 +8,7 @@ class FixUserForDevise < ActiveRecord::Migration
   end
 
   def down
-    drop_column :users, :reset_password_sent_at
+    remove_column :users, :reset_password_sent_at
     change_column :users, :encrypted_password, :string, :limit => 128
   end
 end

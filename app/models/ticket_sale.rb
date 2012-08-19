@@ -18,5 +18,13 @@ class TicketSale < ActiveRecord::Base
   belongs_to :register
   belongs_to :seating_category
 
-  attr_accessible :total_sold, :price_per_ticket_l, :price_per_ticket_s, :recorded_total_l, :recorded_total_s, :seating_category_id
+  attr_accessible :total_sold, :price_per_ticket_l, :price_per_ticket_s, :recorded_total_l, :recorded_total_s, :seating_category_id, :register_id
+
+  def sc_ordering
+    RegisterPeriodSeatingCategory
+      .where(['register_period_id = ? AND seating_category_id = ?',
+              register.register_period_id, seating_category_id])
+      .first
+      .ordering
+  end
 end

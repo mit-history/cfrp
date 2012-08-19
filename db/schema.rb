@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120818044353) do
+ActiveRecord::Schema.define(:version => 20120819080844) do
 
   create_table "comment_types", :force => true do |t|
     t.string   "name"
@@ -57,6 +57,14 @@ ActiveRecord::Schema.define(:version => 20120818044353) do
     t.integer  "user_id"
   end
 
+  create_table "register_period_seating_categories", :force => true do |t|
+    t.integer  "register_period_id"
+    t.integer  "seating_category_id"
+    t.integer  "ordering",            :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "register_periods", :force => true do |t|
     t.string   "period"
     t.datetime "created_at"
@@ -78,14 +86,6 @@ ActiveRecord::Schema.define(:version => 20120818044353) do
   create_table "register_tasks", :force => true do |t|
     t.string   "name"
     t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "register_type_seating_categories", :force => true do |t|
-    t.integer  "register_type_id"
-    t.integer  "seating_category_id"
-    t.integer  "ordering",            :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

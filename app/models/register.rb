@@ -3,7 +3,7 @@
 # Table name: registers
 #
 #  id                        :integer         not null, primary key
-#  date                      :datetime
+#  date                      :date
 #  weekday                   :string(255)
 #  season                    :string(255)
 #  register_num              :integer

@@ -1,10 +1,8 @@
-<div class='row-fluid'>
+<div class='row-fluid' id="form-wrapper">
 
 <div class='offset1' id='register_form'>
   <% if @register.register_image != nil %>
-<!--
-  <div id='register_image'><a target="top" href="<%= config.path_prefix %>/<%= @register.register_image.filepath %>" target="_blank"><img src='<%= config.path_prefix %>/<%= @register.register_image.filepath %>' width='100' /></a></div>
--->
+    <%= link_to "Open Image in New Window", "#{config.path_prefix}/#{@register.register_image.filepath}", :target => 'top' %>
   <% end %>
 
 <%= form_for @register, :html => {:class => 'form-horizontal'} do |f| %>
@@ -107,6 +105,7 @@
   </div>
 
   <div class='row-fluid'>
+
   <table id='ticket_sales_fields' class='table table-bordered span8'>
   <thead>
     <tr>
@@ -118,7 +117,7 @@
   <thead>
 
   <tbody>
-  <%= f.fields_for :ticket_sales do |ts| %>
+  <%= f.fields_for :ticket_sales, @register.ticket_sales.sort {|a, b| a.sc_ordering <=> b.sc_ordering } do |ts| %>
     <tr>
       <td class='seating_category'>
 	<%= ts.object.seating_category.name %>
