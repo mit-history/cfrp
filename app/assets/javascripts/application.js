@@ -9,3 +9,4 @@
 //= require rep.widgets
 //= require rep.faceting
 //= require "results_custom.js"
+//= require "calculations.js"

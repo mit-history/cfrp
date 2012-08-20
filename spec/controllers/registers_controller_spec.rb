@@ -270,6 +270,13 @@ describe RegistersController do
           ts2.recorded_total_l.should == 10
           ts2.recorded_total_s.should == 10
         end
+
+        it "redirects to edit on a successful update" do
+          date = { "date(1i)"=>"1751", "date(2i)"=>"3", "date(3i)"=>"2" }
+          put :update, :id => @register.id, :register => date
+          response.should be_redirect
+          response.header["Location"].should match "#{@register.id}/edit"
+        end
       end
 
       describe "DELETE 'destroy'" do

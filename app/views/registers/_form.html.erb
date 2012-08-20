@@ -21,6 +21,10 @@
     </div>
   <% end %>
 
+  <div class="actions submit">
+    <%= f.submit %>
+  </div>
+
   <div class="control-group">
     <%= f.label :register_num, 'Number', :class => 'control-label' %>
     <div class="controls">
@@ -67,13 +71,43 @@
 <!-- PUT PLAYS, RECEIPT DATA HERE -->
 
 
-  <div id='play_fields'>
+  <div id='play_fields' class='well'>
 
   <%= f.fields_for :register_plays, @register.register_plays.sort {|rp| rp.ordering } do |rp| %>
+  <h3>Play <%= rp.object.ordering + 1 %></h3>
+
   <div class="control-group">
     <%= rp.label :ordering, :class => 'control-label', :id => 'register_play_ordering' %>
     <div class="controls">
-      <%= rp.text_field :ordering, :id => 'register_play_ordering' %>
+    <%= rp.text_field :ordering, :id => 'register_play_ordering', :class => 'form-inline span1' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= rp.label :newactor, :class => 'control-label', :id => 'register_play_newactor' %>
+    <div class="controls">
+      <%= rp.text_field :newactor, :id => 'register_play_newactor' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= rp.label :actorrole, :class => 'control-label', :id => 'register_play_actorrole' %>
+    <div class="controls">
+      <%= rp.text_field :actorrole, :id => 'register_play_actorrole' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= rp.label :firstrun, :class => 'control-label', :id => 'register_play_firstrun' %>
+    <div class="controls">
+    <%= rp.check_box :firstrun, :id => 'register_play_firstrun', :class => 'form-inline span1' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= rp.label :firstrun_perfnum, :class => 'control-label', :id => 'register_play_firstrun_perfnum' %>
+    <div class="controls">
+      <%= rp.text_field :firstrun_perfnum, :id => 'register_play_firstrun_perfnum', :class => 'span1' %>
     </div>
   </div>
 
@@ -124,43 +158,48 @@
       </td>
 
       <td class='total_sold'>
-	<%#= ts.label :total_sold, :class => 'control-label', :id => 'ticket_sale_total_sold' %>
-	<%= ts.text_field :total_sold, :id => 'ticket_sales_total_sold', :class => 'span1' %>
+	<%= ts.text_field :total_sold, :class => 'span1 ticket_sales_total_sold' %>
       </td>
 
       <td class='price_per_ticket'>
-	<%#= ts.label :price_per_ticket_l, :class => 'control-label', :id => 'ticket_sale_price_per_ticket_l' %>
-	<%= ts.text_field :price_per_ticket_l, :id => 'ticket_sales_price_per_ticket_l', :class => 'form-inline span1' %>
+	<%= ts.text_field :price_per_ticket_l, :class => 'form-inline span1 ticket_sales_price_per_ticket_l' %>
 
-	<%#= ts.label :price_per_ticket_s, :class => 'control-label', :id => 'ticket_sale_price_per_ticket_s' %>
-	<%= ts.text_field :price_per_ticket_s, :id => 'ticket_sales_price_per_ticket_s', :class => 'form-inline span1' %>
+	<%= ts.text_field :price_per_ticket_s, :class => 'form-inline span1 ticket_sales_price_per_ticket_s' %>
       </td>
 
       <td class='recorded_total'>
-	<%#= ts.label :recorded_total_l, :class => 'control-label', :id => 'ticket_sale_recorded_total_l' %>
-	<%= ts.text_field :recorded_total_l, :id => 'ticket_sales_recorded_total_l', :class => 'form-inline span1' %>
+	<%= ts.text_field :recorded_total_l, :class => 'form-inline span1 ticket_sales_recorded_total_l' %>
 
-	<%#= ts.label :recorded_total_s, :class => 'control-label', :id => 'ticket_sale_recorded_total_s' %>
-	<%= ts.text_field :recorded_total_s, :id => 'ticket_sales_recorded_total_s', :class => 'form-inline span1' %>
+	<%= ts.text_field :recorded_total_s, :class => 'form-inline span1 ticket_sales_recorded_total_s' %>
       </td>
     </tr>
   <% end %>
+
+    <tr>
+      <td>
+        <label>Total Receipts Calculated</label>
+      </td>
+
+      <td colspan=2>
+        <span id="total_receipts_calculated_ts"></span>
+      </td>
+
+      <td colspan=2>
+        <span id="total_receipts_calculated_rt"></span>
+      </td>
+    </tr>
   </tbody>
   </table>
   </div>
 
   <div class="control-group">
-    <%= f.label :total_receipts_recorded_l, :class => 'control-label' %>
+    <label class='control-label'>Total Receipts Recorded (Livre / Sous)</label>
     <div class="controls">
-      <%= f.text_field :total_receipts_recorded_l %>
+      <%= f.text_field :total_receipts_recorded_l, :class => 'form-inline span2' %>
+      <%= f.text_field :total_receipts_recorded_s, :class => 'form-inline span2' %>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label :total_receipts_recorded_s, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :total_receipts_recorded_s %>
-    </div>
-  </div>
+
   <div class="control-group">
     <%= f.label :page_text, :class => 'control-label' %>
     <div class="controls">
