@@ -1,5 +1,25 @@
 <% config = Cfrp::Application.config %>
 
+<script>
+$(function() {
+    // Kinda hacky, but does the job for now.
+    // Fills in author an genre automatically when filling out title.
+    <% titles = @plays.reduce([]) {|m, p| m << "#{p.title} | #{p.author} | #{p.genre}"} %>
+    <% authors = @plays.reduce([]) {|m, p| m << p.author} %>
+
+    $('.play_typeahead').typeahead({source: <%= raw titles.to_json %>});
+    $('.author_typeahead').typeahead({source: <%= raw authors.to_json %>});
+
+    $('.play_typeahead').change(function(e) {
+        var play_id = $(e.currentTarget).data('play-id')
+        var play_data = $(e.currentTarget).val().split(' | ')
+        $(e.currentTarget).val(play_data[0]);
+        $($.find("[data-author-with-play-id='" + play_id + "']")).val(play_data[1]);
+        $($.find("[data-genre-with-play-id='" + play_id + "']")).val(play_data[2]);
+    });
+})
+</script>
+
 <div class='row-fluid' id="form-wrapper">
 
 <div class='offset1' id='register_form'>
@@ -117,21 +137,21 @@
   <div class="control-group">
     <%= p.label :title, :class => 'control-label', :id => 'play_title' %>
     <div class="controls">
-      <%= p.text_field :title, :id => 'play_title' %>
+      <%= p.text_field :title, :id => 'play_title', :class => 'play_typeahead', :data => { :play_id => p.object.id } %>
     </div>
   </div>
 
   <div class="control-group">
     <%= p.label :author, :class => 'control-label', :id => 'play_author' %>
     <div class="controls">
-      <%= p.text_field :author, :id => 'play_author' %>
+      <%= p.text_field :author, :id => 'play_author', :class => 'author_typeahead', :data => { :author_with_play_id => p.object.id } %>
     </div>
   </div>
 
   <div class="control-group">
     <%= p.label :genre, :class => 'control-label', :id => 'play_genre' %>
     <div class="controls">
-      <%= p.text_field :genre, :id => 'play_genre' %>
+      <%= p.text_field :genre, :id => 'play_genre', :data => { :genre_with_play_id => p.object.id } %>
     </div>
   </div>
   <% end %>

@@ -3,3 +3,5 @@
 *= require rep.faceting
 *= require_tree .
 */
+
+//= require 'user_set'

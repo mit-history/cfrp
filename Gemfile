@@ -19,8 +19,10 @@ end
 
 # Repertoire Gems
 gem 'repertoire-faceting', :git => 'git@github.com:repertoire/repertoire-faceting.git', :branch => '0.5.5.dev'
-gem 'repertoire-groups', :git => 'git@github.com:repertoire/Repertoire-Groups.git'
+gem 'repertoire-groups', :git => 'git@github.com:repertoire/Repertoire-Groups.git', :branch => 'bootstrap-flavor'
 gem 'rep.ajax.toolkit', :git => 'git@github.com:repertoire/rep.ajax.toolkit.git'
+# Why do I need this?
+gem 'acts-as-taggable-on'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
