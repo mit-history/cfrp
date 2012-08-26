@@ -3,10 +3,78 @@
 
 <script>
 $(function() {
-$( "div#ri_resizer" ).resizable({ handles: "s" });
+  function bodyMargin(){
+    var bodyMargin = $('#register_image').height();
+    $('body').css('marginBottom', bodyMargin + 20);
+  }
 
+  // Eliminate page scrollbar
+  $("body").css("overflow", "hidden");
 
-  console.log('getting here?');
+  // Move image to top of body (in DOM)
+  $("div#ri_resizer").prependTo("body");
+
+  // Reset body margin
+  bodyMargin();
+
+  // Handle resizes
+  $(window).resize(function(){
+    bodyMargin();
+  });
+
+/*
+    // Load cookie on initialization if possible
+    if (($.cookie("imgHeight") != null)) {
+        var imgHeight = $.cookie("imgHeight");
+        if (imgHeight < $(window).height() && imgHeight > 10) {
+            $("#ri_resizer").animate({height:imgHeight}, function(){
+                hReset();
+    });
+        }
+    }
+*/
+
+    // Function to adjust height of page relative to image size
+    function hReset() {
+        var imgHeight = $("#ri_resizer").height();
+        var winHeight = $(window).height();
+        var difHeight = winHeight - imgHeight;
+        $("#container").height(difHeight);
+
+        //$.cookie("imgHeight", imgHeight);
+    }
+
+    // Ensure the container holding the form is reset so we get a scrollbar, 
+    // among other things.
+    hReset();
+
+    // Trigger function on window resize
+    $(window).resize(hReset);
+
+    // Enable scaling of img div
+    // Note, applied to form-wrapper, as resizable doesn't play with position fixed
+    $("#ri_resizer").resizable(
+        { stop: function (event, ui) { hReset(); } },
+        { handles: 's'}
+    );
+
+    // Fix jquery ui bug, handle is position absolute, and must be moved on scrolling
+    function handleFix() {
+        var $handle = $("#ri_resizer").find(".ui-resizable-handle");
+        var adjustBy = ($("#ri_resizer").scrollTop() * -1);
+        $handle.css({bottom:adjustBy, height: "30px"});
+    }
+
+    $("#ri_resizer").scroll(handleFix);
+    $("#ri_resizer").mouseover(handleFix);
+
+    handleFix();
+
+    $(".ui-resizable-handle").mouseover(function() {
+      $(this).css('cursor', 'move');
+    }).mouseout(function() {
+      $(this).css('cursor', 'auto'); 
+    });
 });
 </script>
 

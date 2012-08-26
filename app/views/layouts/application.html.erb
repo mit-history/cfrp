@@ -7,17 +7,15 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-  <div id="header">
-  </div>
-
   <div id="container">
     <%= yield %>
   </div>
 
   <div id="footer">
+    <!-- Bootstrap Navbar -->
     <div class="navbar navbar-fixed-bottom">
       <div class="navbar-inner">
-	<div class="container">
+        <div class="container">
           <a class='brand' href="<%= url_for :root %>">Com&#233;die-Fran&#231;aise Registers Project</a>
 
 	  <ul class='nav pull-right'>
@@ -33,6 +31,7 @@
 	</div>
       </div>
     </div>
+    <!-- Footer -->
   </div>
 </body>
 </html>

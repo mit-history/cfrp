@@ -1,3 +1,12 @@
+/** General Styles **/
+
+h2 {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+/** Facet Presentation **/
+
 /* Mostly overridding default bootstrap .label 
    styles so it looks like Christopher intended */
 .rep .facet .values .value .label {
@@ -12,15 +21,29 @@
   white-space: wrap;
 }
 
-h2 {
-  margin-top: 15px;
-  margin-bottom: 10px;
+div#results {
+  margin-top: 18px;
+}
+
+div#results_nav {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+div#results div.rep {
+  margin-bottom: 40px;
+}
+
+.rep div.facet {
+  width: 205px;
 }
 
 div.register_data {
   border-top: 1px solid black;
   font-size: 14px;
 }
+
+/** Form Presentation **/
 
 div#register_form table {
   font-size: 14px;
@@ -43,21 +66,34 @@ div#register_form div.submit {
   margin-bottom: 50px;
 }
 
-div#results {
-  margin-top: 18px;
+/*** Register Image Form-page Resizing ***/
+
+div#ri_resizer {
+  background: none repeat scroll 0 0 #FFFFFF;
+  border-bottom: 3px solid #000;
+  overflow: auto;
+  position: relative;
+  width: 100%;
+  height: 100px;
+  /*margin-bottom: 8px; */
 }
 
-div#results_nav {
-  text-align: center;
-  margin-bottom: 12px;
+img#register_image {
+  width: 100%;
+  height: auto;
 }
 
-div#results div.rep {
-  margin-bottom: 40px;
+#container {
+  overflow: auto;
+  width: 100%
 }
 
-.rep div.facet {
-  width: 205px;
+.ui-resizable-handle {
+  width: 99.9%;
+  display: block;
+  position: absolute;
+  z-index: 99999;
+  border: 1px solid grey;
 }
 
 /*
@@ -66,14 +102,12 @@ div#results div.rep {
     height: 8px;
     background: black;
 }
-*/
-/*
+
 element.style {
     -moz-user-select: none;
     bottom: 0;
     height: 10px;
 }
-*/
 .ui-resizable-s {
     bottom: -5px;
     cursor: s-resize;
@@ -81,31 +115,4 @@ element.style {
     left: 0;
     width: 100%;
 }
-.ui-resizable-handle {
-    display: block;
-    font-size: 0.1px;
-    position: absolute;
-    z-index: 99999;
-}
-
-div#ri_resizer {
-  overflow: auto;
-  position: relative;
-  height: 100px;
-  width: 100%;
-  background: none repeat scroll 0 0 #FFFFFF;
-  border-bottom: 5px solid #000;
-  margin-bottom: 8px;
-}
-
-div#form-wrapper {
-  height: 500px;
-  position: relative;
-  overflow: scroll;
-}
-
-img#register_image {
-  width: 100%;
-  height: auto;
-}
-
+*/
