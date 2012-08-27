@@ -21,12 +21,15 @@
 	  <ul class='nav pull-right'>
 	    <%# Can't figure out how to add this charset to file without making the *server* barf?  What am I doing wrong? %>
             <!-- li><%= link_to "Registers List", :registers %></li -->
-	    <% if current_user %>
+          <% if current_user %>
+	    <% if current_user.has_role? :admin %>
+	    <li><%= link_to "User Administration", :user_sets %></li>
+            <% end %>
 	    <li class='active'><a href="#">Logged in as: <%= current_user.first_name %> <%= current_user.last_name %> (<%= current_user.email %>)</a></li>
             <li><%= link_to "Log Out", :destroy_user_session %></li>
-            <% else %>
+          <% else %>
 	    <li class='active'><%= link_to "Sign In", :new_user_session %></li>
-	    <% end %>
+          <% end %>
 	  </ul>
 	</div>
       </div>
