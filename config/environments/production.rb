@@ -31,7 +31,7 @@ Cfrp::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Disable delivery errors, bad email addresses will be ignored
-  # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = false
 
   # Enable threaded mode
   # config.threadsafe!
@@ -47,6 +47,8 @@ Cfrp::Application.configure do
   # Repertoire Assets
   # config.repertoire_assets.path_prefix = '/cfrp'
   config.path_prefix = '/cfrp'
+  #config.action_controller.relative_url_root = '/cfrp'
+  #config.assets.prefix = '/cfrp'
 
   # for devise mailer:
   config.action_mailer.delivery_method = :sendmail

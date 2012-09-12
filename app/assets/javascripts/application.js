@@ -10,4 +10,3 @@
 //= require rep.faceting
 //= require "results_custom.js"
 //= require "calculations.js"
-//= require "jquery.tablesorter.min.js"

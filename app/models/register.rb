@@ -71,10 +71,10 @@ class Register < ActiveRecord::Base
   facet :verification_state, joins(:verification_state).group('verification_states.name')
 
   facet :newactor, joins(:register_plays)
-  facet :title1, joins(:plays).joins(:register_plays).where('register_plays.ordering = 0').group('plays.title')
-  facet :title2, joins(:plays).joins(:register_plays).where('register_plays.ordering = 1').group('plays.title')
-  facet :author1, joins(:plays).joins(:register_plays).where('register_plays.ordering = 0').group('plays.author')
-  facet :author2, joins(:plays).joins(:register_plays).where('register_plays.ordering = 1').group('plays.author')
+  facet :title1, joins(:plays).joins(:register_plays).where('register_plays.ordering = 1').group('plays.title')
+  facet :title2, joins(:plays).joins(:register_plays).where('register_plays.ordering = 2').group('plays.title')
+  facet :author1, joins(:plays).joins(:register_plays).where('register_plays.ordering = 1').group('plays.author')
+  facet :author2, joins(:plays).joins(:register_plays).where('register_plays.ordering = 2').group('plays.author')
 
 # what
 #  facet :total_receipts, Table(:register).project("(total_receipts_recorded_l + total_receipts_recorded_s) as total_receipts")

@@ -107,8 +107,8 @@ $(function() {
 
   <div id='play_fields' class='well'>
 
-  <%= f.fields_for :register_plays, @register.register_plays.sort {|rp| rp.ordering } do |rp| %>
-  <h3>Play <%= rp.object.ordering + 1 %></h3>
+  <%= f.fields_for :register_plays, @register.register_plays.sort {|a, b| a.ordering <=> b.ordering } do |rp| %>
+  <h3>Play <%= rp.object.ordering %></h3>
 
   <div class="control-group">
     <%= rp.label :ordering, :class => 'control-label', :id => 'register_play_ordering' %>
@@ -149,14 +149,14 @@ $(function() {
   <div class="control-group">
     <%= p.label :title, :class => 'control-label', :id => 'play_title' %>
     <div class="controls">
-      <%= p.text_field :title, :id => 'play_title', :class => 'play_typeahead span3', :data => { :play_id => p.object.id } %>
+      <%= p.text_field :title, :id => 'play_title', :class => 'play_typeahead span4', :data => { :play_id => p.object.id } %>
     </div>
   </div>
 
   <div class="control-group">
     <%= p.label :author, :class => 'control-label', :id => 'play_author' %>
     <div class="controls">
-      <%= p.text_field :author, :id => 'play_author', :class => 'author_typeahead span3', :data => { :author_with_play_id => p.object.id } %>
+      <%= p.text_field :author, :id => 'play_author', :class => 'author_typeahead span4', :data => { :author_with_play_id => p.object.id } %>
     </div>
   </div>
 
