@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # == Schema Information
 #
 # Table name: registers
@@ -27,6 +29,8 @@
 class Register < ActiveRecord::Base
   include Repertoire::Faceting::Model
 
+  # default_scope order("date ASC")
+
   attr_accessible :date, :weekday, :season, :register_num, :payment_notes, :page_text, :total_receipts_recorded_l, :total_receipts_recorded_s, :representation, :signatory, :misc_notes, :for_editor_notes, :ouverture, :cloture, :register_image_id, :register_period_id, :verification_state_id, :register_plays_attributes, :ticket_sales_attributes, :rep_privacy_list, :rep_group_list
 
   # Repertoire Groups
@@ -34,6 +38,7 @@ class Register < ActiveRecord::Base
 
   has_many :ticket_sales
 
+  belongs_to :register_period
   belongs_to :register_image
   belongs_to :verification_state
 

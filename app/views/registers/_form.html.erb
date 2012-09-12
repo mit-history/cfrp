@@ -92,13 +92,17 @@ $(function() {
   <div class="control-group">
     <%= f.label :weekday, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :weekday %>
+      <%#= f.text_field :weekday %>
+      <%#= collection_select(:register, :verification_state_id, VerificationState.all, :id, :name) %>
+      <%= f.select(:weekday, ["Mardi", "Vendredi", "Mercredi", "Dimanche", "Lundi", "Samedi", "Jeudi"]) %>
+      <%#= vs.select :verification_state, :name %>
+
     </div>
   </div>
   <div class="control-group">
     <%= f.label :date, :class => 'control-label' %>
     <div class="controls">
-      <%= f.date_select :date, {}, { :class => 'span1' } %>
+      <%= f.date_select :date, { :use_month_numbers => true }, { :class => 'span1' } %>
     </div>
   </div>
 
@@ -185,27 +189,52 @@ $(function() {
   <thead>
 
   <tbody>
-  <%= f.fields_for :ticket_sales, @register.ticket_sales.sort {|a, b| a.sc_ordering <=> b.sc_ordering } do |ts| %>
+  <%= f.fields_for :ticket_sales, @register.register_period.register_period_seating_categories.sort_by {|rpsc| rpsc.ordering} do |sc| %>
+
+  <%#= f.fields_for :ticket_sales, @register.ticket_sales.sort {|a, b| a.sc_ordering <=> b.sc_ordering } do |ts| %>
+
     <tr>
       <td class='seating_category'>
-	<%= ts.object.seating_category.name %>
+	<%= sc.object.seating_category.name %>
       </td>
 
+    <% ts = @register.ticket_sales.detect {|ts| ts.seating_category_id == sc.object.seating_category.id} %>
+    <% unless ts.nil? %>
       <td class='total_sold'>
-	<%= ts.text_field :total_sold, :class => 'span1 ticket_sales_total_sold' %>
+    <%= sc.text_field :total_sold, :class => 'span1 ticket_sales_total_sold', :value => ts.total_sold %>
       </td>
 
       <td class='price_per_ticket'>
-	<%= ts.text_field :price_per_ticket_l, :class => 'form-inline span1 ticket_sales_price_per_ticket_l' %>
+	<%= sc.text_field :price_per_ticket_l, :class => 'form-inline span1 ticket_sales_price_per_ticket_l', :value => ts.price_per_ticket_l %>
 
-	<%= ts.text_field :price_per_ticket_s, :class => 'form-inline span1 ticket_sales_price_per_ticket_s' %>
+	<%= sc.text_field :price_per_ticket_s, :class => 'form-inline span1 ticket_sales_price_per_ticket_s', :value => ts.price_per_ticket_s %>
       </td>
 
       <td class='recorded_total'>
-	<%= ts.text_field :recorded_total_l, :class => 'form-inline span1 ticket_sales_recorded_total_l' %>
+	<%= sc.text_field :recorded_total_l, :class => 'form-inline span1 ticket_sales_recorded_total_l', :value => ts.recorded_total_l %>
 
-	<%= ts.text_field :recorded_total_s, :class => 'form-inline span1 ticket_sales_recorded_total_s' %>
+	<%= sc.text_field :recorded_total_s, :class => 'form-inline span1 ticket_sales_recorded_total_s', :value => ts.recorded_total_s %>
       </td>
+    <% else %>
+
+      <td class='total_sold'>
+    <%= sc.text_field :total_sold, :class => 'span1 ticket_sales_total_sold', :value => 0 %>
+      </td>
+
+      <td class='price_per_ticket'>
+	<%= sc.text_field :price_per_ticket_l, :class => 'form-inline span1 ticket_sales_price_per_ticket_l', :value => 0 %>
+
+	<%= sc.text_field :price_per_ticket_s, :class => 'form-inline span1 ticket_sales_price_per_ticket_s', :value => 0 %>
+      </td>
+
+      <td class='recorded_total'>
+	<%= sc.text_field :recorded_total_l, :class => 'form-inline span1 ticket_sales_recorded_total_l', :value => 0 %>
+
+	<%= sc.text_field :recorded_total_s, :class => 'form-inline span1 ticket_sales_recorded_total_s', :value => 0 %>
+      </td>
+
+    <% end %>
+
     </tr>
   <% end %>
 
