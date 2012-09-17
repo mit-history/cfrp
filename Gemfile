@@ -11,6 +11,9 @@ gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
 gem 'therubyracer' # bundle can't find this one, even though it's a dependency?
 
+# GOSH I HOPE THIS WORKS
+gem 'nested_form'
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'

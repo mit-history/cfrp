@@ -29,6 +29,7 @@
 class Register < ActiveRecord::Base
   include Repertoire::Faceting::Model
 
+  # Breaks Repertoire::Faceting, doh.
   # default_scope order("date ASC")
 
   attr_accessible :date, :weekday, :season, :register_num, :payment_notes, :page_text, :total_receipts_recorded_l, :total_receipts_recorded_s, :representation, :signatory, :misc_notes, :for_editor_notes, :ouverture, :cloture, :register_period_id, :verification_state_id, :register_plays_attributes, :ticket_sales_attributes, :rep_privacy_list, :rep_group_list, :irregular_receipts_name, :register_images
@@ -60,6 +61,10 @@ class Register < ActiveRecord::Base
       end
     end
   end
+
+#
+# THIS HERE FACETING CODE SURE SMELLS LIKE A SEPARATE CLASS, DON'T IT?
+#
 
   #######################################################
   # FACETING
