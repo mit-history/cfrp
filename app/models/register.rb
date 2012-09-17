@@ -52,9 +52,15 @@ class Register < ActiveRecord::Base
 
   accepts_nested_attributes_for :register_plays, :plays, :ticket_sales
 
-#  def register_plays_attributes params
-#    print params.inspect
-#  end
+  def ticket_sales_attributes=params
+    params.each do |ts|
+      begin
+        real_ts = TicketSale.update(ts[1]['id'], ts[1].except('id'))
+      rescue ActiveRecord::RecordNotFound
+        self.ticket_sales << TicketSale.new(ts[1].except('id'))
+      end
+    end
+  end
 
   #######################################################
   # FACETING

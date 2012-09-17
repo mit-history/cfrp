@@ -28,6 +28,7 @@ class RegistersController < ApplicationController
 
   def update
     @register = Register.find(params[:id])
+    #raise params['register'].inspect
     @register.update_attributes!(params[:register])
     redirect_to :action => "edit", :id => @register.id, :notice => 'Register was successfully updated.'
   end
