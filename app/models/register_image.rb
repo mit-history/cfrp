@@ -11,4 +11,6 @@
 #
 
 class RegisterImage < ActiveRecord::Base
+  has_one :register
+  attr_accessible :filepath, :register_id
 end

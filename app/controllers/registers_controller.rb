@@ -36,6 +36,7 @@ class RegistersController < ApplicationController
   def destroy
     @register = Register.find(params[:id])
     @register.destroy
+    redirect_to :action => "index", :notice => 'Register was successfully updated.'
   end
 
 

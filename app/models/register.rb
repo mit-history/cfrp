@@ -21,7 +21,6 @@
 #  cloture                   :boolean
 #  created_at                :datetime
 #  updated_at                :datetime
-#  register_image_id         :integer
 #  register_period_id        :integer
 #  verification_state_id     :integer
 #  irregular_receipts_name   :string(255)
@@ -32,15 +31,15 @@ class Register < ActiveRecord::Base
 
   # default_scope order("date ASC")
 
-  attr_accessible :date, :weekday, :season, :register_num, :payment_notes, :page_text, :total_receipts_recorded_l, :total_receipts_recorded_s, :representation, :signatory, :misc_notes, :for_editor_notes, :ouverture, :cloture, :register_image_id, :register_period_id, :verification_state_id, :register_plays_attributes, :ticket_sales_attributes, :rep_privacy_list, :rep_group_list, :irregular_receipts_name
+  attr_accessible :date, :weekday, :season, :register_num, :payment_notes, :page_text, :total_receipts_recorded_l, :total_receipts_recorded_s, :representation, :signatory, :misc_notes, :for_editor_notes, :ouverture, :cloture, :register_period_id, :verification_state_id, :register_plays_attributes, :ticket_sales_attributes, :rep_privacy_list, :rep_group_list, :irregular_receipts_name, :register_images
 
   # Repertoire Groups
   acts_as_taggable_on :rep_privacy, :rep_group
 
   has_many :ticket_sales
+  has_many :register_images
 
   belongs_to :register_period
-  belongs_to :register_image
   belongs_to :verification_state
 
   has_one :register_contributor

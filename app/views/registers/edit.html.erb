@@ -1,5 +1,5 @@
 <% config = Cfrp::Application.config %>
-<% if @register.register_image != nil %>
+<% if @register.register_images.length > 0 %>
 
 <script>
 $(function() {
@@ -79,7 +79,10 @@ $(function() {
 </script>
 
   <div id="ri_resizer">
-    <img id="register_image" src='<%= config.path_prefix %>/<%= @register.register_image.filepath %>' />
+    <img id="register_image" data-src="<%= config.path_prefix %>/<%= @register.register_images[0].filepath %>" src="<%= config.path_prefix %>/<%= @register.register_images[0].filepath %>" />
+  <% unless @register.register_images[1].nil? %>
+    <img id="register_image2" src="<%= config.path_prefix %>/<%= @register.register_images[1].filepath %>" />
+  <% end %>
   </div>
 
 <% end %>
