@@ -93,6 +93,21 @@ describe Register do
       @register.ticket_sales.detect {|ts| ts.id != @register.ticket_sales[0].id }.seating_category_id.should equal @sc2.id
     end
   end
+
+  it "finds the next register which hasn't been verified in the same season" do
+    unentered = VerificationState.create(:name => 'unentered')
+    unverified = VerificationState.create(:name => 'unverified')
+    verified = VerificationState.create(:name => 'verified')
+    r1 = Register.create( :date => '1750-01-01', :season => '1749-1750' )
+    r2 = Register.create( :date => '1750-01-01', :season => '1749-1750' )
+    r3 = Register.create( :date => '1750-01-01', :season => '1749-1750' )
+    r4 = Register.create( :date => '1750-01-01', :season => '1749-1750' )
+    r2.verification_state = unverified
+    r3.verification_state = verified
+    r4.verification_state = unentered
+    r2.save!; r3.save!; r4.save!
+    r1.next_unentered_register.should equal r4
+  end
 end
 
 # == Schema Information

@@ -62,6 +62,16 @@ class Register < ActiveRecord::Base
     end
   end
 
+  # Hack, or at least should be a helper?
+  # In the end, this is a UI problem...how to solve best?
+  def next_unentered_register
+    Register.order('id')
+      .where(:season => self.season)
+      .where("id > ?", self.id).detect do |r|
+      r.verification_state.name == 'unentered'
+    end
+  end
+
 #
 # THIS HERE FACETING CODE SURE SMELLS LIKE A SEPARATE CLASS, DON'T IT?
 #
