@@ -106,7 +106,7 @@ describe Register do
     r3.verification_state = verified
     r4.verification_state = unentered
     r2.save!; r3.save!; r4.save!
-    r1.next_unentered_register.should equal r4
+    r1.next_unentered_register.should == r4
   end
 end
 
