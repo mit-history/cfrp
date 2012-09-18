@@ -20,8 +20,13 @@ class RegisterPlay < ActiveRecord::Base
   accepts_nested_attributes_for :play
   attr_accessible :play, :play_attributes, :ordering, :firstrun, :newactor, :actorrole, :firstrun_perfnum
 
+  after_initialize :init
+
+  def init
+    self.ordering ||= 0
+  end
+
   def play_attributes=(attrs)
-    logger.info "we are updating the play_attributes via register_play?"
     play = Play.where(["author = ? AND title = ? AND genre = ?",
                        attrs[:author], attrs[:title], attrs[:genre]]
                       ).first

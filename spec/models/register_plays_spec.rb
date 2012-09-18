@@ -25,6 +25,11 @@ describe RegisterPlay do
     @rp.save
   end
 
+  it "sets ordering to 0 by default" do
+    rp = RegisterPlay.new
+    rp.ordering.should == 0
+  end
+
   it "saves associated model data automatically" do
     @rp.play.title.should match('Bob\'s First Play')
     @rp.register.season.should match('1749-1750')
