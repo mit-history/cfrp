@@ -1,15 +1,25 @@
 <% config = Cfrp::Application.config %>
 
+<%# Kinda hacky, but does the job for now. %>
+<%# Fills in author an genre automatically when filling out title. %>
+<% titles = @plays.reduce([]) {|m, p| m << "#{p.title} | #{p.author} | #{p.genre}"} %>
+<% authors = @plays.reduce([]) {|m, p| m << p.author} %>
+
 <script>
 $(function() {
-    // Kinda hacky, but does the job for now.
-    // Fills in author an genre automatically when filling out title.
-    <% titles = @plays.reduce([]) {|m, p| m << "#{p.title} | #{p.author} | #{p.genre}"} %>
-    <% authors = @plays.reduce([]) {|m, p| m << p.author} %>
+    var typeahead_event_init = function(fields) {
+        // Set up auto-fill selector hooks
+        var autofill_id = $(fields).find('.play_typeahead').attr('id');
+        $(fields).find('.author_typeahead').addClass(autofill_id);
+        $(fields).find('.genre_typeahead').addClass(autofill_id);
+        $(fields).find('.play_typeahead').typeahead({source: <%= raw titles.to_json %>});
+        $(fields).find('.play_typeahead').on('change', function(e) { format_play_autofill(e) });
+        $("div#play_fields input." + autofill_id).filter('.author_typeahead').typeahead({source: <%= raw authors.to_json %>});
+    };
 
-    $('.play_typeahead').typeahead({source: <%= raw titles.to_json %>});
-    $('.author_typeahead').typeahead({source: <%= raw authors.to_json %>});
-    $('.play_typeahead').on('change', function(e) { format_play_autofill(e) });
+    $("div#play_fields").children("div.fields").each(function(index, pfields) {
+        typeahead_event_init(pfields);
+    });
 
     var previous_ordering = $("div#play_fields").children("div.fields").length;
 
@@ -19,23 +29,15 @@ $(function() {
         previous_ordering = parseInt(previous_ordering) + 1;
         $(event.field).find('input.play-ordering').val(previous_ordering);
         $(event.field).find('h3').html("Play " + (previous_ordering));
-
-        // Set up auto-fill selector hooks
-        var auto_fill_id = $(event.field).find('.play_typeahead').attr('id');
-        $(event.field).find('.author_typeahead').addClass(auto_fill_id);
-        $(event.field).find('.genre_typeahead').addClass(auto_fill_id);
-
-        $(event.field).find('.play_typeahead').typeahead({source: <%= raw titles.to_json %>});
-        $(event.field).find('.play_typeahead').on('change', function(e) { format_play_autofill(e) });
-        $("div#play_fields input." + auto_fill_id).filter('.author_typeahead').typeahead({source: <%= raw authors.to_json %>});
+        typeahead_event_init(event.field);
     });
 
     var format_play_autofill = function(e) {
       var play_data = $(e.currentTarget).val().split(' | ');
-      var identifier = $(e.currentTarget).attr('id');
+      var autofill_id = $(e.currentTarget).attr('id');
       $(e.currentTarget).val(play_data[0]);
-      $("div#play_fields input." + identifier).filter('.author_typeahead').val(play_data[1]);
-      $("div#play_fields input." + identifier).filter('.genre_typeahead').val(play_data[2]);
+      $("div#play_fields input." + autofill_id).filter('.author_typeahead').val(play_data[1]);
+      $("div#play_fields input." + autofill_id).filter('.genre_typeahead').val(play_data[2]);
     }
 
     if ($('input#register_irregular_receipts_name').val() === '') {
