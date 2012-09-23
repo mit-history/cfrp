@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: git@github.com:repertoire/repertoire-faceting.git
-  revision: 6b34db393de5a0c45370d1b362bc1c078c04cc46
+  revision: c639bcaa4d2b0a422b7cba04d98befdc23d7f1db
   branch: 0.5.5.dev
   specs:
     repertoire-faceting (0.5.5)

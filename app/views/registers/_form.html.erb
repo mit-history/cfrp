@@ -11,20 +11,31 @@ $(function() {
     $('.author_typeahead').typeahead({source: <%= raw authors.to_json %>});
     $('.play_typeahead').on('change', function(e) { format_play_autofill(e) });
 
+    var previous_ordering = $("div#play_fields").children("div.fields").length;
+
     // To handle the case when we have to add a new play...don't like re-initializing,
     // but works for now...
-    $(document).on('nested:fieldAdded', function(event){
-        $('.play_typeahead').typeahead({source: <%= raw titles.to_json %>});
-        $('.author_typeahead').typeahead({source: <%= raw authors.to_json %>});
-        $('.play_typeahead').on('change', function(e) { format_play_autofill(e) });
+    $(document).on('nested:fieldAdded', function(event) {
+        previous_ordering = parseInt(previous_ordering) + 1;
+        $(event.field).find('input.play-ordering').val(previous_ordering);
+        $(event.field).find('h3').html("Play " + (previous_ordering));
+
+        // Set up auto-fill selector hooks
+        var auto_fill_id = $(event.field).find('.play_typeahead').attr('id');
+        $(event.field).find('.author_typeahead').addClass(auto_fill_id);
+        $(event.field).find('.genre_typeahead').addClass(auto_fill_id);
+
+        $(event.field).find('.play_typeahead').typeahead({source: <%= raw titles.to_json %>});
+        $(event.field).find('.play_typeahead').on('change', function(e) { format_play_autofill(e) });
+        $("div#play_fields input." + auto_fill_id).filter('.author_typeahead').typeahead({source: <%= raw authors.to_json %>});
     });
 
     var format_play_autofill = function(e) {
-      var ordering = $(e.currentTarget).data('ordering');
       var play_data = $(e.currentTarget).val().split(' | ');
+      var identifier = $(e.currentTarget).attr('id');
       $(e.currentTarget).val(play_data[0]);
-      $($.find("[data-author-with-ordering='" + ordering + "']")).val(play_data[1]);
-      $($.find("[data-genre-with-ordering='" + ordering + "']")).val(play_data[2]);
+      $("div#play_fields input." + identifier).filter('.author_typeahead').val(play_data[1]);
+      $("div#play_fields input." + identifier).filter('.genre_typeahead').val(play_data[2]);
     }
 
     if ($('input#register_irregular_receipts_name').val() === '') {
@@ -38,6 +49,7 @@ $(function() {
     });
 
   <% unless @register.register_images[1].nil? %>
+    <% if File.exist? "#{Cfrp::Application.config.root}/public/#{@register.register_images[1].filepath}" %>
     $("img#register_image2").hide();
     $("ul.image-tabs a.back").click(function(e) {
       $("img#register_image").attr("src", $("img#register_image2").attr("src"));
@@ -48,6 +60,7 @@ $(function() {
       $("img#register_image").attr("src", $("img#register_image").data("src"));
       return false;
     })
+    <% end %>
   <% end %>
 })
 </script>
@@ -56,12 +69,14 @@ $(function() {
 
 <div class='offset1' id='register_form'>
 
+    <% if !@register.register_images[1].nil? and File.exist? "#{Cfrp::Application.config.root}/public/#{@register.register_images[1].filepath}" %>
     <div class="tabbable tabs-below">
       <ul class="nav nav-tabs image-tabs">
         <li><a class='front' href="">image front</a></li>
         <li><a class='back' href="">image back</a></li>
       </ul>
     </div>
+    <% end %>
 
   <% if @register.register_images.length > 0 %>
     <%= link_to "Open Image in New Window", "#{config.path_prefix}/#{@register.register_images[0].filepath}", :target => 'top' %>
@@ -148,64 +163,62 @@ $(function() {
   <div id='play_fields' class='well'>
 
   <%= f.fields_for :register_plays, @register.register_plays.sort {|a, b| a.ordering <=> b.ordering } do |rp| %>
-  <h3>Play <%= rp.object.ordering + 1 %></h3>
+  <h3>Play <%= rp.object.ordering %></h3>
 
   <div class="control-group">
-    <%= rp.label :ordering, :class => 'control-label', :id => 'register_play_ordering' %>
+    <%= rp.label :ordering, :class => 'control-label' %>
     <div class="controls">
-    <%= rp.text_field :ordering, :id => 'register_play_ordering', :class => 'form-inline span1' %>
+    <%= rp.text_field :ordering, :class => 'form-inline span1 play-ordering' %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= rp.label :newactor, :class => 'control-label', :id => 'register_play_newactor' %>
+    <%= rp.label :newactor, :class => 'control-label' %>
     <div class="controls">
-      <%= rp.text_field :newactor, :id => 'register_play_newactor' %>
+      <%= rp.text_field :newactor %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= rp.label :actorrole, :class => 'control-label', :id => 'register_play_actorrole' %>
+    <%= rp.label :actorrole, :class => 'control-label' %>
     <div class="controls">
-      <%= rp.text_field :actorrole, :id => 'register_play_actorrole' %>
+      <%= rp.text_field :actorrole %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= rp.label :firstrun, :class => 'control-label', :id => 'register_play_firstrun' %>
+    <%= rp.label :firstrun, :class => 'control-label' %>
     <div class="controls">
-    <%= rp.check_box :firstrun, :id => 'register_play_firstrun', :class => 'form-inline span1' %>
+    <%= rp.check_box :firstrun, :class => 'form-inline span1' %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= rp.label :firstrun_perfnum, :class => 'control-label', :id => 'register_play_firstrun_perfnum' %>
+    <%= rp.label :firstrun_perfnum, :class => 'control-label' %>
     <div class="controls">
-      <%= rp.text_field :firstrun_perfnum, :id => 'register_play_firstrun_perfnum', :class => 'span1' %>
+      <%= rp.text_field :firstrun_perfnum, :class => 'span1' %>
     </div>
   </div>
 
   <%= rp.fields_for :play_attributes, rp.object.play do |p| %>
   <div class="control-group">
-    <%= p.label :title, :class => 'control-label', :id => 'play_title' %>
+    <%= p.label :title, :class => 'control-label' %>
     <div class="controls">
-      <%= p.text_field :title, :id => 'play_title', :class => 'play_typeahead span4', :data => { :ordering => rp.object.ordering } %>
+      <%= p.text_field :title, :class => "play_typeahead span4 ordering_#{rp.object.ordering}", :data => { :ordering => rp.object.ordering } %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= p.label :author, :class => 'control-label', :id => 'play_author' %>
+    <%= p.label :author, :class => 'control-label' %>
     <div class="controls">
-      <%#= p.text_field :author, :id => 'play_author', :class => 'author_typeahead span4' %>
-      <%= p.text_field :author, :id => 'play_author', :class => 'author_typeahead span4', :data => { :author_with_ordering => rp.object.ordering } %>
+      <%= p.text_field :author, :class => "author_typeahead span4 ordering_#{rp.object.ordering}" %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= p.label :genre, :class => 'control-label', :id => 'play_genre' %>
+    <%= p.label :genre, :class => 'control-label' %>
     <div class="controls">
-      <%#= p.text_field :genre, :id => 'play_genre' %>
-      <%= p.text_field :genre, :id => 'play_genre', :data => { :genre_with_ordering => rp.object.ordering } %>
+      <%= p.text_field :genre, :class => "genre_typeahead ordering_#{rp.object.ordering}" %>
     </div>
   </div>
   <% end %>

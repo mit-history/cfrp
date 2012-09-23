@@ -33,7 +33,7 @@
     <dd><%= sprintf('%02d', register.date.day) %>/<%= sprintf('%02d', register.date.month) %>/<%= register.date.year %></dd>
 
   <% register.register_plays.sort {|a, b| a.ordering <=> b.ordering }.each do |rp| %>
-    <dt>Play, Author <%= rp.ordering + 1 %>:</dt>
+    <dt>Play, Author <%= rp.ordering %>:</dt>
     <dd><%= rp.play.title %>, <%= rp.play.author %></dd>
   <% end %>
 

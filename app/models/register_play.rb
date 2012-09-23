@@ -23,7 +23,7 @@ class RegisterPlay < ActiveRecord::Base
   after_initialize :init
 
   def init
-    self.ordering ||= 0
+    self.ordering ||= 1
   end
 
   def play_attributes=(attrs)

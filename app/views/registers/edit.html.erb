@@ -13,6 +13,7 @@ $(function() {
 
   // Move image to top of body (in DOM)
   $("div#ri_resizer").prependTo("body");
+  $("div#ri_resizer").height($(window).height()/2.5);
 
   // Reset body margin
   bodyMargin();
@@ -81,7 +82,9 @@ $(function() {
   <div id="ri_resizer">
     <img id="register_image" data-src="<%= config.path_prefix %>/<%= @register.register_images[0].filepath %>" src="<%= config.path_prefix %>/<%= @register.register_images[0].filepath %>" />
   <% unless @register.register_images[1].nil? %>
+    <% if File.exist? "#{Cfrp::Application.config.root}/public/#{@register.register_images[1].filepath}" %>
     <img id="register_image2" src="<%= config.path_prefix %>/<%= @register.register_images[1].filepath %>" />
+    <% end %>
   <% end %>
   </div>
 
