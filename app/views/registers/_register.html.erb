@@ -18,9 +18,9 @@
 
   <% if user_signed_in? %>
   <ul class='register_nav nav nav-pills pull-right'>
-    <li><%= link_to '<i class="icon-pencil"></i> Edit'.html_safe, edit_register_path(register), :id => 'edit_action'  %></li>
+    <li><%= link_to '<i class="i icon-pencil"></i> Edit'.html_safe, edit_register_path(register), :id => 'edit_action'  %></li>
     <% if current_user.has_role? :admin %>
-    <li><%= link_to '<i class="icon-remove"></i> Remove'.html_safe, register, :id => 'delete_action', :confirm => 'Are you sure?', :method => :delete %></li>
+    <li><%= link_to '<i class="i icon-remove"></i> Remove'.html_safe, register, :id => 'delete_action', :confirm => 'Are you sure?', :method => :delete %></li>
     <% end %>
   </ul>
   <% end %>

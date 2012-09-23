@@ -95,3 +95,11 @@ img#register_image {
   z-index: 99999;
   border: 1px solid grey;
 }
+
+.icon-pencil, .icon-remove {
+  background-image:url('/cfrp/images/twitter/bootstrap/glyphicons-halflings.png');
+  display: inline-block;
+}
+
+.icon-pencil { background-position:0 -72px; }
+.icon-remove { background-position:-312px 0; }
