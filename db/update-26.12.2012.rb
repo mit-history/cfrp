@@ -1,11 +1,5 @@
 #!/Users/ddellacosta/.rvm/rubies/ruby-1.9.3-p327/bin/ruby
 
-# File.open("R138-141-IDmatching.txt", "r") do |file|
-#   while line = file.gets
-#     puts "#{line}"
-#   end
-#end
-
 require 'csv'
 
 counter = {}
@@ -19,6 +13,7 @@ CSV.open("R138-141-IDmatching.txt", "r") do |file|
         counter[fields[1]] ||= 1
       end
 
+      # Format:
       # images/jpeg-150-80/M119_02_R134/M119_02_R134_0000r.jpg
 
       filepath = 'images/jpeg-150-80/' << fields[0].gsub(/_\d*[rv]*\.jpg$/, '') << '/' << fields[0]
