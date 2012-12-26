@@ -1,0 +1,9 @@
+
+1) copied db from live (pg_dump cfrp_production > ..., scp)
+
+2) having installed from homebrew apparently made things easier since root/sudo is no longer necessary for PostgreSQL extensions and whatnot.
+
+3) ran this line from Repertoire Faceting README:
+      $ rake db:faceting:build    { sudo will prompt for your password }
+
+4) then, using the *postgres* user (not cfrp, that failed), dump the db from production in.  This doesn't complain (much).
