@@ -7,3 +7,26 @@
       $ rake db:faceting:build    { sudo will prompt for your password }
 
 4) then, using the *postgres* user (not cfrp, that failed), dump the db from production in.  This doesn't complain (much).
+
+--- other issues
+
+Testing:
+
+- Need to migrate test manually? -I guess it pulls from schema which is incomplete (?)
+
+rake db:migrate RAILS_ENV=test
+
+For migration 20120917060512_add_first_period_seating_category.rb, missing predefined data:
+
+- needs register period set up:
+
+  INSERT INTO register_periods (id, period, created_at, updated_at) VALUES (2, 'something', NOW(), NOW());
+
+- needs pre-defined seating categories:
+
+  INSERT INTO seating_categories (name, description, created_at, updated_at) VALUES ('Troisièmes Loges', 'Troisièmes Loges', NOW(), NOW());
+  INSERT INTO seating_categories (name, description, created_at, updated_at) VALUES ('Premières Places', 'Premières Places', NOW(), NOW());
+  INSERT INTO seating_categories (name, description, created_at, updated_at) VALUES ('Secondes Places', 'Secondes Places', NOW(), NOW());
+  INSERT INTO seating_categories (name, description, created_at, updated_at) VALUES ('Troisièmes Places', 'Troisièmes Places', NOW(), NOW());
+  INSERT INTO seating_categories (name, description, created_at, updated_at) VALUES ('Places de Parterre', 'Places de Parterre', NOW(), NOW());
+

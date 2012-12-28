@@ -8,6 +8,11 @@ require 'capybara/rspec'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
+# For FM import lib
+require_relative '../lib/fm_migrator'
+require_relative '../lib/field_set'
+require_relative '../lib/season_spec'
+
 RSpec.configure do |config|
   # == Mock Framework
   #
@@ -24,4 +29,8 @@ RSpec.configure do |config|
   # examples within a transaction, comment the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
+
+  # Filter focus is true
+  config.filter_run :focus => true
+  config.run_all_when_everything_filtered = true
 end

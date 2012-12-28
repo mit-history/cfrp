@@ -38,4 +38,6 @@ group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'annotate'
+  gem 'guard-rspec'
+  gem 'rb-fsevent', '~> 0.9.1'
 end
