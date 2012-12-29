@@ -11,6 +11,34 @@ module CFRP
                 :representation,
                 :for_editor_notes,
                 :misc_notes,
-                :register_period_id
+                :register_period_id,
+                :play1,
+                :play2,
+                :play1_firstrun,
+                :play2_firstrun,
+                :newactor,
+                :actorrole,
+                :image_front,
+                :image_back
+
+    def ticket_sales
+      ticket_sales_keys.reduce([]) do |ticket_sales, keyset|
+        ticket_sales << TicketSaleKeySet.new(*keyset)
+      end
+    end
+
+    private
+
+    def ticket_sales_keys
+      []
+    end
+
+    TicketSaleKeySet = Struct.new(:total_sold,
+                                  :price_per_ticket_l,
+                                  :price_per_ticket_s,
+                                  :seating_category_name,
+                                  :recorded_total_l,
+                                  :recorded_total_s)
+
   end
 end

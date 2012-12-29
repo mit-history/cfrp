@@ -1,0 +1,90 @@
+# 14 : Number Tickets Sold 1
+# 27 : Price per Tickets Sold 1 livre
+# 28 : Price per Tickets Sold 1 sous
+# 58 : Ticket category 1
+# 75 : Total of Tickets Sold 1 livre
+# 76 : Total of Tickets Sold 1 sous
+
+# 19 : Number Tickets Sold 2
+# 37 : Price per Tickets Sold 2 livre
+# 38 : Price per Tickets Sold 2 sous
+# 63 : Ticket category 2
+# 85 : Total of Tickets Sold 2 livre
+# 86 : Total of Tickets Sold 2 sous
+
+# 20 : Number Tickets Sold 3
+# 39 : Price per Tickets Sold 3 livre
+# 40 : Price per Tickets Sold 3 sous
+# 64 : Ticket category 3
+# 87 : Total of Tickets Sold 3 livre
+# 88 : Total of Tickets Sold 3 sous
+
+# 21 : Number Tickets Sold 4
+# 41 : Price per Tickets Sold 4 livre
+# 42 : Price per Tickets Sold 4 sous
+# 65 : Ticket category 4
+# 89 : Total of Tickets Sold 4 livre
+# 90 : Total of Tickets Sold 4 sous
+
+# 22 : Number Tickets Sold 5
+# 43 : Price per Tickets Sold 5 livre
+# 44 : Price per Tickets Sold 5 sous
+# 66 : Ticket category 5
+# 91 : Total of Tickets Sold 5 livre
+# 92 : Total of Tickets Sold 5 sous
+
+# 23 : Number Tickets Sold 6
+# 45 : Price per Tickets Sold 6 livre
+# 46 : Price per Tickets Sold 6 sous
+# 67 : Ticket category 6
+# 93 : Total of Tickets Sold 6 livre
+# 94 : Total of Tickets Sold 6 sous
+
+# 24 : Number Tickets Sold 7
+# 47 : Price per Tickets Sold 7 livre
+# 48 : Price per Tickets Sold 7 sous
+# 68 : Ticket category 7
+# 95 : Total of Tickets Sold 7 livre
+# 96 : Total of Tickets Sold 7 sous
+
+# 25 : Number Tickets Sold 8
+# 49 : Price per Tickets Sold 8 livre
+# 50 : Price per Tickets Sold 8 sous
+# 69 : Ticket category 8
+# 97 : Total of Tickets Sold 8 livre
+# 98 : Total of Tickets Sold 8 sous
+
+# 26 : Number Tickets Sold 9
+# 51 : Price per Tickets Sold 9 livre
+# 52 : Price per Tickets Sold 9 sous
+# 70 : Ticket category 9
+# 99 : Total of Tickets Sold 9 livre
+# 100 : Total of Tickets Sold 9 sous
+
+# 15 : Number Tickets Sold 10
+# 29 : Price per Tickets Sold 10 livre
+# 30 : Price per Tickets Sold 10 sous
+# 59 : Ticket category 10
+# 77 : Total of Tickets Sold 10 livre
+# 78 : Total of Tickets Sold 10 sous
+
+# 16 : Number Tickets Sold 11
+# 31 : Price per Tickets Sold 11 livre
+# 32 : Price per Tickets Sold 11 sous
+# 60 : Ticket category 11
+# 79 : Total of Tickets Sold 11 livre
+# 80 : Total of Tickets Sold 11 sous
+
+# 17 : Number Tickets Sold 12
+# 33 : Price per Tickets Sold 12 livre
+# 34 : Price per Tickets Sold 12 sous
+# 61 : Ticket category 12
+# 81 : Total of Tickets Sold 12 livre
+# 82 : Total of Tickets Sold 12 sous
+
+# 18 : Number Tickets Sold 13
+# 35 : Price per Tickets Sold 13 livre
+# 36 : Price per Tickets Sold 13 sous
+# 62 : Ticket category 13
+# 83 : Total of Tickets Sold 13 livre
+# 84 : Total of Tickets Sold 13 sous
