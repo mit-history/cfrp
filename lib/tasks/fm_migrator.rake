@@ -3,14 +3,14 @@ require_relative '../fm_migrator'
 namespace :fm_migrator do
   desc "Dumps out raw XML fieldsets for specified season (e.g. '1780-1781')"
   task :dump_fieldsets, [:season] => :environment do |t, args|
-    path = "/Users/ddellacosta/projects/mit-work/cfrp/fm-xml/#{args.season}.xml"
+    path = "fm-xml/#{args.season}.xml"
     fm_migration = CFRP::FMMigrator.new(open(path), args.season)
     puts fm_migration.fieldsets
   end
 
   desc "Imports XML via creation and saving of CFRP Model instances"
   task :import, [:season] => :environment do |t, args|
-    path = "/Users/ddellacosta/projects/mit-work/cfrp/fm-xml/#{args.season}.xml"
+    path = "fm-xml/#{args.season}.xml"
     fm_migration = CFRP::FMMigrator.new(open(path), args.season)
     registers = fm_migration.registers
     puts registers.inspect
