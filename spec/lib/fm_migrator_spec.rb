@@ -14,8 +14,7 @@ module CFRP
       subject
     end
 
-    it 'splits cols up into separate fieldsets', focus: true do
-      puts subject.fieldsets
+    it 'splits cols up into separate fieldsets' do
       subject.fieldsets[0].should_not be_nil
     end
 

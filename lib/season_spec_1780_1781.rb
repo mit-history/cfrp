@@ -4,17 +4,29 @@ require_relative 'season_spec_template'
 module CFRP
   class SeasonSpec_1780_1781 < SeasonSpecTemplate
     def initialize
+
+      # Stuff I'm not using at the moment.
+      # (the following map to Filemaker field names)
+      # 3 : By (recettes)
+      # 5 : date created recettes
+      # 6 : date last modified recettes
+      # 9 : Image No.
+      # 57 : status recettes
+      # 53 : Record ID
+      # 73 : Total miscellaneous revenue category livre
+      # 74 : Total miscellaneous revenue category sous
+
       @weekday = 104
       @date = 4
       @season = 56
       @register_num = 54
-      @payment_notes = 10
-      @page_text = 103
+      @payment_notes = 10                # Miscellaneous revenue category
+      @page_text = 103                   # Total Receipts Text
       @total_receipts_recorded_l = 101
       @total_receipts_recorded_s = 102
       @representation = 55
-      @for_editor_notes = 13
-      @misc_notes = 2
+      @for_editor_notes = 13             # notes recettes
+      @misc_notes = 2                    # Attached text document
       @register_period_id = 2
       @play1 = 71
       @play2 = 72
@@ -27,6 +39,14 @@ module CFRP
     end
 
     private
+
+    # Order:
+    # [ Number Tickets Sold 1,
+    #   Price per Tickets Sold 1 livre,
+    #   Price per Tickets Sold 1 sous,
+    #   Ticket category 1,
+    #   Total of Tickets Sold 1 livre,
+    #   Total of Tickets Sold 1 sous ]
 
     def ticket_sales_keys
       [

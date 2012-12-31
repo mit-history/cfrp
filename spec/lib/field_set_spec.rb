@@ -3,11 +3,12 @@ require_relative '../spec_helper'
 
 module CFRP
   describe FieldSet do
-    let(:fm_xml) { open('fm-xml/1780-1781.xml') }
+    let(:season) { '1780-1781' }
+
+    let(:fm_xml) { open("fm-xml/#{season}.xml") }
     let(:doc) { Nokogiri::XML.parse(fm_xml) }
     let(:first) { doc.css("FMPXMLRESULT RESULTSET ROW")[0].css("COL") }
 
-    let(:season) { '1780-1781' }
     let(:season_spec) { SeasonSpec.retrieve_for season }
 
     let(:subject) { FieldSet.new(first, season_spec) }
@@ -18,6 +19,14 @@ module CFRP
 
     it 'converts date fields to Dates' do
       subject.date.should == Date.new(1780, 4, 4)
+    end
+
+    describe 'Periods from 1782 - 1786' do
+      let(:season) { '1782-1783' }
+
+      it 'converts year, month, day fields to Dates' do
+        subject.date.should == Date.new(1782, 4, 9)
+      end
     end
 
     describe 'Ticket Sales' do

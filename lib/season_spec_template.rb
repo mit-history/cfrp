@@ -19,7 +19,12 @@ module CFRP
                 :newactor,
                 :actorrole,
                 :image_front,
-                :image_back
+                :image_back,
+
+    # for post 1782
+                :day,
+                :month,
+                :year
 
     def ticket_sales
       ticket_sales_keys.reduce([]) do |ticket_sales, keyset|

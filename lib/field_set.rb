@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require_relative '../app/models/seating_category.rb'
 
 module CFRP
@@ -17,13 +18,27 @@ module CFRP
       when :register_period_id
         @season_spec.send(name)
       when :date
-        Date.parse(@fields[@season_spec.send(name)])
+        extract_date
       else
         @fields[@season_spec.send(name)]
       end
     end
 
     private
+
+    def extract_date
+      if @season_spec.date.nil?
+        Date.new(@fields[@season_spec.year].to_i,
+                 month_index(@fields[@season_spec.month]),
+                 @fields[@season_spec.day].to_i)
+      else
+        Date.parse(@fields[@season_spec.date])
+      end
+    end
+
+    def month_index(month_name)
+      French_months[month_name.downcase]
+    end
 
     def ticket_sales(ticket_sales_keys)
       ticket_sales_keys.reduce([]) do |ts_vals, ts_ks|
@@ -37,6 +52,23 @@ module CFRP
       end
     end
 
+    French_months = {
+      'janvier' => 1,
+      'février' => 2,
+      'fevrier' => 2,
+      'mars' => 3,
+      'avril' => 4,
+      'mai' => 5, 
+      'juin' => 6,
+      'juillet' => 7,
+      'août' => 8,
+      'septembre' => 9,
+      'octobre' => 10,
+      'novembre' => 11,
+      'décembre' => 12,
+      'decembre' => 12
+    }
+
     TicketSaleValueSet = Struct.new(:total_sold,
                                     :price_per_ticket_l,
                                     :price_per_ticket_s,
@@ -45,7 +77,9 @@ module CFRP
                                     :recorded_total_s)
 
     def get_seating_category_id(name)
-      SeatingCategory.find_by_name(name).id
+      rp = RegisterPeriod.find_by_id(@season_spec.register_period_id)
+      rpsc = rp.register_period_seating_categories.find {|rpsc| rpsc.seating_category.name == name}
+      rpsc.seating_category.id
     end
   end
 end
