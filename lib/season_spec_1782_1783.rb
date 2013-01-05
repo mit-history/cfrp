@@ -61,16 +61,16 @@ module CFRP
        [22, 44, 45, 'Premieres loges à 5 places', 102, 103],
        [23, 46, 47, 'Secondes Loges à 4 places', 104, 105],
        [24, 48, 49, 'Secondes Loges à 3 places', 106, 107],
-       [25, 50, 51, 'Troisième Loges à 6 places', 108, 109],
-       [26, 52, 53, 'Troisième Loges à 4 places', 110, 111],
+       [25, 50, 51, 'Troisièmes Loges à 6 places', 108, 109],
+       [26, 52, 53, 'Troisièmes Loges à 4 places', 110, 111],
        [27, 54, 55, 'Troisièmes Loges à', 112, 113],
        [28, 56, 57, 'Petites Loges', 114, 115],
        [29, 58, 59, 'Petites loges à', 116, 117],
        [16, 32, 33, 'Galeries à 4 livres', 90, 91],
-       [17, 34, 35, 'Premiers Places à 6 livres', 92, 93],
+       [17, 34, 35, 'Premieres Places à 6 livres', 92, 93],
        [18, 36, 37, 'Secondes Places à 3 livres', 94, 95],
-       [19, 38, 39, 'Parterre assis à 2 livres 8 s', 96, 97],
-       [20, 40, 41, 'Troisième Places à 2 livres', 98, 99],
+       [19, 38, 39, 'Troisièmes Places à 2 livres', 96, 97],
+       [20, 40, 41, 'Parterre assis à 2 livres 8 s', 98, 99],
        [21, 42, 43, 'Paradis à 1 livre 10', 100, 101]
       ]
     end
