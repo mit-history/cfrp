@@ -36,6 +36,8 @@ module CFRP
       @actorrole = 1
       @image_front = 8
       @image_back = 7
+      @irregular_receipts_l = 73         # Total miscellaneous revenue category livre
+      @irregular_receipts_s = 74         # Total miscellaneous revenue category sous
     end
 
     private

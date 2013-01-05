@@ -18,8 +18,6 @@ module CFRP
       # 65 : Reprise Number
       # 67 : Signatory
       # 68 : status recettes
-      # 86 : Total miscellaneous revenue category livre
-      # 87 : Total miscellaneous revenue category sous
 
       @weekday = 120
       @day = 6
@@ -43,6 +41,8 @@ module CFRP
       @actorrole = 1
       @image_front = 10
       @image_back = 9
+      @irregular_receipts_l = 86
+      @irregular_receipts_s = 87
     end
 
     private

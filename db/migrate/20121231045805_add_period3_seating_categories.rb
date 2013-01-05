@@ -5,16 +5,16 @@ class AddPeriod3SeatingCategories < ActiveRecord::Migration
                         'Premieres loges à 5 places',
                         'Secondes Loges à 4 places',
                         'Secondes Loges à 3 places',
-                        'Troisième Loges à 6 places',
-                        'Troisième Loges à 4 places',
+                        'Troisièmes Loges à 6 places',
+                        'Troisièmes Loges à 4 places',
                         'Troisièmes Loges à',
                         'Petites Loges',
                         'Petites loges à',
                         'Galeries à 4 livres',
-                        'Premiers Places à 6 livres',
+                        'Premieres Places à 6 livres',
                         'Secondes Places à 3 livres',
+                        'Troisièmes Places à 2 livres',
                         'Parterre assis à 2 livres 8 s',
-                        'Troisième Places à 2 livres',
                         'Paradis à 1 livre 10']
 
   def up

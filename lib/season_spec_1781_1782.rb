@@ -3,6 +3,11 @@ require_relative 'season_spec_template'
 
 module CFRP
   class SeasonSpec_1781_1782 < SeasonSpecTemplate
+
+    # Stuff I've not accounted for yet?
+    # 58 : Tally Livres
+    # 59 : Tally Sous
+
     def initialize
       @weekday = 106
       @date = 4
@@ -24,6 +29,8 @@ module CFRP
       @actorrole = 1
       @image_front = 8
       @image_back = 7
+      @irregular_receipts_l = 75
+      @irregular_receipts_s = 76
     end
 
     private
@@ -46,10 +53,4 @@ module CFRP
       ]
     end
   end
-
-  # Stuff I've not accounted for yet?
-  # 58 : Tally Livres
-  # 59 : Tally Sous
-  # 75 : Total miscellaneous revenue category livre
-  # 76 : Total miscellaneous revenue category sous
 end

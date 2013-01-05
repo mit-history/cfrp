@@ -20,6 +20,8 @@ module CFRP
                 :actorrole,
                 :image_front,
                 :image_back,
+                :irregular_receipts_l,
+                :irregular_receipts_s,
 
     # for post 1782
                 :day,

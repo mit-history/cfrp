@@ -5,7 +5,7 @@ module CFRP
   describe FieldSet do
     let(:season) { '1780-1781' }
 
-    let(:fm_xml) { open("fm-xml/#{season}.xml") }
+    let(:fm_xml) { open("spec/fixtures/#{season}.xml") }
     let(:doc) { Nokogiri::XML.parse(fm_xml) }
     let(:first) { doc.css("FMPXMLRESULT RESULTSET ROW")[0].css("COL") }
 
@@ -14,11 +14,15 @@ module CFRP
     let(:subject) { FieldSet.new(first, season_spec) }
 
     it 'converts a set of XML nodes to attributes' do
-      subject.weekday.should == 'Mardy'
+      subject.season.should == '1780-1781'
     end
 
     it 'converts date fields to Dates' do
       subject.date.should == Date.new(1780, 4, 4)
+    end
+
+    it 'converts weekday strings with "y" endings to have "i" endings' do
+      subject.weekday.should == 'Mardi'
     end
 
     describe 'Periods from 1782 - 1786' do

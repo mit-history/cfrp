@@ -19,6 +19,8 @@ module CFRP
         @season_spec.send(name)
       when :date
         extract_date
+      when :weekday
+        fix_weekday
       else
         @fields[@season_spec.send(name)]
       end
@@ -36,12 +38,16 @@ module CFRP
       end
     end
 
+    def fix_weekday
+      @fields[@season_spec.weekday].gsub(/y$/, 'i')
+    end
+
     def month_index(month_name)
       French_months[month_name.downcase]
     end
 
     def ticket_sales(ticket_sales_keys)
-      ticket_sales_keys.reduce([]) do |ts_vals, ts_ks|
+      all_ts = ticket_sales_keys.reduce([]) do |ts_vals, ts_ks|
         args = [@fields[ts_ks.total_sold].to_i,
                 @fields[ts_ks.price_per_ticket_l].to_i,
                 @fields[ts_ks.price_per_ticket_s].to_i,
@@ -50,6 +56,17 @@ module CFRP
                 @fields[ts_ks.recorded_total_s].to_i]
         ts_vals << TicketSaleValueSet.new(*args)
       end
+
+      unless @fields[@season_spec.irregular_receipts_l].empty? &&
+          @fields[@season_spec.irregular_receipts_s].empty?
+        all_ts << TicketSaleValueSet.new(*[0,
+                                           0,
+                                           0,
+                                           get_seating_category_id('Irregular Receipts'),
+                                           @fields[@season_spec.irregular_receipts_l].to_i,
+                                           @fields[@season_spec.irregular_receipts_s].to_i])
+      end
+      all_ts
     end
 
     French_months = {
