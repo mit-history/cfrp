@@ -13,8 +13,6 @@ module CFRP
       # 9 : Image No.
       # 57 : status recettes
       # 53 : Record ID
-      # 73 : Total miscellaneous revenue category livre
-      # 74 : Total miscellaneous revenue category sous
 
       @weekday = 104
       @date = 4
