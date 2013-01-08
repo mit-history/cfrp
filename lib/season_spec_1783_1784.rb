@@ -2,7 +2,7 @@
 require_relative 'season_spec_template'
 
 module CFRP
-  class SeasonSpec_1782_1783 < SeasonSpecTemplate
+  class SeasonSpec_1783_1784 < SeasonSpecTemplate
     def initialize
 
       # Stuff I'm not using at the moment.

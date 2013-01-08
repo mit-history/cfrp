@@ -79,11 +79,15 @@ module CFRP
       'juin' => 6,
       'juillet' => 7,
       'août' => 8,
+      'aout' => 8,
       'septembre' => 9,
+      'september' => 9,
       'octobre' => 10,
+      'november' => 11,
       'novembre' => 11,
       'décembre' => 12,
-      'decembre' => 12
+      'decembre' => 12,
+      'december' => 12
     }
 
     TicketSaleValueSet = Struct.new(:total_sold,
