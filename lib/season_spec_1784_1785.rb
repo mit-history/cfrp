@@ -12,6 +12,7 @@ module CFRP
       # 5 : date last modified recettes
       # 11 : Image No.
       # 60 : Record ID
+      # 61 : representation
       # 62 : Representation Number  <-- Misleadingly named!
       # 63 : Reprise 1
       # 64 : Reprise 2
@@ -29,7 +30,7 @@ module CFRP
       @page_text = 105
       @total_receipts_recorded_l = 120
       @total_receipts_recorded_s = 121
-      @representation = 61              # Actually there is just one field used for Register Number and Representation!
+      @representation = 61              # appears that 62 is not right?
       @for_editor_notes = 14            # notes recettes
       @misc_notes = 2                   # Attached text document
       @register_period_id = 6
