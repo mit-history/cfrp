@@ -22,7 +22,7 @@ module CFRP
       when :weekday
         fix_weekday
       else
-        @fields[@season_spec.send(name)]
+        @season_spec.send(name).nil? ? '' : @fields[@season_spec.send(name)]
       end
     end
 

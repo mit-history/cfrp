@@ -12,6 +12,7 @@ module CFRP
                 :for_editor_notes,
                 :misc_notes,
                 :register_period_id,
+                :signatory,
                 :play1,
                 :play2,
                 :play1_firstrun,

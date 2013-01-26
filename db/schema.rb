@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120825032433) do
+ActiveRecord::Schema.define(:version => 20130126104623) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20120825032433) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "register_id"
   end
 
   create_table "register_period_seating_categories", :force => true do |t|
@@ -117,6 +118,7 @@ ActiveRecord::Schema.define(:version => 20120825032433) do
     t.integer  "register_image_id"
     t.integer  "register_period_id"
     t.integer  "verification_state_id"
+    t.string   "irregular_receipts_name"
   end
 
   create_table "roles", :force => true do |t|
@@ -165,6 +167,7 @@ ActiveRecord::Schema.define(:version => 20120825032433) do
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "password_salt",          :default => "", :null => false
     t.string   "reset_password_token"
+    t.string   "remember_token"
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",          :default => 0
     t.datetime "current_sign_in_at"

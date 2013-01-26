@@ -20,7 +20,8 @@ module CFRP
                        :representation,
                        :for_editor_notes,
                        :misc_notes,
-                       :register_period_id
+                       :register_period_id,
+                       :signatory
                       ]
 
     attr_reader :season_spec
@@ -78,6 +79,7 @@ module CFRP
         :for_editor_notes => entry.for_editor_notes,
         :misc_notes => entry.misc_notes,
         :register_period_id => entry.register_period_id,
+        :signatory => entry.signatory,
         :verification_state_id => 2
       }
     end

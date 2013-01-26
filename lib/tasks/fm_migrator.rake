@@ -39,7 +39,7 @@ namespace :fm_migrator do
     first_cols = doc.css("FMPXMLRESULT RESULTSET ROW").first.css("COL")
 
     scs = key.keys.reduce([]) do |s, k|
-      if key[k].match(/Ticket category/)
+      if key[k].match(/Ticket category/i)
         s << "#{first_cols[k].content} : #{k}, #{key[k]}\n"
       else
         s
