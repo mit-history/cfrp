@@ -5,6 +5,11 @@ require_relative 'season_spec_1783_1784'
 require_relative 'season_spec_1784_1785'
 require_relative 'season_spec_1785_1786'
 require_relative 'season_spec_1786_1787'
+require_relative 'season_spec_1787_1788'
+require_relative 'season_spec_1788_1789'
+require_relative 'season_spec_1789_1790'
+require_relative 'season_spec_1790_1791'
+require_relative 'season_spec_1791_1792'
 
 module CFRP
   class SeasonSpec
@@ -15,7 +20,12 @@ module CFRP
       '1783-1784' => CFRP::SeasonSpec_1783_1784,
       '1784-1785' => CFRP::SeasonSpec_1784_1785,
       '1785-1786' => CFRP::SeasonSpec_1785_1786,
-      '1786-1787' => CFRP::SeasonSpec_1786_1787
+      '1786-1787' => CFRP::SeasonSpec_1786_1787,
+      '1787-1788' => CFRP::SeasonSpec_1787_1788,
+      '1788-1789' => CFRP::SeasonSpec_1788_1789,
+      '1789-1790' => CFRP::SeasonSpec_1789_1790,
+      '1790-1791' => CFRP::SeasonSpec_1790_1791,
+      '1791-1792' => CFRP::SeasonSpec_1791_1792
     }
 
     def self.retrieve_for season

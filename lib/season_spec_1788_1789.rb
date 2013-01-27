@@ -2,12 +2,16 @@
 require_relative 'season_spec_template'
 
 module CFRP
-  class SeasonSpec_1786_1787 < SeasonSpecTemplate
+  class SeasonSpec_1788_1789 < SeasonSpecTemplate
     def initialize
 
       # Stuff I'm not using at the moment.
       # (the following map to Filemaker field names)
+
       # 3 : By (recettes)
+      # 4 : Crédit de la comédie
+      # 5 : credit livres
+      # 6 : credit sous
       # 7 : date created recettes
       # 8 : date last modified recettes
       # 14 : Image No.
@@ -16,14 +20,8 @@ module CFRP
       # 85 : Reprise 1
       # 86 : Reprise 2
       # 87 : Reprise Number
-      # 89 : Signatory
       # 91 : Tally livres
       # 92 : Tally sous
-
-      # What to do with these?
-      # 4 : Crédit de la comédie
-      # 5 : credit livres
-      # 6 : credit sous
 
       @weekday = 162
       @day = 9
@@ -84,7 +82,7 @@ module CFRP
        [27, 57, 58, 'Places de Secondes à 3 liv.', 136, 137],
        [28, 59, 60, 'Places de Parquet à 2 liv. 8 sous.', 138, 139],
        [30, 63, 64, 'Places de Troisiemes à 2 liv.', 142, 143],
-       [31, 65, 66, 'Places de Paradis à 1 liv 10 sous', 144, 145]
+       [31, 65, 66, 'Places de Paradis à 1 liv 10 sous', 144, 145] 
       ]
     end
   end
@@ -256,25 +254,3 @@ __END__
  161 : Total Receipts sous
  162 : Weekday
  163 : Year
-
-Premieres loges à 6 places, à 6 liv. : 93, Ticket category 1
-Premieres loges à 5 places, à 6 liv. : 104, Ticket category 2
-Premieres Logs à  places, à 6 liv. : 107, Ticket category 3
-Loges au Rez-de-chaussée, à    pl. à 6 l. : 108, Ticket category 4
-Loges au Rez-de-chaussée, à    pl. à 6 l. : 109, Ticket category 5
-Loges au Rez-de-chaussée, à    pl. à 6 l. : 110, Ticket category 6
-Secondes Loges à 4 places, à 3 liv 15 sous : 111, Ticket category 7
-Secondes Loges à 3 places, à 3 liv 15 sous : 112, Ticket category 8
-Troisiemes Loges à 8 places, à 2 l. 10 s.  : 113, Ticket category 9
-Troisiemes Loges à 6 places, à 2 l. 10 s.  : 94, Ticket category 10
-Troisiemes Loges à 4 places, à 2 l. 10 s.  : 95, Ticket category 11
-Troisiemes Loges à 3 places, à 2 l. 10 s.  : 96, Ticket category 12
-Troisiemes Loges à    places, à 2 l. 10 s.  : 97, Ticket category 13
-Quatriemes Loges à 4 places, à 3 l. 15 s. : 98, Ticket category 14
-Quatriemes Loges à 3 places, à 3 l. 15 s. : 99, Ticket category 15
-Places de Premieres à 6 liv. : 100, Ticket Category 16
-Places de Galerie à 4 liv. : 101, Ticket Category 17
-Places de Secondes à 3 liv. : 102, Ticket Category 18
-Places de Parquet à 2 liv. 8 sous. : 103, Ticket Category 19
-Places de Troisiemes à 2 liv. : 105, Ticket Category 20
-Places de Paradis à 1 liv 10 sous : 106, Ticket Category 21
