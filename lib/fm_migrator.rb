@@ -7,23 +7,6 @@ require 'nokogiri'
 module CFRP
   class FMMigrator
     attr_reader :doc
-
-    REGISTER_FIELDS = [
-                       :date,
-                       :weekday,
-                       :season,
-                       :register_num,
-                       :payment_notes,
-                       :page_text,
-                       :total_receipts_recorded_l,
-                       :total_receipts_recorded_s,
-                       :representation,
-                       :for_editor_notes,
-                       :misc_notes,
-                       :register_period_id,
-                       :signatory
-                      ]
-
     attr_reader :season_spec
 
     def initialize(xml, season)
@@ -34,8 +17,6 @@ module CFRP
     def fieldsets
       @doc.css("FMPXMLRESULT RESULTSET ROW").reduce([]) do |fieldsets, r|
         k = r.css("COL")
-        # puts "#{k[0]}" if fieldsets.empty?
-        # puts "#{k[1]}" if fieldsets.count == 124
         fieldsets << CFRP::FieldSet.new(k, @season_spec)
       end
     end
@@ -130,8 +111,8 @@ module CFRP
     def extract_register_image_data(entry)
       [entry.image_front, entry.image_back].reduce([]) do |ri_data, path|
         unless path.nil? || path.empty?
-          matches = path.match(/^(.*)_\d*\w*\.jpg$/)
-          formatted_path = "images/jpeg-150-80/#{matches[1]}/#{path}"
+          matches = path.match(%r|((M119_02_R\d*)_\d*\w*\.jpg)$|)
+          formatted_path = "images/jpeg-150-80/#{matches[2]}/#{matches[1]}"
           ri_data << { :filepath => formatted_path }
         end
       end

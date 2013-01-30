@@ -105,6 +105,13 @@ module CFRP
         end.recorded_total_l.should == 4
       end
 
+      it 'sets the RegisterImage filepaths correctly' do
+        registers[3].register_images[0].filepath.should == 'images/jpeg-150-80/M119_02_R145/M119_02_R145_253r.jpg'
+        registers[3].register_images[1].filepath.should == 'images/jpeg-150-80/M119_02_R145/M119_02_R145_254v.jpg'
+        registers[4].register_images[0].filepath.should == 'images/jpeg-150-80/M119_02_R145/M119_02_R145_109r.jpg'
+        registers[4].register_images[1].filepath.should == 'images/jpeg-150-80/M119_02_R145/M119_02_R145_110v.jpg'
+      end
+
       describe "Resetting Images" do
         before :each do
           @r = Register.new
