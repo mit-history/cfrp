@@ -10,6 +10,7 @@ require_relative 'season_spec_1788_1789'
 require_relative 'season_spec_1789_1790'
 require_relative 'season_spec_1790_1791'
 require_relative 'season_spec_1791_1792'
+require_relative 'season_spec_1792_1793'
 
 module CFRP
   class SeasonSpec
@@ -25,7 +26,8 @@ module CFRP
       '1788-1789' => CFRP::SeasonSpec_1788_1789,
       '1789-1790' => CFRP::SeasonSpec_1789_1790,
       '1790-1791' => CFRP::SeasonSpec_1790_1791,
-      '1791-1792' => CFRP::SeasonSpec_1791_1792
+      '1791-1792' => CFRP::SeasonSpec_1791_1792,
+      '1792-1793' => CFRP::SeasonSpec_1792_1793
     }
 
     def self.retrieve_for season

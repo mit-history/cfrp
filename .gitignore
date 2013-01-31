@@ -5,3 +5,8 @@ log/*.log
 tmp/**/*
 vendor/*
 scraps/*
+.DS_Store
+*.keys
+*.seating
+public/images/10.09.photos/
+public/images/jpeg-150-80/
