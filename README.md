@@ -8,5 +8,5 @@ On live production:
 
 Create new user, and save--and you're done:
 
-   $ @l = User.new(email: 'someone@somedomain.com', shortname: 'someone', first_name: 'Some', last_name: 'One', password: 'password')
-   $ @l.save
+    $ @l = User.new(email: 'someone@somedomain.com', shortname: 'someone', first_name: 'Some', last_name: 'One', password: 'password')
+    $ @l.save
