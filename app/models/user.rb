@@ -35,7 +35,8 @@ class User < ActiveRecord::Base
   acts_as_taggable_on :rep_privacy, :rep_group
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :shortname, :password_confirmation, :remember_me, :rep_privacy_list, :rep_group_list
+  attr_accessible :email, :password, :shortname, :last_name, :first_name,
+                  :password_confirmation, :remember_me, :rep_privacy_list, :rep_group_list
 
   belongs_to :register_contributor
 
