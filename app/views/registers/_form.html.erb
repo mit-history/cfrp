@@ -2,19 +2,18 @@
 
 <%# Kinda hacky, but does the job for now. %>
 <%# Fills in author an genre automatically when filling out title. %>
-<% titles = @plays.reduce([]) {|m, p| m << "#{p.title} | #{p.author} | #{p.genre}"} %>
-<% authors = @plays.reduce([]) {|m, p| m << p.author} %>
+
+<% titles = @plays.reduce([]) {|m, p| m << "#{p.id} | #{p.title} | #{p.author} | #{p.genre} | #{p.acts} | #{p.prose_vers} | #{p.prologue} | #{p.musique_danse_machine} "} %>
+
+<%# authors = @plays.reduce([]) {|m, p| m << p.author} %>
 
 <script>
 $(function() {
     var typeahead_event_init = function(fields) {
         // Set up auto-fill selector hooks
-        var autofill_id = $(fields).find('.play_typeahead').attr('id');
-        $(fields).find('.author_typeahead').addClass(autofill_id);
-        $(fields).find('.genre_typeahead').addClass(autofill_id);
-        $(fields).find('.play_typeahead').typeahead({source: <%= raw titles.to_json %>});
-        $(fields).find('.play_typeahead').on('change', function(e) { format_play_autofill(e) });
-        $("div#play_fields input." + autofill_id).filter('.author_typeahead').typeahead({source: <%= raw authors.to_json %>});
+        var autofill_id = $(fields).find('.find_play_typeahead').attr('id');
+        $(fields).find('.find_play_typeahead').typeahead({source: <%= raw titles.to_json %>});
+        $(fields).find('.find_play_typeahead').on('change', function(e) { format_play_autofill(e) });
     };
 
     $("div#play_fields").children("div.fields").each(function(index, pfields) {
@@ -34,10 +33,22 @@ $(function() {
 
     var format_play_autofill = function(e) {
       var play_data = $(e.currentTarget).val().split(' | ');
-      var autofill_id = $(e.currentTarget).attr('id');
-      $(e.currentTarget).val(play_data[0]);
-      $("div#play_fields input." + autofill_id).filter('.author_typeahead').val(play_data[1]);
-      $("div#play_fields input." + autofill_id).filter('.genre_typeahead').val(play_data[2]);
+      var register_play_class = $(e.currentTarget).attr('class').split(' ')[1];
+      var tclass = "table." + register_play_class;
+      $(tclass + " td.id_text").html(play_data[0]);
+      console.log("Old play id: " + $("input.play_id-" + register_play_class).val());
+      $("input.play_id-" + register_play_class).val(play_data[0]);
+      console.log("New play id: " + $("input.play_id-" + register_play_class).val());
+      $(tclass + " td.title_text").html(play_data[1]);
+      $(tclass + " td.author_text").html(play_data[2]);
+      $(tclass + " td.genre_text").html(play_data[3]);
+      $(tclass + " td.acts_text").html(play_data[4]);
+      $(tclass + " td.prose_vers_text").html(play_data[5]);
+      $(tclass + " td.prologue_text").html(play_data[6]);
+      $(tclass + " td.musique_danse_machine_text").html(play_data[7]);
+
+      // Clear out the search field to avoid confusion.
+      $(e.currentTarget).val('');
     }
 
     if ($('input#register_irregular_receipts_name').val() === '') {
@@ -167,6 +178,10 @@ $(function() {
   <%= f.fields_for :register_plays, @register.register_plays.sort {|a, b| a.ordering <=> b.ordering } do |rp| %>
   <h3>Play <%= rp.object.ordering %></h3>
 
+  <%= rp.fields_for :play_attributes, rp.object.play do |p| %>
+    <%= p.hidden_field :play_id, :class => "play_id-register_play_#{rp.object.id}",  :value => p.object.id if p.object %>
+  <% end %>
+
   <div class="control-group">
     <%= rp.label :ordering, :class => 'control-label' %>
     <div class="controls">
@@ -175,58 +190,89 @@ $(function() {
   </div>
 
   <div class="control-group">
-    <%= rp.label :newactor, :class => 'control-label' %>
+    <label class="control-label">Find Play: </label>
     <div class="controls">
-      <%= rp.text_field :newactor %>
+      <input type="text" class="find_play_typeahead register_play_<%= rp.object.id %>" />
     </div>
   </div>
 
   <div class="control-group">
-    <%= rp.label :actorrole, :class => 'control-label' %>
+    <label class="control-label">Play</label>
     <div class="controls">
+      <table class='play_data table table-bordered register_play_<%= rp.object.id %>'>
+        <thead>
+          <tr>
+            <th>ID</th><th>Title</th><th>Author</th><th>Genre</th><th>Number of Acts</th><th>Prose/Vers</th><th>Prologue</th><th>Musique/Danse/Machine</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+      <% if rp.object.play %>
+            <td class="id_text"><%= rp.object.play.id %></td><td class="title_text"><%= rp.object.play.title %></td><td class="author_text"><%= rp.object.play.author %></td><td class="genre_text"><%= rp.object.play.genre %></td><td class="acts_text"><%= rp.object.play.acts %></td><td class="prose_vers_text"><%= rp.object.play.prose_vers %></td><td class="prologue_text"><%= rp.object.play.prologue %></td><td class="musique_danse_machine_text"><%= rp.object.play.musique_danse_machine %></td>
+      <% else %>
+            <td class="id_text"></td><td class="title_text"></td><td class="author_text"></td><td class="genre_text"></td><td class="acts_text"></td><td class="prose_vers_text"></td><td class="prologue_text"></td><td class="musique_danse_machine_text"></td>
+      <% end %>
+          </tr>
+        <tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label">Actor Data</label>
+    <div class="controls form-inline">
+      <label>New Actor:</label>
+      <%= rp.text_field :newactor %>
+
+      <label>New Actor's Role:</label>
       <%= rp.text_field :actorrole %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= rp.label :firstrun, :class => 'control-label' %>
-    <div class="controls">
-    <%= rp.check_box :firstrun, :class => 'form-inline span1' %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= rp.label :firstrun_perfnum, :class => 'control-label' %>
-    <div class="controls">
+    <label class="control-label">Firstrun Data</label>
+    <div class="controls form-inline">
+      <label>Is Firstrun Performance?</label>
+      <%#= rp.label :firstrun, :class => 'control-label' %>
+      <%= rp.check_box :firstrun, :class => 'form-inline span1' %>
+      <label>Firstrun Performance #</label>
+      <%#= rp.label :firstrun_perfnum, :class => 'control-label' %>
       <%= rp.text_field :firstrun_perfnum, :class => 'span1' %>
     </div>
   </div>
 
-  <%= rp.fields_for :play_attributes, rp.object.play do |p| %>
   <div class="control-group">
-    <%= p.label :title, :class => 'control-label' %>
+    <%= rp.label :free_access, :class => 'control-label' %>
     <div class="controls">
-      <%= p.text_field :title, :class => "play_typeahead span4 ordering_#{rp.object.ordering}", :data => { :ordering => rp.object.ordering } %>
+      <%= rp.check_box :free_access, :class => 'form-inline span1' %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= p.label :author, :class => 'control-label' %>
+    <%= rp.label :ex_attendance, "Exceptional Attendance", :class => 'control-label' %>
     <div class="controls">
-      <%= p.text_field :author, :class => "author_typeahead span4 ordering_#{rp.object.ordering}" %>
+      <%= rp.text_field :ex_attendance, :class => 'span3' %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= p.label :genre, :class => 'control-label' %>
+    <%= rp.label :ex_representation, "Exceptional Representation", :class => 'control-label' %>
     <div class="controls">
-      <%= p.text_field :genre, :class => "genre_typeahead ordering_#{rp.object.ordering}" %>
+      <%= rp.text_field :ex_representation, :class => 'span3' %>
     </div>
   </div>
+
+  <div class="control-group">
+    <%= rp.label :ex_place, "Exceptional Place", :class => 'control-label' %>
+    <div class="controls">
+      <%= rp.text_field :ex_place, :class => 'span3' %>
+    </div>
+  </div>
+
   <% end %>
 
-  <% end %>
-
+  <%# please note that this functionality comes from nested_form:
+      https://github.com/ryanb/nested_form %>
   <%= f.link_to_add "Add a New Play", :register_plays %></p>
 
   </div>

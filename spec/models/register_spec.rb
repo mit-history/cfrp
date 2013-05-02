@@ -28,24 +28,25 @@ describe Register do
   end
 
   it "updates related model data automatically" do
+    @new_play1 = Play.new({ title:  "Les Femmes savantes",
+                        author: "Bill Jones" })
+    @new_play2 = Play.new({ title:  "La Comtesse d'Escarbagnas",
+                        author: "Jenny Smith" })
+    @new_play1.save
+    @new_play2.save
+
     plays = { 
       :register_plays_attributes => {
         "0" => {
           "id" => @register.register_plays[0].id,
           "ordering" => "0",
-          "play_attributes" => {
-            "title" => "Les Femmes savantes",
-            "author" => "Bill Jones"
-          }
+          "play_attributes" => { play_id: @new_play1.id }
         },
 
         "1" => {
           "id" => @register.register_plays[1].id,
           "ordering" => "1",
-          "play_attributes" => {
-            "title" => "La Comtesse d'Escarbagnas",
-            "author" => "Jenny Smith"
-          },
+          "play_attributes" => { play_id: @new_play2.id }
         }
       }
     }

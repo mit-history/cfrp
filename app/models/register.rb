@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # == Schema Information
 #
 # Table name: registers
@@ -21,10 +19,13 @@
 #  cloture                   :boolean
 #  created_at                :datetime
 #  updated_at                :datetime
+#  register_image_id         :integer
 #  register_period_id        :integer
 #  verification_state_id     :integer
 #  irregular_receipts_name   :string(255)
 #
+
+# -*- coding: utf-8 -*-
 
 class Register < ActiveRecord::Base
   include Repertoire::Faceting::Model

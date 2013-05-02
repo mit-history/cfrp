@@ -202,31 +202,28 @@ describe RegistersController do
         end
 
         it "updates the associated plays" do
+
           plays = { 
             :register_plays_attributes => {
               "0" => {
                 "ordering" => "0",
-                "play_attributes" => {
-                  "title" => "Les Femmes savantes",
-                  "author" => "Jean-Baptiste Poquelin dit Molière" },
+                "play_attributes" => { :play_id => @play1.id },
                 "id" => @register.register_plays[0]
               },
 
               "1" => {
                 "ordering" => "1",
-                "play_attributes" => {
-                  "title" => "La Comtesse d'Escarbagnas",
-                  "author" => "Jean-Baptiste Poquelin dit Molière" },
+                "play_attributes" => { :play_id => @play2.id },
                 "id" => @register.register_plays[1]
               }
             }}
 
           put :update, :id => @register.id, :register => plays
           rps = Register.find(@register.id).register_plays
-          rps[0].play.title.should match 'Les Femmes savantes'
-          rps[0].play.author.should match 'Jean-Baptiste Poquelin dit Molière'
-          rps[1].play.title.should match 'La Comtesse d\'Escarbagnas'
-          rps[1].play.author.should match 'Jean-Baptiste Poquelin dit Molière'
+          rps[0].play.title.should match 'Bob\'s First Play'
+          rps[0].play.author.should match 'Bob Smith'
+          rps[1].play.title.should match 'Bob\'s Second Play'
+          rps[1].play.author.should match 'Bob Smith'
         end
 
         it "updates the ticket sales" do

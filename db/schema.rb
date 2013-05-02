@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130131114247) do
+ActiveRecord::Schema.define(:version => 20130424022831) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -47,6 +47,10 @@ ActiveRecord::Schema.define(:version => 20130131114247) do
     t.string   "genre"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "acts"
+    t.string   "prose_vers"
+    t.boolean  "prologue"
+    t.boolean  "musique_danse_machine"
   end
 
   create_table "register_contributors", :force => true do |t|
@@ -89,6 +93,10 @@ ActiveRecord::Schema.define(:version => 20130131114247) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "ordering"
+    t.boolean  "free_access"
+    t.string   "ex_attendance"
+    t.string   "ex_representation"
+    t.string   "ex_place"
   end
 
   create_table "register_tasks", :force => true do |t|
