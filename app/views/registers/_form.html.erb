@@ -219,51 +219,51 @@ $(function() {
   </div>
 
   <div class="control-group">
-    <label class="control-label">Actor Data</label>
+    <label class="control-label">Acteur/actrice</label>
     <div class="controls form-inline">
-      <label>New Actor:</label>
+      <label>Début acteur/actrice:</label>
       <%= rp.text_field :newactor %>
 
-      <label>New Actor's Role:</label>
+      <label>Nouveau rôle:</label>
       <%= rp.text_field :actorrole %>
     </div>
   </div>
 
   <div class="control-group">
-    <label class="control-label">Firstrun Data</label>
+    <label class="control-label">Créátion</label>
     <div class="controls form-inline">
-      <label>Is Firstrun Performance?</label>
+      <label>Créátion?</label>
       <%#= rp.label :firstrun, :class => 'control-label' %>
       <%= rp.check_box :firstrun, :class => 'form-inline span1' %>
-      <label>Firstrun Performance #</label>
+      <label>Numéro de création</label>
       <%#= rp.label :firstrun_perfnum, :class => 'control-label' %>
       <%= rp.text_field :firstrun_perfnum, :class => 'span1' %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= rp.label :free_access, :class => 'control-label' %>
+    <%= rp.label :free_access, 'Gratuit', :class => 'control-label' %>
     <div class="controls">
       <%= rp.check_box :free_access, :class => 'form-inline span1' %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= rp.label :ex_attendance, "Exceptional Attendance", :class => 'control-label' %>
+    <%= rp.label :ex_attendance, 'Présence exceptionnelle', :class => 'control-label' %>
     <div class="controls">
       <%= rp.text_field :ex_attendance, :class => 'span3' %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= rp.label :ex_representation, "Exceptional Representation", :class => 'control-label' %>
+    <%= rp.label :ex_representation, 'Représentation exceptionnelle', :class => 'control-label' %>
     <div class="controls">
       <%= rp.text_field :ex_representation, :class => 'span3' %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= rp.label :ex_place, "Exceptional Place", :class => 'control-label' %>
+    <%= rp.label :ex_place, 'Lieu exceptionnel', :class => 'control-label' %>
     <div class="controls">
       <%= rp.text_field :ex_place, :class => 'span3' %>
     </div>
