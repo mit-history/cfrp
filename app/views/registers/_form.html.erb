@@ -28,6 +28,19 @@ $(function() {
         previous_ordering = parseInt(previous_ordering) + 1;
         $(event.field).find('input.play-ordering').val(previous_ordering);
         $(event.field).find('h3').html("Play " + (previous_ordering));
+
+        var rnum = Math.floor(Math.random() * 10000);
+
+        $(event.field).find('input.play_id-register_play_')
+          .removeClass('play_id-register_play_')
+          .addClass('play_id-register_play_' + rnum);
+        $(event.field).find('table')
+          .removeClass('register_play_')
+          .addClass('register_play_' + rnum);
+        $(event.field).find('input.find_play_typeahead')
+          .removeClass('register_play_')
+          .addClass('register_play_' + rnum);
+
         typeahead_event_init(event.field);
     });
 
@@ -36,9 +49,7 @@ $(function() {
       var register_play_class = $(e.currentTarget).attr('class').split(' ')[1];
       var tclass = "table." + register_play_class;
       $(tclass + " td.id_text").html(play_data[0]);
-      console.log("Old play id: " + $("input.play_id-" + register_play_class).val());
       $("input.play_id-" + register_play_class).val(play_data[0]);
-      console.log("New play id: " + $("input.play_id-" + register_play_class).val());
       $(tclass + " td.title_text").html(play_data[1]);
       $(tclass + " td.author_text").html(play_data[2]);
       $(tclass + " td.genre_text").html(play_data[3]);
@@ -179,7 +190,12 @@ $(function() {
   <h3>Play <%= rp.object.ordering %></h3>
 
   <%= rp.fields_for :play_attributes, rp.object.play do |p| %>
-    <%= p.hidden_field :play_id, :class => "play_id-register_play_#{rp.object.id}",  :value => p.object.id if p.object %>
+    <!-- IS THIS COMING UP? -->
+    <% if p.object %>
+      <%= p.hidden_field :play_id, :class => "play_id-register_play_#{rp.object.id}",  :value => p.object.id %>
+    <% else %>
+      <%= p.hidden_field :play_id, :class => "play_id-register_play_" %>
+    <% end %>
   <% end %>
 
   <div class="control-group">
