@@ -128,7 +128,6 @@ $(function() {
     <%= f.submit %>
   </div>
 
-  <% if current_user.has_role? :verifier %>
   <%= f.fields_for :verification_state do |vs| %>
   <div class="control-group">
     <%= vs.label :name, "verified?", :class => 'control-label' %>
@@ -136,7 +135,6 @@ $(function() {
       <%= collection_select(:register, :verification_state_id, VerificationState.all, :id, :name) %>
     </div>
   </div>
-  <% end %>
   <% end %>
 
   <div class="control-group">
