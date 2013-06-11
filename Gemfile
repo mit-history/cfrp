@@ -32,12 +32,15 @@ gem 'acts-as-taggable-on'
 # and rake tasks are available in development mode:
 group :development, :test do
   gem 'capybara'
-  gem 'autotest'
-  gem 'autotest-growl'
-  gem 'autotest-fsevent'
+  # gem 'autotest'
+  # gem 'autotest-growl'
+  # gem 'autotest-fsevent'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'annotate'
   gem 'guard-rspec'
   gem 'rb-fsevent', '~> 0.9.1'
 end
+
+gem 'activeadmin'
+gem "meta_search",    '>= 1.1.0.pre'

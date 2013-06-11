@@ -1,0 +1,26 @@
+<% #parameters:  search_model
+   #             search_result
+   #             items_per_page
+   #             current_page
+-%>
+<% page_count = search_result.total_hits / items_per_page -%>
+<% page_count += 1 if (search_result.total_hits % items_per_page > 0)   %>
+<% elided = 0 -%>
+<% if page_count > 1 -%>
+<div class="pagination_box">
+<%  page_count.times do |i| -%>
+<%   case i+1 -%>
+<%   when current_page -%>
+<%=    link_to i+1, search_model.merge(:page => i+1), :class => 'current' %>
+<%   when 1..3, page_count-2..page_count, current_page-2..current_page+3 -%>
+<%=    link_to i+1, search_model.merge(:page => i+1) %>
+<%     elided = 0 -%>
+<%   else -%>
+<%     if elided == 0 -%>
+<span class='ellipsis'>...</span>
+<%     end -%>
+<%     elided += 1 -%>
+<%   end -%>
+<%  end -%>
+</div>
+<% end -%>

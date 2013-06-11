@@ -26,32 +26,16 @@
   <% end %>
 
   <dl class="dl-horizontal">
-    <dt>Database ID:</dt>
-    <dd><%= register.id %></dd>
-
-    <dt>Repr&#233;sentation:</dt>
-    <dd><%= register.representation %></dd>
-
     <dt>Date:</dt>
     <dd><%= sprintf('%02d', register.date.day) %>/<%= sprintf('%02d', register.date.month) %>/<%= register.date.year %></dd>
 
-  <% register.register_plays.sort {|a, b| a.ordering <=> b.ordering }.each do |rp| %>
-    <dt>Play, Author <%= rp.ordering %>:</dt>
-    <dd><%= rp.play.title %>, <%= rp.play.author %></dd>
-  <% end %>
-
-    <dt>Page Text:</dt>
-    <dd><%= register.page_text %></dd>
+	  <% register.register_plays.sort {|a, b| a.ordering <=> b.ordering }.each do |rp| %>
+	    <dt>Play, Author <%= rp.ordering %>:</dt>
+	    <dd><%= rp.play.title %>, <%= rp.play.author %></dd>
+	  <% end %>
 
     <dt>Status:</dt>
     <dd class='<%= register.verification_state.name.gsub(/\s/, '_') %>'><%= register.verification_state.name %></dd>
-
-    <% if (register.misc_notes !~ /^\s*$/ || register.for_editor_notes !~ /^\s*$/) %>
-    <dt>Notes:</dt>
-    <dd class='editor'><%= register.for_editor_notes %></dd>
-    <dd><%= register.misc_notes %></dd>
   </dl>
-
-  <% end %>
   </div>
 </div>
