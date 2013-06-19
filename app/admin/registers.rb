@@ -1,7 +1,17 @@
 ActiveAdmin.register Register do
+  # belongs_to :register_period
+  # belongs_to :verification_state
+
   config.per_page = 12
 
   scope :all, :default => true
+  scope :unverified do |registers|
+    Register.unverified
+  end
+
+  scope :unentered do |registers|
+    Register.unentered
+  end
 
   filter :date
   filter :weekday
@@ -38,18 +48,22 @@ ActiveAdmin.register Register do
 
   index do
     selectable_column
-    column 'Thumb' do |register|
-      link_to(image_tag("/#{register.register_images[0].filepath}", width: "100"), "/#{register.register_images[0].filepath}", target: "_blank")
-    end
+    # column 'Formulaire de saisie' do |register|
+    #   link_to(image_tag("/#{register.register_images[0].filepath}", width: "50"), "/registers/#{register.id}/edit", target: "_blank")
+    #   # link_to("Formulaire de saisie", "/registers/#{register.id}/edit", target: "_blank")
+    # end
     column :id
     column :date
     column :weekday
     column :season
-    default_actions
+    actions :defaults => false do |register|
+      # link_to("View", "/registers/#{register.id}/edit", target: "_blank")
+      link_to("Formulaire de saisie", "/registers/#{register.id}/edit", target: "_blank")
+    end
   end
 
   index :as => :grid, :columns => 4 do |register|
-    image_tag("/#{register.register_images[0].filepath}", width: "300")
+    link_to(image_tag("/#{register.register_images[0].filepath}", width: "250"), "/registers/#{register.id}/edit", target: "_blank")
   end
     
   show do |register|
@@ -82,15 +96,24 @@ ActiveAdmin.register Register do
       
   form do |f|
       f.inputs "Details", :multipart => true do
-        f.input :date, :as => :date
-        f.input :weekday, :as => :string
-        f.input :season, :as => :string
-        # f.input :tag_list, :label => "STEM Categories",
-        #                    :as => :select,
-        #                    :multiple => :true,
-        #                    :collection => ActsAsTaggableOn::Tag.all.map(&:name)
+        f.input :date
+        f.input :weekday
+        f.input :season
+        f.input :register_num
+        f.input :payment_notes
+        f.input :page_text
+        f.input :total_receipts_recorded_l
+        f.input :total_receipts_recorded_s
+        f.input :representation
+        f.input :signatory
+        f.input :misc_notes
+        f.input :for_editor_notes
+        f.input :ouverture
+        f.input :cloture
+        f.input :register_period_id
+        f.input :verification_state_id
+        f.input :irregular_receipts_name
       end
-
-      f.buttons
+      f.actions
     end
 end
