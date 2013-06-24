@@ -76,6 +76,12 @@ class Register < ActiveRecord::Base
     end
   end
 
+  def next_register
+    Register.order("id").where(:season => self.season).where("id > ?", self.id).detect do |r|
+      r
+    end
+  end
+
 #
 # THIS HERE FACETING CODE SURE SMELLS LIKE A SEPARATE CLASS, DON'T IT?
 #

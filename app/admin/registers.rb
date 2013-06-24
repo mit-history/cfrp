@@ -17,26 +17,26 @@ ActiveAdmin.register Register do
   filter :weekday
   filter :season
   filter :register_num
-  filter :payment_notes
-  filter :page_text
-  filter :total_receipts_recorded_l
-  filter :total_receipts_recorded_s
+  # filter :payment_notes
+  # filter :page_text
+  # filter :total_receipts_recorded_l
+  # filter :total_receipts_recorded_s
   filter :representation
   filter :signatory
-  filter :misc_notes
-  filter :for_editor_notes
+  # filter :misc_notes
+  # filter :for_editor_notes
   filter :ouverture
   filter :cloture
   filter :register_period_id
   filter :verification_state_id
-  filter :register_plays_attributes
-  filter :ticket_sales_attributes
-  filter :rep_privacy_list
-  filter :rep_group_list
+  # filter :register_plays_attributes
+  # filter :ticket_sales_attributes
+  # filter :rep_privacy_list
+  # filter :rep_group_list
   filter :irregular_receipts_name
-  filter :register_images
-  filter :created_at
-  filter :updated_at
+  # filter :register_images
+  # filter :created_at
+  # filter :updated_at
 
   # filter :taggings_tag_name, :as => :check_boxes, :collection => proc { Activity.tag_counts.map{|t| t.name} }
 
@@ -63,7 +63,7 @@ ActiveAdmin.register Register do
   end
 
   index :as => :grid, :columns => 4 do |register|
-    link_to(image_tag("/#{register.register_images[0].filepath}", width: "250"), "/registers/#{register.id}/edit", target: "_blank")
+    link_to(image_tag("/#{register.register_images[0].filepath}", width: "200"), "/registers/#{register.id}/edit", target: "_blank")
   end
     
   show do |register|
