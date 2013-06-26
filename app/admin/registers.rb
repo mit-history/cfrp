@@ -3,7 +3,7 @@ ActiveAdmin.register Register do
   # belongs_to :verification_state
 
   config.per_page = 12
-
+    
   scope :all, :default => true
   scope :unverified do |registers|
     Register.unverified
@@ -14,6 +14,7 @@ ActiveAdmin.register Register do
   end
 
   filter :date
+  # filter :month, :as => :select, :collection => (1..12)
   filter :weekday
   filter :season
   filter :register_num
@@ -27,7 +28,7 @@ ActiveAdmin.register Register do
   # filter :for_editor_notes
   filter :ouverture
   filter :cloture
-  filter :register_period_id
+  filter :register_period_period, :as => :select 
   filter :verification_state_id
   # filter :register_plays_attributes
   # filter :ticket_sales_attributes

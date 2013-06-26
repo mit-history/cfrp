@@ -108,7 +108,7 @@ $(function() {
 
 <%= nested_form_for @register, :html => {:class => 'form-horizontal'} do |f| %>
 <fieldset>
-  <legend>Editing Register for the date <%= @register.date %> | <%= link_to 'Back to All Registers', registers_path %> | <%= link_to "Next Un-entered Register ->", edit_register_path(@register.next_unentered_register) if @register.next_unentered_register %></legend>
+  <legend>Editing Register for the date <%= @register.date %> | <%= link_to 'Back to All Registers', registers_path %> | <%= link_to "Next Register ->", edit_register_path(@register.next_register) if @register.next_register %></legend>
 
   <p class='register_id'>This Register's Database ID: <strong><%= @register.id %></strong></p>
 

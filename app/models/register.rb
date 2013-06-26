@@ -78,7 +78,7 @@ class Register < ActiveRecord::Base
 
   def next_register
     Register.order("id").where(:season => self.season).where("id > ?", self.id).detect do |r|
-      r
+      return r
     end
   end
 
