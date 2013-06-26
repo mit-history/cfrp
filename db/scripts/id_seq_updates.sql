@@ -1,0 +1,11 @@
+select setval('seating_categories_id_seq', (SELECT MAX(id) FROM seating_categories)+1);
+select setval('registers_id_seq', (SELECT MAX(id) FROM registers)+1);
+select setval('register_images_id_seq', (SELECT MAX(id) FROM register_images)+1);
+select setval('register_periods_id_seq', (SELECT MAX(id) FROM register_periods)+1);
+select setval('plays_id_seq', (SELECT MAX(id) FROM plays)+1);
+select setval('register_type_seating_categories_id_seq', (SELECT MAX(id) FROM register_period_seating_categories)+1);
+select setval('register_plays_id_seq', (SELECT MAX(id) FROM register_plays)+1);
+select setval('ticket_sales_id_seq', (SELECT MAX(id) FROM ticket_sales)+1);
+select setval('users_id_seq', (SELECT MAX(id) FROM users)+1);
+select setval('roles_id_seq', (SELECT MAX(id) FROM roles)+1);
+select setval('register_contributors_id_seq', (SELECT MAX(id) FROM register_contributors)+1);

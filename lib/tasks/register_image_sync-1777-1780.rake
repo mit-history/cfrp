@@ -1,3 +1,5 @@
+require 'CSV'
+
 namespace :reg_images_sync do
   desc "Syncs up register images for last three seasons of un-synced entries"
   task :seasons_1777_1780 => :environment do |t, args|
