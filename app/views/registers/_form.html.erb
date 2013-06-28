@@ -128,57 +128,7 @@ $(function() {
     <%= f.submit %>
   </div>
 
-  <%= f.fields_for :verification_state do |vs| %>
-  <div class="control-group">
-    <%= vs.label :name, "verified?", :class => 'control-label' %>
-    <div class="controls">
-      <%= collection_select(:register, :verification_state_id, VerificationState.all, :id, :name) %>
-    </div>
-  </div>
-  <% end %>
 
-  <div class="control-group">
-    <%= f.label :register_num, 'Number', :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :register_num %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :season, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :season %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :representation, 'Représentation', :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :representation %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :ouverture, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :ouverture %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :cloture, 'Clôture', :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :cloture %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :weekday, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.select(:weekday, ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]) %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :date, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.date_select :date, { :use_month_numbers => true }, { :class => 'span1' } %>
-    </div>
-  </div>
 
 <!-- PUT PLAYS DATA HERE -->
 
@@ -255,33 +205,43 @@ $(function() {
     </div>
   </div>
 
-  <div class="control-group">
-    <%= rp.label :free_access, 'Gratuit', :class => 'control-label' %>
-    <div class="controls">
-      <%= rp.check_box :free_access, :class => 'form-inline span1' %>
-    </div>
-  </div>
+<div class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href='#meta_<%= rp.object.id %>'>voir plus</a></div>
+    <div id='meta_<%= rp.object.id %>' class="accordion-body collapse">
+		<div class="accordion-inner">
+			<div class="control-group">
+		    <%= rp.label :free_access, 'Gratuit', :class => 'control-label' %>
+		    <div class="controls">
+		      <%= rp.check_box :free_access, :class => 'form-inline span1' %>
+		    </div>
+		  </div>
 
-  <div class="control-group">
-    <%= rp.label :ex_attendance, 'Présence exceptionnelle', :class => 'control-label' %>
-    <div class="controls">
-      <%= rp.text_field :ex_attendance, :class => 'span3' %>
-    </div>
-  </div>
+		  <div class="control-group">
+		    <%= rp.label :ex_attendance, 'Présence exceptionnelle', :class => 'control-label' %>
+		    <div class="controls">
+		      <%= rp.text_field :ex_attendance, :class => 'span3' %>
+		    </div>
+		  </div>
 
-  <div class="control-group">
-    <%= rp.label :ex_representation, 'Représentation exceptionnelle', :class => 'control-label' %>
-    <div class="controls">
-      <%= rp.text_field :ex_representation, :class => 'span3' %>
-    </div>
-  </div>
+		  <div class="control-group">
+		    <%= rp.label :ex_representation, 'Représentation exceptionnelle', :class => 'control-label' %>
+		    <div class="controls">
+		      <%= rp.text_field :ex_representation, :class => 'span3' %>
+		    </div>
+		  </div>
 
-  <div class="control-group">
-    <%= rp.label :ex_place, 'Lieu exceptionnel', :class => 'control-label' %>
-    <div class="controls">
-      <%= rp.text_field :ex_place, :class => 'span3' %>
-    </div>
+		  <div class="control-group">
+		    <%= rp.label :ex_place, 'Lieu exceptionnel', :class => 'control-label' %>
+		    <div class="controls">
+		      <%= rp.text_field :ex_place, :class => 'span3' %>
+		    </div>
+		  </div>
+		</div>
+	</div>
   </div>
+</div>
+
 
   <% end %>
 
@@ -290,6 +250,50 @@ $(function() {
   <%= f.link_to_add "Add a New Play", :register_plays %></p>
 
   </div>
+
+  <div class="control-group">
+    <%= f.label :register_num, 'Number', :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :register_num %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :season, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :season %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :representation, 'Représentation', :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :representation %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :ouverture, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :ouverture %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :cloture, 'Clôture', :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :cloture %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :weekday, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select(:weekday, ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :date, { :use_month_numbers => true }, { :class => 'span1' } %>
+    </div>
+  </div>
+
 
 <!-- TICKET SALES -->
 
@@ -419,6 +423,16 @@ $(function() {
       <%= f.text_area :for_editor_notes %>
     </div>
   </div>
+
+  <%= f.fields_for :verification_state do |vs| %>
+  <div class="control-group">
+    <%= vs.label :name, "verified?", :class => 'control-label' %>
+    <div class="controls">
+      <%= collection_select(:register, :verification_state_id, VerificationState.all, :id, :name) %>
+    </div>
+  </div>
+  <% end %>
+
   <div class="actions submit">
     <%= f.submit %>
   </div>
