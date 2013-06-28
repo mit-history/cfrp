@@ -96,9 +96,10 @@ describe Register do
   end
 
   it "finds the next register which hasn't been verified in the same season" do
-    unentered = VerificationState.create(:name => 'unentered')
-    unverified = VerificationState.create(:name => 'unverified')
-    verified = VerificationState.create(:name => 'verified')
+    unentered = VerificationState.create(:name => 'pas saisie')
+    unverified = VerificationState.create(:name => 'pas verifie')
+    verified = VerificationState.create(:name => 'verifie')
+    probleme = VerificationState.create(:name => 'probleme')
     r1 = Register.create( :date => '1750-01-01', :season => '1749-1750' )
     r2 = Register.create( :date => '1750-01-01', :season => '1749-1750' )
     r3 = Register.create( :date => '1750-01-01', :season => '1749-1750' )
