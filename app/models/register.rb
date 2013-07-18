@@ -76,9 +76,27 @@ class Register < ActiveRecord::Base
     end
   end
 
-  def next_register
-    Register.order("id").where(:season => self.season).where("id > ?", self.id).detect do |r|
-      return r
+  def next_unverified_register
+    Register.order('id')
+      .where(:season => self.season)
+      .where("id > ?", self.id).detect do |r|
+      r.verification_state.name == 'unverified'
+    end
+  end
+
+  def next_verified_register
+    Register.order('id')
+      .where(:season => self.season)
+      .where("id > ?", self.id).detect do |r|
+      r.verification_state.name == 'verified'
+    end
+  end
+
+  def next_probleme_register
+    Register.order('id')
+      .where(:season => self.season)
+      .where("id > ?", self.id).detect do |r|
+      r.verification_state.name == 'probleme'
     end
   end
 
