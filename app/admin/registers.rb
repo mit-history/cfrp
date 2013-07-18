@@ -13,9 +13,14 @@ ActiveAdmin.register Register do
     Register.unentered
   end
 
+
   filter :date
   # filter :month, :as => :select, :collection => (1..12)
-  filter :weekday
+  # filter :play, :as => :select, :collection => proc { RegisterPlay.all }
+
+  # filter :author, :as => :check_boxes, :collection => proc { Author.all }
+
+  # filter :weekday
   filter :season
   filter :register_num
   # filter :payment_notes
@@ -23,18 +28,18 @@ ActiveAdmin.register Register do
   # filter :total_receipts_recorded_l
   # filter :total_receipts_recorded_s
   filter :representation
-  filter :signatory
+  # filter :signatory
   # filter :misc_notes
   # filter :for_editor_notes
   filter :ouverture
   filter :cloture
-  filter :register_period_period, :as => :select 
+  # filter :register_period_period, :as => :select 
   filter :verification_state_id
   # filter :register_plays_attributes
   # filter :ticket_sales_attributes
   # filter :rep_privacy_list
   # filter :rep_group_list
-  filter :irregular_receipts_name
+  # filter :irregular_receipts_name
   # filter :register_images
   # filter :created_at
   # filter :updated_at
@@ -47,16 +52,36 @@ ActiveAdmin.register Register do
   #   end
   # end
 
+  controller do
+    def scoped_collection
+      resource_class.includes(:register_images)
+    end
+  end
+    
   index do
     selectable_column
-    # column 'Formulaire de saisie' do |register|
-    #   link_to(image_tag("/#{register.register_images[0].filepath}", width: "50"), "/registers/#{register.id}/edit", target: "_blank")
-    #   # link_to("Formulaire de saisie", "/registers/#{register.id}/edit", target: "_blank")
-    # end
+
     column :id
+
+    column 'Nom de fichier', :sortable => 'register_images[0].filepath' do |register|
+      "#{register.register_images[0].filepath}"
+    end
+
     column :date
     column :weekday
     column :season
+
+    column :verification_state_id
+    # make register sortable by image filename
+    # http://www.activeadmin.info/docs/3-index-pages/index-as-table.html
+
+    # column 'Image' do |register|
+    #   link_to(image_tag("/#{register.register_images[0].filepath}", width: "250"), "/registers/#{register.id}/edit", target: "_blank")
+    #   # link_to("Formulaire de saisie", "/registers/#{register.id}/edit", target: "_blank")
+    # end
+
+    # column 'Nom de fichier', :first_register_image_filename, :sortable => 'register_images.filepath'
+
     actions :defaults => false do |register|
       # link_to("View", "/registers/#{register.id}/edit", target: "_blank")
       link_to("Formulaire de saisie", "/registers/#{register.id}/edit", target: "_blank")
