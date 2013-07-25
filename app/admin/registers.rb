@@ -2,6 +2,8 @@ ActiveAdmin.register Register do
   # belongs_to :register_period
   # belongs_to :verification_state
 
+  menu :priority => 1
+
   config.per_page = 12
     
   scope :all, :default => true

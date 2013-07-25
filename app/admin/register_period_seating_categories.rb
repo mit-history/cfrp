@@ -1,4 +1,5 @@
 ActiveAdmin.register RegisterPeriodSeatingCategory do
+  menu false
   index do
     selectable_column
     column :id

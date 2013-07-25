@@ -1,4 +1,5 @@
 ActiveAdmin.register RegisterPlay do
+  menu false
   index do
     selectable_column
     column :register_id

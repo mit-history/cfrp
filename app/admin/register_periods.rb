@@ -1,4 +1,5 @@
 ActiveAdmin.register RegisterPeriod do
+  menu false
   index do
     selectable_column
     column :id

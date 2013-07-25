@@ -1,6 +1,6 @@
 ActiveAdmin.register_page "Dashboard" do
 
-  menu :priority => 1, :label => proc{ I18n.t("active_admin.dashboard") }
+  menu false
 
   content :title => proc{ I18n.t("active_admin.dashboard") } do
     div :class => "blank_slate_container", :id => "dashboard_default_message" do
@@ -14,20 +14,20 @@ ActiveAdmin.register_page "Dashboard" do
     #
     # columns do
     #   column do
-    #     panel "Recent Posts" do
+    #     panel "Registres recemment verifiés" do
     #       ul do
-    #         Post.recent(5).map do |post|
-    #           li link_to(post.title, admin_post_path(post))
+    #         Register(10).map do |register|
+    #           li link_to(register.id, admin_register_path(register))
     #         end
     #       end
     #     end
     #   end
-
-    #   column do
-    #     panel "Info" do
-    #       para "Welcome to ActiveAdmin."
-    #     end
-    #   end
+    # 
+    #   # column do
+    #   #   panel "Info" do
+    #   #     para "Welcome to ActiveAdmin."
+    #   #   end
+    #   # end
     # end
   end # content
 end
