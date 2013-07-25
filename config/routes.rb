@@ -12,6 +12,6 @@ Cfrp::Application.routes.draw do
 
   root to: "admin/registers#index"
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
+  # devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 end
