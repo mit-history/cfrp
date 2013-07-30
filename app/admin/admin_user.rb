@@ -1,5 +1,5 @@
 ActiveAdmin.register User do     
-  # menu false
+  menu false
   index do                            
     column :id           #   :string(255)
     column :last_name           #   :string(255)

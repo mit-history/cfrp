@@ -1,62 +1,43 @@
 ActiveAdmin.register Register do
-  # belongs_to :register_period
-  # belongs_to :verification_state
-
   menu :priority => 1
-
-  config.per_page = 12
+  config.per_page = 20
+  actions :all, :except => [:new]
     
   scope :all, :default => true
-  scope :unverified do |registers|
-    Register.unverified
-  end
+  scope :unentered
+  scope :unverified
+  scope :probleme
+  scope :verified
 
-  scope :unentered do |registers|
-    Register.unentered
-  end
-
-
+  filter :id
   filter :date
-  # filter :month, :as => :select, :collection => (1..12)
-  # filter :play, :as => :select, :collection => proc { RegisterPlay.all }
+  filter :season, :label => "Saison", :as => :select, :collection => proc { Register.order(:season).all.map {|r| r.season}.uniq }
+  filter :register_plays_play_title, :label => "Titre de Piece", :as => :select, :collection => proc { Play.order(:title).all.map {|p| p.title}.uniq }
+  filter :register_plays_play_author, :label => "Auteur de Piece", :as => :select, :collection => proc { Play.order(:author).all.map{|p| p.author}.uniq }
+  
+  # filter "Play Title", :as => :select, :collection => proc { RegisterPlay.all.map{|p| p.title} }
+  # filter "Play Author", :as => :select, :collection => proc { Play.all.map{|p| p.author} }
 
-  # filter :author, :as => :check_boxes, :collection => proc { Author.all }
+  # filter :verification_state_id, :as => :select, :collection => proc { VerificationState.all.map{|s| s.name} }
 
-  # filter :weekday
-  filter :season
-  filter :register_num
-  # filter :payment_notes
-  # filter :page_text
-  # filter :total_receipts_recorded_l
-  # filter :total_receipts_recorded_s
-  filter :representation
-  # filter :signatory
-  # filter :misc_notes
-  # filter :for_editor_notes
-  filter :ouverture
-  filter :cloture
-  # filter :register_period_period, :as => :select 
-  filter :verification_state_id
-  # filter :register_plays_attributes
-  # filter :ticket_sales_attributes
-  # filter :rep_privacy_list
-  # filter :rep_group_list
-  # filter :irregular_receipts_name
-  # filter :register_images
-  # filter :created_at
-  # filter :updated_at
-
-  # filter :taggings_tag_name, :as => :check_boxes, :collection => proc { Activity.tag_counts.map{|t| t.name} }
-
-  # batch_action :destroy do |selection|
-  #   Activity.find(selection).each do |activity|
-  #     activity.destroy
+  # batch_action :destroy, :if proc => { false } do |selection|
+  config.batch_actions = false
+  # batch_action :destroy, :if => proc { false } do |selection|
+  #       Register.find(selection).each do |register|
+  #       register.destroy
+  #     end
   #   end
-  # end
 
   controller do
     def scoped_collection
       resource_class.includes(:register_images)
+    end
+
+    before_filter :only => [:index] do
+      if params['commit'].blank?
+         #country_contains or country_eq .. or depending of your filter type
+         params['q'] = {:date_gte => '1700-01-01', :date_lte => '1800-01-01'} 
+      end
     end
   end
     
@@ -65,27 +46,16 @@ ActiveAdmin.register Register do
 
     column :id
 
-    column 'Nom de fichier', :sortable => 'register_images[0].filepath' do |register|
-      "#{register.register_images[0].filepath}"
-    end
-
-    column :date
-    column :weekday
-    column :season
-
-    column :verification_state_id
-    # make register sortable by image filename
-    # http://www.activeadmin.info/docs/3-index-pages/index-as-table.html
-
     # column 'Image' do |register|
-    #   link_to(image_tag("/#{register.register_images[0].filepath}", width: "250"), "/registers/#{register.id}/edit", target: "_blank")
+    #   link_to(image_tag("/#{register.register_images[0].filepath}", width: "100"), "/registers/#{register.id}/edit", target: "_blank")
     #   # link_to("Formulaire de saisie", "/registers/#{register.id}/edit", target: "_blank")
     # end
 
-    # column 'Nom de fichier', :first_register_image_filename, :sortable => 'register_images.filepath'
+    column :date
+    column :season
+    column "Status", :verification_state
 
     actions :defaults => false do |register|
-      # link_to("View", "/registers/#{register.id}/edit", target: "_blank")
       link_to("Formulaire de saisie", "/registers/#{register.id}/edit", target: "_blank")
     end
   end

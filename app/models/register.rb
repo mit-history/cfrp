@@ -53,8 +53,15 @@ class Register < ActiveRecord::Base
 
   accepts_nested_attributes_for :register_plays, :plays, :ticket_sales
 
-  scope :unverified, where(:verification_state_id => 2)
-  scope :unentered, where(:verification_state_id => 5)
+  scope :verified, where(:verification_state_id => 1).order("id asc")
+  scope :unverified, where(:verification_state_id => 2).order("id asc")
+  scope :unentered, where(:verification_state_id => 5).order("id asc")
+  scope :probleme, where(:verification_state_id => 6).order("id asc")
+  
+
+  def self.play_authors
+    
+  end
 
   def ticket_sales_attributes=params
     params.each do |ts|

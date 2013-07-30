@@ -98,11 +98,6 @@ $(function() {
       <ul class="nav nav-tabs image-tabs">
         <li><a class='front' href="">Image recto</a></li>
         <li><a class='back' href="">Image verso</a></li>
-		  <li><%= link_to 'Tous registres', registers_path %></li>
-		  <li><%= link_to 'Prochain registre non-saisi', edit_register_path(@register.next_unentered_register) if @register.next_unentered_register %></li>
-		  <li><%= link_to 'Prochain registre non-verifié', edit_register_path(@register.next_unverified_register) if @register.next_unverified_register %></li>
-		  <li><%= link_to "Prochain registre verifié", edit_register_path(@register.next_verified_register) if  @register.next_verified_register %></li>
-		  <li><%= link_to "Prochain registre problème", edit_register_path(@register.next_probleme_register) if @register.next_probleme_register %></li>
       </ul>
     </div>
     <% end %>

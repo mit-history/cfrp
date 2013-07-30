@@ -5,6 +5,12 @@ class RegistersController < ApplicationController
 
   def index
     @search = params[:search] || ''
+    # @q = Register.ransack(params[:q]) # <=========
+    #   if params[:q].nil?
+    #     @registers = Register.all
+    #   else
+    #     @registers = @q.result(:distinct => true).order("created_at desc")
+    #   end
     # @registers = Register.all
     # @registers = Register.paginate(:page => params[:page])
   end

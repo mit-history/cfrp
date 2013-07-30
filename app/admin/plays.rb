@@ -1,6 +1,6 @@
 ActiveAdmin.register Play do
 
-  menu :priority => 2
+  menu false
   
   index do
     selectable_column
