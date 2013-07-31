@@ -43,5 +43,8 @@ module Cfrp
     # Upgrading to 3.1/3.2: http://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html
     config.assets.enabled = true # turning this off for now to test
     config.assets.version = '1.0'
+
+    # config.assets.precompile += ['*.js', '*.css', '*.png', '*.jpg']
+    # config.assets.initialize_on_precompile = false
   end
 end

@@ -15,6 +15,7 @@ gem 'therubyracer' # bundle can't find this one, even though it's a dependency?
 gem 'nested_form'
 
 group :assets do
+  gem 'less-rails'#,   '~> 3.2.3'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier',     '>= 1.0.3'

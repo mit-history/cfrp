@@ -10,7 +10,7 @@ Cfrp::Application.routes.draw do
   resources :registers
   resources :plays
 
-  root to: "admin/registers#index"
+  root to: "admin/registres#index"
 
   # devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

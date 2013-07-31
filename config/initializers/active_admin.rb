@@ -5,7 +5,8 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "CFRP"
+  # config.site_title = "Projet de Registres de la Comédie Française"
+  config.site_title = "RCF"
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
