@@ -1,4 +1,4 @@
-ActiveAdmin.register Register, :as => "Registre" do
+ActiveAdmin.register Register do
   menu :priority => 1
   config.per_page = 20
   actions :all, :except => [:new]
@@ -20,14 +20,42 @@ ActiveAdmin.register Register, :as => "Registre" do
 
   # filter :verification_state_id, :as => :select, :collection => proc { VerificationState.all.map{|s| s.name} }
 
-  # batch_action :destroy, :if proc => { false } do |selection|
-  config.batch_actions = false
-  # batch_action :destroy, :if => proc { false } do |selection|
-  #       Register.find(selection).each do |register|
-  #       register.destroy
-  #     end
-  #   end
+  config.batch_actions = true
+  batch_action :destroy, false
 
+  batch_action :unentered do |selection|
+    Register.find(selection).each do |register|
+      register.verification_state_id = 5
+      register.save
+    end
+    redirect_to :back
+  end
+
+  batch_action :unverified do |selection|
+    Register.find(selection).each do |register|
+      register.verification_state_id = 2
+      register.save
+    end
+    redirect_to :back
+  end
+
+  batch_action :verified do |selection|
+    Register.find(selection).each do |register|
+      register.verification_state_id = 1
+      register.save
+    end
+    redirect_to :back
+  end
+
+  batch_action :probleme do |selection|
+    Register.find(selection).each do |register|
+      register.verification_state_id = 6
+      register.save
+    end
+    redirect_to :back
+  end
+      
+      
   controller do
     def scoped_collection
       resource_class.includes(:register_images)

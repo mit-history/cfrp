@@ -3,3 +3,11 @@
 
 en:
   hello: "Hello world"
+  active_admin:
+      batch_actions:
+          labels:
+              verified: "Verify"
+              unverified: "Unverify"
+              probleme: "Mark problem on"
+              unentered: "Mark unentered on"
+                  
