@@ -15,11 +15,6 @@ ActiveAdmin.register Register do
   filter :register_plays_play_title, :label => "Titre de Piece", :as => :select, :collection => proc { Play.order(:title).all.map {|p| p.title}.uniq }
   filter :register_plays_play_author, :label => "Auteur de Piece", :as => :select, :collection => proc { Play.order(:author).all.map{|p| p.author}.uniq }
   
-  # filter "Play Title", :as => :select, :collection => proc { RegisterPlay.all.map{|p| p.title} }
-  # filter "Play Author", :as => :select, :collection => proc { Play.all.map{|p| p.author} }
-
-  # filter :verification_state_id, :as => :select, :collection => proc { VerificationState.all.map{|s| s.name} }
-
   config.batch_actions = true
   batch_action :destroy, false
 
@@ -28,7 +23,8 @@ ActiveAdmin.register Register do
       register.verification_state_id = 5
       register.save
     end
-    redirect_to :back
+    # Rails.logger.info "Unentered"
+    redirect_to :back, alert: "Registers marked as unentered"
   end
 
   batch_action :unverified do |selection|
@@ -36,7 +32,7 @@ ActiveAdmin.register Register do
       register.verification_state_id = 2
       register.save
     end
-    redirect_to :back
+    redirect_to :back, alert: "Registers marked as unverified"
   end
 
   batch_action :verified do |selection|
@@ -44,7 +40,7 @@ ActiveAdmin.register Register do
       register.verification_state_id = 1
       register.save
     end
-    redirect_to :back
+    redirect_to :back, alert: "Registers marked as verified"
   end
 
   batch_action :probleme do |selection|
@@ -52,7 +48,7 @@ ActiveAdmin.register Register do
       register.verification_state_id = 6
       register.save
     end
-    redirect_to :back
+    redirect_to :back, alert: "Registers marked as probleme"
   end
       
       
@@ -71,7 +67,6 @@ ActiveAdmin.register Register do
     
   index do
     selectable_column
-
     column :id
 
     # column 'Image' do |register|

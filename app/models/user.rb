@@ -37,11 +37,16 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :shortname, :last_name, :first_name,
-                  :password_confirmation, :remember_me, :rep_privacy_list, :rep_group_list
+                  :password_confirmation, :remember_me, :rep_privacy_list, :rep_group_list, :role_ids
+  accepts_nested_attributes_for :assignments
 
   belongs_to :register_contributor
 
   alias :devise_valid_password? :valid_password?
+  
+  def roles_to_s
+    self.roles.map(&:name).join(", ")
+  end
 
   # Moving from (very) old Merb sha1 password scheme to Devise w/bcrypt.
   # These two stack overflow posts were extremely helpful:
