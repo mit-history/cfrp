@@ -33,7 +33,7 @@ class Register < ActiveRecord::Base
   # Breaks Repertoire::Faceting, doh.
   # default_scope order("date ASC")
 
-  attr_accessible :date, :weekday, :season, :register_num, :payment_notes, :page_text, :total_receipts_recorded_l, :total_receipts_recorded_s, :representation, :signatory, :misc_notes, :for_editor_notes, :ouverture, :cloture, :register_period_id, :verification_state_id, :register_plays_attributes, :ticket_sales_attributes, :rep_privacy_list, :rep_group_list, :irregular_receipts_name, :register_images
+  attr_accessible :date, :weekday, :page_de_gauche, :date_of_left_page_info, :season, :register_num, :payment_notes, :page_text, :total_receipts_recorded_l, :total_receipts_recorded_s, :representation, :signatory, :misc_notes, :for_editor_notes, :ouverture, :cloture, :register_period_id, :verification_state_id, :register_plays_attributes, :ticket_sales_attributes, :rep_privacy_list, :rep_group_list, :irregular_receipts_name, :register_images
 
   # Repertoire Groups
   acts_as_taggable_on :rep_privacy, :rep_group
@@ -58,6 +58,19 @@ class Register < ActiveRecord::Base
   scope :unentered, where(:verification_state_id => 5).order("id asc")
   scope :probleme, where(:verification_state_id => 6).order("id asc")
   
+
+  PAGES_DE_GAUCHE = %w{ Distribution Depenses Comptable Administrative Cour Relache Autre }
+	
+  PAGES_DE_GAUCHE.each do |page_de_gauche|
+    define_method("#{page_de_gauche}?") do
+      self.page_de_gauche == page_de_gauche
+    end
+
+    define_method("#{page_de_gauche}!") do
+      self.update_attribute(:page_de_gauche, page_de_gauche)
+    end
+  end
+
 
   def self.play_authors
     

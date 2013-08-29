@@ -6,6 +6,7 @@
 #  register_id       :integer
 #  play_id           :integer
 #  firstrun          :boolean
+#  reprise           :boolean
 #  newactor          :string(255)
 #  actorrole         :string(255)
 #  firstrun_perfnum  :integer
@@ -22,7 +23,7 @@ class RegisterPlay < ActiveRecord::Base
   belongs_to :register
   belongs_to :play
   accepts_nested_attributes_for :play
-  attr_accessible :play, :play_attributes, :ordering, :firstrun, :newactor, :actorrole, :firstrun_perfnum, :free_access, :ex_attendance, :ex_representation, :ex_place
+  attr_accessible :play, :play_attributes, :ordering, :firstrun, :reprise, :reprise_perfnum, :debut, :newactor, :actorrole, :firstrun_perfnum, :free_access, :ex_attendance, :ex_representation, :ex_place
 
   after_initialize :init
 

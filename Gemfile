@@ -8,18 +8,19 @@ gem 'cancan'
 
 # jQuery is the default JavaScript library in Rails 3.1
 gem 'jquery-rails'
-gem 'twitter-bootstrap-rails'
 gem 'therubyracer' # bundle can't find this one, even though it's a dependency?
 
 # GOSH I HOPE THIS WORKS
 gem 'nested_form'
 
-group :assets do
-  gem 'less-rails'#,   '~> 3.2.3'
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier',     '>= 1.0.3'
-end
+# group :assets do
+gem 'less-rails'#,   '~> 3.2.3'
+gem 'sass-rails',   '~> 3.2.3'
+gem 'coffee-rails', '~> 3.2.1'
+gem 'uglifier',     '>= 1.0.3'
+# end
+
+gem 'twitter-bootstrap-rails'
 
 # Repertoire Gems
 gem 'repertoire-faceting', :git => 'git@github.com:repertoire/repertoire-faceting.git', :branch => '0.5.5.dev'

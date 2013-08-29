@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
   belongs_to :register_contributor
 
   alias :devise_valid_password? :valid_password?
-  
+
   def roles_to_s
     self.roles.map(&:name).join(", ")
   end

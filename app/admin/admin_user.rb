@@ -1,5 +1,5 @@
 ActiveAdmin.register User do     
-  # menu false
+  menu false
 
   filter :assignments_role_name, :label => "Roles", :as => :check_boxes, :collection => proc { Role.order(:name).all.map {|r| r.name}.uniq }
 
