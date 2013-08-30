@@ -277,11 +277,11 @@ $(function() {
 	<div class="accordion" id="accordion2">
 	  <div class="accordion-group">
 	    <div class="accordion-heading">
-	      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+	      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= rp.object.id %>">
 	        Exceptions
 	      </a>
 	    </div>
-	    <div id="collapseOne" class="accordion-body collapse">
+	    <div id="collapse<%= rp.object.id %>" class="accordion-body collapse">
 	      <div class="accordion-inner">
 			  <div class="control-group">
 			    <%= rp.label :ex_attendance, 'Présence exceptionnelle', :class => 'control-label' %>
@@ -349,38 +349,38 @@ $(function() {
       <%= sc.hidden_field :id, :value => ts.id %>
       <%= sc.hidden_field :seating_category_id, :value => sc.object.seating_category_id %>
       <td class='total_sold'>
-    <%= sc.text_field :total_sold, :class => 'span12 ticket_sales_total_sold', :value => ts.total_sold %>
+    <%= sc.text_field :total_sold, :class => 'span1 ticket_sales_total_sold', :value => ts.total_sold %>
       </td>
 
       <td class='price_per_ticket'>
-	<%= sc.text_field :price_per_ticket_l, :class => 'form-inline span6 ticket_sales_price_per_ticket_l', :value => ts.price_per_ticket_l %>
+	<%= sc.text_field :price_per_ticket_l, :class => 'form-inline span1 ticket_sales_price_per_ticket_l', :value => ts.price_per_ticket_l %>
 
-	<%= sc.text_field :price_per_ticket_s, :class => 'form-inline span6 ticket_sales_price_per_ticket_s', :value => ts.price_per_ticket_s %>
+	<%= sc.text_field :price_per_ticket_s, :class => 'form-inline span1 ticket_sales_price_per_ticket_s', :value => ts.price_per_ticket_s %>
       </td>
 
       <td class='recorded_total'>
-	<%= sc.text_field :recorded_total_l, :class => 'form-inline span6 ticket_sales_recorded_total_l', :value => ts.recorded_total_l %>
+	<%= sc.text_field :recorded_total_l, :class => 'form-inline span1 ticket_sales_recorded_total_l', :value => ts.recorded_total_l %>
 
-	<%= sc.text_field :recorded_total_s, :class => 'form-inline span6 ticket_sales_recorded_total_s', :value => ts.recorded_total_s %>
+	<%= sc.text_field :recorded_total_s, :class => 'form-inline span1 ticket_sales_recorded_total_s', :value => ts.recorded_total_s %>
       </td>
     <% else %>
 
       <%= sc.hidden_field :seating_category_id, :value => sc.object.seating_category_id %>
 
       <td class='total_sold'>
-    <%= sc.text_field :total_sold, :class => 'span6 ticket_sales_total_sold', :value => 0 %>
+    <%= sc.text_field :total_sold, :class => 'span1 ticket_sales_total_sold', :value => 0 %>
       </td>
 
       <td class='price_per_ticket'>
-	<%= sc.text_field :price_per_ticket_l, :class => 'form-inline span6 ticket_sales_price_per_ticket_l', :value => 0 %>
+	<%= sc.text_field :price_per_ticket_l, :class => 'form-inline span1 ticket_sales_price_per_ticket_l', :value => 0 %>
 
-	<%= sc.text_field :price_per_ticket_s, :class => 'form-inline span6 ticket_sales_price_per_ticket_s', :value => 0 %>
+	<%= sc.text_field :price_per_ticket_s, :class => 'form-inline span1 ticket_sales_price_per_ticket_s', :value => 0 %>
       </td>
 
       <td class='recorded_total'>
-	<%= sc.text_field :recorded_total_l, :class => 'form-inline span6 ticket_sales_recorded_total_l', :value => 0 %>
+	<%= sc.text_field :recorded_total_l, :class => 'form-inline span1 ticket_sales_recorded_total_l', :value => 0 %>
 
-	<%= sc.text_field :recorded_total_s, :class => 'form-inline span6 ticket_sales_recorded_total_s', :value => 0 %>
+	<%= sc.text_field :recorded_total_s, :class => 'form-inline span1 ticket_sales_recorded_total_s', :value => 0 %>
       </td>
 
     <% end %>
@@ -408,8 +408,8 @@ $(function() {
   <div class="control-group">
     <label class='control-label'>Total Receipts Recorded (Livre / Sous)</label>
     <div class="controls">
-      <%= f.text_field :total_receipts_recorded_l, :class => 'form-inline span6' %>
-      <%= f.text_field :total_receipts_recorded_s, :class => 'form-inline span6' %>
+      <%= f.text_field :total_receipts_recorded_l, :class => 'form-inline span1' %>
+      <%= f.text_field :total_receipts_recorded_s, :class => 'form-inline span1' %>
     </div>
   </div>
 
