@@ -108,10 +108,9 @@ $(function() {
 
 <%= nested_form_for @register, :html => {:class => 'form-horizontal'} do |f| %>
 <fieldset>
-  <legend>Editing Register for the date <%= @register.date %></legend>
+  <legend>Saisie de registre pour la date: <%= I18n.localize(@register.date, :format => '%d %B %Y') %></legend>
 
-
-  <p class='register_id'>This Register's Database ID: <strong><%= @register.id %></strong></p>
+  <p class='register_id'>ID de registre dans la base de donnés: <strong><%= @register.id %></strong></p>
 
   <% if @register.errors.any? %>
     <div id="error_explanation">
@@ -126,10 +125,63 @@ $(function() {
   <% end %>
 
   <div class="actions submit">
-    <%= f.submit %>
+	<%= f.submit 'Saisir registre', :class => 'btn btn-info' %>
   </div>
 
-
+  <div class="control-group">
+    <%= f.label :register_num, 'Numéro', :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :register_num %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :season, 'Saison', :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :season %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :representation, 'Représentation', :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :representation %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :ouverture, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :ouverture %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :cloture, 'Clôture', :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :cloture %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :page_de_gauche, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select(:page_de_gauche, %w{ Distribution Dépenses Comptable Administrative Cour Relâche Autre }, :include_blank => true) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :date_of_left_page_info, 'Date d\'infos de page de gauche', :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :date_of_left_page_info, { :use_month_numbers => true }, { :class => 'span2' } %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :weekday, 'Jour de la semaine', :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select(:weekday, ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :date, { :use_month_numbers => true }, { :class => 'span2' } %>
+    </div>
+  </div>
 
 <!-- PUT PLAYS DATA HERE -->
 
@@ -155,19 +207,19 @@ $(function() {
   </div>
 
   <div class="control-group">
-    <label class="control-label">Find Play: </label>
+    <label class="control-label">Rechercher pièce:</label>
     <div class="controls">
       <input type="text" class="find_play_typeahead register_play_<%= rp.object.id %>" />
     </div>
   </div>
 
   <div class="control-group">
-    <label class="control-label">Play</label>
+    <label class="control-label">Pièce</label>
     <div class="controls">
       <table class='play_data table table-bordered register_play_<%= rp.object.id %>'>
         <thead>
           <tr>
-            <th>ID</th><th>Title</th><th>Author</th><th>Genre</th><th>Number of Acts</th><th>Prose/Vers</th><th>Prologue</th><th>Musique/Danse/Machine</th>
+            <th>ID</th><th>Titre</th><th>Auteur</th><th>Genre</th><th>Nombre d'actes</th><th>Prose/Vers</th><th>Prologue</th><th>Musique/Danse/Machine</th>
           </tr>
         </thead>
         <tbody>
@@ -186,7 +238,10 @@ $(function() {
   <div class="control-group">
     <label class="control-label">Acteur/actrice</label>
     <div class="controls form-inline">
-      <label>Début acteur/actrice:</label>
+      <label>Debut?</label>
+      <%= rp.check_box :debut %>
+
+      <label>Acteur/actrice:</label>
       <%= rp.text_field :newactor %>
 
       <label>Nouveau rôle:</label>
@@ -195,104 +250,72 @@ $(function() {
   </div>
 
   <div class="control-group">
-    <label class="control-label">Créátion</label>
+    <label class="control-label">Création?</label>
     <div class="controls form-inline">
-      <label>Créátion?</label>
-      <%#= rp.label :firstrun, :class => 'control-label' %>
       <%= rp.check_box :firstrun, :class => 'form-inline span1' %>
       <label>Numéro de création</label>
-      <%#= rp.label :firstrun_perfnum, :class => 'control-label' %>
       <%= rp.text_field :firstrun_perfnum, :class => 'span1' %>
     </div>
   </div>
 
-<div class="accordion" id="accordion2">
-  <div class="accordion-group">
-    <div class="accordion-heading"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href='#meta_<%= rp.object.id %>'>voir plus</a></div>
-    <div id='meta_<%= rp.object.id %>' class="accordion-body collapse">
-		<div class="accordion-inner">
-			<div class="control-group">
-		    <%= rp.label :free_access, 'Gratuit', :class => 'control-label' %>
-		    <div class="controls">
-		      <%= rp.check_box :free_access, :class => 'form-inline span1' %>
-		    </div>
-		  </div>
+  <div class="control-group">
+    <label class="control-label">Reprise Importante?</label>
+    <div class="controls form-inline">
+      <%= rp.check_box :reprise, :class => 'form-inline span1' %>
+      <label>Numéro de reprise</label>
+      <%= rp.text_field :reprise_perfnum, :class => 'span1' %>
+    </div>
+  </div>
 
-		  <div class="control-group">
-		    <%= rp.label :ex_attendance, 'Présence exceptionnelle', :class => 'control-label' %>
-		    <div class="controls">
-		      <%= rp.text_field :ex_attendance, :class => 'span3' %>
-		    </div>
-		  </div>
+  <div class="control-group">
+    <%= rp.label :free_access, 'Gratuit', :class => 'control-label' %>
+    <div class="controls">
+      <%= rp.check_box :free_access, :class => 'form-inline span1' %>
+    </div>
+  </div>
 
-		  <div class="control-group">
-		    <%= rp.label :ex_representation, 'Représentation exceptionnelle', :class => 'control-label' %>
-		    <div class="controls">
-		      <%= rp.text_field :ex_representation, :class => 'span3' %>
-		    </div>
-		  </div>
+	<div class="accordion" id="accordion2">
+	  <div class="accordion-group">
+	    <div class="accordion-heading">
+	      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+	        Exceptions
+	      </a>
+	    </div>
+	    <div id="collapseOne" class="accordion-body collapse">
+	      <div class="accordion-inner">
+			  <div class="control-group">
+			    <%= rp.label :ex_attendance, 'Présence exceptionnelle', :class => 'control-label' %>
+			    <div class="controls">
+			      <%= rp.text_field :ex_attendance, :class => 'span2' %>
+			    </div>
+			  </div>
 
-		  <div class="control-group">
-		    <%= rp.label :ex_place, 'Lieu exceptionnel', :class => 'control-label' %>
-		    <div class="controls">
-		      <%= rp.text_field :ex_place, :class => 'span3' %>
-		    </div>
-		  </div>
-		</div>
+			  <div class="control-group">
+			    <%= rp.label :ex_representation, 'Représentation exceptionnelle', :class => 'control-label' %>
+			    <div class="controls">
+			      <%= rp.text_field :ex_representation, :class => 'span2' %>
+			    </div>
+			  </div>
+
+			  <div class="control-group">
+			    <%= rp.label :ex_place, 'Lieu exceptionnel', :class => 'control-label' %>
+			    <div class="controls">
+			      <%= rp.text_field :ex_place, :class => 'span2' %>
+			    </div>
+			  </div>
+	      </div>
+	    </div>
+	  </div>
 	</div>
+
+
+  <div>
+	  <%= rp.link_to_remove "Supprimer la pièce ci-dessus", :class => "btn btn-danger" %><br><br>
   </div>
-</div>
-
-
   <% end %>
-
-  <%# please note that this functionality comes from nested_form:
-      https://github.com/ryanb/nested_form %>
-  <%= f.link_to_add "Add a New Play", :register_plays %></p>
-
-  </div>
-
-  <div class="control-group">
-    <%= f.label :register_num, 'Number', :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :register_num %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :season, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :season %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :representation, 'Représentation', :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :representation %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :ouverture, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :ouverture %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :cloture, 'Clôture', :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :cloture %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :weekday, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.select(:weekday, ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]) %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :date, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.date_select :date, { :use_month_numbers => true }, { :class => 'span1' } %>
-    </div>
+  <hr />
+  <%# please note that this functionality comes from nested_form: https://github.com/ryanb/nested_form %>
+  <%= f.link_to_add "Rajouter une pièce ci-dessous", :register_plays, :class => "btn btn-success" %></p>
   </div>
 
 
@@ -312,9 +335,8 @@ $(function() {
 
   <tbody>
   <%= f.fields_for :ticket_sales, @register.register_period.register_period_seating_categories.sort_by {|rpsc| rpsc.ordering} do |sc| %>
-
     <tr>
-      <td class='seating_category'>
+    <td class='seating_category'>
 	<% if sc.object.seating_category.name == "Irregular Receipts" %>
           <%= f.text_field :irregular_receipts_name %>
         <% else %>
@@ -327,38 +349,38 @@ $(function() {
       <%= sc.hidden_field :id, :value => ts.id %>
       <%= sc.hidden_field :seating_category_id, :value => sc.object.seating_category_id %>
       <td class='total_sold'>
-    <%= sc.text_field :total_sold, :class => 'span1 ticket_sales_total_sold', :value => ts.total_sold %>
+    <%= sc.text_field :total_sold, :class => 'span12 ticket_sales_total_sold', :value => ts.total_sold %>
       </td>
 
       <td class='price_per_ticket'>
-	<%= sc.text_field :price_per_ticket_l, :class => 'form-inline span1 ticket_sales_price_per_ticket_l', :value => ts.price_per_ticket_l %>
+	<%= sc.text_field :price_per_ticket_l, :class => 'form-inline span6 ticket_sales_price_per_ticket_l', :value => ts.price_per_ticket_l %>
 
-	<%= sc.text_field :price_per_ticket_s, :class => 'form-inline span1 ticket_sales_price_per_ticket_s', :value => ts.price_per_ticket_s %>
+	<%= sc.text_field :price_per_ticket_s, :class => 'form-inline span6 ticket_sales_price_per_ticket_s', :value => ts.price_per_ticket_s %>
       </td>
 
       <td class='recorded_total'>
-	<%= sc.text_field :recorded_total_l, :class => 'form-inline span1 ticket_sales_recorded_total_l', :value => ts.recorded_total_l %>
+	<%= sc.text_field :recorded_total_l, :class => 'form-inline span6 ticket_sales_recorded_total_l', :value => ts.recorded_total_l %>
 
-	<%= sc.text_field :recorded_total_s, :class => 'form-inline span1 ticket_sales_recorded_total_s', :value => ts.recorded_total_s %>
+	<%= sc.text_field :recorded_total_s, :class => 'form-inline span6 ticket_sales_recorded_total_s', :value => ts.recorded_total_s %>
       </td>
     <% else %>
 
       <%= sc.hidden_field :seating_category_id, :value => sc.object.seating_category_id %>
 
       <td class='total_sold'>
-    <%= sc.text_field :total_sold, :class => 'span1 ticket_sales_total_sold', :value => 0 %>
+    <%= sc.text_field :total_sold, :class => 'span6 ticket_sales_total_sold', :value => 0 %>
       </td>
 
       <td class='price_per_ticket'>
-	<%= sc.text_field :price_per_ticket_l, :class => 'form-inline span1 ticket_sales_price_per_ticket_l', :value => 0 %>
+	<%= sc.text_field :price_per_ticket_l, :class => 'form-inline span6 ticket_sales_price_per_ticket_l', :value => 0 %>
 
-	<%= sc.text_field :price_per_ticket_s, :class => 'form-inline span1 ticket_sales_price_per_ticket_s', :value => 0 %>
+	<%= sc.text_field :price_per_ticket_s, :class => 'form-inline span6 ticket_sales_price_per_ticket_s', :value => 0 %>
       </td>
 
       <td class='recorded_total'>
-	<%= sc.text_field :recorded_total_l, :class => 'form-inline span1 ticket_sales_recorded_total_l', :value => 0 %>
+	<%= sc.text_field :recorded_total_l, :class => 'form-inline span6 ticket_sales_recorded_total_l', :value => 0 %>
 
-	<%= sc.text_field :recorded_total_s, :class => 'form-inline span1 ticket_sales_recorded_total_s', :value => 0 %>
+	<%= sc.text_field :recorded_total_s, :class => 'form-inline span6 ticket_sales_recorded_total_s', :value => 0 %>
       </td>
 
     <% end %>
@@ -386,8 +408,8 @@ $(function() {
   <div class="control-group">
     <label class='control-label'>Total Receipts Recorded (Livre / Sous)</label>
     <div class="controls">
-      <%= f.text_field :total_receipts_recorded_l, :class => 'form-inline span2' %>
-      <%= f.text_field :total_receipts_recorded_s, :class => 'form-inline span2' %>
+      <%= f.text_field :total_receipts_recorded_l, :class => 'form-inline span6' %>
+      <%= f.text_field :total_receipts_recorded_s, :class => 'form-inline span6' %>
     </div>
   </div>
 
@@ -435,7 +457,7 @@ $(function() {
   <% end %>
 
   <div class="actions submit">
-    <%= f.submit %>
+	<%= f.submit 'Saisir registre', :class => 'btn btn-info' %>
   </div>
 
 </fieldset>
