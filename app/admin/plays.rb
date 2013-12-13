@@ -1,6 +1,6 @@
 ActiveAdmin.register Play do
 
-  menu false
+#  menu false
   
   index do
     selectable_column

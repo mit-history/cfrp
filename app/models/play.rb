@@ -19,4 +19,10 @@ class Play < ActiveRecord::Base
   has_many :registers, :through => :register_plays
 
   attr_accessible :author, :title, :genre, :acts, :prose_vers, :prologue, :musique_danse_machine
+
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      Play.create! row.to_hash
+    end
+  end
 end

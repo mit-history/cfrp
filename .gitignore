@@ -10,3 +10,9 @@ scraps/*
 *.seating
 public/images
 public/flip_books
+.powenv
+.powrc
+.rvmrc
+.rvmrc.12.13.2013-13:27:39
+lib/tasks/season-list-sample.txt
+lib/tasks/seating-cats-for-1680-81-1685-86.txt

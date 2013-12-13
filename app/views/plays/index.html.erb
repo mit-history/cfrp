@@ -1,0 +1,6 @@
+<h2>Import Plays</h2>
+
+<%= form_tag import_plays_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>

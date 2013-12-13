@@ -2,7 +2,7 @@ require 'date'
 
 namespace :img do
   desc "Imports Azentis Images for seasons from 1744 to 1769"
-  task :import => :environment do |t, args|
+  task :import_old => :environment do |t, args|
 
     seasons = {
       # '107-117' => '1744-45 to 1754-55'
