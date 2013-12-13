@@ -1,8 +1,8 @@
 /* ...
 *= require_self
-*= require rep.faceting
+* require rep.faceting
 *= require_tree .
 *= require bootstrap_and_overrides
+*= require 'user_set'
 */
 
-//= require 'user_set'

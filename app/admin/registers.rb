@@ -79,7 +79,14 @@ ActiveAdmin.register Register do
     column "Status", :verification_state
 
     actions :defaults => false do |register|
-      link_to("Formulaire de saisie", "/registers/#{register.id}/edit", target: "_blank")
+      if (current_user.roles.includes("admin"))
+        Rails.logger.info current_user.email + " is an admin!\n\n"
+        button_to("Supprimer", { :action => "destroy", :id => register.id }, :confirm => "Are you sure?", :method => :delete)
+        link_to("Modifier", edit_admin_register_path(register))
+        link_to("Formulaire de saisie", "/registers/#{register.id}/edit", target: "_blank")
+      else
+        link_to("Formulaire de saisie", "/registers/#{register.id}/edit", target: "_blank")
+      end
     end
   end
 

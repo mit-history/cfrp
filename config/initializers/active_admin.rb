@@ -58,6 +58,8 @@ ActiveAdmin.setup do |config|
   # within the controller.
   config.authentication_method = :authenticate_admin_user!
 
+  # per http://www.activeadmin.info/docs/13-authorization-adapter.html#using_the_cancan_adapter
+  config.authorization_adapter = ActiveAdmin::CanCanAdapter
 
   # == Current User
   #
