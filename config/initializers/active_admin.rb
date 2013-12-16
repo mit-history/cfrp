@@ -170,7 +170,21 @@ ActiveAdmin.setup do |config|
   #       admin.add_logout_button_to_menu menu
   #     end
   #   end
-  #
+
+  config.namespace :admin do |admin|
+    admin.build_menu :default do |menu|
+      menu.add label: "Registres", url: "#{Cfrp::Application.config.path_prefix}/admin/registers", priority: 1
+      menu.add label: "Pieces", url: "#{Cfrp::Application.config.path_prefix}/admin/plays", priority: 2
+      menu.add label: "Categories d'emplacement par periode", url: "#{Cfrp::Application.config.path_prefix}/admin/register_period_seating_categories", priority: 3
+      menu.add label: "Periodes", url: "#{Cfrp::Application.config.path_prefix}/admin/register_periods", priority: 4
+      menu.add label: "Pieces par registre", url: "#{Cfrp::Application.config.path_prefix}/admin/register_plays", priority: 5
+      menu.add label: "Categories d'emplacement", url: "#{Cfrp::Application.config.path_prefix}/admin/seating_categories", priority: 6
+    end
+  end
+
+
+
+
   # If you wanted to add a static menu item to the default menu provided:
   #
   #   config.namespace :admin do |admin|
