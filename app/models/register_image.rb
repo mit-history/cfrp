@@ -11,6 +11,6 @@
 #
 
 class RegisterImage < ActiveRecord::Base
-  has_one :register
+  has_one :register, :counter_cache => true
   attr_accessible :filepath, :register_id
 end

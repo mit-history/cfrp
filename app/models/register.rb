@@ -57,6 +57,10 @@ class Register < ActiveRecord::Base
   scope :unverified, where(:verification_state_id => 2).order("id asc")
   scope :unentered, where(:verification_state_id => 5).order("id asc")
   scope :probleme, where(:verification_state_id => 6).order("id asc")
+  scope :image_count, ->(count) { where("register_images_count = ?", count) }
+  scope :two_images, image_count(2)
+  scope :one_image, image_count(1)
+  scope :no_image, image_count(0)
   
 
   PAGES_DE_GAUCHE = %w{ Distribution Depenses Comptable Administrative Cour Relache Autre }
