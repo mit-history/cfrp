@@ -63,7 +63,7 @@ ActiveAdmin.register Register do
     before_filter :only => [:index] do
       if params['commit'].blank?
          #country_contains or country_eq .. or depending of your filter type
-         params['q'] = {:date_gte => '1700-01-01', :date_lte => '1800-01-01'} 
+         params['q'] = {:date_gte => '1600-01-01', :date_lte => '1800-01-01'} 
       end
     end
   end
