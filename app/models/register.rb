@@ -62,7 +62,6 @@ class Register < ActiveRecord::Base
   scope :one_image, image_count(1)
   scope :no_image, image_count(0)
   
-
   PAGES_DE_GAUCHE = %w{ Distribution Depenses Comptable Administrative Cour Relache Autre }
 	
   PAGES_DE_GAUCHE.each do |page_de_gauche|
