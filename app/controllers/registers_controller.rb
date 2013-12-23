@@ -1,7 +1,6 @@
 class RegistersController < ApplicationController
   before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
 
-  load_and_authorize_resource
   include Repertoire::Faceting::Controller
 
   def index
