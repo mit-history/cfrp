@@ -51,7 +51,8 @@ class Register < ActiveRecord::Base
   has_many :register_plays
   has_many :plays, :through => :register_plays
 
-  accepts_nested_attributes_for :register_plays, :plays, :ticket_sales
+  accepts_nested_attributes_for :plays, :ticket_sales
+  accepts_nested_attributes_for :register_plays, :allow_destroy => true
 
   scope :verified, where(:verification_state_id => 1).order("id asc")
   scope :unverified, where(:verification_state_id => 2).order("id asc")
