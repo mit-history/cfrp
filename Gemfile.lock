@@ -255,6 +255,7 @@ DEPENDENCIES
   meta_search (>= 1.1.0.pre)
   nested_form
   pg (= 0.11.0)
+  pry
   rails (= 3.2.11)
   rake (= 0.9.2.2)
   rb-fsevent (~> 0.9.1)
