@@ -19,39 +19,51 @@ ActiveAdmin.register Register do
   filter :register_plays_play_author, :label => "Auteur de Piece", :as => :select, :collection => proc { Play.order(:author).all.map{|p| p.author}.uniq }
   
   config.batch_actions = true
-  batch_action :destroy, false
+  # batch_action :destroy, false
+
+  batch_action :destroy, :if => proc { current_user.has_role?(:super_admin) }, :confirm => "Are you sure you want to delete all of these?" do |selection|
+    session[:return_to] ||= request.referer
+    Register.find(selection).each do |register|
+      register.destroy
+    end
+    redirect_to session.delete(:return_to), alert: "Registers deleted"
+  end
 
   batch_action :unentered do |selection|
+    session[:return_to] ||= request.referer
     Register.find(selection).each do |register|
       register.verification_state_id = 5
       register.save
     end
     # Rails.logger.info "Unentered"
-    redirect_to :back, alert: "Registers marked as unentered"
+    redirect_to session.delete(:return_to), alert: "Registers marked as unentered"
   end
 
   batch_action :unverified do |selection|
+    session[:return_to] ||= request.referer
     Register.find(selection).each do |register|
       register.verification_state_id = 2
       register.save
     end
-    redirect_to :back, alert: "Registers marked as unverified"
+    redirect_to session.delete(:return_to), alert: "Registers marked as unverified"
   end
 
   batch_action :verified do |selection|
+    session[:return_to] ||= request.referer
     Register.find(selection).each do |register|
       register.verification_state_id = 1
       register.save
     end
-    redirect_to :back, alert: "Registers marked as verified"
+    redirect_to session.delete(:return_to), alert: "Registers marked as verified"
   end
 
   batch_action :probleme do |selection|
+    session[:return_to] ||= request.referer
     Register.find(selection).each do |register|
       register.verification_state_id = 6
       register.save
     end
-    redirect_to :back, alert: "Registers marked as probleme"
+    redirect_to session.delete(:return_to), alert: "Registers marked as probleme"
   end
       
       
