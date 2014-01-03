@@ -96,7 +96,7 @@ class Register < ActiveRecord::Base
     Register.order('id')
       .where(:season => self.season)
       .where("id > ?", self.id).detect do |r|
-      r.verification_state.name == 'unentered'
+      r.verification_state.name == 'pas saisie'
     end
   end
 
@@ -104,7 +104,7 @@ class Register < ActiveRecord::Base
     Register.order('id')
       .where(:season => self.season)
       .where("id > ?", self.id).detect do |r|
-      r.verification_state.name == 'unverified'
+      r.verification_state.name == 'pas verifie'
     end
   end
 
@@ -112,7 +112,7 @@ class Register < ActiveRecord::Base
     Register.order('id')
       .where(:season => self.season)
       .where("id > ?", self.id).detect do |r|
-      r.verification_state.name == 'verified'
+      r.verification_state.name == 'verifie'
     end
   end
 

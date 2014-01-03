@@ -39,8 +39,8 @@ test: &test
   encoding: unicode
   database: cfrp_test
   pool: 5
-  username: cfrp
-  password: cfrp$02139
+  # username: cfrp
+  # password: cfrp$02139
 
 production:
   adapter: postgresql
