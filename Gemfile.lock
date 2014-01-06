@@ -1,7 +1,5 @@
-GIT
-  remote: git@github.com:repertoire/Repertoire-Groups.git
-  revision: c0f0d29e7b48dfce7cf55c5175de4c11200fa516
-  branch: bootstrap-flavor
+PATH
+  remote: vendor/repertoire-groups-0.0.1
   specs:
     repertoire-groups (0.0.1)
 
@@ -249,7 +247,7 @@ DEPENDENCIES
   rails_12factor
   rake (= 0.9.2.2)
   rb-fsevent (~> 0.9.1)
-  repertoire-groups!
+  repertoire-groups (= 0.0.1)!
   rspec
   rspec-rails
   sass-rails (~> 3.2.3)

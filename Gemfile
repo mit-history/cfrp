@@ -22,7 +22,8 @@ group :assets do
   gem 'uglifier',     '>= 1.0.3'
 end
 
-gem 'repertoire-groups', :git => 'git@github.com:repertoire/Repertoire-Groups.git', :branch => 'bootstrap-flavor'
+# gem 'repertoire-groups', :git => 'git@github.com:repertoire/Repertoire-Groups.git', :branch => 'bootstrap-flavor'
+gem 'repertoire-groups', '0.0.1', :path => 'vendor/repertoire-groups-0.0.1' #, :require => 'repertoire-groups'
 gem 'acts-as-taggable-on'
 
 # Bundle gems for the local environment. Make sure to
