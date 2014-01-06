@@ -10,7 +10,6 @@ gem 'cancan'
 
 # jQuery is the default JavaScript library in Rails 3.1
 gem 'jquery-rails'
-gem 'twitter-bootstrap-rails'
 gem 'therubyracer' # bundle can't find this one, even though it's a dependency?
 
 # GOSH I HOPE THIS WORKS
@@ -23,6 +22,9 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier',     '>= 1.0.3'
 end
+
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
 
 # gem 'repertoire-groups', :git => 'git@github.com:repertoire/Repertoire-Groups.git', :branch => 'bootstrap-flavor'
 gem 'repertoire-groups', '0.0.1', :path => 'vendor/repertoire-groups-0.0.1' #, :require => 'repertoire-groups'
