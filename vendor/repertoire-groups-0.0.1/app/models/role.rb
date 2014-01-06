@@ -3,7 +3,7 @@ class Role < ActiveRecord::Base
   has_many :users, :through => :assignments
   
   accepts_nested_attributes_for :assignments, :allow_destroy => true
-  attr_accessible :assignments_attributes
+  attr_accessible :assignments_attributes, :name
 
   validates_presence_of :name
 

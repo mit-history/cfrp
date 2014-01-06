@@ -1,8 +1,10 @@
 source 'http://rubygems.org'
 
-gem 'rake' #, '0.9.2.2'
-gem 'rails'#, '3.2.1'
-gem 'pg' #, '0.11.0'
+ruby '1.9.3'
+
+gem 'rake', '~> 0.9'
+gem 'rails', '~> 3.2'
+gem 'pg', '~> 0.11.0'
 gem 'devise'
 gem 'cancan'
 
