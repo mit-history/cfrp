@@ -1,33 +1,3 @@
-<% config = Cfrp::Application.config %>
-
-<script language="javascript">
-$().ready(function() {
-  // only necessary if using sub-uris
-  repertoire.defaults = { path_prefix: '<%= config.path_prefix %>' };
-
-  $('#registers').facet_context(function() {
-    return { 
-      search: $("#search").val(),
-      limit: 10,
-      offset: 10,
-      utf8: "%E2%9C%93"
-    }
-  });
-
-  $('.facet').facet();
-  $('.nested_facet').nested_facet();
-  $('#results').results_custom({
-    limit: 10,
-    offset: 0
-  });
-
-});
-</script>
-
-<!-- form id='search_field'
-<span class="results">Results: <span class='results_count'></span></span> <!-- | Search: <input id='search' name='search' type='text' value='<%= @search %>'/> 
-</form> -->
-
 <%#= render :partial => './navigation', :locals => { :highlight => :registers } %>
 
 <div class='row-fluid' id='registers'>

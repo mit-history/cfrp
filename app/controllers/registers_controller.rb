@@ -1,8 +1,6 @@
 class RegistersController < ApplicationController
   before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
 
-  include Repertoire::Faceting::Controller
-
   def index
     @search = params[:search] || ''
     # @q = Register.ransack(params[:q]) # <=========
@@ -44,7 +42,6 @@ class RegistersController < ApplicationController
     redirect_to :action => "index", :notice => 'Register was successfully updated.'
   end
 
-
   # Web-service to return the results of a query, given existing filter
   # requirements. Over-ride this method if you need to specify additional
   # query parms for faceting results.
@@ -65,14 +62,4 @@ class RegistersController < ApplicationController
       format.json { render :json => @results }
     end
   end
-
-  # webservice bases
-
-  protected
-  def base(name=nil)
-    search = "%#{params[:search]}%"
-    base = Register.where(["season ilike ?", search])
-    name ? base.facet(name) : base
-  end
-
 end

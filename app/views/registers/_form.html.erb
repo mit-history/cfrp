@@ -103,7 +103,7 @@ $(function() {
     <% end %>
 
   <% if @register.register_images.length > 0 %>
-    <%= link_to "Open Image in New Window", "#{config.path_prefix}/#{@register.register_images[0].filepath}", :target => 'top' %>
+    <%= link_to "Open Image in New Window", "/#{@register.register_images[0].filepath}", :target => 'top' %>
   <% end %>
 
 <%= nested_form_for @register, :html => {:class => 'form-horizontal'} do |f| %>

@@ -43,14 +43,7 @@ Cfrp::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  # What does this do for us?
-  # Repertoire Assets
-  # config.repertoire_assets.path_prefix = '/cfrp'
-  config.path_prefix = '/cfrp'
-  #config.action_controller.relative_url_root = '/cfrp'
-  #config.assets.prefix = '/cfrp'
-
-  # for devise mailer:
+    # for devise mailer:
   config.action_mailer.delivery_method = :sendmail
   config.action_mailer.default_url_options = { :host => 'hyperstudio.mit.edu/cfrp' }
 

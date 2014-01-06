@@ -100,13 +100,13 @@ ActiveAdmin.register Register do
         links += link_to I18n.t('active_admin.edit'), edit_resource_path(resource), :class => "member_link edit_link"
         links += link_to I18n.t('active_admin.delete'), resource_path(resource), :method => :delete, :confirm => I18n.t('active_admin.delete_confirmation'), :class => "member_link delete_link"
       end
-      links += link_to("Formulaire de saisie", "#{config.path_prefix}/registers/#{resource.id}/edit", target: "_blank")
+      links += link_to("Formulaire de saisie", "/registers/#{resource.id}/edit", target: "_blank")
       links
     end
   end
 
   index :as => :grid, :columns => 4 do |register|
-    link_to(image_tag("/#{register.register_images[0].filepath}", width: "200"), "#{config.path_prefix}/registers/#{register.id}/edit", target: "_blank")
+    link_to(image_tag("/#{register.register_images[0].filepath}", width: "200"), "/registers/#{register.id}/edit", target: "_blank")
   end
     
   show do |register|
