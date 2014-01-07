@@ -93,7 +93,7 @@ $(function() {
 
 <div class='offset1' id='register_form'>
 
-    <% if !@register.register_images[1].nil? and File.exist? "#{Cfrp::Application.config.root}/public/#{@register.register_images[1].filepath}" %>
+    <% if !@register.register_images[1].nil? %>
     <div class="tabbable tabs-below">
       <ul class="nav nav-tabs image-tabs">
         <li><a class='front' href="">Image recto</a></li>
@@ -202,7 +202,7 @@ $(function() {
   <div class="control-group">
     <%= rp.label :ordering, :class => 'control-label' %>
     <div class="controls">
-    <%= rp.text_field :ordering, :class => 'form-inline span1 play-ordering' %>
+    <%= rp.text_field :ordering, :class => 'form-inline span6 play-ordering' %>
     </div>
   </div>
 
@@ -252,25 +252,25 @@ $(function() {
   <div class="control-group">
     <label class="control-label">Création?</label>
     <div class="controls form-inline">
-      <%= rp.check_box :firstrun, :class => 'form-inline span1' %>
+      <%= rp.check_box :firstrun, :class => 'form-inline span6' %>
       <label>Numéro de création</label>
-      <%= rp.text_field :firstrun_perfnum, :class => 'span1' %>
+      <%= rp.text_field :firstrun_perfnum, :class => 'span6' %>
     </div>
   </div>
 
   <div class="control-group">
     <label class="control-label">Reprise Importante?</label>
     <div class="controls form-inline">
-      <%= rp.check_box :reprise, :class => 'form-inline span1' %>
+      <%= rp.check_box :reprise, :class => 'form-inline span6' %>
       <label>Numéro de reprise</label>
-      <%= rp.text_field :reprise_perfnum, :class => 'span1' %>
+      <%= rp.text_field :reprise_perfnum, :class => 'span6' %>
     </div>
   </div>
 
   <div class="control-group">
     <%= rp.label :free_access, 'Gratuit', :class => 'control-label' %>
     <div class="controls">
-      <%= rp.check_box :free_access, :class => 'form-inline span1' %>
+      <%= rp.check_box :free_access, :class => 'form-inline span6' %>
     </div>
   </div>
 
@@ -349,38 +349,38 @@ $(function() {
       <%= sc.hidden_field :id, :value => ts.id %>
       <%= sc.hidden_field :seating_category_id, :value => sc.object.seating_category_id %>
       <td class='total_sold'>
-    <%= sc.text_field :total_sold, :class => 'span1 ticket_sales_total_sold', :value => ts.total_sold %>
+    <%= sc.text_field :total_sold, :class => 'span6 ticket_sales_total_sold', :value => ts.total_sold %>
       </td>
 
       <td class='price_per_ticket'>
-	<%= sc.text_field :price_per_ticket_l, :class => 'form-inline span1 ticket_sales_price_per_ticket_l', :value => ts.price_per_ticket_l %>
+	<%= sc.text_field :price_per_ticket_l, :class => 'form-inline span6 ticket_sales_price_per_ticket_l', :value => ts.price_per_ticket_l %>
 
-	<%= sc.text_field :price_per_ticket_s, :class => 'form-inline span1 ticket_sales_price_per_ticket_s', :value => ts.price_per_ticket_s %>
+	<%= sc.text_field :price_per_ticket_s, :class => 'form-inline span6 ticket_sales_price_per_ticket_s', :value => ts.price_per_ticket_s %>
       </td>
 
       <td class='recorded_total'>
-	<%= sc.text_field :recorded_total_l, :class => 'form-inline span1 ticket_sales_recorded_total_l', :value => ts.recorded_total_l %>
+	<%= sc.text_field :recorded_total_l, :class => 'form-inline span6 ticket_sales_recorded_total_l', :value => ts.recorded_total_l %>
 
-	<%= sc.text_field :recorded_total_s, :class => 'form-inline span1 ticket_sales_recorded_total_s', :value => ts.recorded_total_s %>
+	<%= sc.text_field :recorded_total_s, :class => 'form-inline span6 ticket_sales_recorded_total_s', :value => ts.recorded_total_s %>
       </td>
     <% else %>
 
       <%= sc.hidden_field :seating_category_id, :value => sc.object.seating_category_id %>
 
       <td class='total_sold'>
-    <%= sc.text_field :total_sold, :class => 'span1 ticket_sales_total_sold', :value => 0 %>
+    <%= sc.text_field :total_sold, :class => 'span6 ticket_sales_total_sold', :value => 0 %>
       </td>
 
       <td class='price_per_ticket'>
-	<%= sc.text_field :price_per_ticket_l, :class => 'form-inline span1 ticket_sales_price_per_ticket_l', :value => 0 %>
+	<%= sc.text_field :price_per_ticket_l, :class => 'form-inline span6 ticket_sales_price_per_ticket_l', :value => 0 %>
 
-	<%= sc.text_field :price_per_ticket_s, :class => 'form-inline span1 ticket_sales_price_per_ticket_s', :value => 0 %>
+	<%= sc.text_field :price_per_ticket_s, :class => 'form-inline span6 ticket_sales_price_per_ticket_s', :value => 0 %>
       </td>
 
       <td class='recorded_total'>
-	<%= sc.text_field :recorded_total_l, :class => 'form-inline span1 ticket_sales_recorded_total_l', :value => 0 %>
+	<%= sc.text_field :recorded_total_l, :class => 'form-inline span6 ticket_sales_recorded_total_l', :value => 0 %>
 
-	<%= sc.text_field :recorded_total_s, :class => 'form-inline span1 ticket_sales_recorded_total_s', :value => 0 %>
+	<%= sc.text_field :recorded_total_s, :class => 'form-inline span6 ticket_sales_recorded_total_s', :value => 0 %>
       </td>
 
     <% end %>
