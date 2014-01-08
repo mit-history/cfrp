@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-require 'CSV'
+# require 'CSV'
 
 namespace :plays_cleanup do
   desc "Adds cleaned-up plays to database while creating a new CSV file with DB ids"

@@ -1,4 +1,4 @@
-require 'CSV'
+# require 'CSV'
 
 namespace :reg_images_sync do
   desc "Syncs up register images for last three seasons of un-synced entries"
