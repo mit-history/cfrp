@@ -80,12 +80,10 @@ $(function() {
 </script>
 
   <div id="ri_resizer">
-    <img id="register_image" data-src="/<%= @register.register_images[0].filepath %>" src="/<%= @register.register_images[0].filepath %>" />
-  <% unless @register.register_images[1].nil? %>
-    <% if File.exist? "#{Cfrp::Application.config.root}/public/#{@register.register_images[1].filepath}" %>
-    <img id="register_image2" src="/<%= @register.register_images[1].filepath %>" />
+    <img id="register_image" data-src="http://images.cfregisters.org/<%= @register.register_images[0].filepath %>" src="http://images.cfregisters.org/<%= @register.register_images[0].filepath %>" />
+    <% unless @register.register_images[1].nil? %>
+    <img id="register_image2" src="http://images.cfregisters.org/<%= @register.register_images[1].filepath %>" />
     <% end %>
-  <% end %>
   </div>
 
 <% end %>

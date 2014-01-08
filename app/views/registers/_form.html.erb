@@ -73,7 +73,7 @@ $(function() {
     });
 
   <% unless @register.register_images[1].nil? %>
-    <% if File.exist? "#{Cfrp::Application.config.root}/public/#{@register.register_images[1].filepath}" %>
+
     $("img#register_image2").hide();
     $("ul.image-tabs a.back").click(function(e) {
       $("img#register_image").attr("src", $("img#register_image2").attr("src"));
@@ -84,7 +84,7 @@ $(function() {
       $("img#register_image").attr("src", $("img#register_image").data("src"));
       return false;
     })
-    <% end %>
+
   <% end %>
 })
 </script>
@@ -103,7 +103,7 @@ $(function() {
     <% end %>
 
   <% if @register.register_images.length > 0 %>
-    <%= link_to "Open Image in New Window", "/#{@register.register_images[0].filepath}", :target => 'top' %>
+    <%= link_to "Open Image in New Window", "http://images.cfregisters.org/#{@register.register_images[0].filepath}", :target => 'top' %>
   <% end %>
 
 <%= nested_form_for @register, :html => {:class => 'form-horizontal'} do |f| %>
