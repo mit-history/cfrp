@@ -16,3 +16,5 @@ public/flip_books
 lib/tasks/season-list-sample.txt
 lib/tasks/seating-cats-for-1680-81-1685-86.txt
 ability-backup.rb
+_archive/
+Gemfile.old.lock
