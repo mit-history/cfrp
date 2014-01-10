@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131009185111) do
+ActiveRecord::Schema.define(:version => 20140110161941) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -165,7 +165,16 @@ ActiveRecord::Schema.define(:version => 20131009185111) do
     t.string   "irregular_receipts_name"
     t.string   "page_de_gauche"
     t.date     "date_of_left_page_info"
-    t.integer  "register_images_count",     :default => 0
+    t.integer  "register_images_count",      :default => 0
+    t.string   "irregular_receipts_name_2"
+    t.string   "irregular_receipts_name_3"
+    t.string   "irregular_receipts_name_4"
+    t.string   "irregular_receipts_name_5"
+    t.string   "irregular_receipts_name_6"
+    t.string   "irregular_receipts_name_7"
+    t.string   "irregular_receipts_name_8"
+    t.string   "irregular_receipts_name_9"
+    t.string   "irregular_receipts_name_10"
   end
 
   create_table "roles", :force => true do |t|

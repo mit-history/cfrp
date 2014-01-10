@@ -337,8 +337,8 @@ $(function() {
   <%= f.fields_for :ticket_sales, @register.register_period.register_period_seating_categories.sort_by {|rpsc| rpsc.ordering} do |sc| %>
     <tr>
     <td class='seating_category'>
-	<% if sc.object.seating_category.name == "Irregular Receipts" %>
-          <%= f.text_field :irregular_receipts_name %>
+    	<% if sc.object.seating_category.name.match /\AIrregular Receipts/ %>
+          <%= f.text_field irregular_receipt_field_name(sc.object.seating_category) %>
         <% else %>
           <%= sc.object.seating_category.name %>
         <% end %>
