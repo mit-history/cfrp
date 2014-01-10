@@ -4,7 +4,7 @@ ruby '1.9.3'
 
 gem 'rake', '~> 0.9'
 gem 'rails', '~> 3.2'
-gem 'pg', '~> 0.11.0'
+gem 'pg'
 gem 'devise'
 gem 'cancan'
 
