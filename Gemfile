@@ -2,11 +2,12 @@ source 'http://rubygems.org'
 
 ruby '2.0.0'
 
-gem 'rake', '~> 0.9'
+gem 'rake'
 gem 'rails', '~> 3.2'
 gem 'pg'
 gem 'devise'
 gem 'cancan'
+gem 'iconv'
 
 # jQuery is the default JavaScript library in Rails 3.1
 gem 'jquery-rails'
