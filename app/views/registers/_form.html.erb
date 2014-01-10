@@ -62,16 +62,6 @@ $(function() {
       $(e.currentTarget).val('');
     }
 
-    if ($('input#register_irregular_receipts_name').val() === '') {
-      $('input#register_irregular_receipts_name').val('Irregular Receipts');
-    }
-
-    $('input#register_irregular_receipts_name').focus(function() {
-      if ($('input#register_irregular_receipts_name').val() === 'Irregular Receipts') {
-        $(this).val('');
-      }
-    });
-
   <% unless @register.register_images[1].nil? %>
 
     $("img#register_image2").hide();
@@ -335,57 +325,11 @@ $(function() {
 
   <tbody>
   <%= f.fields_for :ticket_sales, @register.register_period.register_period_seating_categories.sort_by {|rpsc| rpsc.ordering} do |sc| %>
-    <tr>
-    <td class='seating_category'>
-    	<% if sc.object.seating_category.name.match /\AIrregular Receipts/ %>
-          <%= f.text_field irregular_receipt_field_name(sc.object.seating_category) %>
-        <% else %>
-          <%= sc.object.seating_category.name %>
-        <% end %>
-      </td>
-
-    <% ts = @register.ticket_sales.detect {|ts| ts.seating_category_id == sc.object.seating_category.id} %>
-    <% unless ts.nil? %>
-      <%= sc.hidden_field :id, :value => ts.id %>
-      <%= sc.hidden_field :seating_category_id, :value => sc.object.seating_category_id %>
-      <td class='total_sold'>
-    <%= sc.text_field :total_sold, :class => 'span6 ticket_sales_total_sold', :value => ts.total_sold %>
-      </td>
-
-      <td class='price_per_ticket'>
-	<%= sc.text_field :price_per_ticket_l, :class => 'form-inline span6 ticket_sales_price_per_ticket_l', :value => ts.price_per_ticket_l %>
-
-	<%= sc.text_field :price_per_ticket_s, :class => 'form-inline span6 ticket_sales_price_per_ticket_s', :value => ts.price_per_ticket_s %>
-      </td>
-
-      <td class='recorded_total'>
-	<%= sc.text_field :recorded_total_l, :class => 'form-inline span6 ticket_sales_recorded_total_l', :value => ts.recorded_total_l %>
-
-	<%= sc.text_field :recorded_total_s, :class => 'form-inline span6 ticket_sales_recorded_total_s', :value => ts.recorded_total_s %>
-      </td>
+    <% if irregular_receipt?(sc.object.seating_category) %>
+      <%= render :partial => 'irregular_seating_category', :locals => {:seating_category => sc, :register => @register, form: f} %>
     <% else %>
-
-      <%= sc.hidden_field :seating_category_id, :value => sc.object.seating_category_id %>
-
-      <td class='total_sold'>
-    <%= sc.text_field :total_sold, :class => 'span6 ticket_sales_total_sold', :value => 0 %>
-      </td>
-
-      <td class='price_per_ticket'>
-	<%= sc.text_field :price_per_ticket_l, :class => 'form-inline span6 ticket_sales_price_per_ticket_l', :value => 0 %>
-
-	<%= sc.text_field :price_per_ticket_s, :class => 'form-inline span6 ticket_sales_price_per_ticket_s', :value => 0 %>
-      </td>
-
-      <td class='recorded_total'>
-	<%= sc.text_field :recorded_total_l, :class => 'form-inline span6 ticket_sales_recorded_total_l', :value => 0 %>
-
-	<%= sc.text_field :recorded_total_s, :class => 'form-inline span6 ticket_sales_recorded_total_s', :value => 0 %>
-      </td>
-
+      <%= render :partial => 'seating_category', :locals => {:seating_category => sc, :register => @register, form: f} %>
     <% end %>
-
-    </tr>
   <% end %>
 
     <tr>
