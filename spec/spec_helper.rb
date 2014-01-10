@@ -8,11 +8,6 @@ require 'capybara/rspec'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
-# For FM import lib
-require_relative '../lib/fm_migrator'
-require_relative '../lib/field_set'
-require_relative '../lib/season_spec'
-
 RSpec.configure do |config|
   # == Mock Framework
   #
