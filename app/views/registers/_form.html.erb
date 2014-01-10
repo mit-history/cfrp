@@ -196,6 +196,7 @@ $(function() {
     </div>
   </div>
 
+  <!-- Play Title Search -->
   <div class="control-group">
     <label class="control-label">Rechercher pièce:</label>
     <div class="controls">
@@ -224,6 +225,27 @@ $(function() {
       </table>
     </div>
   </div>
+  <!-- End Play Title Search -->
+
+  <!-- Start Participation Search -->
+  <div class="control-group">
+    <label class="control-label">Participation</label>
+    <div class="controls form-inline">
+
+      <% rp.object.participations.build %>
+      <% rp.object.participations.build %>
+      <%= rp.fields_for :participations, rp.object.participations do |participation_form| %>
+        <%= participation_form.hidden_field :id, :class => "participation_id-register_play_#{rp.object.id}" %>
+        <%= participation_form.text_field :role %>
+        <%= participation_form.text_field :character %>
+        <%= participation_form.check_box :debut %>
+
+        <%= participation_form.select(:person_id, Person.all.map{|person| [person.full_name, person.id]}, {include_blank: true}) %>
+    <% end %>
+    </div>
+  </div>
+
+
 
   <div class="control-group">
     <label class="control-label">Acteur/actrice</label>
@@ -238,6 +260,7 @@ $(function() {
       <%= rp.text_field :actorrole %>
     </div>
   </div>
+  <!-- End Participation Search -->
 
   <div class="control-group">
     <label class="control-label">Création?</label>

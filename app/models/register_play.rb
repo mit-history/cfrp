@@ -22,11 +22,13 @@
 class RegisterPlay < ActiveRecord::Base
   has_many :participations
   has_many :people, through: :participations
-  
+
   belongs_to :register
   belongs_to :play
   accepts_nested_attributes_for :play
-  attr_accessible :play, :play_attributes, :ordering, :firstrun, :reprise, :reprise_perfnum, :debut, :newactor, :actorrole, :firstrun_perfnum, :free_access, :ex_attendance, :ex_representation, :ex_place
+
+  accepts_nested_attributes_for :participations, reject_if: lambda{|participation| !participation.has_key?('person_id') }
+  attr_accessible :play, :play_attributes, :participations_attributes, :ordering, :firstrun, :reprise, :reprise_perfnum, :debut, :newactor, :actorrole, :firstrun_perfnum, :free_access, :ex_attendance, :ex_representation, :ex_place
 
   after_initialize :init
 
@@ -38,6 +40,13 @@ class RegisterPlay < ActiveRecord::Base
     new_play = Play.find(attrs[:play_id])
     unless new_play.nil?
       self.play = new_play
+    end
+  end
+
+  def build_participations=(attrs)
+    new_participation = Participation.find(attrs[:register_play_id])
+    unless new_participation.nil?
+      self.participation = new_participation
     end
   end
 end
