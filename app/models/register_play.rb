@@ -20,6 +20,9 @@
 #
 
 class RegisterPlay < ActiveRecord::Base
+  has_many :participations
+  has_many :people, through: :participations
+  
   belongs_to :register
   belongs_to :play
   accepts_nested_attributes_for :play

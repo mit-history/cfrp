@@ -40,4 +40,18 @@ describe RegisterPlay do
     @rp.save
     @rp.play.title == @play3.title
   end
+
+  it "has many participations" do 
+    rp = RegisterPlay.new
+    person = Person.new(full_name: 'Joe Bob')
+
+    rp.participations << Participation.new(role: :actor, person: person)
+    rp.save
+
+    rp.reload
+
+    rp.participations.first.person.should == person
+    rp.participations.first.role.should == 'actor'
+    rp.people.should == [ person ]
+  end
 end
