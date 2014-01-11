@@ -232,19 +232,19 @@ $(function() {
     <label class="control-label">Participation</label>
     <div class="controls form-inline">
 
-      <% rp.object.participations.build %>
-      <% rp.object.participations.build %>
       <%= rp.fields_for :participations, rp.object.participations do |participation_form| %>
         <%= participation_form.hidden_field :id, :class => "participation_id-register_play_#{rp.object.id}" %>
         <%= participation_form.hidden_field :role, :value => "Actor" %>
-        <%= participation_form.select(:person_id, Person.all.map{|person| ["#{person.honorific} #{person.full_name}", person.id]}, {include_blank: "Selectionner une personne"}) %>
+        <%= participation_form.select(:person_id, Person.all.map{|person| ["#{person.honorific} #{person.full_name}", person.id]}, {include_blank: "Selectionner un acteur"}) %>
         <label>Début?</label>
         <%= participation_form.check_box :debut %>
         <label>Rôle: </label>
         <%= participation_form.text_field :character %>
-        <label>Supprimer</label>
-        <%= participation_form.check_box :_destroy %>
+        <%= participation_form.link_to_remove "Supprimer acteur", :class => "btn btn-danger" %>
+
     <% end %>
+    <%= rp.link_to_add "Rajouter acteur", :participations, :class => "btn btn-success" %>
+
     </div>
   </div>
   <!--
