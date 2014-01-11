@@ -23,18 +23,6 @@ $(function() {
     bodyMargin();
   });
 
-/*
-    // Load cookie on initialization if possible
-    if (($.cookie("imgHeight") != null)) {
-        var imgHeight = $.cookie("imgHeight");
-        if (imgHeight < $(window).height() && imgHeight > 10) {
-            $("#ri_resizer").animate({height:imgHeight}, function(){
-                hReset();
-    });
-        }
-    }
-*/
-
     // Function to adjust height of page relative to image size
     function hReset() {
         var imgHeight = $("#ri_resizer").height();
@@ -80,9 +68,12 @@ $(function() {
 </script>
 
   <div id="ri_resizer">
+    <% if !@register.previous.nil? and !@register.previous.register_images[1].nil? %>
+      <img id="left_hand_page" data-src="http://images.cfregisters.org/<%= @register.previous.register_images[1].filepath %>" src="http://images.cfregisters.org/<%= @register.previous.register_images[1].filepath %>" />
+    <% end %>
     <img id="register_image" data-src="http://images.cfregisters.org/<%= @register.register_images[0].filepath %>" src="http://images.cfregisters.org/<%= @register.register_images[0].filepath %>" />
     <% unless @register.register_images[1].nil? %>
-    <img id="register_image2" src="http://images.cfregisters.org/<%= @register.register_images[1].filepath %>" />
+      <img id="register_image2" src="http://images.cfregisters.org/<%= @register.register_images[1].filepath %>" />
     <% end %>
   </div>
 

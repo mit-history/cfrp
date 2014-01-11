@@ -8,429 +8,458 @@
 <%# authors = @plays.reduce([]) {|m, p| m << p.author} %>
 
 <script>
-$(function() {
-    var typeahead_event_init = function(fields) {
-        // Set up auto-fill selector hooks
-        var autofill_id = $(fields).find('.find_play_typeahead').attr('id');
-        $(fields).find('.find_play_typeahead').typeahead({source: <%= raw titles.to_json %>});
-        $(fields).find('.find_play_typeahead').on('change', function(e) { format_play_autofill(e) });
-    };
+  $(function() {
+      $("#showhideirregs").click(function(){
+        $("tr#irregs").toggleClass('hide');
+      });
 
-    $("div#play_fields").children("div.fields").each(function(index, pfields) {
-        typeahead_event_init(pfields);
-    });
+      var typeahead_event_init = function(fields) {
+          // Set up auto-fill selector hooks
+          var autofill_id = $(fields).find('.find_play_typeahead').attr('id');
+          $(fields).find('.find_play_typeahead').typeahead({source: <%= raw titles.to_json %>});
+          $(fields).find('.find_play_typeahead').on('change', function(e) { format_play_autofill(e) });
+      };
 
-    var previous_ordering = $("div#play_fields").children("div.fields").length;
+      $("div#play_fields").children("div.fields").each(function(index, pfields) {
+          typeahead_event_init(pfields);
+      });
 
-    // To handle the case when we have to add a new play...don't like re-initializing,
-    // but works for now...
-    $(document).on('nested:fieldAdded', function(event) {
-        previous_ordering = parseInt(previous_ordering) + 1;
-        $(event.field).find('input.play-ordering').val(previous_ordering);
-        $(event.field).find('h3').html("Play " + (previous_ordering));
+      var previous_ordering = $("div#play_fields").children("div.fields").length;
 
-        var rnum = Math.floor(Math.random() * 10000);
+      // To handle the case when we have to add a new play...don't like re-initializing,
+      // but works for now...
+      $(document).on('nested:fieldAdded', function(event) {
+          previous_ordering = parseInt(previous_ordering) + 1;
+          $(event.field).find('input.play-ordering').val(previous_ordering);
+          $(event.field).find('h3').html("Play " + (previous_ordering));
 
-        $(event.field).find('input.play_id-register_play_')
-          .removeClass('play_id-register_play_')
-          .addClass('play_id-register_play_' + rnum);
-        $(event.field).find('table')
-          .removeClass('register_play_')
-          .addClass('register_play_' + rnum);
-        $(event.field).find('input.find_play_typeahead')
-          .removeClass('register_play_')
-          .addClass('register_play_' + rnum);
+          var rnum = Math.floor(Math.random() * 10000);
 
-        typeahead_event_init(event.field);
-    });
+          $(event.field).find('input.play_id-register_play_')
+            .removeClass('play_id-register_play_')
+            .addClass('play_id-register_play_' + rnum);
+          $(event.field).find('table')
+            .removeClass('register_play_')
+            .addClass('register_play_' + rnum);
+          $(event.field).find('input.find_play_typeahead')
+            .removeClass('register_play_')
+            .addClass('register_play_' + rnum);
 
-    var format_play_autofill = function(e) {
-      var play_data = $(e.currentTarget).val().split(' | ');
-      var register_play_class = $(e.currentTarget).attr('class').split(' ')[1];
-      var tclass = "table." + register_play_class;
-      $(tclass + " td.id_text").html(play_data[0]);
-      $("input.play_id-" + register_play_class).val(play_data[0]);
-      $(tclass + " td.title_text").html(play_data[1]);
-      $(tclass + " td.author_text").html(play_data[2]);
-      $(tclass + " td.genre_text").html(play_data[3]);
-      $(tclass + " td.acts_text").html(play_data[4]);
-      $(tclass + " td.prose_vers_text").html(play_data[5]);
-      $(tclass + " td.prologue_text").html(play_data[6]);
-      $(tclass + " td.musique_danse_machine_text").html(play_data[7]);
+          typeahead_event_init(event.field);
+      });
 
-      // Clear out the search field to avoid confusion.
-      $(e.currentTarget).val('');
-    }
+      var format_play_autofill = function(e) {
+        var play_data = $(e.currentTarget).val().split(' | ');
+        var register_play_class = $(e.currentTarget).attr('class').split(' ')[1];
+        var tclass = "table." + register_play_class;
+        $(tclass + " td.id_text").html(play_data[0]);
+        $("input.play_id-" + register_play_class).val(play_data[0]);
+        $(tclass + " td.title_text").html(play_data[1]);
+        $(tclass + " td.author_text").html(play_data[2]);
+        $(tclass + " td.genre_text").html(play_data[3]);
+        $(tclass + " td.acts_text").html(play_data[4]);
+        $(tclass + " td.prose_vers_text").html(play_data[5]);
+        $(tclass + " td.prologue_text").html(play_data[6]);
+        $(tclass + " td.musique_danse_machine_text").html(play_data[7]);
 
-  <% unless @register.register_images[1].nil? %>
+        // Clear out the search field to avoid confusion.
+        $(e.currentTarget).val('');
+      }
 
-    $("img#register_image2").hide();
-    $("ul.image-tabs a.back").click(function(e) {
-      $("img#register_image").attr("src", $("img#register_image2").attr("src"));
-      return false;
-    })
+    <% unless @register.register_images[1].nil? %>
+        $("img#left_hand_page").hide();
+        $("img#register_image2").hide();
+        $("ul.image-tabs a.back").click(function(e) {
+          $("img#register_image").attr("src", $("img#register_image2").attr("src"));
+          return false;
+        })
 
-    $("ul.image-tabs a.front").click(function(e) {
-      $("img#register_image").attr("src", $("img#register_image").data("src"));
-      return false;
-    })
+        $("ul.image-tabs a.front").click(function(e) {
+          $("img#register_image").attr("src", $("img#register_image").data("src"));
+          return false;
+        })
 
-  <% end %>
-})
+        $("ul.image-tabs a.left").click(function(e) {
+          $("img#register_image").attr("src", $("img#left_hand_page").data("src"));
+          return false;
+        })
+    <% end %>
+  });
 </script>
 
 <div class='row-fluid' id="form-wrapper">
+  <div class='span10 offset1' id='register_form'>
+        <%= nested_form_for @register, :html => {:class => 'form-horizontal'} do |f| %>
+        <fieldset>
 
-<div class='offset1' id='register_form'>
+        <!-- Images -->
+        <div class="row">
+            <div class="span12">
+              <% if !@register.register_images[1].nil? %>
+              <div class="tabbable tabs-below">
+                <ul class="nav nav-tabs image-tabs">
+                  <li><a class='left' href="">Page de gauche</a></li>
+                  <li><a class='front' href="">Image recto</a></li>
+                  <li><a class='back' href="">Image verso</a></li>
+                  <li class="pull-right">
+                    <% if @register.register_images.length > 0 %>
+                      <%= link_to "Open Image in New Window", "http://images.cfregisters.org/#{@register.register_images[0].filepath}", :target => 'top' %>
+                    <% end %>
+                  </li>
+                </ul>
+              </div>
+              <% end %>
+          </div><!-- End span12-->
+        </div><!-- End row -->
+        <!-- End Images -->
 
-    <% if !@register.register_images[1].nil? %>
-    <div class="tabbable tabs-below">
-      <ul class="nav nav-tabs image-tabs">
-        <li><a class='front' href="">Image recto</a></li>
-        <li><a class='back' href="">Image verso</a></li>
-      </ul>
-    </div>
+
+        <!-- Header, Errors, Submit Button -->
+        <div class="row">
+            <div class="span12">
+                <legend>Saisie de registre pour la date: <%= I18n.localize(@register.date, :format => '%d %B %Y') %></legend>
+                <div class="actions submit">
+                  <%= f.submit "Saisir registre ##{@register.id}", :class => 'btn btn-small btn-info' %>
+                </div>
+
+                <% flash.each do |name, msg| -%>
+                  <%= content_tag :div, msg, class: name %>
+                <% end -%>
+
+                <% if @register.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(@register.errors.count, "error") %> prohibited this register from being saved:</h2>
+
+                    <ul>
+                    <% @register.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                    <% end %>
+                    </ul>
+                  </div>
+                <% end %>
+          </div><!-- End span10 -->
+        </div><!-- End row -->
+        <!-- End Header -->
+
+        <!-- Basic Fields -->
+        <div class="row">
+        <div class="span6" id="left_col">
+          <div class="control-group">
+            <%= f.label :register_num, 'Numéro', :class => 'control-label' %>
+            <div class="controls">
+              <%= f.text_field :register_num %>
+            </div>
+          </div>
+          <div class="control-group">
+            <%= f.label :season, 'Saison', :class => 'control-label' %>
+            <div class="controls">
+              <%= f.text_field :season %>
+            </div>
+          </div>
+          <div class="control-group">
+            <%= f.label :representation, 'Représentation', :class => 'control-label' %>
+            <div class="controls">
+              <%= f.text_field :representation %>
+            </div>
+          </div>
+          <div class="control-group">
+            <%= f.label :ouverture, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.check_box :ouverture %>
+            </div>
+          </div>
+          <div class="control-group">
+            <%= f.label :cloture, 'Clôture', :class => 'control-label' %>
+            <div class="controls">
+              <%= f.check_box :cloture %>
+            </div>
+          </div>
+        </div><!-- End span6 -->
+        <div class="span6" id="right_col">
+          <div class="control-group">
+          <%= f.label :page_de_gauche, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.select(:page_de_gauche, %w{ Distribution Dépenses Comptable Administrative Cour Relâche Autre }, :include_blank => true) %>
+          </div>
+          </div>
+
+          <div class="control-group">
+          <%= f.label :date_of_left_page_info, 'Date d\'infos de page de gauche', :class => 'control-label' %>
+          <div class="controls">
+            <%= f.date_select :date_of_left_page_info, { :use_month_numbers => true }, { :class => 'span3' } %>
+          </div>
+          </div>
+          <div class="control-group">
+          <%= f.label :weekday, 'Jour de la semaine', :class => 'control-label' %>
+          <div class="controls">
+            <%= f.select(:weekday, ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]) %>
+          </div>
+          </div>
+          <div class="control-group">
+          <%= f.label :date, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.date_select :date, { :use_month_numbers => true }, { :class => 'span3' } %>
+          </div>
+          </div>
+        </div><!-- End span6 -->
+        </div><!-- End row -->
+        <!-- Basic Fields -->
+
+        <!-- PUT PLAYS DATA HERE -->
+        <div class="row">
+          <div id='play_fields' class='span12 well'>
+            <%= f.fields_for :register_plays, @register.register_plays.sort {|a, b| a.ordering <=> b.ordering } do |rp| %>
+            <h4>Play <%= rp.object.ordering %></h4>
+
+            <%= rp.fields_for :play_attributes, rp.object.play do |p| %>
+              <!-- IS THIS COMING UP? -->
+              <% if p.object %>
+                <%= p.hidden_field :play_id, :class => "play_id-register_play_#{rp.object.id}",  :value => p.object.id %>
+              <% else %>
+                <%= p.hidden_field :play_id, :class => "play_id-register_play_" %>
+              <% end %>
+            <% end %>
+
+            <div class="control-group">
+              <%= rp.label :ordering, :class => 'control-label' %>
+              <div class="controls">
+              <%= rp.text_field :ordering, :class => 'form-inline span1 play-ordering' %>
+              </div>
+            </div>
+
+            <!-- Play Title Search -->
+            <div class="control-group">
+              <label class="control-label">Rechercher pièce:</label>
+              <div class="controls">
+                <input type="text" class="find_play_typeahead register_play_<%= rp.object.id %>" />
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Pièce</label>
+              <div class="controls">
+                <table class='play_data table table-bordered register_play_<%= rp.object.id %>'>
+                  <thead>
+                    <tr>
+                      <th>ID</th><th>Titre</th><th>Auteur</th><th>Genre</th><th>Actes</th><th>Prose/Vers</th><th>Prologue</th><th>Musique/Danse/Machine</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                <% if rp.object.play %>
+                      <td class="id_text"><%= rp.object.play.id %></td><td class="title_text"><%= rp.object.play.title %></td><td class="author_text"><%= rp.object.play.author %></td><td class="genre_text"><%= rp.object.play.genre %></td><td class="acts_text"><%= rp.object.play.acts %></td><td class="prose_vers_text"><%= rp.object.play.prose_vers %></td><td class="prologue_text"><%= rp.object.play.prologue %></td><td class="musique_danse_machine_text"><%= rp.object.play.musique_danse_machine %></td>
+                <% else %>
+                      <td class="id_text"></td><td class="title_text"></td><td class="author_text"></td><td class="genre_text"></td><td class="acts_text"></td><td class="prose_vers_text"></td><td class="prologue_text"></td><td class="musique_danse_machine_text"></td>
+                <% end %>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- End Play Title Search -->
+
+            <!-- Start Participation -->
+            <div class="control-group">
+              <label class="control-label">Participation</label>
+              <div class="controls form-inline">
+
+                <%= rp.fields_for :participations, rp.object.participations do |participation_form| %>
+                  <%= participation_form.hidden_field :id, :class => "participation_id-register_play_#{rp.object.id}" %>
+                  <%= participation_form.hidden_field :role, :value => "Actor" %>
+                  <%= participation_form.select(:person_id, Person.all.map{|person| ["#{person.honorific} #{person.full_name}", person.id]}, {include_blank: "Selectionner un acteur"}) %>
+                  <label>Début?</label>
+                  <%= participation_form.check_box :debut %>
+                  <label>Rôle: </label>
+                  <%= participation_form.text_field :character %>
+                  <%= participation_form.link_to_remove "Supprimer acteur", :class => "btn btn-small btn-danger", :confirm => "Êtes-vous sûr?" %>
+
+              <% end %>
+              <%= rp.link_to_add "Rajouter acteur", :participations, :class => "btn btn-small btn-success" %>
+
+              </div>
+            </div>
+            <!-- End Participation -->
+
+            <div class="control-group">
+              <label class="control-label">Création?</label>
+              <div class="controls form-inline">
+                <%= rp.check_box :firstrun, :class => 'form-inline' %>
+                <label>Numéro de création</label>
+                <%= rp.text_field :firstrun_perfnum, :class => 'span1' %>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Reprise Importante?</label>
+              <div class="controls form-inline">
+                <%= rp.check_box :reprise, :class => 'form-inline' %>
+                <label>Numéro de reprise</label>
+                <%= rp.text_field :reprise_perfnum, :class => 'span1' %>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <%= rp.label :free_access, 'Gratuit', :class => 'control-label' %>
+              <div class="controls">
+                <%= rp.check_box :free_access, :class => 'form-inline' %>
+              </div>
+            </div>
+
+            <div class="accordion" id="accordion2">
+              <div class="accordion-group">
+                <div class="accordion-heading">
+                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= rp.object.id %>">
+                    Exceptions
+                  </a>
+                </div>
+                <div id="collapse<%= rp.object.id %>" class="accordion-body collapse">
+                  <div class="accordion-inner">
+                  <div class="control-group">
+                    <%= rp.label :ex_attendance, 'Présence exceptionnelle', :class => 'control-label' %>
+                    <div class="controls">
+                      <%= rp.text_field :ex_attendance, :class => 'span2' %>
+                    </div>
+                  </div>
+
+                  <div class="control-group">
+                    <%= rp.label :ex_representation, 'Représentation exceptionnelle', :class => 'control-label' %>
+                    <div class="controls">
+                      <%= rp.text_field :ex_representation, :class => 'span2' %>
+                    </div>
+                  </div>
+
+                  <div class="control-group">
+                    <%= rp.label :ex_place, 'Lieu exceptionnel', :class => 'control-label' %>
+                    <div class="controls">
+                      <%= rp.text_field :ex_place, :class => 'span2' %>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <%= rp.link_to_remove "Supprimer la pièce ci-dessus", :class => "btn btn-small btn-danger", :confirm => "Êtes-vous sûr?" %>
+            </div>
+            <% end %>
+            <hr />
+            <%# please note that this functionality comes from nested_form: https://github.com/ryanb/nested_form %>
+            <%= f.link_to_add "Rajouter une pièce ci-dessous", :register_plays, :class => "btn btn-small btn-success" %>
+                  
+          </div><!-- /span12 -->
+        </div><!-- /row -->
+        <!-- End Play Block -->
+
+        <!-- TICKET SALES -->
+        <div class='row'>
+        <div class="span12">
+          <table id='ticket_sales_fields' class='table table-bordered span12'>
+          <thead>
+            <tr>
+              <th>Seating Category</th>
+              <th>Tickets Sold</th>
+              <th>Price Per Ticket (Livre/Sous/Deniers)</th>
+              <th>Total Take, <strong>as Recorded</strong> (Livre/Sous/Deniers)</th>
+            </tr>
+          </thead>
+
+          <tbody>
+          <%= f.fields_for :ticket_sales, @register.register_period.register_period_seating_categories.sort_by {|rpsc| rpsc.ordering} do |sc| %>
+            <% if irregular_receipt?(sc.object.seating_category) %>
+              <%= render :partial => 'irregular_seating_category', :locals => {:seating_category => sc, :register => @register, form: f} %>
+            <% else %>
+              <%= render :partial => 'seating_category', :locals => {:seating_category => sc, :register => @register, form: f} %>
+            <% end %>
+          <% end %>
+            <tr>
+              <td colspan="4"><button type="button" class="btn btn-primary btn-sm" id="showhideirregs">Voir reçus irréguliers</button></td>
+            </tr>
+            <tr>
+              <td>
+                <label>Total Receipts Calculated</label>
+              </td>
+
+              <td colspan=2>
+                <span id="total_receipts_calculated_ts"></span>
+              </td>
+
+              <td colspan=2>
+                <span id="total_receipts_calculated_rt"></span>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="4">
+                <div class="control-group">
+                  <label class='control-label'>Total Receipts Recorded (Livre / Sous / Deniers)</label>
+                  <div class="controls">
+                    <%= f.text_field :total_receipts_recorded_l, :class => 'form-inline span2' %>
+                    <%= f.text_field :total_receipts_recorded_s, :class => 'form-inline span2' %>
+                    <%= f.text_field :total_receipts_recorded_d, :class => 'form-inline span2' %>
+                  </div>
+                </div>
+              </td>
+            </tr>
+
+
+          </tbody>
+          </table>
+        </div><!-- /span12 -->
+        </div><!-- /row -->
+        <!-- End Ticket Sales -->
+
+        <!-- Additional Fields -->
+        <div class="row">
+        <div class="span6">
+            <div class="control-group">
+              <%= f.label :signatory, :class => 'control-label' %>
+              <div class="controls">
+                <%= f.text_field :signatory %>
+              </div>
+            </div>
+            <%= f.fields_for :verification_state do |vs| %>
+            <div class="control-group">
+              <%= vs.label :name, "verified?", :class => 'control-label' %>
+              <div class="controls">
+                <%= collection_select(:register, :verification_state_id, VerificationState.all, :id, :name) %>
+              </div>
+            </div>
+            <% end %>
+
+            <div class="control-group">
+              <%= f.label :for_editor_notes, :class => 'control-label' %>
+              <div class="controls">
+                <%= f.text_area :for_editor_notes, :rows => 3 %>
+              </div>
+            </div>
+
+        </div><!-- /span6 -->
+        <div class="span6">
+            <div class="control-group">
+              <%= f.label :payment_notes, 'Irregular Payment Notes', :class => 'control-label' %>
+              <div class="controls">
+                <%= f.text_area :payment_notes, :rows => 3 %>
+              </div>
+            </div>
+            <div class="control-group">
+              <%= f.label :misc_notes, 'Miscellaneous Play Information', :class => 'control-label' %>
+              <div class="controls">
+                <%= f.text_area :misc_notes, :rows => 3 %> 
+              </div>
+            </div>
+        </div>
+        </div><!-- /row -->
+        <div class="row">
+          <div class="span12">
+            <div class="actions submit">
+              <%= f.submit "Saisir registre ##{@register.id}", :class => 'btn btn-small btn-info' %>
+            </div>
+          </div>
+        </div>
+
+        <!-- End Additional Fields -->
+      </fieldset>
     <% end %>
-
-  <% if @register.register_images.length > 0 %>
-    <%= link_to "Open Image in New Window", "http://images.cfregisters.org/#{@register.register_images[0].filepath}", :target => 'top' %>
-  <% end %>
-
-<%= nested_form_for @register, :html => {:class => 'form-horizontal'} do |f| %>
-<fieldset>
-  <legend>Saisie de registre pour la date: <%= I18n.localize(@register.date, :format => '%d %B %Y') %></legend>
-
-  <p class='register_id'>ID de registre dans la base de donnés: <strong><%= @register.id %></strong></p>
-
-  <% if @register.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@register.errors.count, "error") %> prohibited this register from being saved:</h2>
-
-      <ul>
-      <% @register.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="actions submit">
-	<%= f.submit 'Saisir registre', :class => 'btn btn-info' %>
-  </div>
-
-  <div class="control-group">
-    <%= f.label :register_num, 'Numéro', :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :register_num %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :season, 'Saison', :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :season %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :representation, 'Représentation', :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :representation %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :ouverture, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :ouverture %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :cloture, 'Clôture', :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :cloture %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :page_de_gauche, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.select(:page_de_gauche, %w{ Distribution Dépenses Comptable Administrative Cour Relâche Autre }, :include_blank => true) %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :date_of_left_page_info, 'Date d\'infos de page de gauche', :class => 'control-label' %>
-    <div class="controls">
-      <%= f.date_select :date_of_left_page_info, { :use_month_numbers => true }, { :class => 'span2' } %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :weekday, 'Jour de la semaine', :class => 'control-label' %>
-    <div class="controls">
-      <%= f.select(:weekday, ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]) %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :date, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.date_select :date, { :use_month_numbers => true }, { :class => 'span2' } %>
-    </div>
-  </div>
-
-<!-- PUT PLAYS DATA HERE -->
-
-  <div id='play_fields' class='well'>
-
-  <%= f.fields_for :register_plays, @register.register_plays.sort {|a, b| a.ordering <=> b.ordering } do |rp| %>
-  <h3>Play <%= rp.object.ordering %></h3>
-
-  <%= rp.fields_for :play_attributes, rp.object.play do |p| %>
-    <!-- IS THIS COMING UP? -->
-    <% if p.object %>
-      <%= p.hidden_field :play_id, :class => "play_id-register_play_#{rp.object.id}",  :value => p.object.id %>
-    <% else %>
-      <%= p.hidden_field :play_id, :class => "play_id-register_play_" %>
-    <% end %>
-  <% end %>
-
-  <div class="control-group">
-    <%= rp.label :ordering, :class => 'control-label' %>
-    <div class="controls">
-    <%= rp.text_field :ordering, :class => 'form-inline span1 play-ordering' %>
-    </div>
-  </div>
-
-  <!-- Play Title Search -->
-  <div class="control-group">
-    <label class="control-label">Rechercher pièce:</label>
-    <div class="controls">
-      <input type="text" class="find_play_typeahead register_play_<%= rp.object.id %>" />
-    </div>
-  </div>
-
-  <div class="control-group">
-    <label class="control-label">Pièce</label>
-    <div class="controls">
-      <table class='play_data table table-bordered register_play_<%= rp.object.id %>'>
-        <thead>
-          <tr>
-            <th>ID</th><th>Titre</th><th>Auteur</th><th>Genre</th><th>Nombre d'actes</th><th>Prose/Vers</th><th>Prologue</th><th>Musique/Danse/Machine</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-      <% if rp.object.play %>
-            <td class="id_text"><%= rp.object.play.id %></td><td class="title_text"><%= rp.object.play.title %></td><td class="author_text"><%= rp.object.play.author %></td><td class="genre_text"><%= rp.object.play.genre %></td><td class="acts_text"><%= rp.object.play.acts %></td><td class="prose_vers_text"><%= rp.object.play.prose_vers %></td><td class="prologue_text"><%= rp.object.play.prologue %></td><td class="musique_danse_machine_text"><%= rp.object.play.musique_danse_machine %></td>
-      <% else %>
-            <td class="id_text"></td><td class="title_text"></td><td class="author_text"></td><td class="genre_text"></td><td class="acts_text"></td><td class="prose_vers_text"></td><td class="prologue_text"></td><td class="musique_danse_machine_text"></td>
-      <% end %>
-          </tr>
-        <tbody>
-      </table>
-    </div>
-  </div>
-  <!-- End Play Title Search -->
-
-  <!-- Start Participation Search -->
-  <div class="control-group">
-    <label class="control-label">Participation</label>
-    <div class="controls form-inline">
-
-      <%= rp.fields_for :participations, rp.object.participations do |participation_form| %>
-        <%= participation_form.hidden_field :id, :class => "participation_id-register_play_#{rp.object.id}" %>
-        <%= participation_form.hidden_field :role, :value => "Actor" %>
-        <%= participation_form.select(:person_id, Person.all.map{|person| ["#{person.honorific} #{person.full_name}", person.id]}, {include_blank: "Selectionner un acteur"}) %>
-        <label>Début?</label>
-        <%= participation_form.check_box :debut %>
-        <label>Rôle: </label>
-        <%= participation_form.text_field :character %>
-        <%= participation_form.link_to_remove "Supprimer acteur", :class => "btn btn-danger" %>
-
-    <% end %>
-    <%= rp.link_to_add "Rajouter acteur", :participations, :class => "btn btn-success" %>
-
-    </div>
-  </div>
-  <!--
-  <div class="control-group">
-    <label class="control-label">Acteur/actrice</label>
-    <div class="controls form-inline">
-      <label>Debut?</label>
-      <%= rp.check_box :debut %>
-
-      <label>Acteur/actrice:</label>
-      <%= rp.text_field :newactor %>
-
-      <label>Nouveau rôle:</label>
-      <%= rp.text_field :actorrole %>
-    </div>
-  </div>
-  -->
-  <!-- End Participation Search -->
-
-  <div class="control-group">
-    <label class="control-label">Création?</label>
-    <div class="controls form-inline">
-      <%= rp.check_box :firstrun, :class => 'form-inline' %>
-      <label>Numéro de création</label>
-      <%= rp.text_field :firstrun_perfnum, :class => 'span1' %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <label class="control-label">Reprise Importante?</label>
-    <div class="controls form-inline">
-      <%= rp.check_box :reprise, :class => 'form-inline' %>
-      <label>Numéro de reprise</label>
-      <%= rp.text_field :reprise_perfnum, :class => 'span1' %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= rp.label :free_access, 'Gratuit', :class => 'control-label' %>
-    <div class="controls">
-      <%= rp.check_box :free_access, :class => 'form-inline' %>
-    </div>
-  </div>
-
-	<div class="accordion" id="accordion2">
-	  <div class="accordion-group">
-	    <div class="accordion-heading">
-	      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= rp.object.id %>">
-	        Exceptions
-	      </a>
-	    </div>
-	    <div id="collapse<%= rp.object.id %>" class="accordion-body collapse">
-	      <div class="accordion-inner">
-			  <div class="control-group">
-			    <%= rp.label :ex_attendance, 'Présence exceptionnelle', :class => 'control-label' %>
-			    <div class="controls">
-			      <%= rp.text_field :ex_attendance, :class => 'span2' %>
-			    </div>
-			  </div>
-
-			  <div class="control-group">
-			    <%= rp.label :ex_representation, 'Représentation exceptionnelle', :class => 'control-label' %>
-			    <div class="controls">
-			      <%= rp.text_field :ex_representation, :class => 'span2' %>
-			    </div>
-			  </div>
-
-			  <div class="control-group">
-			    <%= rp.label :ex_place, 'Lieu exceptionnel', :class => 'control-label' %>
-			    <div class="controls">
-			      <%= rp.text_field :ex_place, :class => 'span2' %>
-			    </div>
-			  </div>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-
-
-  <div>
-	  <%= rp.link_to_remove "Supprimer la pièce ci-dessus", :class => "btn btn-danger" %><br><br>
-  </div>
-  <% end %>
-  <hr />
-  <%# please note that this functionality comes from nested_form: https://github.com/ryanb/nested_form %>
-  <%= f.link_to_add "Rajouter une pièce ci-dessous", :register_plays, :class => "btn btn-success" %></p>
-  </div>
-
-
-<!-- TICKET SALES -->
-
-  <div class='row-fluid'>
-
-  <table id='ticket_sales_fields' class='table table-bordered span8'>
-  <thead>
-    <tr>
-      <th>Seating Category</th>
-      <th>Tickets Sold</th>
-      <th>Price Per Ticket (Livre/Sous/Deniers)</th>
-      <th>Total Take, <strong>as Recorded</strong> (Livre/Sous/Deniers)</th>
-    </tr>
-  <thead>
-
-  <tbody>
-  <%= f.fields_for :ticket_sales, @register.register_period.register_period_seating_categories.sort_by {|rpsc| rpsc.ordering} do |sc| %>
-    <% if irregular_receipt?(sc.object.seating_category) %>
-      <%= render :partial => 'irregular_seating_category', :locals => {:seating_category => sc, :register => @register, form: f} %>
-    <% else %>
-      <%= render :partial => 'seating_category', :locals => {:seating_category => sc, :register => @register, form: f} %>
-    <% end %>
-  <% end %>
-
-    <tr>
-      <td>
-        <label>Total Receipts Calculated</label>
-      </td>
-
-      <td colspan=2>
-        <span id="total_receipts_calculated_ts"></span>
-      </td>
-
-      <td colspan=2>
-        <span id="total_receipts_calculated_rt"></span>
-      </td>
-    </tr>
-  </tbody>
-  </table>
-  </div>
-
-  <div class="control-group">
-    <label class='control-label'>Total Receipts Recorded (Livre / Sous / Deniers)</label>
-    <div class="controls">
-      <%= f.text_field :total_receipts_recorded_l, :class => 'form-inline span1' %>
-      <%= f.text_field :total_receipts_recorded_s, :class => 'form-inline span1' %>
-      <%= f.text_field :total_receipts_recorded_d, :class => 'form-inline span1' %>
-    </div>
-  </div>
-
-<!--
-  <div class="control-group">
-    <%= f.label :page_text, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :page_text %>
-    </div>
-  </div>
--->
-
-  <div class="control-group">
-    <%= f.label :signatory, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :signatory %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :payment_notes, 'Irregular Payment Notes', :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :payment_notes %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :misc_notes, 'Miscellaneous Play Information', :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :misc_notes %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :for_editor_notes, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :for_editor_notes %>
-    </div>
-  </div>
-
-  <%= f.fields_for :verification_state do |vs| %>
-  <div class="control-group">
-    <%= vs.label :name, "verified?", :class => 'control-label' %>
-    <div class="controls">
-      <%= collection_select(:register, :verification_state_id, VerificationState.all, :id, :name) %>
-    </div>
-  </div>
-  <% end %>
-
-  <div class="actions submit">
-	<%= f.submit 'Saisir registre', :class => 'btn btn-info' %>
-  </div>
-
-</fieldset>
-<% end %>
-</div>
-</div>
+  </div><!-- End #register_form -->
+</div><!-- End #form-wrapper -->

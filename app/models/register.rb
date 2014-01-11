@@ -92,6 +92,13 @@ class Register < ActiveRecord::Base
     end
   end
 
+  def previous
+    Register.where(season: self.season, id: self.id - 1).first
+  end
+
+  def next
+    Register.where(season: self.season, id: self.id + 1).first
+  end
 
   def self.play_authors
     

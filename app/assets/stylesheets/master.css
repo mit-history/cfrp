@@ -44,9 +44,8 @@ div.register_data {
 }
 
 /** Form Presentation **/
-
 div#register_form table {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 div#register_form label.control-label {
@@ -58,16 +57,15 @@ div#register_form label.control-label {
 }
 
 div#register_form textarea {
-  width: 400px;
-  height: 150px;
+  width: 100%;
+  /*height: 150px;*/
 }
 
 div#register_form div.submit {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 /*** Register Image Form-page Resizing ***/
-
 div#ri_resizer {
   background: none repeat scroll 0 0 #FFFFFF;
   border-bottom: 3px solid #000;
@@ -103,3 +101,15 @@ img#register_image {
 
 .icon-pencil { background-position:0 -72px; }
 .icon-remove { background-position:-312px 0; }
+
+.control-group {
+  margin: 5px !important;
+}
+
+#ticket_sales_fields {
+  margin-left: 0;
+}
+
+#form-wrapper {
+  margin-bottom: 60px;
+}
