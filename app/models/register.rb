@@ -11,6 +11,7 @@
 #  page_text                 :text
 #  total_receipts_recorded_l :integer
 #  total_receipts_recorded_s :integer
+#  total_receipts_recorded_d :integer
 #  representation            :integer
 #  signatory                 :string(255)
 #  misc_notes                :text

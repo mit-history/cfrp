@@ -8,8 +8,10 @@
 #  seating_category_id :integer         default(0)
 #  price_per_ticket_l  :integer         default(0)
 #  price_per_ticket_s  :integer         default(0)
+#  price_per_ticket_d  :integer         default(0)
 #  recorded_total_l    :integer         default(0)
 #  recorded_total_s    :integer         default(0)
+#  recorded_total_d    :integer         default(0)
 #  created_at          :datetime
 #  updated_at          :datetime
 #

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140110185448) do
+ActiveRecord::Schema.define(:version => 20140111132626) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -199,6 +199,7 @@ ActiveRecord::Schema.define(:version => 20140110185448) do
     t.string   "irregular_receipts_name_8"
     t.string   "irregular_receipts_name_9"
     t.string   "irregular_receipts_name_10"
+    t.integer  "total_receipts_recorded_d"
   end
 
   create_table "roles", :force => true do |t|
@@ -240,6 +241,8 @@ ActiveRecord::Schema.define(:version => 20140110185448) do
     t.integer  "recorded_total_s",    :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "price_per_ticket_d",  :default => 0
+    t.integer  "recorded_total_d",    :default => 0
   end
 
   create_table "users", :force => true do |t|

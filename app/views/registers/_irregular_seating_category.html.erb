@@ -1,47 +1,48 @@
     <tr>
-    <td class='seating_category'>
-    	<%= form.text_field irregular_receipt_field_name(seating_category.object.seating_category), placeholder: 'Irregular Receipts' %>
+      <td class='seating_category'>
+      	<%= form.text_field irregular_receipt_field_name(seating_category.object.seating_category), placeholder: 'Irregular Receipts' %>
       </td>
 
-    <% ticket_sale = register.ticket_sales.detect {|ticket_sale| ticket_sale.seating_category_id == seating_category.object.seating_category.id} %>
-    <% unless ticket_sale.nil? %>
-      <%= seating_category.hidden_field :id, :value => ticket_sale.id %>
-      <%= seating_category.hidden_field :seating_category_id, :value => seating_category.object.seating_category_id %>
-      <td class='total_sold'>
-    <%= seating_category.text_field :total_sold, :class => 'span6 ticket_sales_total_sold', :value => ticket_sale.total_sold %>
-      </td>
+      <% ticket_sale = register.ticket_sales.detect {|ticket_sale| ticket_sale.seating_category_id == seating_category.object.seating_category.id} %>
 
-      <td class='price_per_ticket'>
-	<%= seating_category.text_field :price_per_ticket_l, :class => 'form-inline span6 ticket_sales_price_per_ticket_l', :value => ticket_sale.price_per_ticket_l %>
+      <% unless ticket_sale.nil? %>
+        <%= seating_category.hidden_field :id, :value => ticket_sale.id %>
+        <%= seating_category.hidden_field :seating_category_id, :value => seating_category.object.seating_category_id %>
 
-	<%= seating_category.text_field :price_per_ticket_s, :class => 'form-inline span6 ticket_sales_price_per_ticket_s', :value => ticket_sale.price_per_ticket_s %>
-      </td>
+        <td class='total_sold'>
+          <%= seating_category.text_field :total_sold, :class => 'span12 ticket_sales_total_sold', :value => ticket_sale.total_sold %>
+        </td>
 
-      <td class='recorded_total'>
-	<%= seating_category.text_field :recorded_total_l, :class => 'form-inline span6 ticket_sales_recorded_total_l', :value => ticket_sale.recorded_total_l %>
+        <td class='price_per_ticket'>
+        	<%= seating_category.text_field :price_per_ticket_l, :class => 'form-inline span4 ticket_sales_price_per_ticket_l', :value => ticket_sale.price_per_ticket_l %>
+          <%= seating_category.text_field :price_per_ticket_s, :class => 'form-inline span4 ticket_sales_price_per_ticket_s', :value => ticket_sale.price_per_ticket_s %>
+          <%= seating_category.text_field :price_per_ticket_d, :class => 'form-inline span4 ticket_sales_price_per_ticket_d', :value => ticket_sale.price_per_ticket_d %>
+        </td>
 
-	<%= seating_category.text_field :recorded_total_s, :class => 'form-inline span6 ticket_sales_recorded_total_s', :value => ticket_sale.recorded_total_s %>
-      </td>
-    <% else %>
+        <td class='recorded_total'>
+        	<%= seating_category.text_field :recorded_total_l, :class => 'form-inline span4 ticket_sales_recorded_total_l', :value => ticket_sale.recorded_total_l %>
+          <%= seating_category.text_field :recorded_total_s, :class => 'form-inline span4 ticket_sales_recorded_total_s', :value => ticket_sale.recorded_total_s %>
+          <%= seating_category.text_field :recorded_total_d, :class => 'form-inline span4 ticket_sales_recorded_total_d', :value => ticket_sale.recorded_total_d %>
+        </td>
 
-      <%= seating_category.hidden_field :seating_category_id, :value => seating_category.object.seating_category_id %>
+      <% else %>
 
-      <td class='total_sold'>
-    <%= seating_category.text_field :total_sold, :class => 'span6 ticket_sales_total_sold', :value => 0 %>
-      </td>
+        <%= seating_category.hidden_field :seating_category_id, :value => seating_category.object.seating_category_id %>
 
-      <td class='price_per_ticket'>
-	<%= seating_category.text_field :price_per_ticket_l, :class => 'form-inline span6 ticket_sales_price_per_ticket_l', :value => 0 %>
+        <td class='total_sold'>
+          <%= seating_category.text_field :total_sold, :class => 'span4 ticket_sales_total_sold', :value => 0 %>
+        </td>
 
-	<%= seating_category.text_field :price_per_ticket_s, :class => 'form-inline span6 ticket_sales_price_per_ticket_s', :value => 0 %>
-      </td>
+        <td class='price_per_ticket'>
+        	<%= seating_category.text_field :price_per_ticket_l, :class => 'form-inline span4 ticket_sales_price_per_ticket_l', :value => 0 %>
+          <%= seating_category.text_field :price_per_ticket_s, :class => 'form-inline span4 ticket_sales_price_per_ticket_s', :value => 0 %>
+          <%= seating_category.text_field :price_per_ticket_d, :class => 'form-inline span4 ticket_sales_price_per_ticket_d', :value => 0 %>
+        </td>
 
-      <td class='recorded_total'>
-	<%= seating_category.text_field :recorded_total_l, :class => 'form-inline span6 ticket_sales_recorded_total_l', :value => 0 %>
-
-	<%= seating_category.text_field :recorded_total_s, :class => 'form-inline span6 ticket_sales_recorded_total_s', :value => 0 %>
-      </td>
-
-    <% end %>
-
+        <td class='recorded_total'>
+        	<%= seating_category.text_field :recorded_total_l, :class => 'form-inline span4 ticket_sales_recorded_total_l', :value => 0 %>
+        	<%= seating_category.text_field :recorded_total_s, :class => 'form-inline span4 ticket_sales_recorded_total_s', :value => 0 %>
+          <%= seating_category.text_field :recorded_total_d, :class => 'form-inline span4 ticket_sales_recorded_total_d', :value => 0 %>
+        </td>
+      <% end %>
     </tr>
