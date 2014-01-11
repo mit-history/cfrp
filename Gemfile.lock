@@ -255,6 +255,7 @@ DEPENDENCIES
   less-rails
   meta_search (>= 1.1.0.pre)
   nested_form
+  nokogiri
   pg
   pry
   rails (~> 3.2)
