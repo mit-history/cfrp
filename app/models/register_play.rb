@@ -27,7 +27,7 @@ class RegisterPlay < ActiveRecord::Base
   belongs_to :play
   accepts_nested_attributes_for :play
 
-  accepts_nested_attributes_for :participations, reject_if: lambda{|participation| !participation.has_key?('person_id') }
+  accepts_nested_attributes_for :participations, reject_if: proc { |attributes| attributes['person_id'].blank? }, allow_destroy: true
   attr_accessible :play, :play_attributes, :participations_attributes, :ordering, :firstrun, :reprise, :reprise_perfnum, :debut, :newactor, :actorrole, :firstrun_perfnum, :free_access, :ex_attendance, :ex_representation, :ex_place
 
   after_initialize :init

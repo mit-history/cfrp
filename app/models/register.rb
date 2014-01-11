@@ -32,7 +32,14 @@ class Register < ActiveRecord::Base
 
   # default_scope order("date ASC")
 
-  attr_accessible :date, :weekday, :page_de_gauche, :date_of_left_page_info, :season, :register_num, :payment_notes, :page_text, :total_receipts_recorded_l, :total_receipts_recorded_s, :representation, :signatory, :misc_notes, :for_editor_notes, :ouverture, :cloture, :register_period_id, :verification_state_id, :register_plays_attributes, :ticket_sales_attributes, :rep_privacy_list, :rep_group_list, :register_images, 
+  attr_accessible :date, :weekday, :page_de_gauche, 
+    :date_of_left_page_info, :season, :register_num, 
+    :payment_notes, :page_text, 
+    :total_receipts_recorded_l, :total_receipts_recorded_s, :total_receipts_recorded_d,
+    :representation, :signatory, :misc_notes, :for_editor_notes, :ouverture, 
+    :cloture, :register_period_id, :verification_state_id, 
+    :register_plays_attributes, :ticket_sales_attributes, 
+    :rep_privacy_list, :rep_group_list, :register_images, 
     :irregular_receipts_name,
     :irregular_receipts_name_2,
     :irregular_receipts_name_3,

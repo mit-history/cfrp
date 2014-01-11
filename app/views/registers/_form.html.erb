@@ -237,12 +237,13 @@ $(function() {
       <%= rp.fields_for :participations, rp.object.participations do |participation_form| %>
         <%= participation_form.hidden_field :id, :class => "participation_id-register_play_#{rp.object.id}" %>
         <%= participation_form.hidden_field :role, :value => "Actor" %>
-        <label>Nom de l'acteur/actrice</label>
-        <%= participation_form.select(:person_id, Person.all.map{|person| [person.full_name, person.id]}, {include_blank: true}) %>
-        <label>Rôle</label>
-        <%= participation_form.text_field :character %>
+        <%= participation_form.select(:person_id, Person.all.map{|person| ["#{person.honorific} #{person.full_name}", person.id]}, {include_blank: "Selectionner une personne"}) %>
         <label>Début?</label>
         <%= participation_form.check_box :debut %>
+        <label>Rôle: </label>
+        <%= participation_form.text_field :character %>
+        <label>Supprimer</label>
+        <%= participation_form.check_box :_destroy %>
     <% end %>
     </div>
   </div>
