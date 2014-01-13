@@ -9,6 +9,9 @@ gem 'devise'
 gem 'cancan'
 gem 'iconv'
 
+gem 'unicorn'
+gem 'newrelic_rpm'
+
 # jQuery is the default JavaScript library in Rails 3.1
 gem 'jquery-rails'
 gem 'therubyracer' # bundle can't find this one, even though it's a dependency?
