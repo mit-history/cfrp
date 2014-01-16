@@ -15,8 +15,8 @@ ActiveAdmin.register Register do
   filter :id
   filter :date
   filter :season, :label => "Saison", :as => :select, :collection => proc { Register.order(:season).all.map {|r| r.season}.uniq }
-  filter :register_plays_play_title, :label => "Titre de Piece", :as => :select, :collection => proc { Play.order(:title).all.map {|p| p.title}.uniq }
-  filter :register_plays_play_author, :label => "Auteur de Piece", :as => :select, :collection => proc { Play.order(:author).all.map{|p| p.author}.uniq }
+  # filter :register_plays_play_title, :label => "Titre de Piece", :as => :select, :collection => proc { Play.order(:title).all.map {|p| p.title}.uniq }
+  # filter :register_plays_play_author, :label => "Auteur de Piece", :as => :select, :collection => proc { Play.order(:author).all.map{|p| p.author}.uniq }
   
   config.batch_actions = true
   # batch_action :destroy, false
@@ -85,7 +85,7 @@ ActiveAdmin.register Register do
     column :id
 
     # column 'Image' do |register|
-    #   link_to(image_tag("/#{register.register_images[0].filepath}", width: "100"), "/registers/#{register.id}/edit", target: "_blank")
+    #   link_to(image_tag("http://images.cfregisters.org/#{register.register_images[0].filepath}", width: "100"), "/registers/#{register.id}/edit", target: "_blank")
     #   # link_to("Formulaire de saisie", "/registers/#{register.id}/edit", target: "_blank")
     # end
 
@@ -106,7 +106,7 @@ ActiveAdmin.register Register do
   end
 
   index :as => :grid, :columns => 4 do |register|
-    link_to(image_tag("/#{register.register_images[0].filepath}", width: "200"), "/registers/#{register.id}/edit", target: "_blank")
+    link_to(image_tag("http://images.cfregisters.org/#{register.register_images[0].filepath}", width: "200"), "/registers/#{register.id}/edit", target: "_blank")
   end
     
   show do |register|
