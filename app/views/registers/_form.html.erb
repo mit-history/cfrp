@@ -181,12 +181,6 @@
           </div>
 
           <div class="control-group">
-          <%= f.label :date_of_left_page_info, 'Date d\'infos de page de gauche', :class => 'control-label' %>
-          <div class="controls">
-            <%= f.date_select :date_of_left_page_info, { :use_month_numbers => true }, { :class => 'span3' } %>
-          </div>
-          </div>
-          <div class="control-group">
           <%= f.label :weekday, 'Jour de la semaine', :class => 'control-label' %>
           <div class="controls">
             <%= f.select(:weekday, ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]) %>
