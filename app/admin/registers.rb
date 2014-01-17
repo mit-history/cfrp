@@ -92,6 +92,7 @@ ActiveAdmin.register Register do
     column "Date", :date
     column "Saison", :season
     column "Status", :verification_state
+    column "Notes", :for_editor_notes
 
     column "" do |resource|
       links = ''.html_safe
