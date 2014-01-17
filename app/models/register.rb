@@ -100,6 +100,21 @@ class Register < ActiveRecord::Base
     Register.where(season: self.season, id: self.id + 1).first
   end
 
+  def volume_number
+    image_filepath = self.register_images[1].filepath
+    volume_number = /M119_02_R(\d+)/.match(image_filepath)[1]
+  end
+
+  def rhp_image_number
+    image_filepath = self.register_images[0].filepath
+    rhp_image_number = /M119_02_R(\d+)\/M119_02_R(\d+)_(\d+)([rv]).jpg/.match(image_filepath)[3]
+  end
+
+  def lhp_image_number
+    image_filepath = self.previous.register_images[1].filepath
+    lhp_image_number = /M119_02_R(\d+)\/M119_02_R(\d+)_(\d+)([rv]).jpg/.match(image_filepath)[3]
+  end
+
   def self.play_authors
     
   end

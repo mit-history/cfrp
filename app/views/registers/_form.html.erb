@@ -99,12 +99,9 @@
               <div class="tabbable tabs-below">
                 <ul class="nav nav-tabs image-tabs">
                   <li><a class='left' href="">Page de gauche</a></li>
-                  <li><a class='front' href="">Image recto</a></li>
-                  <li><a class='back' href="">Image verso</a></li>
+                  <li><a class='front' href="">Page de droite</a></li>
                   <li class="pull-right">
-                    <% if @register.register_images.length > 0 %>
-                      <%= link_to "Open Image in New Window", "http://images.cfregisters.org/#{@register.register_images[0].filepath}", :target => 'top' %>
-                    <% end %>
+                      <%= link_to "Open Flip Book in New Window", "http://hyperstudio.mit.edu/cfrp/flip_books/R#{@register.volume_number}/index.html#page/#{@register.rhp_image_number}/mode/2up", :target => 'top' %>
                   </li>
                 </ul>
               </div>
