@@ -249,6 +249,23 @@
             </div>
             <!-- End Play Title Search -->
 
+            <!-- Start Old Disabled Actor Display -->
+            <div class="control-group">
+              <label class="control-label">Acteur/actrice (uniquement pour reference)</label>
+              <div class="controls form-inline">
+                <label>Debut?</label>
+                <%= rp.check_box :debut, :disabled => true %>
+
+                <label>Acteur/actrice:</label>
+                <%= rp.text_field :newactor, :disabled => true %>
+
+                <label>Nouveau rôle:</label>
+                <%= rp.text_field :actorrole, :disabled => true %>
+                <span class="help-block">Les données ci-dessus seront bientôt transférées automatiquement au nouveau schéma, appelé "Participation". Veuillez ajouter de nouvelles informations ci-dessous, seulement s'il manquent dans les anciennes données</span>
+              </div>
+            </div>
+            <!-- End Old Disabled Actor Display -->
+
             <!-- Start Participation -->
             <div class="control-group">
               <label class="control-label">Participation</label>
@@ -337,7 +354,7 @@
             <hr />
             <%# please note that this functionality comes from nested_form: https://github.com/ryanb/nested_form %>
             <%= f.link_to_add "Rajouter une pièce ci-dessous", :register_plays, :class => "btn btn-small btn-success" %>
-                  
+
           </div><!-- /span12 -->
         </div><!-- /row -->
         <!-- End Play Block -->
@@ -436,7 +453,7 @@
             <div class="control-group">
               <%= f.label :misc_notes, 'Miscellaneous Play Information', :class => 'control-label' %>
               <div class="controls">
-                <%= f.text_area :misc_notes, :rows => 3 %> 
+                <%= f.text_area :misc_notes, :rows => 3 %>
               </div>
             </div>
         </div>
