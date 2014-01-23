@@ -161,9 +161,9 @@ ActiveAdmin.setup do |config|
   # == Menu System
   #
   # You can add a navigation menu to be used in your application, or configure a provided menu
-  # 
+  #
   # To change the default utility navigation to show a link to your website & a logout btn
-  # 
+  #
   #   config.namespace :admin do |admin|
   #     admin.build_menu :utility_navigation do |menu|
   #       menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
@@ -221,11 +221,29 @@ ActiveAdmin.setup do |config|
 
   # == Filters
   #
-  # By default the index screen includes a “Filters” sidebar on the right 
+  # By default the index screen includes a “Filters” sidebar on the right
   # hand side with a filter for each attribute of the registered model.
   # You can enable or disable them for all resources here.
   #
   # config.filters = true
 
 
+  module ActiveAdmin
+    class ResourceController
+      module DataAccess
+        # needed for current active admin master
+        def max_per_page
+          30_000
+        end
+
+        def per_page
+          return 30_000 if %w(text/csv application/xml application/json).include?(request.format)
+
+          return max_per_page if active_admin_config.paginate == false
+
+          @per_page || active_admin_config.per_page
+        end
+      end
+    end
+  end
 end
