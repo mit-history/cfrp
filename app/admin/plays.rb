@@ -1,7 +1,21 @@
 ActiveAdmin.register Play do
 
- menu false
+  menu false
   
+  config.per_page = 20
+  actions :all, :except => [:new]
+
+  config = Cfrp::Application.config
+
+  scope :all, :default => true
+
+  filter :author
+  filter :title
+  filter :genre
+
+  config.batch_actions = true
+  # batch_action :destroy, false
+
   index do
     selectable_column
     column :id
