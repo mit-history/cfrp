@@ -20,6 +20,9 @@ class Play < ActiveRecord::Base
 
   attr_accessible :author, :title, :genre, :acts, :prose_vers, :prologue, :musique_danse_machine
 
+  scope :tragédie, where(:genre => "tragédie").order("id asc")
+  scope :comédie, where(:genre => "comédie").order("id asc")
+
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
       Play.create! row.to_hash

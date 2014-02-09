@@ -8,6 +8,8 @@ ActiveAdmin.register Play do
   config = Cfrp::Application.config
 
   scope :all, :default => true
+  scope :tragédie
+  scope :comédie
 
   filter :author
   filter :title
