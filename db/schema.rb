@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140111132626) do
+ActiveRecord::Schema.define(:version => 20140205203938) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -158,6 +158,9 @@ ActiveRecord::Schema.define(:version => 20140111132626) do
     t.boolean  "debut"
     t.integer  "reprise_perfnum"
   end
+
+  add_index "register_plays", ["play_id"], :name => "play_id_ix"
+  add_index "register_plays", ["register_id"], :name => "register_id_ix"
 
   create_table "register_tasks", :force => true do |t|
     t.string   "name"
