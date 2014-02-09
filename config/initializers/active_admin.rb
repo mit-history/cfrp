@@ -233,11 +233,11 @@ ActiveAdmin.setup do |config|
       module DataAccess
         # needed for current active admin master
         def max_per_page
-          30_000
+          1000
         end
 
         def per_page
-          return 30_000 if %w(text/csv application/xml application/json).include?(request.format)
+          return 1000 if %w(text/csv application/xml application/json).include?(request.format)
 
           return max_per_page if active_admin_config.paginate == false
 
