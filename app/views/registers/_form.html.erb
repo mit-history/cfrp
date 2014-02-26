@@ -402,9 +402,9 @@
                 <div class="control-group">
                   <label class='control-label'>Total Receipts Recorded (Livre / Sous / Deniers)</label>
                   <div class="controls">
-                    <%= f.text_field :total_receipts_recorded_l, :class => 'form-inline span2' %>
-                    <%= f.text_field :total_receipts_recorded_s, :class => 'form-inline span2' %>
-                    <%= f.text_field :total_receipts_recorded_d, :class => 'form-inline span2' %>
+                    <%= f.text_field :total_receipts_recorded_l, :class => 'form-inline span2', :value => @register.total_receipts_recorded_l %>
+                    <%= f.text_field :total_receipts_recorded_s, :class => 'form-inline span2', :value => @register.total_receipts_recorded_s %>
+                    <%= f.text_field :total_receipts_recorded_d, :class => 'form-inline span2', :value => @register.total_receipts_recorded_d %>
                   </div>
                 </div>
               </td>
