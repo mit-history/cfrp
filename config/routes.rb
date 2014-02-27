@@ -8,6 +8,10 @@ Cfrp::Application.routes.draw do
     collection { post :import }
   end
 
+  resources :people do
+    collection { post :import }
+  end
+
   root to: "admin/registers#index"
 
   # devise_for :admin_users, ActiveAdmin::Devise.config
