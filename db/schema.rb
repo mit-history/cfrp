@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140205203938) do
+ActiveRecord::Schema.define(:version => 20140228151517) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -204,6 +204,8 @@ ActiveRecord::Schema.define(:version => 20140205203938) do
     t.string   "irregular_receipts_name_10"
     t.integer  "total_receipts_recorded_d"
   end
+
+  add_index "registers", ["verification_state_id"], :name => "index_registers_on_verification_state_id"
 
   create_table "roles", :force => true do |t|
     t.string "name"

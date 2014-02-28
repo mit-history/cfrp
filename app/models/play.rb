@@ -23,6 +23,14 @@ class Play < ActiveRecord::Base
   scope :tragédie, where(:genre => "tragédie").order("id asc")
   scope :comédie, where(:genre => "comédie").order("id asc")
 
+  def self.unique_titles
+    order(:title).uniq(:title).pluck(:title)
+  end
+
+  def self.unique_authors
+    order(:author).uniq(:author).pluck(:author)
+  end
+
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
       Play.create! row.to_hash

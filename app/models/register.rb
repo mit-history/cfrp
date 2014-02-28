@@ -79,6 +79,10 @@ class Register < ActiveRecord::Base
   scope :two_images, image_count(2)
   scope :one_image, image_count(1)
   scope :no_image, image_count(0)
+
+  def self.unique_seasons
+    order(:season).uniq(:season).pluck(:season)
+  end
   
   PAGES_DE_GAUCHE = %w{ Distribution Depenses Comptable Administrative Cour Relache Autre }
 	

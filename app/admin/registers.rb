@@ -14,9 +14,9 @@ ActiveAdmin.register Register do
 
   filter :id
   filter :date
-  filter :season, :label => "Saison", :as => :select, :collection => proc { Register.order(:season).all.map {|r| r.season}.uniq }
-  filter :register_plays_play_title, :label => "Titre de Piece", :as => :select, :collection => proc { Play.order(:title).all.map {|p| p.title}.uniq }
-  filter :register_plays_play_author, :label => "Auteur de Piece", :as => :select, :collection => proc { Play.order(:author).all.map{|p| p.author}.uniq }
+  filter :season, :label => "Saison", :as => :select, :collection => proc { Register.unique_seasons }
+  filter :register_plays_play_title, :label => "Titre de Piece", :as => :select, :collection => proc { Play.unique_titles }
+  filter :register_plays_play_author, :label => "Auteur de Piece", :as => :select, :collection => proc { Play.unique_authors }
 
   config.batch_actions = true
   # batch_action :destroy, false
