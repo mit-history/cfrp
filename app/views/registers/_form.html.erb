@@ -5,6 +5,7 @@
 
 <% titles = @plays.reduce([]) {|m, p| m << "#{p.id} | #{p.title} | #{p.author} | #{p.genre} | #{p.acts} | #{p.prose_vers} | #{p.prologue} | #{p.musique_danse_machine} "} %>
 
+
 <%# authors = @plays.reduce([]) {|m, p| m << p.author} %>
 
 <script>
@@ -173,12 +174,18 @@
           </div>
         </div><!-- End span6 -->
         <div class="span6" id="right_col">
-          <div class="control-group">
-          <%= f.label :page_de_gauche, :class => 'control-label' %>
-          <div class="controls">
-            <%= f.select(:page_de_gauche, %w{ Distribution Dépenses Comptable Administrative Cour Relâche Autre }, :include_blank => true) %>
-          </div>
-          </div>
+
+
+            <!-- Start LHP -->
+            <div class="control-group">
+              <label class="control-label">Page(s) de Gauche</label>
+              <div class="controls form-inline">
+              <%= f.fields_for :lhp_category_assignments do |lhp_form| %>
+                  <%= lhp_form.select(:page_de_gauche_id, PageDeGauche.all.map{|pdg| [pdg.category, pdg.id]}, {}, {multiple: true}) %>
+              <% end %>
+              </div>
+            </div>
+            <!-- End LHP -->
 
           <div class="control-group">
           <%= f.label :weekday, 'Jour de la semaine', :class => 'control-label' %>
@@ -359,6 +366,7 @@
         </div><!-- /row -->
         <!-- End Play Block -->
 
+        <% if @register.register_period.present? %>
         <!-- TICKET SALES -->
         <div class='row'>
         <div class="span12">
@@ -416,6 +424,7 @@
         </div><!-- /span12 -->
         </div><!-- /row -->
         <!-- End Ticket Sales -->
+        <% end %>
 
         <!-- Additional Fields -->
         <div class="row">

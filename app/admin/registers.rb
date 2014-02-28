@@ -2,7 +2,7 @@ ActiveAdmin.register Register do
   menu false
   # menu :priority => 1
   config.per_page = 20
-  actions :all, :except => [:new]
+  actions :all #, :except => [:new]
 
   config = Cfrp::Application.config
 

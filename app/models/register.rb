@@ -31,7 +31,6 @@
 class Register < ActiveRecord::Base
 
   # default_scope order("date ASC")
-
   attr_accessible :date, :weekday, :page_de_gauche, 
     :date_of_left_page_info, :season, :register_num, 
     :payment_notes, :page_text, 
@@ -49,7 +48,8 @@ class Register < ActiveRecord::Base
     :irregular_receipts_name_7,
     :irregular_receipts_name_8,
     :irregular_receipts_name_9,
-    :irregular_receipts_name_10
+    :irregular_receipts_name_10,
+    :lhp_category_assignments_attributes
 
 
   # Repertoire Groups
@@ -73,7 +73,10 @@ class Register < ActiveRecord::Base
 
   accepts_nested_attributes_for :plays, :ticket_sales
   accepts_nested_attributes_for :register_plays, :allow_destroy => true
+  accepts_nested_attributes_for :lhp_category_assignments, :allow_destroy => true
 
+  validates :date, presence: true 
+  
   scope :verified, where(:verification_state_id => 1).order("id asc")
   scope :unverified, where(:verification_state_id => 2).order("id asc")
   scope :unentered, where(:verification_state_id => 5).order("id asc")
