@@ -58,6 +58,9 @@ class Register < ActiveRecord::Base
   has_many :ticket_sales
   has_many :register_images
 
+  has_many :register_left_pages
+  has_many :page_de_gauches, through: :register_left_pages
+
   belongs_to :register_period
   belongs_to :verification_state
 

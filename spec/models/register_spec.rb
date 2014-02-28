@@ -18,6 +18,18 @@ describe Register do
     # @register.register_plays << RegisterPlay.new( :play_id => @play1.id, :ordering => 1 )
   end
 
+  it "can save page_de_gauche correctly" do
+    register = described_class.new
+    register_left_page = RegisterLeftPage.new(register: register, page_de_gauche: PageDeGauche.new(category: 'Foobar'))
+    register.save
+    register_left_page.save
+
+    register.reload
+    register_left_page.reload
+
+    expect(register.register_left_pages.first).to eq register_left_page
+  end
+
   it "saves related model data automatically" do
     @register.register_plays[0].play_id.should_not be_nil
     @register.register_plays[1].play_id.should_not be_nil
