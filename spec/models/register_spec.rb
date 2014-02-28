@@ -20,14 +20,14 @@ describe Register do
 
   it "can save page_de_gauche correctly" do
     register = described_class.new
-    register_left_page = RegisterLeftPage.new(register: register, page_de_gauche: PageDeGauche.new(category: 'Foobar'))
+    lhp_category_assignment = LhpCategoryAssignment.new(register: register, page_de_gauche: PageDeGauche.new(category: 'Foobar'))
     register.save
-    register_left_page.save
+    lhp_category_assignment.save
 
     register.reload
-    register_left_page.reload
+    lhp_category_assignment.reload
 
-    expect(register.register_left_pages.first).to eq register_left_page
+    expect(register.lhp_category_assignments.first).to eq lhp_category_assignment
   end
 
   it "saves related model data automatically" do

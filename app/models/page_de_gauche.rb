@@ -1,5 +1,5 @@
 class PageDeGauche < ActiveRecord::Base
 	validates :category, presence: true
-	has_many :register_left_pages
-	has_many :registers, through: :register_left_pages
+	has_many :lhp_category_assignments
+	has_many :registers, through: :lhp_category_assignments
 end

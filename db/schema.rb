@@ -68,6 +68,13 @@ ActiveRecord::Schema.define(:version => 20140228164747) do
     t.datetime "updated_at"
   end
 
+  create_table "lhp_category_assignments", :force => true do |t|
+    t.integer  "register_id",       :null => false
+    t.integer  "page_de_gauche_id", :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
   create_table "page_de_gauches", :force => true do |t|
     t.string   "category",   :null => false
     t.datetime "created_at", :null => false
@@ -130,13 +137,6 @@ ActiveRecord::Schema.define(:version => 20140228164747) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "register_id"
-  end
-
-  create_table "register_left_pages", :force => true do |t|
-    t.integer  "register_id",       :null => false
-    t.integer  "page_de_gauche_id", :null => false
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
   end
 
   create_table "register_period_seating_categories", :force => true do |t|

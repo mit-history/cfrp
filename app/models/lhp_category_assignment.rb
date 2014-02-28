@@ -1,4 +1,4 @@
-class RegisterLeftPage < ActiveRecord::Base
+class LhpCategoryAssignment < ActiveRecord::Base
 	belongs_to :register
 	belongs_to :page_de_gauche
 
