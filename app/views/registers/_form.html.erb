@@ -180,9 +180,13 @@
             <div class="control-group">
               <label class="control-label">Page(s) de Gauche</label>
               <div class="controls form-inline">
-              <%= f.fields_for :lhp_category_assignments do |lhp_form| %>
-                  <%= lhp_form.select(:page_de_gauche_id, PageDeGauche.all.map{|pdg| [pdg.category, pdg.id]}, {}, {multiple: true}) %>
+              <%= f.fields_for :lhp_category_assignments, f.object.lhp_category_assignments do |lhp_form| %>
+              <%= lhp_form.hidden_field :id, :class => "lhp_category_assignment_id-register_#{f.object.id}" %>
+              <%= lhp_form.collection_select(:page_de_gauche_id, PageDeGauche.all, :id, :category) %>
+              <%= lhp_form.link_to_remove "Supprimer", :class => "btn btn-small btn-danger", :confirm => "Êtes-vous sûr?" %>
               <% end %>
+              <%= f.link_to_add "Rajouter", :lhp_category_assignments, :class => "btn btn-small btn-success" %>
+
               </div>
             </div>
             <!-- End LHP -->

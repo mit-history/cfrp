@@ -30,15 +30,19 @@
 
 class Register < ActiveRecord::Base
 
+  has_many :lhp_category_assignments
+  has_many :page_de_gauches, through: :lhp_category_assignments
+  accepts_nested_attributes_for :lhp_category_assignments, reject_if: proc { |attributes| attributes['page_de_gauche_id'].blank? }, allow_destroy: true
+
   # default_scope order("date ASC")
-  attr_accessible :date, :weekday, :page_de_gauche, 
-    :date_of_left_page_info, :season, :register_num, 
-    :payment_notes, :page_text, 
+  attr_accessible :date, :weekday,
+    :date_of_left_page_info, :season, :register_num,
+    :payment_notes, :page_text,
     :total_receipts_recorded_l, :total_receipts_recorded_s, :total_receipts_recorded_d,
-    :representation, :signatory, :misc_notes, :for_editor_notes, :ouverture, 
-    :cloture, :register_period_id, :verification_state_id, 
-    :register_plays_attributes, :ticket_sales_attributes, 
-    :rep_privacy_list, :rep_group_list, :register_images, 
+    :representation, :signatory, :misc_notes, :for_editor_notes, :ouverture,
+    :cloture, :register_period_id, :verification_state_id,
+    :register_plays_attributes, :ticket_sales_attributes,
+    :rep_privacy_list, :rep_group_list, :register_images,
     :irregular_receipts_name,
     :irregular_receipts_name_2,
     :irregular_receipts_name_3,
@@ -58,9 +62,6 @@ class Register < ActiveRecord::Base
   has_many :ticket_sales
   has_many :register_images
 
-  has_many :lhp_category_assignments
-  has_many :page_de_gauches, through: :lhp_category_assignments
-
   belongs_to :register_period
   belongs_to :verification_state
 
@@ -73,10 +74,10 @@ class Register < ActiveRecord::Base
 
   accepts_nested_attributes_for :plays, :ticket_sales
   accepts_nested_attributes_for :register_plays, :allow_destroy => true
-  accepts_nested_attributes_for :lhp_category_assignments, :allow_destroy => true
+  # accepts_nested_attributes_for :page_de_gauches, :allow_destroy => true
 
-  validates :date, presence: true 
-  
+  validates :date, presence: true
+
   scope :verified, where(:verification_state_id => 1).order("id asc")
   scope :unverified, where(:verification_state_id => 2).order("id asc")
   scope :unentered, where(:verification_state_id => 5).order("id asc")
@@ -89,16 +90,11 @@ class Register < ActiveRecord::Base
   def self.unique_seasons
     order(:season).uniq(:season).pluck(:season)
   end
-  
-  PAGES_DE_GAUCHE = %w{ Distribution Depenses Comptable Administrative Cour Relache Autre }
-	
-  PAGES_DE_GAUCHE.each do |page_de_gauche|
-    define_method("#{page_de_gauche}?") do
-      self.page_de_gauche == page_de_gauche
-    end
 
-    define_method("#{page_de_gauche}!") do
-      self.update_attribute(:page_de_gauche, page_de_gauche)
+  def build_lhp_category_assignments=(attrs)
+    new_lhp_cat_ass = LhpCategoryAssignment.find(attrs[:register_id])
+    unless new_lhp_cat_ass.nil?
+      self.lhp_category_assignments = new_lhp_cat_ass
     end
   end
 
@@ -126,7 +122,7 @@ class Register < ActiveRecord::Base
   end
 
   def self.play_authors
-    
+
   end
 
   def ticket_sales_attributes=params

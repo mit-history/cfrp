@@ -19,9 +19,15 @@ describe Register do
   end
 
   it "can save page_de_gauche correctly" do
-    register = described_class.new
-    lhp_category_assignment = LhpCategoryAssignment.new(register: register, page_de_gauche: PageDeGauche.new(category: 'Foobar'))
+    register = Register.new
+    register.date = Date.today
     register.save
+    pdg = PageDeGauche.new(category: 'Foobar');
+    pdg.save
+    lhp_category_assignment = LhpCategoryAssignment.new(register: register, page_de_gauche: pdg)
+
+    # binding.pry
+
     lhp_category_assignment.save
 
     register.reload
@@ -47,7 +53,7 @@ describe Register do
     @new_play1.save
     @new_play2.save
 
-    plays = { 
+    plays = {
       :register_plays_attributes => {
         "0" => {
           "id" => @register.register_plays[0].id,
