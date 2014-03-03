@@ -107,8 +107,11 @@ ActiveRecord::Schema.define(:version => 20140228164747) do
     t.string   "pseudonym"
     t.string   "honorific"
     t.string   "url"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+    t.string   "alias"
+    t.string   "societaire_pensionnaire"
+    t.string   "dates"
   end
 
   create_table "plays", :force => true do |t|
