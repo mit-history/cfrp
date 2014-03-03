@@ -105,7 +105,7 @@ ActiveAdmin.setup do |config|
   # Admin comments are enabled by default.
   #
   # Default:
-  # config.allow_comments = true
+  config.allow_comments = false
   #
   # You can turn them on and off for any given namespace by using a
   # namespace config block.
@@ -175,10 +175,8 @@ ActiveAdmin.setup do |config|
     admin.build_menu :default do |menu|
       menu.add label: "Registres", url: "/admin/registers", priority: 1
       menu.add label: "Pieces", url: "/admin/plays", priority: 2
-      menu.add label: "Categories d'emplacement par periode", url: "/admin/register_period_seating_categories", priority: 3
-      menu.add label: "Periodes", url: "/admin/register_periods", priority: 4
-      menu.add label: "Pieces par registre", url: "/admin/register_plays", priority: 5
-      menu.add label: "Categories d'emplacement", url: "/admin/seating_categories", priority: 6
+      menu.add label: "Acteurs/Actrices", url: "/admin/people", priority: 2
+      menu.add label: "Pages de Gauche", url: "/admin/page_de_gauches", priority: 3
     end
   end
 
