@@ -135,28 +135,24 @@ ActiveAdmin.register Register do
       row :created_at
       row :updated_at
     end
-    active_admin_comments
   end
 
   form do |f|
       f.inputs "Details", :multipart => true do
-        f.input :date
-        f.input :weekday
-        f.input :season
-        f.input :register_num
-        f.input :payment_notes
-        f.input :page_text
-        f.input :total_receipts_recorded_l
-        f.input :total_receipts_recorded_s
-        f.input :representation
-        f.input :signatory
-        f.input :misc_notes
-        f.input :for_editor_notes
+        # f.input :register_period_id, :as => :select, :collection => RegisterPeriod.all
+        f.input :verification_state_id, :as => :select, :collection => VerificationState.all
+        f.input :season, :as => :select, :collection => Register.unique_seasons
+        f.input :weekday, :as => :select, :collection => ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]
+        f.input :date, :as => :string, :placeholder => "1700-01-01"
         f.input :ouverture
         f.input :cloture
-        f.input :register_period_id
-        f.input :verification_state_id
-        f.input :irregular_receipts_name
+        f.input :register_num
+        f.input :representation
+        f.input :signatory
+        f.input :payment_notes, :as => :text, :input_html => { :style => "height: 100px" }
+        f.input :page_text, :as => :text, :input_html => { :style => "height: 100px" }
+        f.input :misc_notes, :as => :text, :input_html => { :style => "height: 100px" }
+        f.input :for_editor_notes, :as => :text, :input_html => { :style => "height: 100px" }
       end
       f.actions
     end

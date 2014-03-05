@@ -8,5 +8,9 @@
 #
 
 class VerificationState < ActiveRecord::Base
-  has_many :register
+  has_many :registers
+
+  def self.unique_states
+    order(:name).uniq(:name).pluck(:name)
+  end
 end

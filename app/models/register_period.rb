@@ -14,4 +14,8 @@ class RegisterPeriod < ActiveRecord::Base
   has_many :registers
 
   attr_accessible :period
+
+  def self.unique_periods
+    order(:period).uniq(:period).pluck(:period)
+  end
 end

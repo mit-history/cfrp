@@ -91,6 +91,10 @@ class Register < ActiveRecord::Base
     order(:season).uniq(:season).pluck(:season)
   end
 
+  def self.unique_dates
+    order(:date).uniq(:date).pluck(:date)
+  end
+
   def build_lhp_category_assignments=(attrs)
     new_lhp_cat_ass = LhpCategoryAssignment.find(attrs[:register_id])
     unless new_lhp_cat_ass.nil?
