@@ -4,8 +4,8 @@
 <%# Fills in author an genre automatically when filling out title. %>
 
 <% titles = @plays.reduce([]) {|m, p| m << "#{p.id} | #{p.title} | #{p.author} | #{p.genre} | #{p.acts} | #{p.prose_vers} | #{p.prologue} | #{p.musique_danse_machine} "} %>
-
-
+<% actors = @people.reduce([]) {|m, p| m << "#{p.id} | #{p.pseudonym} #{p.honorific} #{p.last_name} #{p.first_name} #{p.alias} #{p.dates} "} %>
+<% binding.pry %>
 <%# authors = @plays.reduce([]) {|m, p| m << p.author} %>
 
 <script>
@@ -32,7 +32,7 @@
       $(document).on('nested:fieldAdded', function(event) {
           previous_ordering = parseInt(previous_ordering) + 1;
           $(event.field).find('input.play-ordering').val(previous_ordering);
-          $(event.field).find('h3').html("Play " + (previous_ordering));
+          $(event.field).find('h4').html("Play " + (previous_ordering));
 
           var rnum = Math.floor(Math.random() * 10000);
 
@@ -362,7 +362,6 @@
               <%= rp.link_to_remove "Supprimer la pièce ci-dessus", :class => "btn btn-small btn-danger", :confirm => "Êtes-vous sûr?" %>
             </div>
             <% end %>
-            <hr />
             <%# please note that this functionality comes from nested_form: https://github.com/ryanb/nested_form %>
             <%= f.link_to_add "Rajouter une pièce ci-dessous", :register_plays, :class => "btn btn-small btn-success" %>
 

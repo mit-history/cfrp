@@ -24,6 +24,7 @@ class RegistersController < ApplicationController
   def edit
     @register = Register.find(params[:id])
     @plays = Play.all
+    @people = Person.all
   end
 
   def create
