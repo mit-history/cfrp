@@ -1,9 +1,9 @@
 ActiveAdmin.register Play do
 
   menu false
-  
+
   config.per_page = 20
-  actions :all, :except => [:new]
+  actions :all#, :except => [:new]
 
   config = Cfrp::Application.config
 
