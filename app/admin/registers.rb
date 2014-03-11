@@ -142,7 +142,7 @@ ActiveAdmin.register Register do
   form do |f|
       f.inputs "Details", :multipart => true do
         # Register Period is not relevant in this form, since it's for virtual registers, for which there are no ticket grids.
-        # f.input :register_period_id, :as => :select, :collection => RegisterPeriod.all.map{|p| [p.period, p.id]}
+        f.input :register_period_id, :as => :select, :collection => RegisterPeriod.all.map{|p| [p.period, p.id]}
         f.input :season, :as => :select, :collection => Register.unique_seasons
         f.input :weekday, :as => :select, :collection => ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]
         f.input :date, :as => :string, :placeholder => "1700-01-01"
