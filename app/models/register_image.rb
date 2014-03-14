@@ -20,3 +20,5 @@ class RegisterImage < ActiveRecord::Base
 
   attr_accessible :filepath, :register_id
 end
+
+# Define thumb styles for paperclip

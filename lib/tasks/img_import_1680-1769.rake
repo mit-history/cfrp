@@ -128,10 +128,23 @@ namespace :img do
           imgnum = $2
           versa_file = "M119_02_R#{dirnum}_#{"%03d" % (imgnum.to_i + 1)}v.jpg"
 
-          ri_r = RegisterImage.new({ register_id: register.id,
-                                     filepath:    "#{season_dir}/#{file}" })
-          ri_v = RegisterImage.new({ register_id: register.id,
-                                     filepath:    "#{season_dir}/#{versa_file}" })
+          # ri_r = RegisterImage.new({ register_id: register.id,
+          #                            filepath:    "#{season_dir}/#{file}" })
+          # ri_v = RegisterImage.new({ register_id: register.id,
+          #                            filepath:    "#{season_dir}/#{versa_file}" })
+
+		  # FIXME: Make sure `file` and `versa_file` point to file paths that actually can be opened in this rake task --DJCP
+          ri_r = RegisterImage.new(
+          	orientation: 'recto',
+          	register_id: register.id,
+          	image: File.open(file)
+          	)
+
+          ri_v = RegisterImage.new(
+          	orientation: 'verso',
+          	register_id: register.id,
+          	image: File.open(versa_file)
+          	)
 
           ri_r.save
           puts ri_r.inspect
