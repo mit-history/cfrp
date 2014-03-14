@@ -8,6 +8,7 @@ gem 'pg'
 gem 'devise'
 gem 'cancan'
 gem 'iconv'
+gem 'paperclip'
 
 gem 'unicorn'
 gem 'newrelic_rpm'
