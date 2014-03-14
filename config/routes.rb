@@ -12,6 +12,8 @@ Cfrp::Application.routes.draw do
     collection { post :import }
   end
 
+  resources :play_ticket_sales, only: [:index]
+
   root to: "admin/registers#index"
 
   # devise_for :admin_users, ActiveAdmin::Devise.config
