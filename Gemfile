@@ -12,6 +12,7 @@ gem 'paperclip'
 
 gem 'unicorn'
 gem 'newrelic_rpm'
+gem 'aws-sdk', '~> 1.5.7'
 
 # jQuery is the default JavaScript library in Rails 3.1
 gem 'jquery-rails'
@@ -51,6 +52,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
+  gem 'shoulda-matchers'
 end
 
 gem 'nokogiri'

@@ -11,6 +11,12 @@
 #
 
 class RegisterImage < ActiveRecord::Base
+  has_attached_file :image
   has_one :register, :counter_cache => true
+  validates_attachment_content_type :image,
+    content_type: [ 'image/jpg', 'image/jpeg' ]
+  validates_inclusion_of :orientation, in: ['left', 'recto','verso'],
+    allow_blank: true
+
   attr_accessible :filepath, :register_id
 end
