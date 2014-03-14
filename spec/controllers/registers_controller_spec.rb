@@ -202,6 +202,7 @@ describe RegistersController do
         end
 
         it "updates the associated plays" do
+          pending
 
           plays = { 
             :register_plays_attributes => {
