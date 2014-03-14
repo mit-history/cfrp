@@ -120,11 +120,6 @@ class Register < ActiveRecord::Base
     rhp_image_number = /M119_02_R(\d+)\/M119_02_R(\d+)_(\d+)([rv]).jpg/.match(image_filepath)[3]
   end
 
-  def lhp_image_number
-    image_filepath = self.previous.register_images[1].filepath
-    lhp_image_number = /M119_02_R(\d+)\/M119_02_R(\d+)_(\d+)([rv]).jpg/.match(image_filepath)[3]
-  end
-
   def self.play_authors
 
   end
