@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140314184038) do
+ActiveRecord::Schema.define(:version => 20140314193510) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -140,6 +140,11 @@ ActiveRecord::Schema.define(:version => 20140314184038) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "register_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "orientation"
   end
 
   create_table "register_period_seating_categories", :force => true do |t|
