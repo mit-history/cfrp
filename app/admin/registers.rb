@@ -155,6 +155,13 @@ ActiveAdmin.register Register do
         f.input :for_editor_notes, :as => :text, :input_html => { :style => "height: 100px" }
         f.input :verification_state_id, :as => :select, :collection => VerificationState.all
       end
+      f.inputs do
+        f.has_many :register_images, :allow_destroy => true, :heading => 'Images' do |ri|
+          ri.input :image, :as => :file
+          ri.input :orientation, :as => :select, :collection => ['recto','verso','left']
+          ri.input :filepath
+        end
+      end
       f.actions
     end
 end
