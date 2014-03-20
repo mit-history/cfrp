@@ -1,39 +1,46 @@
 class PlaysController < ApplicationController
-	def index
-		@search = params[:search] || ''
-	end
+  include Repertoire::Faceting::Controller
 
-	def show
-		@play = play.find(params[:id])
-	end
+  def base
+    #search = "%#{params[:search]}%"
+    Play
+  end
 
-	def new
-		@play = play.new
-	end
+  def index
+    @search = params[:search] || ''
+  end
 
-	def edit
-		@play = play.find(params[:id])
-		@plays = Play.all
-	end
+  def show
+    @play = play.find(params[:id])
+  end
 
-	def create
-		@play = play.new(params[:play])
-	end
+  def new
+    @play = play.new
+  end
 
-	def update
-		@play = play.find(params[:id])
-		@play.update_attributes!(params[:play])
-		redirect_to :action => "edit", :id => @play.id, :notice => 'play was successfully updated.'
-	end
+  def edit
+    @play = play.find(params[:id])
+    @plays = Play.all
+  end
 
-	def destroy
-		@play = play.find(params[:id])
-		@play.destroy
-		redirect_to :action => "index", :notice => 'play was successfully updated.'
-	end
+  def create
+    @play = play.new(params[:play])
+  end
 
-	def import
-		Play.import(params[:file])
-		redirect_to root_url, notice: "Plays imported."
-	end
+  def update
+    @play = play.find(params[:id])
+    @play.update_attributes!(params[:play])
+    redirect_to :action => "edit", :id => @play.id, :notice => 'play was successfully updated.'
+  end
+
+  def destroy
+    @play = play.find(params[:id])
+    @play.destroy
+    redirect_to :action => "index", :notice => 'play was successfully updated.'
+  end
+
+  def import
+    Play.import(params[:file])
+    redirect_to root_url, notice: "Plays imported."
+  end
 end

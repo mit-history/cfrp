@@ -15,6 +15,8 @@
 #
 
 class Play < ActiveRecord::Base
+  include Repertoire::Faceting::Model
+
   has_many :register_plays
   has_many :registers, :through => :register_plays
 
@@ -22,6 +24,9 @@ class Play < ActiveRecord::Base
 
   scope :tragédie, where(:genre => "tragédie").order("id asc")
   scope :comédie, where(:genre => "comédie").order("id asc")
+  facet :genre
+  facet :prologue
+  facet :acts
 
   def self.unique_titles
     order(:title).uniq(:title).pluck(:title)
