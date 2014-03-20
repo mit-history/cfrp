@@ -20,3 +20,6 @@ _archive/
 Gemfile.old.lock
 db/backups/
 public/system/
+
+# Ignore application configuration
+/config/application.yml
