@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140421114457) do
+ActiveRecord::Schema.define(:version => 20140319175857) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -124,10 +124,6 @@ ActiveRecord::Schema.define(:version => 20140421114457) do
     t.string   "prose_vers"
     t.boolean  "prologue"
     t.boolean  "musique_danse_machine"
-    t.string   "alternative_title"
-    t.string   "url"
-    t.date     "date_de_creation"
-    t.boolean  "expert_validated"
   end
 
   create_table "register_contributors", :force => true do |t|
@@ -144,6 +140,11 @@ ActiveRecord::Schema.define(:version => 20140421114457) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "register_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "orientation"
   end
 
   create_table "register_period_seating_categories", :force => true do |t|
@@ -153,6 +154,9 @@ ActiveRecord::Schema.define(:version => 20140421114457) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "register_period_seating_categories", ["register_period_id"], :name => "index_register_period_seating_categories_on_register_period_id"
+  add_index "register_period_seating_categories", ["seating_category_id"], :name => "index_register_period_seating_categories_on_seating_category_id"
 
   create_table "register_periods", :force => true do |t|
     t.string   "period"
@@ -225,6 +229,7 @@ ActiveRecord::Schema.define(:version => 20140421114457) do
     t.integer  "total_receipts_recorded_d"
   end
 
+  add_index "registers", ["register_period_id"], :name => "index_registers_on_register_period_id"
   add_index "registers", ["verification_state_id"], :name => "index_registers_on_verification_state_id"
 
   create_table "roles", :force => true do |t|
@@ -269,6 +274,9 @@ ActiveRecord::Schema.define(:version => 20140421114457) do
     t.integer  "price_per_ticket_d",  :default => 0
     t.integer  "recorded_total_d",    :default => 0
   end
+
+  add_index "ticket_sales", ["register_id"], :name => "index_ticket_sales_on_register_id"
+  add_index "ticket_sales", ["seating_category_id"], :name => "index_ticket_sales_on_seating_category_id"
 
   create_table "users", :force => true do |t|
     t.string   "email"

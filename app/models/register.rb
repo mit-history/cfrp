@@ -73,6 +73,7 @@ class Register < ActiveRecord::Base
   has_many :plays, :through => :register_plays
 
   accepts_nested_attributes_for :plays, :ticket_sales
+  accepts_nested_attributes_for :register_images, :allow_destroy => true
   accepts_nested_attributes_for :register_plays, :allow_destroy => true
   # accepts_nested_attributes_for :page_de_gauches, :allow_destroy => true
 
