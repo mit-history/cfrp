@@ -19,3 +19,4 @@ ability-backup.rb
 _archive/
 Gemfile.old.lock
 db/backups/
+public/system/register_images
