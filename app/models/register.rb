@@ -41,7 +41,7 @@ class Register < ActiveRecord::Base
     :total_receipts_recorded_l, :total_receipts_recorded_s, :total_receipts_recorded_d,
     :representation, :signatory, :misc_notes, :for_editor_notes, :ouverture,
     :cloture, :register_period_id, :verification_state_id,
-    :register_plays_attributes, :ticket_sales_attributes,
+    :register_plays_attributes, :ticket_sales_attributes, :register_images_attributes,
     :rep_privacy_list, :rep_group_list, :register_images,
     :irregular_receipts_name,
     :irregular_receipts_name_2,
