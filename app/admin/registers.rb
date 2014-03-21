@@ -149,19 +149,20 @@ ActiveAdmin.register Register do
         f.input :register_num
         f.input :representation
         f.input :signatory
-        f.input :payment_notes, :as => :text, :input_html => { :style => "height: 100px" }
-        f.input :page_text, :as => :text, :input_html => { :style => "height: 100px" }
-        f.input :misc_notes, :as => :text, :input_html => { :style => "height: 100px" }
-        f.input :for_editor_notes, :as => :text, :input_html => { :style => "height: 100px" }
         f.input :verification_state_id, :as => :select, :collection => VerificationState.all
       end
-      f.inputs do
-        f.has_many :register_images, :allow_destroy => true, :heading => 'Images' do |ri|
+      f.inputs "Images"  do
+        f.has_many :register_images, :allow_destroy => true do |ri|
           ri.input :image, :as => :file
           ri.input :orientation, :as => :select, :collection => ['recto','verso','left']
-          ri.input :filepath
         end
       end
       f.actions
+      f.inputs "Notes" do
+        f.input :payment_notes, :as => :text, :input_html => { :style => "height: 50px" }
+        f.input :page_text, :as => :text, :input_html => { :style => "height: 50px" }
+        f.input :misc_notes, :as => :text, :input_html => { :style => "height: 50px" }
+        f.input :for_editor_notes, :as => :text, :input_html => { :style => "height: 50px" }
+      end
     end
 end
