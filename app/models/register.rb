@@ -30,6 +30,8 @@
 
 class Register < ActiveRecord::Base
 
+  include Repertoire::Faceting::Model
+
   has_many :lhp_category_assignments
   has_many :page_de_gauches, through: :lhp_category_assignments
   accepts_nested_attributes_for :lhp_category_assignments, reject_if: proc { |attributes| attributes['page_de_gauche_id'].blank? }, allow_destroy: true
@@ -90,6 +92,9 @@ class Register < ActiveRecord::Base
   scope :two_images, image_count(2)
   scope :one_image, image_count(1)
   scope :no_image, image_count(0)
+  facet :season
+  facet :weekday
+  facet :representation
 
   def self.unique_seasons
     order(:season).uniq(:season).pluck(:season)

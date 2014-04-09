@@ -1,28 +1,13 @@
-|count = <%= @count %>|
-
-<% config = Cfrp::Application.config %>
-
-<%# params: register %>
+count = <%= @count %>
 
 <div class="register_all row">
-
-<% if register.register_images.length > 0 %>
-  <div class='register_image span1'>
-    <a href="/<%= register.register_images[0].filepath %>" target="_blank"><img src='/<%= register.register_images[0].filepath %>' width='100' /></a>
-  </div>
-
-  <div class='register_data span5'>
-<% else %>
-  <div class='register_data offset1 span5'>
-<% end %>
-
-  <% if user_signed_in? %>
-  <ul class='register_nav nav nav-pills pull-right'>
-    <li><%= link_to '<i class="i icon-pencil"></i> Edit'.html_safe, edit_register_path(register), :id => 'edit_action', :target => '_blank' %></li>
-    <% if current_user.has_role? :admin %>
-    <li><%= link_to '<i class="i icon-remove"></i> Remove'.html_safe, register, :id => 'delete_action', :confirm => 'Are you sure?', :method => :delete %></li>
-    <% end %>
-  </ul>
+  <% if register.register_images.length > 0 %>
+    <div class='register_image span1'>
+      <a href="/<%= register.register_images[0].filepath %>" target="_blank"><img src='/<%= register.register_images[0].filepath %>' width='100' /></a>
+    </div>
+    <div class='register_data span5'>
+  <% else %>
+    <div class='register_data offset1 span5'>
   <% end %>
 
   <dl class="dl-horizontal">
