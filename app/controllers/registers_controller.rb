@@ -1,8 +1,15 @@
 class RegistersController < ApplicationController
+  include Repertoire::Faceting::Controller
   before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
+
+  def base
+    #search = "%#{params[:search]}%"
+    Register
+  end
 
   def index
     @search = params[:search] || ''
+    # render
     # @q = Register.ransack(params[:q]) # <=========
     #   if params[:q].nil?
     #     @registers = Register.all
