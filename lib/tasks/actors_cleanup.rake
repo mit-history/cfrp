@@ -37,9 +37,9 @@ namespace :register_play_newactor do
         debut = rp.debut
 
         # :character, :debut, :person_id, :person, :register_play_id, :register_play, :role
-        participation = Participation.new(:character => actorrole, :debut => debut, :person => person, :register_play => rp, :role => actorrole)
+        participation = Participation.new(:character => actorrole, :debut => debut, :person => person, :register_play => rp, :role => "Actor")
 
-        # particpation.save
+        participation.save
         participations_created += 1
         puts participation.inspect
 
