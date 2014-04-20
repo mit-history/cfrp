@@ -20,3 +20,5 @@ _archive/
 Gemfile.old.lock
 db/backups/
 public/system/register_images
+db/data/~*
+tmp/
