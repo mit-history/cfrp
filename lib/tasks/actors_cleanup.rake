@@ -1,85 +1,54 @@
 # -*- coding: utf-8 -*-
 # require 'CSV'
 
-namespace :actors do
-  desc "Adds participation records mapping ids from new people table to register_plays, for actor name data currently stored in register_plays."
-  task :cleanup => :environment do |t, args|
-    f = CSV.open "db/data/correct-actors-04-14.csv", { headers: true, header_converters: :symbol }
+namespace :register_play_newactor do
+  desc "Creates a new participation from an existing newactor value on an existing register_play."
+  task :convert_to_participation => :environment do |t, args|
 
-    CSV.open("db/data/imported-id_map-of-clean-plays_1740-1793.csv", "wb") do |csv|
+    mapping_lines_read = 0
+    participations_created = 0
 
-      csv << ['mapping_id','real_id']
+    # open mapping file
+    fix_up = CSV.open "db/data/people_id_to_rp_newactor_map.csv", { :headers => true, :header_converters => :symbol, :converters => :all }
 
-      f.each do |line|
-        p = Play.new( title:                 line[:title],
-                      author:                line[:author],
-                      genre:                 line[:genre],
-                      acts:                  line[:nombre_dactes],
-                      prose_vers:            line[:prosevers],
-                      prologue:              !line[:prologue].nil?,
-                      musique_danse_machine: !line[:musique_danse_machine].nil? )
+    # :people_id
+    # :rp_newactor_name
 
-        if not p.valid?
-          puts "GOT AN INVALID ONE! #{p.inspect}"
-        end
+    # Walk through
+    #   - opening each register play
+    #   - creating a new participation with the person id from the mapping file
+    #   - flag the rp as corrected.
+    fix_up.each do |line|
+      # if rp_newactor_name is nil, move to the next one.
 
-        p.save
-        puts "saving: #{p.inspect}"
-        csv << [line[:id], p.id]
-        puts "----------------------------\n\n"
+      mapping_lines_read += 1
+      puts line
+
+      next if line[:rp_newactor_name].nil?
+
+      # 1) find all register_plays with the id of the old play
+      register_plays = RegisterPlay.find_all_by_newactor(line[:rp_newactor_name])
+      person = Person.find(line[:people_id])
+
+      # Do stuff
+      register_plays.each do |rp|
+        actorrole = rp.actorrole
+        newactor = rp.newactor
+        debut = rp.debut
+
+        # :character, :debut, :person_id, :person, :register_play_id, :register_play, :role
+        participation = Participation.new(:character => actorrole, :debut => debut, :person => person, :register_play => rp, :role => actorrole)
+
+        # particpation.save
+        participations_created += 1
+        puts participation.inspect
+
       end
     end
-  end
 
-  desc "Fixes current plays using updated cleaned-up plays"
-  task :fix_plays => :environment do |t, args|
+    puts "================"
+    puts "mapping_lines_read: " + mapping_lines_read.to_s
+    puts "participations_created: " + participations_created.to_s
 
-    # 0) open id mapping of CSV file IDs to the IDs the professors created,
-    #    and open up the "play fix-up" file
-    mapping = CSV.read "db/data/imported-id_map-of-clean-plays_1740-1793.csv", { headers: true, header_converters: :symbol }
-
-    # :mapping_id
-    # :real_id
-
-    # may need to make sure the header fields are entered correctly here,
-    # or you'll get some sort of "can't encode" error
-    fix_up = CSV.open "db/data/play-cleanup-list-2013.05.02.csv", { headers: true, header_converters: :symbol }
-
-    CSV.open("missing-new-plays_1740-1793.csv", "wb") do |csv|
-      fix_up.each do |line|
-
-        # if new_id is nil, we have one that is not figured out yet.  Move to the next one.
-        next if line[:new_id].nil?
-
-        # 1) find all register_plays with the id of the old play
-        register_plays = RegisterPlay.find_all_by_play_id(line[:id])
-
-        # 2) Find the real_id of the play we have in our line value of new_id
-        real_id = mapping.detect {|m| m[:mapping_id] == line[:new_id]}
-
-        # 2a) If we don't have it for some reason, fail out.
-        if real_id.nil?
-          csv << [line[:id], line[:new_id], line[:title], line[:author], line[:genre], line[:g2], line[:g3]]
-          puts "DON'T HAVE THIS ENTRY? #{line.inspect}"
-        else
-
-          # 3) Find the actual play which we already entered via this real_id
-          play = Play.find(real_id[:real_id]) if not real_id.nil?
-
-          # 4) Reset the RegisterPlays Play to match the corrected, new version.
-          register_plays.each do |rp|
-            old_play = rp.play
-            rp.play = play
-            rp.save
-
-            # 5) Delete the old, crust play!
-            #puts "#{old_play.inspect}\n"
-            unless old_play.nil?
-              old_play.delete
-            end
-          end
-        end
-      end
-    end
   end
 end
