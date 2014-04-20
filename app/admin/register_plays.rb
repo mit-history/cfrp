@@ -1,9 +1,10 @@
 ActiveAdmin.register RegisterPlay do
   menu false
+  config.filters = false
   index do
     selectable_column
     column :register_id
-    column :play_id    
+    column :play_id
     column :firstrun
     column :newactor
     column :actorrole
@@ -15,5 +16,5 @@ ActiveAdmin.register RegisterPlay do
     # column :ex_place
     default_actions
   end
-  
+
 end
