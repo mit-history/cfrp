@@ -13,7 +13,7 @@ class PlaysController < ApplicationController
 
 	def edit
 		@play = play.find(params[:id])
-		@plays = Play.all
+		@plays = Play.expert_validated
 	end
 
 	def create

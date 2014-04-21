@@ -28,7 +28,7 @@ class Play < ActiveRecord::Base
 
   scope :tragédie, where(:genre => "tragédie").order("id asc")
   scope :comédie, where(:genre => "comédie").order("id asc")
-  scope :recent, order("updated_at desc")
+  scope :expert_validated, where(:expert_validated => "true").order("id asc")
 
   def self.unique_titles
     order(:title).uniq(:title).pluck(:title)

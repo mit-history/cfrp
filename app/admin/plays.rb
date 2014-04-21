@@ -10,10 +10,12 @@ ActiveAdmin.register Play do
   scope :all, :default => true
   scope :tragédie
   scope :comédie
+  scope :expert_validated
 
   filter :author
   filter :title
   filter :genre
+  filter :expert_validated
 
   config.batch_actions = true
   # batch_action :destroy, false
@@ -29,6 +31,7 @@ ActiveAdmin.register Play do
     column :prologue
     column :musique_danse_machine
     column :updated_at
+    column :expert_validated
     default_actions
   end
 end

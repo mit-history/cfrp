@@ -3,7 +3,7 @@
 <%# Kinda hacky, but does the job for now. %>
 <%# Fills in author an genre automatically when filling out title. %>
 
-<% titles = @plays.reduce([]) {|m, p| m << "#{p.id} | #{p.title} | #{p.author} | #{p.genre} | #{p.acts} | #{p.prose_vers} | #{p.prologue} | #{p.musique_danse_machine} "} %>
+<% titles = Play.expert_validated.reduce([]) {|m, p| m << "#{p.id} | #{p.title} | #{p.author} | #{p.genre} | #{p.acts} | #{p.prose_vers} | #{p.prologue} | #{p.musique_danse_machine} "} %>
 <% actors = @people.reduce([]) {|m, p| m << "#{p.id} | #{p.pseudonym} #{p.honorific} #{p.last_name} #{p.first_name} #{p.alias} #{p.dates} "} %>
 <%# binding.pry %>
 <%# authors = @plays.reduce([]) {|m, p| m << p.author} %>
