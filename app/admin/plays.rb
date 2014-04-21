@@ -34,4 +34,22 @@ ActiveAdmin.register Play do
     column :expert_validated
     default_actions
   end
+
+
+  form do |f|
+      f.inputs "Details", :multipart => true do
+        f.input :author
+        f.input :title
+        f.input :genre
+        f.input :acts
+        f.input :prose_vers
+        f.input :prologue
+        f.input :musique_danse_machine
+        f.input :alternative_title
+        f.input :url
+        f.input :date_de_creation, :as => :string, :placeholder => "1700-01-01"
+      end
+      f.actions
+    end
+
 end
