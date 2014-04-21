@@ -32,7 +32,7 @@ namespace :plays do
   end
 
   desc "Update plays with new info"
-  task :create_or_update => :environment do |t, args|
+  task :update => :environment do |t, args|
 
     mapping_lines_read = 0
     participations_created = 0
@@ -47,7 +47,7 @@ namespace :plays do
 
     file = "db/data/to_be_added_2014.04.20.csv"
     CSV.foreach(file, headers: true) do |row|
-      play = Play.find_by_id(row["id"]) || new
+      play = Play.find_by_id(row["id"])
       play.attributes = row.to_hash.slice(Play.accessible_attributes)
       play.save!
       puts play.inspect
