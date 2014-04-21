@@ -48,6 +48,7 @@ ActiveAdmin.register Play do
         f.input :alternative_title
         f.input :url
         f.input :date_de_creation, :as => :string, :placeholder => "1700-01-01"
+        f.input :expert_validated
       end
       f.actions
     end
