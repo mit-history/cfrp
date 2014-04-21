@@ -28,6 +28,7 @@ ActiveAdmin.register Play do
     column :prose_vers
     column :prologue
     column :musique_danse_machine
+    column :updated_at
     default_actions
   end
 end

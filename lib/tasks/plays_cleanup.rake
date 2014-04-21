@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 # require 'CSV'
 
-namespace :plays_cleanup do
+namespace :plays do
   desc "Adds cleaned-up plays to database while creating a new CSV file with DB ids"
-  task :import_clean_plays => :environment do |t, args|
+  task :import_clean => :environment do |t, args|
     f = CSV.open "db/data/new-play-list-2013.05.02.csv", { headers: true, header_converters: :symbol }
 
     CSV.open("db/data/imported-id_map-of-clean-plays_1740-1793.csv", "wb") do |csv|
@@ -31,8 +31,32 @@ namespace :plays_cleanup do
     end
   end
 
+  desc "Update plays with new info"
+  task :create_or_update => :environment do |t, args|
+
+    mapping_lines_read = 0
+    participations_created = 0
+
+    # open data file
+    # fix_up = CSV.open "db/data/to_be_added_2014.04.20.csv", { headers: true, header_converters: :symbol }
+
+    # Walk through the data file
+    #   - opening each play
+    #   - updating if the id in the data file exists
+    #   - creating if it doesn't
+
+    file = "db/data/to_be_added_2014.04.20.csv"
+    CSV.foreach(file, headers: true) do |row|
+      play = Play.find_by_id(row["id"]) || new
+      play.attributes = row.to_hash.slice(Play.accessible_attributes)
+      play.save!
+      puts play.inspect
+    end
+  end
+
+
   desc "Fixes current plays using updated cleaned-up plays"
-  task :fix_plays => :environment do |t, args|
+  task :daves_fixes => :environment do |t, args|
 
     # 0) open id mapping of CSV file IDs to the IDs the professors created,
     #    and open up the "play fix-up" file
@@ -66,7 +90,7 @@ namespace :plays_cleanup do
           # 3) Find the actual play which we already entered via this real_id
           play = Play.find(real_id[:real_id]) if not real_id.nil?
 
-          # 4) Reset the RegisterPlays Play to match the corrected, new version. 
+          # 4) Reset the RegisterPlays Play to match the corrected, new version.
           register_plays.each do |rp|
             old_play = rp.play
             rp.play = play
@@ -83,3 +107,17 @@ namespace :plays_cleanup do
     end
   end
 end
+
+# Current_Schema
+# t.string   "author"
+# t.string   "title"
+# t.string   "genre"
+# t.datetime "created_at"
+# t.datetime "updated_at"
+# t.integer  "acts"
+# t.string   "prose_vers"
+# t.boolean  "prologue"
+# t.boolean  "musique_danse_machine"
+# t.string   "alternative_title"
+# t.string   "url"
+# t.date     "date_de_creation"
