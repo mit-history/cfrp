@@ -45,10 +45,10 @@ namespace :plays do
     #   - updating if the id in the data file exists
     #   - creating if it doesn't
 
-    file = "db/data/to_be_added_2014.04.21.csv"
+    file = "db/data/combined-updated-plays.csv"
     CSV.foreach(file, headers: true) do |row|
       play = Play.find_by_id(row["id"])
-      play.attributes = row.to_hash.slice(:id,:author,:title,:genre,:acts,:prologue,:prose_vers,:musique_danse_machine) # Play.accessible_attributes
+      play.attributes = row.to_hash#.slice(:id,:author,:title,:genre,:acts,:prologue,:prose_vers,:musique_danse_machine) # Play.accessible_attributes
       play.expert_validated = true
       play.save!
       puts play.inspect
