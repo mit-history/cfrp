@@ -28,14 +28,14 @@ class Play < ActiveRecord::Base
 
   scope :tragédie, where(:genre => "tragédie").order("id asc")
   scope :comédie, where(:genre => "comédie").order("id asc")
-  scope :expert_validated, where(:expert_validated => "true").order("id asc")
+  scope :expert_validated, where(:expert_validated => "true")
 
   def self.unique_titles
-    order(:title).uniq(:title).pluck(:title)
+    expert_validated.order(:title).uniq(:title).pluck(:title)
   end
 
   def self.unique_authors
-    order(:author).uniq(:author).pluck(:author)
+    expert_validated.order(:author).uniq(:author).pluck(:author)
   end
 
   def self.import(file)
