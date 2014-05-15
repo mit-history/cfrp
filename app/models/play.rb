@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# cfrp_development=# \d plays
+# d5b04fp5hk0mk9=> \d plays
 #                                            Table "public.plays"
 #         Column         |            Type             |                     Modifiers
 # -----------------------+-----------------------------+----------------------------------------------------
@@ -17,6 +17,7 @@
 #  alternative_title     | character varying(255)      |
 #  url                   | character varying(255)      |
 #  date_de_creation      | date                        |
+#  expert_validated      | boolean                     |
 # Indexes:
 #     "plays_pkey" PRIMARY KEY, btree (id)
 
@@ -24,7 +25,9 @@ class Play < ActiveRecord::Base
   has_many :register_plays
   has_many :registers, :through => :register_plays
 
-  attr_accessible :author, :title, :genre, :acts, :prose_vers, :prologue, :musique_danse_machine, :created_at, :updated_at, :alternative_title, :url, :date_de_creation
+  attr_accessible :author, :title, :genre, :acts, :prose_vers, :prologue,
+  :musique_danse_machine, :created_at, :updated_at, :alternative_title, :url,
+  :date_de_creation, :expert_validated
 
   scope :tragédie, where(:genre => "tragédie").order("id asc")
   scope :comédie, where(:genre => "comédie").order("id asc")
