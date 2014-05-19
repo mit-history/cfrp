@@ -2,22 +2,22 @@
 #
 # Table name: register_plays
 #
-#  id                :integer         not null, primary key
-#  register_id       :integer
-#  play_id           :integer
-#  firstrun          :boolean
-#  reprise           :boolean
-#  newactor          :string(255)
-#  actorrole         :string(255)
-#  firstrun_perfnum  :integer
-#  created_at        :datetime
-#  updated_at        :datetime
-#  ordering          :integer
-#  free_access       :boolean
-#  ex_attendance     :string(255)
-#  ex_representation :string(255)
-#  ex_place          :string(255)
-#
+# t.integer  "register_id"
+# t.integer  "play_id"
+# t.boolean  "firstrun"
+# t.string   "newactor"
+# t.string   "actorrole"
+# t.integer  "firstrun_perfnum"
+# t.datetime "created_at"
+# t.datetime "updated_at"
+# t.integer  "ordering"
+# t.boolean  "free_access"
+# t.string   "ex_attendance"
+# t.string   "ex_representation"
+# t.string   "ex_place"
+# t.boolean  "reprise"
+# t.boolean  "debut"
+# t.integer  "reprise_perfnum"
 
 class RegisterPlay < ActiveRecord::Base
   has_many :participations

@@ -2,6 +2,49 @@
 # require 'CSV'
 
 namespace :plays do
+
+  desc "Deduplicate plays"
+  task :dedupe => :environment do |t, args|
+    completed = Array.new
+    f = CSV.open "db/data/doubled-records-5-8-2014.csv", { headers: true, header_converters: :symbol }
+
+
+    f.each do |line|
+      current_title = line[:title]
+
+      completed.include?(current_title) && next
+
+      puts "\n\n===#{line}"
+      # Find all plays where the title is the same as the one on this line, including this one, and get their ids
+      plays = Play.where(:title => line[:title]).pluck(:id)
+      puts "Plays: #{plays}"
+
+      # Find all register_plays which map to a play id which is in that list of plays
+      register_plays = RegisterPlay.where(:play_id => [plays])
+      puts "RegisterPlays: #{register_plays}"
+
+      # For each of those register_plays, change the play_id to the first one in the list
+      for rp in register_plays
+        puts "was: #{rp.play_id}..."
+        rp.play_id = plays[0]
+        rp.save
+        puts "now: #{rp.play_id}"
+      end
+
+      # Set the expert_validated boolean to false on the other plays
+      for id in plays.from(1)
+        play = Play.find(id)
+        puts "was: #{play.expert_validated}..."
+        play.expert_validated = false
+        play.save
+        puts "now: #{play.expert_validated}..."
+      end
+      completed.push(current_title)
+    end
+    puts completed.to_s
+  end
+
+
   desc "Adds cleaned-up plays to database while creating a new CSV file with DB ids"
   task :import_clean => :environment do |t, args|
     f = CSV.open "db/data/new-play-list-2013.05.02.csv", { headers: true, header_converters: :symbol }
