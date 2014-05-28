@@ -1,4 +1,5 @@
 class PlaysController < ApplicationController
+  include Repertoire::Faceting::Controller
 	def index
 		@search = params[:search] || ''
 	end
@@ -36,4 +37,9 @@ class PlaysController < ApplicationController
 		Play.import(params[:file])
 		redirect_to root_url, notice: "Plays imported."
 	end
+
+  protected
+  def base
+    Play
+  end
 end

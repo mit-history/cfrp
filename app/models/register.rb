@@ -92,9 +92,9 @@ class Register < ActiveRecord::Base
   scope :two_images, image_count(2)
   scope :one_image, image_count(1)
   scope :no_image, image_count(0)
+
   facet :season
   facet :weekday
-  facet :representation
 
   def self.unique_seasons
     order(:season).uniq(:season).pluck(:season)
