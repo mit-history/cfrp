@@ -1,26 +1,4 @@
-count = <%= @count %>
-
-<div class="register_all row">
-  <% if register.register_images.length > 0 %>
-    <div class='register_image span1'>
-      <a href="/<%= register.register_images[0].filepath %>" target="_blank"><img src='/<%= register.register_images[0].filepath %>' width='100' /></a>
-    </div>
-    <div class='register_data span5'>
-  <% else %>
-    <div class='register_data offset1 span5'>
-  <% end %>
-
-  <dl class="dl-horizontal">
-    <dt>Date:</dt>
-    <dd><%= sprintf('%02d', register.date.day) %>/<%= sprintf('%02d', register.date.month) %>/<%= register.date.year %></dd>
-
-	  <% register.register_plays.sort {|a, b| a.ordering <=> b.ordering }.each do |rp| %>
-	    <dt>Play, Author <%= rp.ordering %>:</dt>
-	    <dd><%= rp.play.title %>, <%= rp.play.author %></dd>
-	  <% end %>
-
-    <dt>Status:</dt>
-    <dd class='<%= register.verification_state.name.gsub(/\s/, '_') %>'><%= register.verification_state.name %></dd>
-  </dl>
-  </div>
+<div class='register'>
+  <div><%= register.register_num %></div>
+  <div style="clear:both"></div>
 </div>

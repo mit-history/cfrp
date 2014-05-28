@@ -22,6 +22,8 @@
 #     "plays_pkey" PRIMARY KEY, btree (id)
 
 class Play < ActiveRecord::Base
+  include Repertoire::Faceting::Model
+
   has_many :register_plays
   has_many :registers, :through => :register_plays
 
@@ -32,6 +34,10 @@ class Play < ActiveRecord::Base
   scope :tragédie, where(:genre => "tragédie").order("id asc")
   scope :comédie, where(:genre => "comédie").order("id asc")
   scope :expert_validated, where(:expert_validated => "true")
+
+  facet :acts
+  facet :genre
+  facet :author
 
   def self.unique_titles
     expert_validated.order(:title).uniq(:title).pluck(:title)
