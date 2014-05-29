@@ -1,4 +1,11 @@
-<div class='register'>
-  <div><%= register.register_num %></div>
-  <div style="clear:both"></div>
+<div class="register_all row">
+  <dl class="dl-horizontal">
+    <dt>Date de régistre:</dt>
+    <dd><%= sprintf('%02d', register.date.day) %>/<%= sprintf('%02d', register.date.month) %>/<%= register.date.year %></dd>
+
+      <% register.register_plays.sort {|a, b| a.ordering <=> b.ordering }.each do |rp| %>
+        <dt>Pièce, Auteur <%= rp.ordering %>:</dt>
+        <dd><%= rp.play.title %>, <%= rp.play.author %></dd>
+      <% end %>
+  </dl>
 </div>

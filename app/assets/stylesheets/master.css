@@ -7,7 +7,7 @@ h2 {
 
 /** Facet Presentation **/
 
-/* Mostly overridding default bootstrap .label 
+/* Mostly overridding default bootstrap .label
    styles so it looks like Christopher intended */
 .rep .facet .values .value .label {
   position: static; /* Not sure why this is needed, as it *isn't overriding anything in bootstrap...? */
@@ -22,7 +22,7 @@ h2 {
 }
 
 div#results {
-  margin-top: 18px;
+  margin: 20px;
 }
 
 div#results_nav {
@@ -35,7 +35,11 @@ div#results div.rep {
 }
 
 .rep div.facet {
-  width: 205px;
+  width: 300px;
+}
+
+div.facet {
+  display: inline-block;
 }
 
 div.register_data {

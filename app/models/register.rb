@@ -95,6 +95,15 @@ class Register < ActiveRecord::Base
 
   facet :season
   facet :weekday
+  facet :season, order(:season)
+  # Thank you: http://postgresql.1045698.n5.nabble.com/GENERAL-sort-character-data-in-arbitrary-order-td1855410.html
+  facet :weekday, order("weekday = 'Dimanche'").order("weekday = 'Samedi'").order("weekday = 'Vendredi'").order("weekday = 'Jeudi'").order("weekday = 'Mercredi'").order("weekday = 'Mardi'").order("weekday = 'Lundi'")
+  facet :title1, joins(:plays).joins(:register_plays).where('register_plays.ordering = 1').group('plays.title')
+  facet :title2, joins(:plays).joins(:register_plays).where('register_plays.ordering = 2').group('plays.title')
+  facet :author1, joins(:plays).joins(:register_plays).where('register_plays.ordering = 1').group('plays.author')
+  facet :author2, joins(:plays).joins(:register_plays).where('register_plays.ordering = 2').group('plays.author')
+
+
 
   def self.unique_seasons
     order(:season).uniq(:season).pluck(:season)
