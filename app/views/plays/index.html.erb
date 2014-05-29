@@ -3,18 +3,16 @@
     $('#plays').facet_context();
     $('.facet').facet();
     $('#results').results();
+    $('#plays').urls();
   });
 </script>
-<div id='plays'>
-  <div id='genre' class='facet'></div>
-  <div id='acts' class='facet'></div>
-  <div id='author' class='facet'></div>
-  <div id='results'></div>
+<div id='plays' class="row-fluid">
+  <div class='span2'>
+    <div id='genre' class='facet'></div>
+    <div id='acts' class='facet'></div>
+    <div id='author' class='facet'></div>
+  </div>
+  <div class='span10' id='results'>
+    <div id='results'></div>
+  </div>
 </div>
-
-<h2>Import Plays</h2>
-
-<%= form_tag import_plays_path, multipart: true do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag "Import" %>
-<% end %>

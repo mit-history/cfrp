@@ -35,6 +35,8 @@ class RegistersController < ApplicationController
     redirect_to :action => "index", :notice => 'Register was successfully updated.'
   end
 
+
+
   protected
   def base
     Register
