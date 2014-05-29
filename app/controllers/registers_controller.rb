@@ -1,6 +1,8 @@
 class RegistersController < ApplicationController
   include Repertoire::Faceting::Controller
 
+  before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
+
   def index
     @search = params[:search] || ''
   end
@@ -35,6 +37,23 @@ class RegistersController < ApplicationController
     redirect_to :action => "index", :notice => 'Register was successfully updated.'
   end
 
+  def results
+    filter = params[:filter] || {}
+    limit  = params[:limit]  || false
+    offset = params[:offset] || false
+
+    @total = base.refine(filter)
+    @refined = @total.limit(limit) if limit
+    @refined = @refined.offset(offset) if offset
+    @results = @refined.to_a
+
+    @count = @total.count
+
+    respond_to do |format|
+      format.html { render @results, :layout => false }
+      format.json { render :json => @results }
+    end
+  end
 
 
   protected
