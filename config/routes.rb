@@ -3,6 +3,7 @@ Cfrp::Application.routes.draw do
 
   faceting_for :plays
   faceting_for :registers
+  faceting_for :people
 
   resources :registers
 

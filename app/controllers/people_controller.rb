@@ -1,4 +1,6 @@
 class PeopleController < ApplicationController
+  include Repertoire::Faceting::Controller
+
 	def index
 		@search = params[:search] || ''
 	end
@@ -36,4 +38,10 @@ class PeopleController < ApplicationController
 		Person.import(params[:file])
 		redirect_to root_url, notice: "people imported."
 	end
+
+  protected
+  def base
+    Person
+  end
+
 end
