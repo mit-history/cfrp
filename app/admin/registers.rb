@@ -11,12 +11,14 @@ ActiveAdmin.register Register do
   scope :unverified
   scope :probleme
   scope :verified
+  scope :has_old_actor
 
   filter :id
   filter :date
   filter :season, :label => "Saison", :as => :select, :collection => proc { Register.unique_seasons }
   filter :register_plays_play_title, :label => "Titre de Piece", :as => :select, :collection => proc { Play.unique_titles }
   filter :register_plays_play_author, :label => "Auteur de Piece", :as => :select, :collection => proc { Play.unique_authors }
+  filter :register_plays_participations_person_pseudonym, :label => "Acteur ou Actrice", :as => :select, :collection => proc { Person.unique_persons }
 
   config.batch_actions = true
   # batch_action :destroy, false

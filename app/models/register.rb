@@ -30,6 +30,8 @@
 
 class Register < ActiveRecord::Base
 
+  include Repertoire::Faceting::Model
+
   has_many :lhp_category_assignments
   has_many :page_de_gauches, through: :lhp_category_assignments
   accepts_nested_attributes_for :lhp_category_assignments, reject_if: proc { |attributes| attributes['page_de_gauche_id'].blank? }, allow_destroy: true
@@ -83,10 +85,25 @@ class Register < ActiveRecord::Base
   scope :unverified, where(:verification_state_id => 2).order("id asc")
   scope :unentered, where(:verification_state_id => 5).order("id asc")
   scope :probleme, where(:verification_state_id => 6).order("id asc")
+
+  scope :has_old_actor, includes(:register_plays).where("register_plays.newactor <> ''")
+
   scope :image_count, ->(count) { where("register_images_count = ?", count) }
   scope :two_images, image_count(2)
   scope :one_image, image_count(1)
   scope :no_image, image_count(0)
+
+  facet :season
+  facet :weekday
+  facet :season, order(:season)
+  # Thank you: http://postgresql.1045698.n5.nabble.com/GENERAL-sort-character-data-in-arbitrary-order-td1855410.html
+  facet :weekday, order("weekday = 'Dimanche'").order("weekday = 'Samedi'").order("weekday = 'Vendredi'").order("weekday = 'Jeudi'").order("weekday = 'Mercredi'").order("weekday = 'Mardi'").order("weekday = 'Lundi'")
+  facet :title1, joins(:plays).joins(:register_plays).where('register_plays.ordering = 1').group('plays.title')
+  facet :title2, joins(:plays).joins(:register_plays).where('register_plays.ordering = 2').group('plays.title')
+  facet :author1, joins(:plays).joins(:register_plays).where('register_plays.ordering = 1').group('plays.author')
+  facet :author2, joins(:plays).joins(:register_plays).where('register_plays.ordering = 2').group('plays.author')
+
+
 
   def self.unique_seasons
     order(:season).uniq(:season).pluck(:season)

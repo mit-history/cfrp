@@ -1,0 +1,995 @@
+id,author,title,genre,acts,prologue,prose_vers,musique_danse_machine
+1146,"Mauprie (Olivier Hubert Angélique Gourjaut de Mauprie, marquis de)",Caliste ou la Belle pénitente,tragédie,5,FALSE,vers,FALSE
+4833,Collet de Messine (Jean-Baptiste),Abdolonime ou le Roi berger,comédie héroïque,3,FALSE,vers,FALSE
+4834,Duché de Vancy (Joseph-François),Absalon,tragédie,5,FALSE,vers,FALSE
+4835,Dorat (Claude-Joseph),Adélaïde de Hongrie,tragédie,5,FALSE,vers,FALSE
+4836,Voltaire (François-Marie Arouet dit),Adélaïde du Guesclin,tragédie,5,FALSE,vers,FALSE
+4837,Dudoyer de Gastels (Gérard),Adélaïde ou l'Antipathie pour l'amour,comédie,2,FALSE,vers décasyllabes,FALSE
+4838,Dercy (P.),Adèle de Crécy,drame,4,FALSE,vers,FALSE
+4839,La Place (Pierre-Antoine de),"Adèle de Ponthieu ou Adèle, comtesse de Ponthieu",tragédie,5,FALSE,vers,FALSE
+4840,Voltaire (François-Marie Arouet dit),Agathocle,tragédie,5,FALSE,vers,FALSE
+4841,Laignelot (Joseph François),Agis,tragédie,5,FALSE,vers,FALSE
+4842,Quinault (Philippe),"Agrippa, roi d'Albe ou le Faux Tiberinus",tragi-comédie,5,FALSE,vers,FALSE
+4843,Poinsinet de Sivry (Louis),Ajax,tragédie,5,FALSE,vers,FALSE
+4844,Dubuisson (Pierre-Ulric),Albert et Émilie,tragédie,5,FALSE,vers,FALSE
+4845,Le Blanc de Guillet (Antoine),Albert premier ou Adeline,comédie héroïque,3,FALSE,vers,FALSE
+4846,Lonvay de La Saussaye (Jean-Baptiste),Alcidonis ou la Journée lacédémonienne,comédie,3,FALSE,prose,TRUE
+4847,Fallet (Nicolas),Alphée et Zarine,tragédie,5,FALSE,vers,FALSE
+4848,Linant (Nicolas-Michel),Alzaïde,tragédie,5,FALSE,vers,FALSE
+4849,Voltaire (François-Marie Arouet dit),Alzire ou les Américains,tragédie,5,FALSE,vers,FALSE
+4850,Ximénès (Augustin-Louis de),Amalazonte,tragédie,5,FALSE,vers,FALSE
+4851,La Grange-Chancel (François-Joseph de),Amasis,tragédie,5,FALSE,vers,FALSE
+4852,Voltaire (François-Marie Arouet dit),Amélie ou le Duc de Foix ou Le Duc de Foix,tragédie,5,FALSE,vers,FALSE
+4853,Ducis (Jean-François),Amélise,tragédie,5,FALSE,vers,FALSE
+4854,Saurin (Bernard-Joseph),Aménophis,tragédie,5,FALSE,vers,FALSE
+4855,Mauger,Amestris,tragédie,5,FALSE,vers,FALSE
+4856,La Chaussée (Pierre-Claude),Amour pour amour,comédie,3,TRUE,vers,TRUE
+4857,Molière (Jean-Baptiste Poquelin dit),Amphitryon,comédie,3,TRUE,vers libres,TRUE
+4858,Racine (Jean),Andromaque,tragédie,5,FALSE,vers,FALSE
+4859,Campistron (Jean Galbert de),Andronic,tragédie,5,FALSE,vers,FALSE
+4860,Marivaux (Pierre de),Annibal,tragédie,5,FALSE,vers,FALSE
+4861,Doigny du Ponceau,Antigone ou la Piété fraternelle,tragédie,5,FALSE,vers,FALSE
+4862,Portelance (Michel),Antipater,tragédie,5,FALSE,vers,FALSE
+4863,Voiron,Apelle et Campaspe,drame héroïque,1,FALSE,vers,TRUE
+4864,Baragué,Aphos,comédie,1,FALSE,vers libres,TRUE
+4865,Corneille (Thomas),Ariane,tragédie,5,FALSE,vers,FALSE
+4866,Marmontel (Jean-François),Aristomène,tragédie,5,FALSE,vers,FALSE
+4867,Le Mierre (Antoine-Marin),Artaxerce,tragédie,5,FALSE,vers,FALSE
+4868,Colardeau (Charles-Pierre),Astarbé,tragédie,5,FALSE,vers,FALSE
+4869,Quinault (Philippe),"Astrate, roi de Tyr",tragédie,5,FALSE,vers,FALSE
+4870,Châteaubrun (Jean-Baptiste Vivien de),Astyanax,tragédie,5,FALSE,vers,FALSE
+4871,Richerolle d'Avallon,Astyanax,tragédie,5,FALSE,vers,FALSE
+4872,Racine (Jean),Athalie,tragédie,5,FALSE,vers,FALSE
+4873,Boistel d'Welles (Jean-Baptiste-Robert ou Robert),Antoine et Cléopâtre,tragédie,5,FALSE,vers,FALSE
+4874,Crébillon (Prosper Jolyot de),Atrée et Thyeste,tragédie,5,FALSE,vers,FALSE
+4875,Du Fresny (Charles),Attendez-moi sous l’orme,comédie,1,FALSE,prose,TRUE
+4876,Fabre d'Églantine (Philippe-François-Nazaire),Augusta,tragédie,5,FALSE,vers,FALSE
+4877,Manteufel (Ernest de),Auguste et Théodore ou les Deux pages,comédie,2,FALSE,prose,FALSE
+4878,Chénier (Marie-Joseph de),Azémire,tragédie,5,FALSE,vers,FALSE
+4879,Racine (Jean),Bajazet,tragédie,5,FALSE,vers,FALSE
+4880,Le Mierre (Antoine-Marin),Barnevelt,tragédie,5,FALSE,vers,FALSE
+4881,Racine (Jean),Bérénice,tragédie,5,FALSE,vers,FALSE
+4882,Saurin (Bernard-Joseph),Beverlei,tragédie bourgeoise,5,FALSE,vers libres,FALSE
+4883,Saurin (Bernard-Joseph),Blanche et Guiscard,tragédie,5,FALSE,vers,FALSE
+4884,Poinsinet de Sivry (Louis),Briséis ou la colère d'Achille,tragédie,5,FALSE,vers,FALSE
+4885,Racine (Jean),Britannicus,tragédie,5,FALSE,vers,FALSE
+4886,Voltaire (François-Marie Arouet dit),Brutus,tragédie,5,FALSE,vers,FALSE
+4887,Gudin de La Brenellerie (Paul-Philippe),Caïus Marcius Coriolan ou le Danger d'offenser un grand homme,tragédie,4,FALSE,vers,FALSE
+4889,Colardeau (Charles-Pierre),Caliste,tragédie,5,FALSE,vers,FALSE
+4890,Crébillon (Prosper Jolyot de),Catilina,tragédie,5,FALSE,vers,FALSE
+4891,Graffigny (Françoise de),Cénie,drame,5,FALSE,prose,FALSE
+4892,Le Mierre (Antoine-Marin),Céramis,tragédie,5,FALSE,vers,FALSE
+4893,Chénier (Marie-Joseph de),Charles IX ou l'École des rois,tragédie,5,FALSE,vers,FALSE
+4894,Corneille (Pierre),Cinna ou la Clémence d'Auguste,tragédie,5,FALSE,vers,FALSE
+4895,Boutet de Monvel (Jacques-Marie),Clémentine et Desormes,drame,5,FALSE,prose,FALSE
+4896,Marmontel (Jean-François),Cléopâtre,tragédie,5,FALSE,vers,FALSE
+4897,Dancourt (Florent Carton dit),Colin-Maillard,comédie,1,FALSE,prose,TRUE
+4898,La Harpe (Jean François de),Coriolan,tragédie,5,FALSE,vers,FALSE
+4899,Mauger,Coriolan,tragédie,5,FALSE,vers,FALSE
+4900,Riouffé (Honoré),Corneille aux Champs-Élysées,comédie,1,FALSE,vers libres,FALSE
+4901,Lefèvre (Pierre-François-Alexandre),Cosroès,tragédie,5,FALSE,vers,FALSE
+4902,Mauger,Cosroès,tragédie,5,FALSE,vers,FALSE
+4903,"La Tuillerie (Jean-François Juvenon, sieur de La Tuillerie, dit)",Crispin bel esprit,comédie,1,FALSE,vers,FALSE
+4904,"Hauteroche (Noël Lebreton, sieur de)",Crispin médecin,comédie,3,FALSE,vers,FALSE
+4906,"La Tuillerie (Jean-François Juvenon, sieur de La Tuillerie, dit)",Crispin précepteur,comédie,1,FALSE,vers,FALSE
+4907,Lesage (Alain-René),Crispin rival de son maître,comédie,1,FALSE,prose,FALSE
+4908,Maillet-Duclairon (Antoine),Cromwel,tragédie,5,FALSE,vers,FALSE
+4910,Marmontel (Jean-François),Denis le tyran,tragédie,5,FALSE,vers,FALSE
+4911,Saint-Foix (Germain-François Poullain de),Deucalion et Pirrha,comédie,1,TRUE,prose,TRUE
+4912,Le Franc de Pompignan (Jean-Jacques),Didon,tragédie,5,FALSE,vers,FALSE
+4914,Scarron (Paul),Don Japhet d'Arménie,comédie,5,FALSE,vers,TRUE
+4915,Montfleury (Antoine Jacob dit),Dom Pasquin d'Avalos,intermède,1,FALSE,vers,FALSE
+4916,Corneille (Pierre),Don Sanche d'Aragon,comédie héroïque,5,FALSE,vers,FALSE
+4917,Ségur (Joseph-Alexandre de),Fou par amour (Le),drame historique,1,FALSE,vers,FALSE
+4918,Collé (Charles),Dupuis et Desronais - Dupuis et des Renais - Dupuis et des Ronais,comédie,3,FALSE,vers libres,FALSE
+4919,Chénier (Marie-Joseph de),Edgar ou le Page supposé,comédie,2,FALSE,vers,FALSE
+4920,Saint-Foix (Germain-François Poullain de),Égérie,comédie,1,FALSE,prose,TRUE
+4921,Marmontel (Jean-François),Égyptus,tragédie,5,FALSE,vers,FALSE
+4922,Crébillon (Prosper Jolyot de),Électre,tragédie,5,FALSE,vers,FALSE
+4923,Ximénès (Augustin-Louis de),Épicaris ou la Mort de Néron,tragédie,5,FALSE,vers,FALSE
+4924,Chabanon (Michel Paul Guy de),Éponine,tragédie,5,FALSE,vers,FALSE
+4925,Dubois-Fontanelle (Joseph-Gaspard),Éricie ou la Vestale,tragédie,3,FALSE,vers,FALSE
+4926,Boursault (Edme),Ésope à la cour,comédie héroïque,5,TRUE,vers,FALSE
+4927,Beaumarchais (Pierre-Augustin Caron de),Eugénie,drame,5,FALSE,prose,FALSE
+4928,Piron (Alexis),Fernand-Cortès,tragédie,5,FALSE,vers,FALSE
+4929,Lefèvre (Pierre-François-Alexandre),Florinde,tragédie,5,FALSE,vers,FALSE
+4930,Belloy (Pierre Laurent de),Gabrielle de Vergy,tragédie,5,FALSE,vers,FALSE
+4931,Belloy (Pierre Laurent de),Gaston et Baïard ou Gaston et Bayard,tragédie,5,FALSE,vers,FALSE
+4932,Molière (Jean-Baptiste Poquelin dit),George Dandin ou le Mari confondu,comédie,3,FALSE,prose,TRUE
+4933,Le Mierre (Antoine-Marin),Guillaume Tell,tragédie,5,FALSE,vers,FALSE
+4934,Piron (Alexis),Gustave Wasa,tragédie,5,FALSE,vers,FALSE
+4935,Ducis (Jean-François),Hamlet,tragédie,5,FALSE,vers,FALSE
+4936,Raucourt (Françoise-Marie-Antoinette-Josèphe Saucerotte dite Mademoiselle),Henriette,drame,3,FALSE,prose,FALSE
+4937,Corneille (Pierre),"Héraclius, empereur d'Orient",tragédie,5,FALSE,vers,FALSE
+4938,Renout (Jean-Julien-Constantin),Hercule,tragédie,5,FALSE,vers,FALSE
+4939,Lefèvre (Pierre-François-Alexandre),Hercule au mont Œta,tragédie,5,FALSE,vers,FALSE
+4940,Voltaire (François-Marie Arouet dit),Hérode et Mariamne,tragédie,5,FALSE,vers,FALSE
+4941,Rochon de Chabannes (Marc-Antoine-Jacques),Heureusement,comédie,1,FALSE,vers,FALSE
+4942,Billardon de Sauvigny (Edme-Louis),Hirza ou les Illinois,tragédie,5,FALSE,vers,FALSE
+4943,Corneille (Pierre),Horace ou Les Horaces,tragédie,5,FALSE,vers,FALSE
+4944,Rochon de Chabannes (Marc-Antoine-Jacques),Hylas et Sylvie,pastorale,1,FALSE,prose,FALSE
+4945,Le Mierre (Antoine-Marin),Hypermnestre,tragédie,5,FALSE,vers,FALSE
+4946,Riupeirous (Théodore de),Hypermnestre,tragédie,5,FALSE,vers,FALSE
+4947,Le Mierre (Antoine-Marin),Idoménée,tragédie,5,FALSE,vers,FALSE
+4948,La Motte (Antoine Houdar de),Inès de Castro,tragédie,5,FALSE,vers,FALSE
+4949,La Grange-Chancel (François-Joseph de),Ino et Mélicerte,tragédie,5,FALSE,vers,FALSE
+4950,Racine (Jean),Iphigénie ou Iphigénie en Aulide,tragédie,5,FALSE,vers,FALSE
+4951,Guimond de La Touche (Claude),Iphigénie en Tauride,tragédie,5,FALSE,vers,FALSE
+4952,Voltaire (François-Marie Arouet dit),Irène,tragédie,5,FALSE,vers,FALSE
+4953,Boistel d'Welles (Jean-Baptiste-Robert ou Robert),Irène ou l'Innocence reconnue,tragédie,5,FALSE,vers,FALSE
+4954,Laya (Jean-Louis),Jean Calas,tragédie,5,FALSE,vers,FALSE
+4955,"Genlis (Stéphanie-Félicité du Crest, comtesse de)",Jean-Jacques Rousseau à l'île de Saint-Pierre,drame,5,TRUE,prose,FALSE
+4956,La Place (Pierre-Antoine de),Jeanne d'Angleterre,tragédie,5,FALSE,vers,FALSE
+4957,La Harpe (Jean François de),Jeanne de Naples,tragédie,5,FALSE,vers,FALSE
+4958,Scarron (Paul),"Jodelet, ou le Maître valet",comédie,5,FALSE,vers,FALSE
+4959,Denon (Dominique-Vivant),Julie ou le Bon père,comédie,3,FALSE,prose,FALSE
+4960,Marin (François-Louis-Claude),Julie ou le Triomphe de l'amitié,comédie,3,FALSE,prose,FALSE
+4961,Saint-Foix (Germain-François Poullain de),Julie ou l'Heureuse épreuve,comédie,1,FALSE,prose,FALSE
+4962,Vigée (Louis-Jean-Baptiste-Étienne),Belle-mère ou les Dangers d'un second mariage (La),comédie,5,FALSE,vers,FALSE
+4963,Desfontaines (François-Georges),Bergère des Alpes (La),comédie,1,FALSE,vers libre,FALSE
+4964,Villemain d'Abancourt (François-Jean),Bienfaisance de Voltaire (La),pièces dramatique,1,FALSE,vers,FALSE
+4966,Saint-Foix (Germain-François Poullain de),Colonie (La),comédie,3,TRUE,prose,FALSE
+4967,"Montesson (Charlotte-Jeanne Béraud de La Haie de Riou, comtesse de)",Comtesse de Chazelle (La),comédie,5,FALSE,vers,FALSE
+4968,Molière (Jean-Baptiste Poquelin dit),Comtesse d'Escarbagnas (La),comédie,1,FALSE,prose,TRUE
+4970,"La Noue (Jean-Baptiste Simon Sauvé de La Noue, dit)",Coquette corrigée (La),comédie,5,FALSE,vers,FALSE
+4971,Du Fresny (Charles),Coquette de village ou le lot supposé (La),comédie,3,FALSE,vers,FALSE
+4972,Baron,Coquette et la fausse prude (La),comédie,5,FALSE,prose,FALSE
+4973,"La Fontaine (Jean de) ; Champmeslé (Charles Chevillet, sieur de Champmeslé, dit)",Coupe enchantée (La),comédie,1,FALSE,prose,FALSE
+4974,La Morlière (Jacques Rochette de),Créole (La),comédie,1,FALSE,prose,TRUE
+4975,Moline (Pierre-Louis),Discipline militaire du Nord (La),drame,5,FALSE,prose,FALSE
+4976,Marivaux (Pierre de),Dispute (La),comédie,1,FALSE,prose,FALSE
+4977,Bret (Antoine),Double extravagance (La),comédie,3,FALSE,vers,FALSE
+4978,Legrand (Marc-Antoine),Famille extravagante (La),comédie,1,FALSE,vers,TRUE
+4979,Destouches,Fausse Agnès ou le Poète campagnard (La),comédie,3,FALSE,prose,FALSE
+4980,La Chaussée (Pierre-Claude),Fausse antipathie (La),comédie,3,TRUE,vers,FALSE
+4981,Imbert (Barthélemy),Fausse apparence ou le Jaloux malgré lui (La),comédie,3,FALSE,vers,FALSE
+4982,Vigée (Louis-Jean-Baptiste-Étienne),Fausse coquette (La),comédie,3,FALSE,vers,FALSE
+4983,Beauharnais (Fanny de),Fausse inconstance ou le Triomphe de l'honnêteté (La),comédie,5,FALSE,prose,FALSE
+4984,Dorat (Claude-Joseph),Feinte par amour (La),comédie,3,FALSE,vers,FALSE
+4985,Montfleury (Antoine Jacob dit),Femme juge et partie (La),comédie,5,FALSE,vers,FALSE
+4986,Desfontaines (François-Georges),Fête de village (La),intermède,1,FALSE,musique,TRUE
+4987,Dancourt (Florent Carton dit),Fête de village ou les Bourgeoises de qualité (La),comédie,3,FALSE,prose,TRUE
+4988,La Chaussée (Pierre-Claude),Rival de lui-même ou la Fête interrompue (Le),comédie,1,TRUE,vers libres,TRUE
+4989,Montfleury (Antoine Jacob dit),Fille capitaine (La),comédie,5,FALSE,vers,FALSE
+4990,Graffigny (Françoise de),Fille d'Aristide (La),comédie,5,FALSE,vers,FALSE
+4991,Legrand (Marc-Antoine),Foire de Saint-Laurent (La),comédie,1,FALSE,vers,TRUE
+4992,Boissy (Louis de),Folie du jour (La),comédie,1,FALSE,vers libres,TRUE
+4993,Yon,Folie et l'Amour (La),comédie,1,FALSE,vers libres,TRUE
+4994,Destouches,Force du naturel (La),comédie,5,FALSE,vers,FALSE
+4995,Colomb de Seillans,Gageure de Village (La),comédie,1,FALSE,prose,TRUE
+4996,Sedaine (Michel-Jean),Gageure imprévue (La),comédie,1,FALSE,prose,FALSE
+4997,La Chaussée (Pierre-Claude),Gouvernante (La),comédie,5,FALSE,vers,FALSE
+4998,Cubières-Palmézeaux (Michel de),Jeune épouse (La),comédie,3,FALSE,vers,FALSE
+4999,Chamfort (Sébastien-Roch-Nicolas de),Jeune indienne (La),comédie,1,FALSE,vers,FALSE
+5000,Harny de Guerville,Liberté conquise ou le Despotisme renversé (La),drame patriotique,5,FALSE,prose,FALSE
+5001,Autreau (Jacques),Magie de l'Amour (La),comédie-pastorale,1,FALSE,vers libres,TRUE
+5002,Dancourt (Florent Carton dit),Maison de campagne (La),comédie,1,FALSE,prose,FALSE
+5003,Mercier (Louis-Sebastien),Maison de Molière (La),comédie,4,FALSE,prose,FALSE
+5004,Rochon de Chabannes (Marc-Antoine-Jacques),Manie des arts ou la Matinée à la mode (La),comédie,1,FALSE,prose,FALSE
+5005,Vigée (Louis-Jean-Baptiste-Étienne),Matinée d'une jolie femme (La),comédie,1,FALSE,prose,FALSE
+5006,Quinault (Philippe),Mère coquette ou les Amants brouillés (La),comédie,5,FALSE,vers,FALSE
+5007,Barthe (Nicolas-Thomas),Mère jalouse (La),comédie,3,FALSE,vers,FALSE
+5008,Legrand (Marc-Antoine),Métamorphose amoureuse (La),comédie,1,FALSE,prose,FALSE
+5009,Yon,Métempsychose (La) ou La Métempsicose,comédie,3,TRUE,vers libres,FALSE
+5010,Piron (Alexis),Métromanie ou le Poète (La),comédie,5,FALSE,vers,FALSE
+5011,Legouvé (Gabriel),Mort d'Abel (La),tragédie,3,FALSE,vers,FALSE
+5012,Voltaire (François-Marie Arouet dit),Mort de César (La),tragédie,3,FALSE,vers,FALSE
+5013,Cubières-Palmézeaux (Michel de),Mort de Molière (La),pièce historique,3,FALSE,vers,FALSE
+5014,Corneille (Pierre),Mort de Pompée (La),tragédie,5,FALSE,vers,FALSE
+5015,Billardon de Sauvigny (Edme-Louis),Mort de Socrate (La),tragédie,3,FALSE,vers,FALSE
+5016,Legrand (Marc-Antoine),Nouveauté (La),comédie,1,FALSE,prose,TRUE
+5017,Dancourt (Florent Carton dit),Parisienne (La),comédie,1,FALSE,prose,FALSE
+5018,Collé (Charles),Partie de chasse de Henri IV (La),comédie,3,FALSE,prose,FALSE
+5019,Boissy (Louis de),Péruvienne (La),comédie,5,FALSE,vers libres,FALSE
+5020,"La Montagne (Pierre, baron de)",Physicienne (La),comédie,1,FALSE,vers,FALSE
+5021,Molière (Jean-Baptiste Poquelin dit),Princesse d'Élide (La),comédie-ballet,5,TRUE,prose,TRUE
+5023,Du Fresny (Charles),Réconciliation normande (La),comédie,5,FALSE,vers,FALSE
+5024,Desfontaines (François-Georges),Réduction de Paris (La),pièce héroïque,3,FALSE,prose,FALSE
+5025,Forgeot (Nicolas-Julien),Ressemblance (La),comédie,3,FALSE,vers,FALSE
+5026,Rousseau (Pierre de Toulouse),Rivale suivante (La),comédie,1,TRUE,vers,FALSE
+5027,"Delorme (Madame, pseudonyme de Marc-Antoine Legrand)",Rupture ou le Malentendu (La),comédie,1,FALSE,vers,FALSE
+5028,"Rousseau (Pierre, de Toulouse)",Ruse inutile (La),comédie,1,FALSE,vers libres,FALSE
+5029,Marivaux (Pierre de),Seconde surprise de l'amour (La),comédie,3,FALSE,prose,FALSE
+5030,Regnard (Jean-François),Sérénade (La),comédie,1,FALSE,prose,TRUE
+5031,Lourdet de Santerre (Jean-Baptiste),Soirée d'une vieille femme (La),comédie,2,FALSE,prose,FALSE
+5032,Marivaux (Pierre de),Surprise de l'amour (La),comédie,3,FALSE,prose,FALSE
+5033,Martel,Tarentule (La),comédie,1,FALSE,prose,TRUE
+5034,Moissy (Alexandre-Guillaume de),Valet maître (Le),comédie,3,FALSE,vers,FALSE
+5035,Collé (Charles),Veuve (La),comédie,1,FALSE,prose,FALSE
+5036,Le Mierre (Antoine-Marin),Veuve du Malabar ou l'Empire des coutumes (La),tragédie,5,FALSE,vers,FALSE
+5037,Vigée (Louis-Jean-Baptiste-Étienne),Vivacité à l'épreuve (La),comédie,3,FALSE,vers,FALSE
+5038,Cahusac (Louis de),Algérien ou les Muses comédiennes (L'),comédie-ballet,3,TRUE,vers libres,TRUE
+5039,Boutet de Monvel (Jacques-Marie),Amant Bourru (L'),comédie,3,FALSE,vers libres,FALSE
+5040,La Morlière (jacques Rochette de),Amant déguisé (L'),comédie,2,FALSE,prose,FALSE
+5041,Barthe (Nicolas-Thomas),Amateur (L'),comédie,1,FALSE,vers,FALSE
+5042,Destouches,Ambitieux et l'indiscrète (L'),tragi-comédie,5,TRUE,vers,FALSE
+5043,Laya (Jean-Louis),Ami des lois (L'),comédie,5,FALSE,vers,FALSE
+5044,Falconnet (Françoise-Cécile),Amour à Tempé (L'),pastorale,2,FALSE,prose,TRUE
+5045,Legrand (Marc-Antoine),Amour diable (L'),comédie,1,FALSE,vers,TRUE
+5046,"Bernis (François-Joachim de Pierres, cardinal de)",Amour et les Fées (L'),comédie,1,FALSE,vers libres,TRUE
+5047,Dufrénoy (Adélaïde-Gillette Billet),Amour exilé des cieux (L'),pièce allégorique,1,FALSE,vers,TRUE
+5048,Rochon de Chabannes (Marc-Antoine-Jacques),Amour français (L'),comédie,1,FALSE,vers,FALSE
+5049,Molière (Jean-Baptiste Poquelin dit),Amour médecin (L') ou Les Médecins,comédie-ballet,3,TRUE,prose,TRUE
+5050,Destouches,Amour usé (L'),comédie,5,FALSE,prose,FALSE
+5051,Baron,Andrienne (L'),comédie,5,FALSE,vers,FALSE
+5052,Favart (Charles-Simon),Anglais à Bordeaux (L'),comédie,1,FALSE,vers libres,FALSE
+5053,Saurin (Bernard-Joseph),Anglomanie ou l'Orpheline léguée (L') ou L'Anglomane ou l'Orpheline léguée,comédie,1,FALSE,vers libres,FALSE
+5054,André-Murville (Pierre-Nicolas),Lanval et Viviane ou les Fées et les chevaliers,comédie héori-féérie,5,FALSE,vers,FALSE
+5055,Lesur (Charles-Louis),Apothéose de Beaurepaire (L'),pièce,1,FALSE,vers,FALSE
+5056,Lebeau de Schosne (Augustin-Théodore-Vincent),L'Assemblée,comédie,1,FALSE,vers,FALSE
+5057,Oisemont (d'),Laurette,comédie,3,FALSE,vers libres,FALSE
+5059,Molière (Jean-Baptiste Poquelin dit),Avare (L'),comédie,5,FALSE,prose,FALSE
+5060,Aigueberre (Jean Dumas d'),Avare amoureux (L'),comédie,1,FALSE,prose,FALSE
+5061,Brousse-Desfaucherets (Jean-Louis),Avare cru bienfaisant (L'),comédie,5,FALSE,vers,FALSE
+5062,Legrand (Marc-Antoine),Aveugle clairvoyant (L'),comédie,1,FALSE,vers,FALSE
+5063,Fournelle (Jean-Nicolas),Aveugle par crédulité (L'),comédie,1,FALSE,prose,FALSE
+5064,Brueys (David-Augustin de),Avocat Patelin (L'),comédie,3,FALSE,prose,FALSE
+5065,Boissy (Louis de),Babillard (Le),comédie,1,FALSE,vers,FALSE
+5066,Beaumarchais (Pierre-Augustin Caron de),Barbier de Séville ou la Précaution inutile (Le),comédie,4,FALSE,prose,FALSE
+5067,Corneille (Thomas),Baron d'Albikrac (Le),comédie,5,FALSE,vers,FALSE
+5068,Poisson (Raymond),Baron de la Crasse (Le),comédie,1,FALSE,vers,TRUE
+5069,Pilhes (Joseph),Bienfait anonyme (Le),comédie,3,FALSE,prose,FALSE
+5070,Dampierre de la Salle,Bienfait rendu ou le Négociant (Le),comédie,5,FALSE,vers,FALSE
+5071,Legrand (Marc-Antoine),Bon ami (Le),comédie,1,FALSE,prose,FALSE
+5072,Montfleury (Antoine Jacob dit),Bon soldat (Le),comédie,1,FALSE,vers,TRUE
+5073,Molière (Jean-Baptiste Poquelin dit),Bourgeois gentilhomme (Le),comédie-ballet,5,FALSE,prose,TRUE
+5074,Goldoni (Carlo),Bourru bienfaisant (Le),comédie,3,FALSE,prose,FALSE
+5075,Voltaire (François-Marie Arouet dit),Café ou l'Écossaise (Le) ou L'Écossaire ou le Café,comédie,5,FALSE,prose,FALSE
+5076,Renout (Jean-Julien-Constantin),Caprice ou l'Épreuve dangereuse (Le),comédie,3,FALSE,prose,FALSE
+5077,Dorat (Claude-Joseph),Célibataire (Le),comédie,5,FALSE,vers libres,FALSE
+5078,Artaud (Jean-Baptiste),Centenaire de Molière (Le),comédie,1,FALSE,vers et prose,TRUE
+5079,Poinsinet (Antoine-Alexandre-Henri),Cercle ou la Soirée à la mode (Le),comédie épisodique,1,FALSE,prose,FALSE
+5080,Dancourt (Florent Carton dit),Charivari (Le),comédie,1,FALSE,prose,TRUE
+5082,Dorat (Claude-Joseph),Chevalier français à Londres (Le),comédie,3,FALSE,vers,FALSE
+5083,Dorat (Claude-Joseph),Chevalier français à Turin (Le),comédie,3,FALSE,vers,FALSE
+5084,Boutet de Monvel (Jacques-Marie),Chevalier sans peur et sans reproche ou les Amours de Bayard (Le),comédie héroïque,4,FALSE,prose,FALSE
+5085,Simon-Chauvot,Chirurgien de village (Le),comédie,1,FALSE,prose,FALSE
+5086,Corneille (Pierre),Cid (Le),tragi-comédie / tragédie,5,FALSE,vers,FALSE
+5088,"Pont-de-Veyle (Antoine de Fériol, comte de)",Complaisant (Le),comédie,5,FALSE,prose,TRUE
+5089,Arnaud (François-Thomas-Marie de Baculard d'),Amants malheureux ou le Comte de Comminges (Les),drame,3,FALSE,vers,FALSE
+5090,La Harpe (Jean François de),Comte de Warwick (Le),tragédie,5,FALSE,vers,FALSE
+5091,Cahusac (Louis de),Comte de Warwick (Le),tragédie,5,FALSE,vers,FALSE
+5092,Corneille (Thomas),Comte d'Essex (Le),tragédie,5,FALSE,vers,FALSE
+5093,Bret (Antoine),Concert (Le),comédie,1,FALSE,prose,TRUE
+5094,Palaprat (Jean de),Concert ridicule (Le),comédie,1,FALSE,prose,TRUE
+5095,Demoustier (Charles-Albert),Conciliateur ou l'Homme aimable (Le),comédie,5,FALSE,vers,FALSE
+5096,Guyot de Merville (Michel),Consentement forcé (Le),comédie,1,FALSE,prose,TRUE
+5097,Picard (Louis-Benoît),Conteur ou les Deux postes (Le),comédie,3,FALSE,prose,FALSE
+5098,Laujon (Pierre),Couvent ou les Fruits du caractère et de l'éducation (Le),comédie,1,FALSE,prose,FALSE
+5099,Destouches,Curieux impertinent (Le),comédie,5,FALSE,vers,FALSE
+5100,Du Fresny (Charles),Dédit (Le),comédie,1,FALSE,vers,FALSE
+5101,Montanclos (Marie-Émilie de),Déjeuner interrompu (Le),comédie,2,FALSE,prose,FALSE
+5102,Marivaux (Pierre de),Dénouement imprévu (Le),comédie,1,FALSE,prose,TRUE
+5103,Molière (Jean-Baptiste Poquelin dit),Dépit amoureux (Le),comédie,5,FALSE,vers,FALSE
+5104,"Hauteroche (Noël Lebreton, sieur de)",Deuil (Le),comédie,1,FALSE,vers,TRUE
+5105,Destouches,Dissipateur ou l'Honnête friponne (Le),comédie,5,FALSE,vers,FALSE
+5106,Regnard (Jean-François),Distrait (Le),comédie,5,FALSE,vers,FALSE
+5107,Du Fresny (Charles),Double veuvage (Le),comédie,3,TRUE,prose,TRUE
+5109,Boissy (Louis de),Duc de Surrey (Le) ou Le Comte de Neuilly,pièce héroïque,5,FALSE,vers,TRUE
+5110,Fenouillot de Falbaire de Quingey (Charles-Georges),Fabricant de Londres (Le),drame,5,FALSE,prose,FALSE
+5111,Lattaignant de Bainville,Fat (Le) ou Le Suffisant ou Le Petit maître dupé,comédie,5,FALSE,vers,FALSE
+5112,"Pont-de-Veyle (Antoine de Fériol, comte de)",Fat puni (Le),comédie,1,FALSE,prose,TRUE
+5113,Bret (Antoine),Orpheline ou le Faux généreux (L'),comédie,3,FALSE,vers,FALSE
+5114,Simonet de Maisonneuve (Louis-Jean-Baptiste),Faux insouciant (Le),comédie,5,FALSE,vers,FALSE
+5115,Chabanon (Michel Paul Guy de),Faux noble (Le),comédie,5,FALSE,vers,FALSE
+5117,Corneille (Thomas),Festin de Pierre (Le),comédie,5,FALSE,vers,FALSE
+5118,Diderot (Denis),Fils naturel ou les Épreuves de la vertu (Le),drame,5,TRUE,prose,FALSE
+5119,Saint-Foix (Germain-François Poullain de),Financier (Le),comédie,1,FALSE,prose,FALSE
+5120,Lantier (Étienne François de),Flatteur (Le),comédie,5,FALSE,vers libres,FALSE
+5121,La Fontaine (Jean de),Florentin (Le),comédie,1,FALSE,vers,FALSE
+5122,Boissy (Louis de),Français à Londres (Le),comédie,1,FALSE,prose,FALSE
+5123,Legrand (Marc-Antoine),Galant coureur ou l'Ouvrage d'un moment (Le),comédie,1,FALSE,prose,TRUE
+5124,Dancourt (Florent Carton dit),Galant jardinier (Le),comédie,1,FALSE,prose,TRUE
+5125,Imbert (Barthélemy),Gâteau des rois (Le),comédie,1,TRUE,vers,FALSE
+5126,Destouches,Glorieux (Le),comédie,5,FALSE,vers,FALSE
+5127,Palaprat (Jean de),Grondeur (Le),comédie,3,TRUE,prose et vers libres,FALSE
+5128,Dussieux (Louis),Héros français ou le Siège de Saint-Jean-de-Lone (Les),drame héroïque,4,FALSE,prose,FALSE
+5129,Bret (Antoine),Jaloux (Le),comédie,3,FALSE,vers,FALSE
+5130,Rochon de Chabannes (Marc-Antoine-Jacques),Jaloux (Le),comédie,5,FALSE,vers libres,FALSE
+5131,Campistron (Jean Galbert de),Jaloux désabusé (Le),comédie,5,FALSE,vers,FALSE
+5132,Imbert (Barthélemy),Jaloux sans amour (Le),comédie,5,FALSE,vers libres,FALSE
+5133,Bastide (Jean-François de),Jeune homme (Le),comédie,5,FALSE,vers,FALSE
+5134,Regnard (Jean-François),Joueur (Le),comédie,5,FALSE,vers,FALSE
+5135,Aude (Joseph),Journaliste des ombres ou Momus au Champ-Élysées (Le),pièce héroï-nationale,1,FALSE,vers,FALSE
+5136,Regnard (Jean-François),Légataire universel (Le),comédie,5,FALSE,vers,FALSE
+5137,Marivaux (Pierre de),Legs (Le),comédie,1,FALSE,prose,FALSE
+5138,La Motte (Antoine Houdar de),Magnifique (Le),comédie,2,FALSE,prose,TRUE
+5139,Laus de Boissy (Louis de),Maire ou le Pouvoir de la loi (Le),comédie patriotique,1,FALSE,prose,FALSE
+5140,Molière (Jean-Baptiste Poquelin dit),Malade imaginaire (Le),comédie-ballet,3,TRUE,vers,TRUE
+5141,Dorat (Claude-Joseph),Malheureux imaginaire (Le),comédie,5,FALSE,vers,FALSE
+5142,Chamfort (Sébastien-Roch-Nicolas de),Marchand de Smyrne (Le),comédie,1,FALSE,prose,FALSE
+5143,Carbon de Flins Des Oliviers (Claude-Marie-Louis-Emmanuel),Mari directeur ou le Déménagement du couvent (Le),comédie,1,FALSE,vers,FALSE
+5144,Dancourt (Florent Carton dit),Mari retrouvé (Le),comédie,1,FALSE,prose,TRUE
+5145,Montfleury (Antoine Jacob dit),Mari sans femme (Le),comédie,5,FALSE,vers,TRUE
+5146,Lemonnier (Pierre-René),Mariage clandestin (Le),comédie,3,FALSE,vers libres,FALSE
+5147,Beaumarchais (Pierre-Augustin Caron de),Mariage de Figaro ou la Folle journée (Le),comédie,5,FALSE,prose,FALSE
+5148,Du Fresny (Charles),Mariage fait et rompu (Le),comédie,3,FALSE,vers,FALSE
+5149,Molière (Jean-Baptiste Poquelin dit),Mariage forcé (Le),comédie,1,FALSE,prose,TRUE
+5150,Cailhava de L'Estandoux (Jean-François),Mariage interrompu (Le) ou La Fille supposée,comédie,3,FALSE,vers,FALSE
+5151,Bret (Antoine),Mariage par dépit (Le),comédie,3,FALSE,prose,FALSE
+5152,Brousse-Desfaucherets (Jean-Louis),Mariage secret (Le),comédie,3,FALSE,vers,FALSE
+5153,Gresset (Jean-Baptiste-Louis),Méchant (Le),comédie,5,FALSE,vers,FALSE
+5155,Molière (Jean-Baptiste Poquelin dit),Médecin malgré lui (Le),comédie,3,FALSE,prose,TRUE
+5156,Boissy (Louis de),Médecin par occasion (Le),comédie,5,FALSE,vers,FALSE
+5157,Destouches,Médisant (Le),comédie,5,FALSE,vers,FALSE
+5158,Corneille (Pierre),Menteur (Le),comédie,5,FALSE,vers,FALSE
+5159,Boursault (Edme),Mercure galant ou la Comédie sans titre (Le),comédie,4,FALSE,vers,TRUE
+5160,Molière (Jean-Baptiste Poquelin dit),Misanthrope (Le),comédie,5,FALSE,vers,FALSE
+5161,Dancourt (Florent Carton dit),Moulin de Javelle (Le),comédie,1,FALSE,prose,TRUE
+5162,Brueys (David-Augustin de),Muet (Le),comédie,5,FALSE,prose,FALSE
+5163,Alliot,Muet par amour (Le),comédie,1,FALSE,vers,TRUE
+5164,La Font (Joseph de),Naufrage ou la Pompe funèbre de Crispin (Le) ou Crispin brûlé,comédie,1,FALSE,vers,TRUE
+5165,Pellegrin (Simon-Joseph),Nouveau monde (Le),comédie,3,TRUE,vers libres,TRUE
+5166,Collot d'Herbois,Il y a une bonne justice ou le Paysan magistrat ou Le Paysan magistrat,drame,5,FALSE,prose,FALSE
+5167,Diderot (Denis),Père de famille (Le),comédie - drame,5,FALSE,prose,FALSE
+5168,Cérou (Pierre),Père désabusé (Le),comédie,1,FALSE,prose,FALSE
+5169,Billardon de Sauvigny (Edme-Louis),Persifleur (Le),comédie,3,FALSE,vers,FALSE
+5170,Legrand (Marc-Antoine),Philanthrope ou l'Ami de tout le monde (Le),comédie,1,FALSE,prose,TRUE
+5171,Fabre d'Églantine (Philippe-François-Nazaire),Philinte de Molière ou la Suite du Misanthrope (Le),comédie,5,FALSE,vers,FALSE
+5172,Destouches,Philosophe marié ou le Mari honteux de l'être (Le),comédie,5,FALSE,vers,FALSE
+5173,Sedaine (Michel-Jean),Philosophe sans le savoir (Le),comédie,5,FALSE,prose,FALSE
+5174,Marchadier (Abbé),Plaisir (Le),comédie,1,FALSE,vers libres,TRUE
+5175,Boindin (Nicolas),Port de mer (Le),comédie,1,FALSE,prose,TRUE
+5176,Brousse-Desfaucherets (Jean-Louis),Portrait ou le Danger de tout dire (Le),comédie,1,FALSE,vers,FALSE
+5177,La Chaussée (Pierre-Claude),Préjugé à la mode (Le),comédie,5,FALSE,vers,FALSE
+5178,Marivaux (Pierre de),Préjugé vaincu (Le),comédie,1,FALSE,prose,FALSE
+5179,Fabre d'Églantine (Philippe-François-Nazaire),Présomptueux ou l'Heureux imaginaire (Le),comédie,5,FALSE,vers,FALSE
+5180,Parisau (Pierre-Germain),Prix académique (Le),comédie,1,FALSE,vers,FALSE
+5181,Poisson (Philippe),Procureur arbitre (Le),comédie,1,FALSE,vers,FALSE
+5182,Molé (François-René),Quiproquo (Le),comédie,1,FALSE,prose,FALSE
+5183,André-Murville (Pierre-Nicolas),Rendez-vous du mari ou le Mari à la mode (Le),comédie,1,FALSE,vers,FALSE
+5184,Fagan (Barthélemy-Christophe),Rendez-vous ou l'Amour supposé (Le),comédie,1,FALSE,vers,FALSE
+5185,Dancourt (Florent Carton dit),Retour des officiers (Le),comédie,1,FALSE,prose,TRUE
+5186,Ségur (Joseph-Alexandre de),Retour du mari (Le),comédie,1,FALSE,vers,FALSE
+5187,Regnard (Jean-François),Retour imprévu (Le),comédie,1,FALSE,prose,FALSE
+5188,Carbon de Flins Des Oliviers (Claude-Marie-Louis-Emmanuel),Réveil d'Épiménide à Paris (Le),comédie,1,FALSE,vers,FALSE
+5189,Saint-Foix (Germain-François Poullain de),Rival supposé (Le),comédie,1,FALSE,prose,FALSE
+5190,Legrand (Marc-Antoine),Roi de Cocagne (Le),comédie,3,TRUE,vers libres,TRUE
+5191,Ducis (Jean-François),Roi Lear (Le),tragédie,5,FALSE,vers,FALSE
+5192,Boissy (Louis de),Sage étourdi (Le) ou L'Homme indépendant,comédie,3,FALSE,vers,FALSE
+5193,Palissot de Montenoy (Charles),Satirique ou l'Homme dangereux (Le),comédie,3,FALSE,vers,FALSE
+5194,"Bièvre (François-Georges Maréchal, marquis de)",Séducteur (Le),comédie,5,FALSE,vers,FALSE
+5195,Molière (Jean-Baptiste Poquelin dit),Sicilien ou l'Amour peintre (Le),comédie-ballet,1,FALSE,prose,TRUE
+5196,Belloy (Pierre Laurent de),Siège de Calais (Le),tragédie,5,FALSE,vers,FALSE
+5197,"Pont-de-Veyle (Antoine de Fériol, comte de)",Somnambule (Le),comédie,1,FALSE,prose,FALSE
+5198,André-Murville (Pierre-Nicolas),Souper magique ou les Deux siècles (Le),comédie épisodique,1,FALSE,vers,TRUE
+5199,Destouches,Tambour nocturne ou le Mari devin (Le),comédie,5,FALSE,prose,FALSE
+5200,Legrand (Marc-Antoine),Le Temps passé ou le Triomphe du temps passé (Le),comédie,1,FALSE,prose,TRUE
+5201,Desfontaines (François-Georges),Tombeau de Désilles (Le),pièce,1,FALSE,prose,FALSE
+5202,Landon (Joseph),Tribunal de l'amour (Le),comédie,1,FALSE,vers libres,TRUE
+5203,Legrand (Marc-Antoine),Triomphe du temps (Le),divertissement comique,3,TRUE,prose,TRUE
+5205,Crébillon (Prosper Jolyot de),Triumvirat ou la Mort de Cicéron (Le),tragédie,5,FALSE,vers,FALSE
+5208,Cailhava de L'Estandoux (Jean-François),Tuteur dupé (Le) ou La Maison à deux portes,comédie,5,FALSE,prose,FALSE
+5209,La Place (Pierre-Antoine de),Veuvage trompeur (Le),comédie,3,FALSE,vers,FALSE
+5210,Collin d'Harleville (Jean-François),Vieux célibataire (Le),comédie,5,FALSE,vers,FALSE
+5211,Dubuisson (Pierre-Ulric),Vieux garçon (Le),comédie,5,FALSE,vers,FALSE
+5212,Dudoyer de Gastels (Gérard),Vindicatif (Le),drame,5,FALSE,vers libres,FALSE
+5213,Bret (Antoine),École amoureuse (L'),comédie,1,FALSE,vers libres,FALSE
+5214,La Chaussée (Pierre-Claude),École de la jeunesse ou le Retour sur soi-même (L'),comédie,5,FALSE,vers,FALSE
+5215,La Chaussée (Pierre-Claude),École des amis (L'),comédie,5,FALSE,vers,FALSE
+5216,Allainval (Léonor-Jean-Christine Soulas d'),École des bourgeois (L'),comédie,3,TRUE,prose,FALSE
+5217,Molière (Jean-Baptiste Poquelin dit),École des femmes (L'),comédie,5,FALSE,prose,FALSE
+5218,Molière (Jean-Baptiste Poquelin dit),École des maris (L'),comédie,3,FALSE,prose,FALSE
+5219,La Chaussée (Pierre-Claude),École des mères (L'),comédie,5,FALSE,vers,FALSE
+5220,Fenouillot de Falbaire de Quingey (Charles-Georges),École des moeurs ou les Suites du libertinage (L'),drame,5,FALSE,vers,FALSE
+5221,Piron (Alexis),École des pères ou les Fils ingrats (L'),comédie,5,FALSE,vers,FALSE
+5222,Pieyre (Alexandre),École des pères (L'),comédie,5,FALSE,vers,FALSE
+5223,Palissot de Montenoy (Charles),Courtisanes ou l'Écueil des mœurs (Les),comédie,3,FALSE,vers,FALSE
+5224,Voltaire (François-Marie Arouet dit),Écueil du sage (L'),comédie,5,FALSE,vers,FALSE
+5225,Cailhava de L'Estandoux (Jean-François),Égoïsme (L'),comédie,5,FALSE,vers,FALSE
+5226,Voltaire (François-Marie Arouet dit),Enfant prodigue ou L'École de la jeunesse (L'),comédie,5,FALSE,vers,FALSE
+5227,Vigée (Louis-Jean-Baptiste-Étienne),Entrevue (L'),comédie,1,FALSE,vers,FALSE
+5228,La Place (Pierre-Antoine de),Épouse à la mode (L'),comédie,3,FALSE,vers,FALSE
+5229,Boissy (Louis de),Époux par supercherie (L'),comédie,2,FALSE,vers,FALSE
+5230,Marivaux (Pierre de),Épreuve (L'),comédie,1,FALSE,prose,FALSE
+5231,Grouvelle (Philippe-Antoine),Épreuve délicate (L'),comédie,3,FALSE,vers,FALSE
+5232,Mauger,Épreuve imprudente (L'),comédie,3,FALSE,vers libres,FALSE
+5233,Bret (Antoine),Épreuve indiscrète (L'),comédie,2,FALSE,vers,FALSE
+5234,Legrand (Marc-Antoine ); Lesage (Alain-René),Épreuve réciproque (L'),comédie,1,FALSE,prose,FALSE
+5234,Legrand (Marc-Antoine),Épreuve réciproque (L'),comédie,1,FALSE,prose,FALSE
+5235,Patu (Claude-Pierre) ; Portelance (Michel),Adieux du goût (Les),comédie,1,FALSE,vers libres,TRUE
+5236,Beaugeard (Jean-Simon Férréol),Amants espagnols (Les),comédie,5,FALSE,prose,FALSE
+5237,Rochon de Chabannes (Marc-Antoine-Jacques),Amants généreux (Les),comédie,5,FALSE,prose,FALSE
+5238,"Saint-Chamond (Claire-Marie Mazarelli, marquise de)",Amants sans le savoir (Les),comédie,3,FALSE,prose,FALSE
+5239,Du Bocage (Anne-Marie),Amazones (Les),tragédie,5,FALSE,vers,FALSE
+5240,Legrand (Marc-Antoine) ; Fuzelier (Louis),Amazones modernes (Les),comédie,3,FALSE,prose,TRUE
+5241,Pieyre (Alexandre),Amis à l'épreuve (Les),comédie,1,FALSE,vers croisés,FALSE
+5242,Peyraud de Beaussol,Arsacides (Les),tragédie,6,FALSE,vers,FALSE
+5243,Vigée (Louis-Jean-Baptiste-Étienne),Aveux difficiles (Les),comédie,1,FALSE,vers,FALSE
+5244,La Harpe (Jean François de),Barmécides (Les),tragédie,5,FALSE,vers,FALSE
+5245,Dancourt (Florent Carton dit),Bourgeoises à la mode (Les),comédie,5,FALSE,prose,FALSE
+5246,La Harpe (Jean François de),Brames (Les),tragédie,5,FALSE,vers,FALSE
+5248,Collin d'Harleville (Jean-François),Châteaux en Espagne (Les),comédie,5,FALSE,vers,FALSE
+5249,Bauvin (Jean-Grégoire),Chérusques (Les),tragédie,5,FALSE,vers,FALSE
+5250,Simon (Claude-François),Confidences réciproques (Les),comédie,1,FALSE,vers libres,FALSE
+5251,Lantier (Étienne François de),Coquettes rivales (Les),comédie,5,FALSE,vers,FALSE
+5252,Quinault (Philippe),Coups de l'amour et de la fortune (Les),tragi-comédie,5,FALSE,vers,FALSE
+5253,Dancourt (Florent Carton dit),Curieux de Compiègne (Les) ou Les Camps de Compiègne,comédie,1,FALSE,prose,TRUE
+5254,Laya (Jean-Louis),Dangers de l'opinion (Les),drame,5,FALSE,vers,FALSE
+5255,Boissy (Louis de),Dehors trompeurs ou l'Homme du jour (Les),comédie,5,FALSE,vers,FALSE
+5256,Dancourt (Louis Hurtaut),Deux amis (Les),comédie bouffonne,3,FALSE,prose,FALSE
+5257,Beaumarchais (Pierre-Augustin Caron de),Deux amis ou le Négociant de Lyon (Les),drame,5,FALSE,prose,FALSE
+5258,Dubois de Rochefort (Guillaume),Deux frères (Les),comédie,5,FALSE,vers,FALSE
+5259,Moissy (Alexandre-Guillaume de),Deux frères ou la Prévention vaincue (Les),comédie,5,FALSE,vers,FALSE
+5260,Boissy (Louis de),Deux nièces (Les),comédie,5,FALSE,vers,FALSE
+5261,Bret (Antoine),Deux sœurs (Les),comédie,2,FALSE,prose,FALSE
+5262,Le Blanc de Guillet (Antoine),Druides (Les),tragédie,5,FALSE,vers,FALSE
+5263,"Du Roullet (François-Louis Gand Le Bland, bailli)",Effets du caractère (Les),comédie,5,FALSE,vers,FALSE
+5264,Devaux (François-Antoine),Engagements indiscrets (Les),comédie,1,FALSE,prose,FALSE
+5265,Forgeot (Nicolas-Julien),Épreuves (Les),comédie,1,FALSE,vers,FALSE
+5266,Cailhava de L'Estandoux (Jean-François),Étrennes de l’amour (Les),comédie-ballet,1,FALSE,prose,TRUE
+5267,Dorvigny,"Étrennes de l'amitié, de l'amour et de la nature (Les)",comédie,1,FALSE,vers,FALSE
+5268,Boursault (Edme),Fables d'Ésope ou Ésope à la ville (Les) ou Les Fables d'Ésope,comédie,5,TRUE,vers et vers libres,FALSE
+5270,Bellecour,Fausses apparences (Les),comédie,1,FALSE,prose,FALSE
+5271,Marivaux (Pierre de),Les Fausses confidences,comédie,3,FALSE,vers,FALSE
+5272,Barthe (Nicolas-Thomas),Fausses infidélités (Les),comédie,1,FALSE,vers,FALSE
+5273,Robert,Fausse présomption (La),comédie,5,FALSE,vers,FALSE
+5274,Dancourt (Florent Carton dit),Fées (Les),comédie,3,TRUE,prose et vers libres,TRUE
+5275,Demoustier (Charles-Albert),Les Femmes,comédie,4,FALSE,vers,FALSE
+5276,Molière (Jean-Baptiste Poquelin dit),Femmes savantes (Les),comédie,5,FALSE,vers,FALSE
+5277,Regnard (Jean-François),Folies amoureuses (Les),comédie,3,TRUE,vers et vers libres,TRUE
+5278,Molière (Jean-Baptiste Poquelin dit),Fourberies de Scapin (Les),comédie,3,FALSE,prose,FALSE
+5279,Saint-Foix (Germain-François Poullain de),Grâces (Les),comédie,1,FALSE,prose,TRUE
+5280,Marmontel (Jean-François),Héraclides (Les),tragédie,5,FALSE,vers,FALSE
+5281,Saint-Foix (Germain-François Poullain de),Hommes (Les),comédie-ballet,1,FALSE,prose,TRUE
+5282,La Motte (Antoine Houdar de),Machabées (Les),tragédie,5,FALSE,vers,FALSE
+5283,Desforges (Pierre-Jean-Baptiste Choudard),Marins ou le Médiateur maladroit (Les),comédie,5,FALSE,vers,FALSE
+5284,Regnard (Jean-François),Ménechmes ou les Jumeaux (Les),comédie,5,TRUE,vers et vers libres,FALSE
+5286,Palissot de Montenoy (Charles),Méprises ou le Rival par ressemblance (Les),comédie,5,FALSE,vers,FALSE
+5287,Saurin (Bernard-Joseph),Mœurs du temps (Les),comédie,1,FALSE,prose,TRUE
+5288,La Harpe (Jean François de),Muses rivales ou l'Apothéose de Voltaire (Les),comédie,1,FALSE,vers libres,FALSE
+5289,Dorvigny,Noces hussardes (Les) ou Les Noces houzardes,comédie,4,FALSE,prose,FALSE
+5290,Brunet (Pierre-Nicolas),"Noms changés, ou l'Indifférent corrigé (Les)",comédie,3,FALSE,vers,FALSE
+5291,Fagan (Barthélemy-Christophe),Originaux (Les) - Troisième partie des Caractères de Thalie,comédie,1,FALSE,prose,TRUE
+5292,Legrand (Marc-Antoine),Paniers ou la Vieille précieuse (Les) ou La Vieille Précieuse,comédie,1,FALSE,prose,TRUE
+5293,Palissot de Montenoy (Charles),Philosophes (Les ),comédie,3,FALSE,vers,FALSE
+5294,Racine (Jean),Plaideurs (Les),comédie,5,FALSE,vers,FALSE
+5295,Molière (Jean-Baptiste Poquelin dit),Précieuses ridicules (Les),comédie,1,FALSE,prose,TRUE
+5296,Lourdet de Santerre (Jean-Baptiste),Les Quatre sœurs,comédie,3,FALSE,vers libres,FALSE
+5297,"Bièvre (François-Georges Maréchal, marquis de)",Réputations (Les),comédie,5,FALSE,vers,FALSE
+5298,Imbert (Barthélemy),Rivaux (Les),comédie,5,FALSE,vers,FALSE
+5299,Forgeot (Nicolas-Julien),Rivaux amis (Les),comédie,1,FALSE,vers,FALSE
+5300,Poisson (Philippe),Ruses d'Amour (Les),comédie,3,FALSE,vers,FALSE
+5301,Voltaire (François-Marie Arouet dit),Scythes (Les),tragédie,5,FALSE,vers,FALSE
+5302,Valois d'Orville (Adrien-Joseph de) ; Dubois,Souhaits pour le roi (Les),comédie,1,FALSE,vers libres,TRUE
+5305,Boindin (Nicolas) ; La Motte (Antoine Houdar de),Trois Gascons (Les),comédie,1,FALSE,prose,TRUE
+5306,Dezède (Nicolas),Trois noces (Les),comédie champêtre,1,FALSE,prose,TRUE
+5307,Châteaubrun (Jean-Baptiste Vivien de),Troyennes (Les),tragédie,5,FALSE,vers,FALSE
+5308,Palissot de Montenoy (Charles),Tuteurs (Les) ou Les Trois tuteurs,comédie,2,FALSE,vers,FALSE
+5309,Dancourt (Florent Carton dit),Vacances (Les),comédie,1,FALSE,prose,TRUE
+5310,Rochon de Chabannes (Marc-Antoine-Jacques),Valets maîtres de la maison ou le Tour de carnaval (Les),comédie,1,FALSE,prose,FALSE
+5311,Dancourt (Florent Carton dit),Vendanges de Suresnes (Les),comédie,1,FALSE,prose,TRUE
+5312,Boutet de Monvel (Jacques-Marie),Victimes cloîtrées (Les),drame,4,FALSE,prose,FALSE
+5313,Vadé (Jean-Joseph),Visites du jour de l'an (Les),comédie,1,FALSE,vers libres,TRUE
+5314,Gouges (Olympe de),Esclavage de nègres ou l'Heureux naufrage (L'),drame,3,FALSE,prose,FALSE
+5316,"Hauteroche (Noël Lebreton, sieur de)",Esprit follet ou la Dame invisible (L'),comédie,5,FALSE,vers,FALSE
+5318,Fagan (Barthélemy-Christophe),Étourderie (L'),comédie,1,FALSE,prose,FALSE
+5319,Molière (Jean-Baptiste Poquelin dit),Étourdi ou les Contretemps (L'),comédie,5,FALSE,vers,FALSE
+5320,Falconnet (Françoise-Cécile) ; Rozet (Madame),Heureuse rencontre (L'),comédie,1,FALSE,prose,FALSE
+5321,Fagan (Barthélemy-Christophe),Heureux retour (L'),comédie,1,FALSE,vers,TRUE
+5322,Baron (Michel Boyron dit),Homme à bonne fortune (L'),comédie,5,FALSE,prose,FALSE
+5323,Barthe (Nicolas-Thomas),Homme personnel (L'),comédie,5,FALSE,vers,FALSE
+5324,Destouches,Homme singulier (L'),comédie,5,FALSE,vers,FALSE
+5325,Fenouillot de Falbaire de Quingey (Charles-Georges),Honnête criminel ou l'Amour filial (L'),drame,5,FALSE,vers,FALSE
+5326,Bret (Antoine),Hôtellerie ou le Faux ami (L'),comédie,5,FALSE,vers,FALSE
+5327,Collet de Messine (Jean-Baptiste),Île déserte (L'),comédie,1,FALSE,vers,FALSE
+5328,Saint-Foix (Germain-François Poullain de),Île sauvage (L'),comédie,3,TRUE,prose,TRUE
+5329,Lantier (Étienne François de),Impatient (L'),comédie,1,FALSE,vers libres,FALSE
+5330,Poinsinet (Antoine-Alexandre-Henri),Impatient (L'),comédie,1,FALSE,vers,FALSE
+5331,Desmahis (Joseph-François-Edouard de Corsembleu),Impertinent (L') ou Le Billet perdu,comédie,1,FALSE,vers libres,FALSE
+5332,Brueys (David-Augustin de) ; Palaprat (Jean de),Important de cour (L'),comédie,5,FALSE,prose,FALSE
+5333,Poisson (Philippe),Impromptu de campagne (L'),comédie,1,FALSE,vers,FALSE
+5334,Imbert (Barthélemy),Inauguration du Théâtre français (L'),pièce,1,FALSE,vers,FALSE
+5336,Lantier (Étienne François de),Inconséquent (L'),comédie,5,FALSE,vers,FALSE
+5337,Laujon (Pierre),Soubrettes (Les),comédie,5,FALSE,prose,FALSE
+5338,Collin d'Harleville (Jean-François),Inconstant (L'),comédie,5,FALSE,vers,FALSE
+5339,Dufaut,Indécis (L'),comédie,5,FALSE,vers,FALSE
+5340,Voltaire (François-Marie Arouet dit),Indiscret (L'),comédie,1,FALSE,vers,FALSE
+5341,Destouches,Ingrat (L'),comédie,5,FALSE,vers,FALSE
+5342,Fagan (Barthélemy-Christophe),Inquiet (L'),comédie,1,FALSE,vers,FALSE
+5343,Destouches,Irrésolu (L'),comédie,5,FALSE,vers,FALSE
+5344,Destouches,Obstacle imprévu ou l'Obstacle sans obstacle (L'),comédie,5,FALSE,prose,FALSE
+5345,La Salle (Adrien-Nicolas),"Oncle et les Tantes, ou Chacun sa folie (L')",comédie,3,FALSE,vers,FALSE
+5346,Collin d'Harleville (Jean-François),Optimiste ou l'Homme content de tout (L'),comédie,5,FALSE,vers,FALSE
+5347,Saint-Foix (Germain-François Poullain de),Oracle (L'),comédie,1,FALSE,prose,TRUE
+5348,Dubois-Fontanelle (Joseph-Gaspard),Loredan,drame,4,FALSE,vers,FALSE
+5349,Longueil (Charles-Henri de),Orphelin anglais (L'),drame,3,FALSE,prose,FALSE
+5350,Voltaire (François-Marie Arouet dit),Orphelin de la Chine (L'),tragédie,5,FALSE,vers,FALSE
+5351,Ronsin (Charles-Philippe),"Louis XII, Père du peuple",tragédie,3,FALSE,vers,FALSE
+5352,Lemercier (Népomucène-Louis),Lovelace,comédie,5,FALSE,vers,FALSE
+5353,Arnault (Antoine Vincent),Lucrèce,tragédie,5,FALSE,vers,FALSE
+5354,Legrand (Marc-Antoine),Usurier gentilhomme (L'),comédie,1,FALSE,prose,TRUE
+5355,Ducis (Jean-François),Macbeth,tragédie,5,FALSE,vers,FALSE
+5356,Voltaire (François-Marie Arouet dit),Fanatisme ou Mahomet le prophète (Le),tragédie,5,FALSE,vers,FALSE
+5357,"La Noue (Jean-Baptiste Sauvé de La Noue, dit)",Mahomet second,tragédie,5,FALSE,vers,FALSE
+5358,Le Blanc de Guillet (Antoine),"Manco Capac, premier Inca du Pérou",tragédie,5,FALSE,vers,FALSE
+5359,La Fosse (Antoine de),Manlius Capitolinus,tragédie,5,FALSE,vers,FALSE
+5360,Imbert (Barthélemy),"Marie de Brabant, reine de France",tragédie,5,FALSE,vers,FALSE
+5361,Caux de Montlebert (Gilles de),Marius,tragédie,5,FALSE,vers,FALSE
+5362,Arnault (Antoine Vincent),Marius à Minturnes,tragédie,3,FALSE,vers,FALSE
+5363,Longepierre (Hilaire-Bernard de),Médée ou Médée et Jason,tragédie,5,FALSE,vers,FALSE
+5365,Clément (Jean Marie Bernard),Médée,tragédie,3,FALSE,vers,FALSE
+5366,Morand (Pierre de),Mégare,tragédie,5,FALSE,vers,FALSE
+5367,La Chaussée (Pierre-Claude),Mélanide,comédie,5,FALSE,vers,FALSE
+5368,André-Murville (Pierre-Nicolas),Melcour et Verseuil,comédie,1,FALSE,vers,FALSE
+5369,Lemercier (Népomucène-Louis),Méléagre,tragédie,5,FALSE,vers,FALSE
+5370,Voltaire (François-Marie Arouet dit),Mérope,tragédie,5,FALSE,vers,FALSE
+5371,Desaudras,Minuit ou le Moment propice,comédie,1,FALSE,prose,FALSE
+5372,Racine (Jean),Mithridate,tragédie,5,FALSE,vers,FALSE
+5373,La Harpe (Jean François de),Molière à la nouvelle salle ou les Audiences de Thalie,comédie,1,FALSE,vers libres,FALSE
+5374,Fuzelier (Louis),Momus fabuliste ou les Noces de Vulcain ou Momus fabuliste ou le Mariage de Vénus et de Vulcain,comédie,1,FALSE,prose et vers libres,TRUE
+5375,Collin d'Harleville (Jean-François),Monsieur de Crac dans son petit castel ou les Gascons,comédie,1,FALSE,vers,TRUE
+5376,Molière (Jean-Baptiste Poquelin dit),Monsieur de Pourceaugnac,comédie-ballet,3,FALSE,prose,TRUE
+5377,Chamfort (Sébastien-Roch-Nicolas de),Mustapha et Zéangir,tragédie,5,FALSE,vers,FALSE
+5378,Dubuisson (Pierre-Ulric),Nadir ou Thamas-Kouli-Kan,tragédie,5,FALSE,vers,FALSE
+5379,"Thibouville (Henri Lambert d'Herbigny, marquis de)",Namir,tragédie,5,FALSE,vers,FALSE
+5380,Voltaire (François-Marie Arouet dit),Nanine ou le Préjugé vaincu,comédie,3,FALSE,vers,FALSE
+5381,Rousseau (Jean-Jacques),Narcisse ou l'Amant de lui-même,comédie,1,FALSE,prose,FALSE
+5382,Corneille (Pierre),Nicomède,tragédie,5,FALSE,vers,FALSE
+5383,Voltaire (François-Marie Arouet dit),Octave et le jeune Pompée ou le Triumvirat ou Les Triumvirs,tragédie,5,FALSE,vers,FALSE
+5384,Simonet de Maisonneuve (Louis-Jean-Baptiste),Odmard et Zulna,tragédie,5,FALSE,vers,FALSE
+5385,Voltaire (François-Marie Arouet dit),Œdipe,tragédie,5,FALSE,vers,FALSE
+5386,Ducis (Jean-François),Œdipe chez Admète,tragédie,5,FALSE,vers,FALSE
+5387,Voltaire (François-Marie Arouet dit),Olympie,tragédie,5,FALSE,vers,FALSE
+5388,Voltaire (François-Marie Arouet dit),Oreste,tragédie,5,FALSE,vers,FALSE
+5389,Blin de Sainmore (Adrien-Michel-Hyacinthe),Orphanis,tragédie,5,FALSE,vers,FALSE
+5391,Mailhol (Gabriel),Paros,tragédie,5,FALSE,vers,FALSE
+5392,Dezède (Nicolas),Paulin et Clairette ou les Deux espiègles,comédie-opéra,2,FALSE,prose,TRUE
+5393,"Claret de Fleurieu (Aglaé Deslacs, comtesse)",Pauline,comédie,2,FALSE,vers,FALSE
+5395,La Harpe (Jean François de),Pharamond,tragédie,5,FALSE,vers,FALSE
+5396,Racine (Jean),Phèdre et Hippolyte ou Phèdre,tragédie,5,FALSE,vers,FALSE
+5397,Châteaubrun (Jean-Baptiste Vivien de),Philoctète,tragédie,5,FALSE,vers,FALSE
+5398,La Harpe (Jean François de),Philoctète,tragédie,3,FALSE,vers,FALSE
+5399,Belloy (Pierre Laurent de),Pierre le cruel,tragédie,5,FALSE,vers,FALSE
+5400,Dorat (Claude-Joseph),Pierre le Grand,tragédie,5,FALSE,vers,FALSE
+5401,Corneille (Pierre),"Polyeucte, martyr ",tragédie,5,FALSE,vers,FALSE
+5403,Poinsinet de Sivry (Louis),Pygmalion,comédie,1,FALSE,prose,FALSE
+5404,Mauduit-Larive (Jean),Pyrame et Thisbé,scène lyrique,2,FALSE,prose,TRUE
+5405,Crébillon (Prosper Jolyot de),Pyrrhus,tragédie,5,FALSE,vers,FALSE
+5406,Bret (Antoine) ; Godard d'Aucour (Claude) ; Villaret (Claude),Quartier d'hiver (Le),comédie,1,FALSE,prose,TRUE
+5407,Sedaine (Michel-Jean),"Raymond V, comte de Toulouse ou le Troubadour",comédie héroïque,5,FALSE,prose,FALSE
+5408,Dorat (Claude-Joseph),Régulus,tragédie,3,FALSE,vers,FALSE
+5409,Crébillon (Prosper Jolyot de),Rhadamiste et Zénobie,tragédie,5,FALSE,vers,FALSE
+5410,Durosoy (Barnabé Farmian),Richard III,tragédie,5,FALSE,vers,FALSE
+5411,Laignelot (Joseph François),Rienzi,tragédie,5,FALSE,vers,FALSE
+5412,Corneille (Pierre),"Rodogune ou Rodogune, princesse des Parthes",tragédie,5,FALSE,vers,FALSE
+5413,Voltaire (François-Marie Arouet dit),Rome sauvée ou Catilina ou Rome Sauvée,tragédie,5,FALSE,vers,FALSE
+5414,Ducis (Jean-François),Roméo et Juliette,tragédie,5,FALSE,vers,FALSE
+5415,Ségur (Joseph-Alexandre de),Rosaline et Floricourt,comédie,3,FALSE,vers libres,FALSE
+5416,Dorat (Claude-Joseph),Roséïde ou l'Intrigant,comédie,5,FALSE,vers,FALSE
+5417,Simonet de Maisonneuve (Louis-Jean-Baptiste),Roxelane et Mustapha,tragédie,5,FALSE,vers,FALSE
+5418,Dubuisson (Pierre-Ulric),Scanderberg,tragédie,5,FALSE,vers,FALSE
+5420,Voltaire (François-Marie Arouet dit),Sémiramis,tragédie,5,FALSE,vers,FALSE
+5421,Corneille (Pierre),Sertorius,tragédie,5,FALSE,vers,FALSE
+5422,Molière (Jean-Baptiste Poquelin dit),Sganarelle ou le Cocu imaginaire,comédie,1,FALSE,vers,FALSE
+5423,Gresset (Jean-Baptiste-Louis),Sidney,comédie,3,FALSE,vers,FALSE
+5424,Voltaire (François-Marie Arouet dit),Sophonisbe,tragédie,5,FALSE,vers,FALSE
+5425,Saurin (Bernard-Joseph),Spartacus,tragédie,5,FALSE,vers,FALSE
+5426,Voltaire (François-Marie Arouet dit),Tancrède,tragédie,5,FALSE,vers,FALSE
+5427,Molière (Jean-Baptiste Poquelin dit),Tartuffe ou l'Imposteur,comédie,5,FALSE,vers,FALSE
+5428,Le Mierre (Antoine-Marin),Térée,tragédie,5,FALSE,vers,FALSE
+5429,Renou (Antoine),Térée et Philomèle,tragédie,5,FALSE,vers,FALSE
+5430,Dorat (Claude-Joseph),Théagène ou Théagène et Cariclée,tragédie,5,FALSE,vers,FALSE
+5431,Fallet (Nicolas),Tibère et Sérénus,tragédie,5,FALSE,vers,FALSE
+5432,La Harpe (Jean François de),Timoléon,tragédie,5,FALSE,vers,FALSE
+5433,Lesage (Alain-René),Turcaret,comédie,5,FALSE,prose,FALSE
+5434,Linant (Nicolas-Michel),"Vanda, reine de Pologne",tragédie,5,FALSE,vers,FALSE
+5435,"Grave (Jean Hyacinthe, vicomte de)",Varon,tragédie,5,FALSE,vers,FALSE
+5436,Rotrou (Jean de),Venceslas,tragédie,5,FALSE,vers,FALSE
+5437,La Place (Pierre-Antoine de),Venise sauvée,tragédie,5,FALSE,vers,FALSE
+5438,La Harpe (Jean François de),Virginie,tragédie,5,FALSE,vers,FALSE
+5439,Doigny du Ponceau,Virginie ou la Destruction des Décemvirs,tragédie,3,FALSE,vers,FALSE
+5440,Billardon de Sauvigny (Edme-Louis),Washington ou la Liberté du Nouveau monde,tragédie,4,FALSE,vers,FALSE
+5441,Voltaire (François-Marie Arouet dit),Zaïre,tragédie,5,FALSE,vers,FALSE
+5442,Palissot de Montenoy (Charles),Zarès,tragédie,5,FALSE,vers,FALSE
+5443,Cordier de Saint-Firmin (Edmond),Zarucma,tragédie,5,FALSE,vers,FALSE
+5444,Renout (Jean-Julien-Constantin),Zélide ou l'Art d'aimer et l'art de plaire,comédie,1,FALSE,vers libres,TRUE
+5445,Belloy (Pierre Laurent de),Zelmire,tragédie,5,FALSE,vers,FALSE
+5446,Cahusac (Louis de),Zénéïde,comédie,1,FALSE,vers,TRUE
+5447,Marignié (Jean-Étienne-François),Zoraï ou les Insulaires de Nouvelle-Zélande,tragédie,5,FALSE,vers,FALSE
+5448,Dorat (Claude-Joseph),Zulica,tragédie,5,FALSE,vers,FALSE
+5449,Voltaire (François-Marie Arouet dit),Zulime,tragédie,5,FALSE,vers,FALSE
+5450,Lefèvre (Pierre-François-Alexandre),Zuma,tragédie,5,FALSE,vers,FALSE
+5452,"Leblanc (Jean-Bernard, abbé)","Aben-Saïd, empereur des Mogols",tragédie,5,FALSE,vers,FALSE
+5453,Merville (Michel Guyot de),Achille dans l'île de Scyros,comédie héroïque,3,FALSE,vers,FALSE
+5454,La Grange-Chancel (François-Joseph de),"Adherbal, roi de Numidie",tragédie,5,FALSE,vers,FALSE
+5455,Campistron (Jean Galbert de),Adrien,tragédie,5,FALSE,vers,FALSE
+5456,Séguineau (Mr) ; Pralard (René),Aégiste,tragédie,5,FALSE,vers,FALSE
+5457,Campistron (Jean Galbert de),Aétius,tragédie,5,FALSE,vers,FALSE
+5458,"Boyer (Claude, abbé) pseud : Pader d'Assézan",Agamemnon ou  La Mort d'Agamemnon,tragédie,5,FALSE,vers,FALSE
+5459,"Aubry (Jean-Baptiste Aubry des Carrières, dit)",Agathocle,tragédie,5,FALSE,vers,FALSE
+5460,Riupeirous (Théodore),Agrippa ou la mort d'Auguste,tragédie,5,FALSE,vers,FALSE
+5461,La Chapelle (Jean de),Ajax,tragédie,5,FALSE,vers,FALSE
+5462,La Grange-Chancel (François-Joseph de),Alceste,tragédie,5,FALSE,vers,FALSE
+5463,Boissy (Louis de),Alceste et Admète,tragédie,5,FALSE,vers,FALSE
+5464,Poisson (Philippe),Alcibiade,comédie,3,FALSE,vers,FALSE
+5465,Campistron (Jean Galbert de),Alcibiade,tragédie,5,FALSE,vers,FALSE
+5466,Racine (Jean),Alexandre le Grand,tragédie,5,FALSE,vers,FALSE
+5467,Quinault (Philippe),Amalasonte,tragédie,5,FALSE,vers,FALSE
+5468,Poisson (Philippe),Amour secret (L'),comédie,1,FALSE,vers,FALSE
+5469,Corneille (Pierre),Andromède,tragédie,5,TRUE,vers,TRUE
+5470,Dancourt (Florent Carton dit),Angélique et Médor,comédie,1,FALSE,prose,TRUE
+5471,Riupeirous (Théodore),Annibal,tragédie,5,FALSE,vers,FALSE
+5472,"Boyer (Claude, abbé) pseud : Pader d'Assézan",Antigone,tragédie,5,FALSE,vers,FALSE
+5473,Deschamps (François-Michel-Chrétien),Antiochus et Cléopâtre,tragédie,5,FALSE,vers,FALSE
+5474,"Nadal (Augustin, abbé)",Antiochus ou Les Macchabées,tragédie,5,FALSE,vers,FALSE
+5475,Corneille (Pierre),Agésilas,tragédie,5,FALSE,vers,FALSE
+5476,Saint-Gilles Lenfant (de),Ariarathe,tragédie,5,FALSE,vers,FALSE
+5477,"Abeille (Gaspard, abbé)",Aristobule,tragédie,5,FALSE,vers,FALSE
+5478,Campistron (Jean Galbert de),Arminius,tragédie,5,FALSE,vers,FALSE
+5479,Barbier (Marie-Anne),Arrie et Pétus,tragédie,5,FALSE,vers,FALSE
+5480,Pellegrin (Simon-Joseph),Artaxare,tragédie,5,FALSE,vers,FALSE
+5481,"Boyer (Claude, abbé)",Artaxerce,tragédie,5,FALSE,vers,FALSE
+5482,Deschamps (François-Michel-Chrétien),Artaxerce,tragédie,5,FALSE,vers,FALSE
+5483,"Voltaire (François-Marie Arouet, dit)",Artémire,tragédie,5,FALSE,vers,FALSE
+5484,Fontenelle (Bernard le Bouyier de),Aspar,tragédie,5,FALSE,vers,FALSE
+5485,La Grange-Chancel (François-Joseph de),Athénaïs,tragédie,5,FALSE,vers,FALSE
+5486,Corneille (Pierre),"Attila, roi des Huns",tragédie,5,FALSE,vers,FALSE
+5487,Pacarony (chevalier de),Bajazet premier,tragédie,5,FALSE,vers,FALSE
+5488,Gaultier,Basile et Quitterie,tragi-comédie,3,TRUE,vers,TRUE
+5489,Quinault (Philippe),Bellérophon,tragédie,5,FALSE,vers,FALSE
+5490,Corneille (Thomas),Bradamante,tragédie,5,FALSE,vers,FALSE
+5491,Bernard (Catherine),Brutus,tragédie,5,FALSE,vers,FALSE
+5492,Piron (Alexis),Callisthène,tragédie,5,FALSE,vers,FALSE
+5493,Corneille (Thomas),"Camma, reine de Galatie",tragédie,5,FALSE,vers,FALSE
+5494,Legrand (Marc-Antoine),Cartouche ou les Voleurs,comédie,3,FALSE,prose,TRUE
+5495,La Grange-Chancel (François-Joseph de),Cassius et Victorinus martyrs,tragédie,5,FALSE,vers,FALSE
+5497,Dancourt (Florent Carton dit),Céphale et Procris,comédie,3,TRUE,vers,TRUE
+5498,Morand (Pierre de),Childéric,tragédie,5,FALSE,vers,FALSE
+5499,Gomez (Madeleine-Angélique de),"Cléarque, tyran d'Héraclée",tragédie,5,FALSE,vers,FALSE
+5500,La Chapelle (Jean de),Cléopâtre,tragédie,5,FALSE,vers,FALSE
+5501,La Fosse (Antoine de),Corésus et Callirhoé,tragédie,5,FALSE,vers,FALSE
+5502,"Abeille (Gaspard, abbé)",Coriolan,tragédie,5,FALSE,vers,FALSE
+5503,Chaligny des Plaines (François de),Coriolan,tragédie,5,FALSE,vers,FALSE
+5504,Barbier (Marie-Anne),Cornélie mère des Gracques,tragédie,5,FALSE,vers,FALSE
+5505,Hénault (Charles-Jean-François),Cornélie vestale,tragédie,5,FALSE,vers,FALSE
+5506,Rotrou (Jean de) ; Ussé (Louis II Bernin de Valentinay d'),Cosroès,tragédie,5,FALSE,vers,FALSE
+5507,"Hauteroche (Noël Lebreton, sieur de)",Crispin musicien,comédie,5,FALSE,vers,TRUE
+5508,Danchet (Antoine),Cyrus,tragédie,5,FALSE,vers,FALSE
+5509,La Font (Joseph de),Danaé ou Jupiter Crispin,comédie,1,TRUE,vers,FALSE
+5510,"Aubry (Jean-Baptiste Aubry des Carrières, dit )",Démétrius,tragédie,5,FALSE,vers,FALSE
+5511,Corneille (Thomas),Don Bertrand de Cigarral,comédie,5,FALSE,vers,TRUE
+5512,Lesage (Alain-René),Don César Ursin,comédie,5,FALSE,prose,FALSE
+5513,La Chazette (de),Don Ramire et Zaïde,tragédie,5,FALSE,vers,FALSE
+5514,Gresset (Jean-Baptiste-Louis),Édouard III,tragédie,5,FALSE,vers,FALSE
+5515,Longepierre (Hilaire-Bernard de),Électre,tragédie,5,FALSE,vers,FALSE
+5516,Gilbert (Gabriel),Amours de Diane et d'Endymion (Les) ou Endymion,tragédie,5,TRUE,vers,TRUE
+5517,La Grange-Chancel (François-Joseph de),Érigone,tragédie,5,FALSE,vers,FALSE
+5518,"Voltaire (François-Marie Arouet, dit)",Ériphile,tragédie,5,FALSE,vers,FALSE
+5519,Pesselier (Charles-Étienne),Ésope au Parnasse,comédie,1,FALSE,vers,TRUE
+5520,Anonyme,Frontin gouverneur du château de Vertigililinguen,comédie,1,FALSE,,FALSE
+5521,Brueys (David-Augustin de),Gabinie,tragédie,5,FALSE,vers,FALSE
+5522,Pradon (Nicolas),Germanicus,tragédie,5,FALSE,vers,FALSE
+5523,Péchantrés (Nicolas de),Géta,tragédie,5,FALSE,vers,FALSE
+5524,Gomez (Madeleine-Angélique de),Habis,tragédie,5,FALSE,vers,FALSE
+5525,"La Tuillerie (Jean-François Juvenon de La Tuillerie, dit)",Hercule,tragédie,5,FALSE,vers,FALSE
+5526,"Palaprat (Jean de, sieur de Bigot)",Hercule et Omphale,comédie,5,FALSE,vers,FALSE
+5527,"Nadal (Augustin, abbé)",Hérode,tragédie,5,FALSE,vers,FALSE
+5528,Anonyme,Héroïne (L'),comédie,1,FALSE,,FALSE
+5529,Crébillon père (Prosper Jolyot de Crébillon dit),Idoménée,tragédie,5,FALSE,vers,FALSE
+5530,La Fontaine (Jean de) ; Champmeslé (Charles Chevillet dit),Je vous prends sans verd,comédie,1,FALSE,vers,TRUE
+5531,Fagan (Barthélemy-Christophe),Joconde,comédie,1,FALSE,prose,TRUE
+5532,Duché de Vancy (Joseph-François),Jonathas,tragédie,3,FALSE,vers,FALSE
+5533,"Genest (Charles-Claude, abbé)",Joseph,tragédie,5,FALSE,vers,FALSE
+5534,"Boyer (Claude, abbé)",Judith,tragédie,5,FALSE,vers,FALSE
+5535,Péchantrés (Nicolas de),"Jugurtha, roi de Numidie",tragédie,5,FALSE,vers,FALSE
+5536,La Grange-Chancel (François-Joseph de),Accommodement imprévu (L'),comédie,1,FALSE,vers,FALSE
+5537,Boissy (Louis de),Amant de sa femme ou la Rivale d'elle-même (L'),comédie,1,FALSE,prose,FALSE
+5538,Quinault (Philippe),Amant indiscret ou le Maître étourdi (L'),comédie,5,FALSE,vers,FALSE
+5539,Du Fresny (Charles),Amant masqué (L'),comédie,1,FALSE,prose,TRUE
+5540,Campistron (Jean Galbert de),Amante amant (L'),comédie,5,FALSE,prose,FALSE
+5541,La Valette,Amante en tutelle (L'),comédie,3,TRUE,vers,FALSE
+5542,Fagan (Barthélemy-Christophe),Amitié rivale (L'),comédie,5,FALSE,vers,FALSE
+5543,La Font (Joseph de),Amour vengé (L'),comédie,1,FALSE,vers,FALSE
+5544,Poisson (Raymond),Après-souper des auberges (L'),comédie,1,FALSE,vers,TRUE
+5545,Procope-Couteaux (Michel),Assemblée des comédiens (L'),prologue,1,TRUE,,FALSE
+5546,Donneau de Vizé (Jean),Aventurière (L'),comédie,5,FALSE,vers,FALSE
+5547,"Rosimond (Claude Rose, sieur de)",Avocat sans étude (L'),comédie,1,FALSE,vers,FALSE
+5548,Dancourt (Florent Carton dit),Éclipse (L'),comédie,1,FALSE,prose,TRUE
+5549,Pellegrin (Simon-Joseph),École de l'hymen (L'),comédie,3,TRUE,prose/vers,TRUE
+5550,Jolly (François Antoine),École des amants (L'),comédie,3,FALSE,vers,FALSE
+5551,Montfleury,École des jaloux ou le Cocu volontaire (L') ou La Fausse Turquie ou l'École des jaloux,comédie,3,FALSE,vers,FALSE
+5552,Voisenon (Claude-Henri de Fusée de),École du monde (L'),dialogue,1,TRUE,vers,FALSE
+5553,Scarron (Paul),Écolier de Salamanque ou les Généreux ennemis (L'),tragi-comédie,5,FALSE,vers,FALSE
+5554,Anonyme,Effet de la prévention (L'),comédie,1,FALSE,prose,TRUE
+5555,Anonyme,Enfant gâté (L'),comédie,1,FALSE,prose,FALSE
+5556,Anonyme,Entêté (L'),comédie,1,FALSE,prose,FALSE
+5557,Anonyme,Entêtement ridicule (L'),comédie,1,FALSE,vers,FALSE
+5558,Destouches,Envieux ou la Critique du Philosophe marié (L'),comédie,1,FALSE,prose,FALSE
+5559,Anonyme,Épreuve dangereuse (L'),comédie,5,FALSE,vers,FALSE
+5561,Scarron (Paul),Héritier ridicule ou la Dame intéressée (L'),comédie,5,FALSE,vers,FALSE
+5562,Boizard de Ponteau (Claude-Florimond),Heure du berger (L'),comédie,1,FALSE,prose,TRUE
+5563,Anonyme,Heureux échange (L'),comédie,5,FALSE,vers,FALSE
+5564,Baron (Michel Boyron dit),Homme à bonnes fortunes (L'),comédie,5,FALSE,prose,FALSE
+5565,Marivaux (Pierre de),Île de la raison ou les Petits hommes (L'),comédie,3,TRUE,prose,TRUE
+5566,Boissy (Louis de),Impatient (L'),comédie,5,TRUE,vers,FALSE
+5567,Boissy (Louis de),Impertinent malgré lui (L'),comédie,5,FALSE,vers,FALSE
+5568,Legrand (Marc-Antoine),Impromptu de la folie (L'),ambigu-comique,2,TRUE,prose,TRUE
+5569,Dancourt (Florent Carton dit),Impromptu de Suresnes (L'),comédie-ballet,1,TRUE,prose,TRUE
+5570,Dancourt (Florent Carton dit),Impromptu de garnison (L'),comédie,1,FALSE,prose,FALSE
+5572,La Motte (Antoine Houdar de),Italie galante ou les contes (L'),ambigu-comique,3,TRUE,prose,TRUE
+5573,Voisenon (Claude-Henri de Fusée de),Ombre de Molière (L'),prologue,1,FALSE,vers,FALSE
+5574,"Brécourt (Guillaume Marcoureau, sieur de Brécourt, dit)",Ombre de Molière (L'),comédie,1,FALSE,prose,TRUE
+5575,Dancourt (Florent Carton dit),Opéra de village (L'),comédie,1,FALSE,prose,TRUE
+5576,Anonyme,Opérateur (L'),comédie,1,FALSE,,TRUE
+5577,Dancourt (Florent Carton dit),Opérateur Barry (L'),comédie,1,TRUE,prose,TRUE
+5578,Brueys (David-Augustin de),Opiniâtre (L'),comédie,3,FALSE,vers,FALSE
+5579,Moncrif (François-Augustin Paradis de),Oracle de Delphes (L'),comédie,3,FALSE,vers,FALSE
+5580,Corneille (Thomas) ; Donneau de Vizé (Jean),Usurier (L'),comédie,5,FALSE,vers,FALSE
+5581,Dancourt (Florent Carton dit),Baguette (La),comédie,1,FALSE,prose,TRUE
+5582,Dancourt (Florent Carton dit),Belle-mère (La),comédie,5,FALSE,vers,FALSE
+5583,Poisson (Philippe),Boîte de Pandore (La),comédie,1,FALSE,prose,FALSE
+5584,"Brécourt (Guillaume Marcoureau, sieur de Brécourt, dit)",Cassette (La),comédie,5,FALSE,vers,TRUE
+5585,Legrand (Marc-Antoine),Chasse du cerf (La),comédie-ballet,3,TRUE,prose,TRUE
+5586,Anonyme,Chasse ridicule (La),comédie,1,FALSE,prose,FALSE
+5587,Dancourt (Florent Carton dit),Comédie des comédiens ou l'Amour charlatan (La),comédie,3,FALSE,prose,TRUE
+5588,Fontenelle (Bernard le Bouyier de),Comète (La),comédie,1,FALSE,prose,TRUE
+5590,"Carcavy (Charles-Alexandre, abbé)",Comtesse de Follenville (La),comédie,1,FALSE,prose,FALSE
+5591,Molière (Jean-Baptiste Poquelin dit),Critique de l'École des femmes (La),comédie,1,FALSE,prose,FALSE
+5592,"La Chaussée (Pierre-Claude Nivelle de La Chaussée, dit Pierre-Claude)",Critique de la Fausse antipathie (La),comédie,1,FALSE,prose/vers,FALSE
+5593,Regnard (Jean-François),Critique du Légataire universel (La),comédie,1,FALSE,prose,FALSE
+5594,Dancourt (Florent Carton dit),Dame à la mode ou la Suite de la coquette (La),comédie,5,FALSE,vers,FALSE
+5595,Dancourt (Florent Carton dit),Désolation des joueuses (La),comédie,1,FALSE,prose,FALSE
+5596,Corneille (Thomas) ; Donneau de Vizé (Jean),Devineresse ou les Faux enchantements  (La),comédie,5,FALSE,prose,TRUE
+5597,Desmarres,Dragonne ou Merlin dragon (La),comédie,1,FALSE,prose,TRUE
+5598,"Rosimond (Claude Rose, sieur de)",Dupe amoureuse (La),comédie,1,FALSE,vers,FALSE
+5599,Dancourt (Florent Carton dit),Enfants de Paris (Les) ou La Famille à la mode (La) ou Finette,comédie,5,FALSE,vers,FALSE
+5600,Allainval (Léonor-Jean-Christine Soulas d'),Fausse comtesse (La),comédie,1,FALSE,prose,TRUE
+5601,Pellegrin (Simon-Joseph),Fausse inconstance (La),comédie,3,FALSE,vers,FALSE
+5602,Destouches (Philippe Néricault dit),Fausse veuve ou le Jaloux sans jalousie (La),comédie,1,FALSE,prose,FALSE
+5603,Dancourt (Florent Carton dit),Femme d'intrigues (La),comédie,5,FALSE,prose,FALSE
+5604,Legrand (Marc-Antoine),Femme fille et veuve (La),comédie,1,FALSE,vers,FALSE
+5605,"Robbe, Jacques",Femme têtue ou le médecin hollandais (La),comédie,1,FALSE,vers,FALSE
+5606,Anonyme,Fille médecin (La),comédie,1,FALSE,,FALSE
+5607,La Grange-Chancel (François-Joseph de),Fille supposée ou l'Héroïne de roman (La),comédie,3,FALSE,vers,FALSE
+5608,Le neveu de l'abbé Abeille (Nicolas Abeille dit),Fille valet (La),comédie,3,FALSE,vers,FALSE
+5609,Dancourt (Florent Carton dit),Foire de Bezons (La),comédie,1,FALSE,prose,TRUE
+5610,Dancourt (Florent Carton dit),Foire Saint-Germain (La),comédie,1,FALSE,prose,TRUE
+5611,Dancourt (Florent Carton dit),Folle enchère (La),comédie,1,FALSE,prose,FALSE
+5612,Le Noble (Eustache,Fourbe (Le),comédie,5,FALSE,prose,FALSE
+5613,Legrand (Marc-Antoine),Française italienne (La),comédie,1,FALSE,prose,TRUE
+5614,Dancourt (Florent Carton dit),Gazette de Hollande (La),comédie,1,FALSE,prose,FALSE
+5615,Fagan (Barthélemy-Christophe),Grondeuse (La),comédie,1,FALSE,prose,TRUE
+5616,Dancourt (Florent Carton dit),Guinguette de la finance (La),comédie,1,FALSE,prose,TRUE
+5617,Boisrobert (François Le Métel de),Jalouse d'elle-même (La),comédie,5,FALSE,vers,FALSE
+5618,Du Fresny (Charles),Joueuse (La),comédie,5,FALSE,prose,TRUE
+5619,Dancourt (Florent Carton dit),Loterie (La),comédie,1,FALSE,prose,FALSE
+5620,Du Fresny (Charles),Malade sans maladie (La),comédie,5,FALSE,prose,FALSE
+5621,Tristan L'Hermite,Marianne (La),tragédie,5,FALSE,vers,FALSE
+5622,Anonyme,Marquise imaginaire (La),comédie,1,FALSE,,FALSE
+5623,La Motte (Antoine Houdar de),Matrone d'Éphèse (La),comédie,1,FALSE,prose,FALSE
+5624,Audierne (Jacques),Méprise (La),comédie,1,TRUE,prose,FALSE
+5625,Montfort,Mère ridicule (La),comédie,1,FALSE,,FALSE
+5626,Dancourt (Florent Carton dit),Dieux comédiens ou la Métempsycose des amours (Les),comédie,3,TRUE,vers,TRUE
+5627,Louvet,Mort d'Alexandre (La),tragédie,5,FALSE,vers,FALSE
+5628,Belin,Mort d'Othon (La),tragédie,5,FALSE,vers,FALSE
+5629,Pellegrin (Simon-Joseph),Mort d'Ulysse (La),tragédie,5,FALSE,vers,FALSE
+5630,Barbier (Marie-Anne),Mort de César (La),tragédie,5,FALSE,vers,FALSE
+5631,Péchantrés (Nicolas de),Mort de Néron (La),tragédie,5,FALSE,vers,FALSE
+5632,Dancourt (Florent Carton dit),Mort d'Alcide (La),tragédie,5,FALSE,vers,FALSE
+5633,"Brécourt (Guillaume Marcoureau, sieur de Brécourt, dit)",Noce de village (La),comédie,1,FALSE,prose,TRUE
+5634,Du Fresny (Charles),Noce interrompue (La),comédie,1,FALSE,prose,TRUE
+5635,Corneille (Thomas) ; Donneau de Visé (Jean),Pierre Philosophale (La),comédie,5,FALSE,,TRUE
+5636,Anonyme,Provençale (La),comédie,1,FALSE,,FALSE
+5637,"Palaprat (Jean de, sieur de Bigot)",Prude du temps (La),comédie,5,FALSE,vers,FALSE
+5638,Guérin d'Estriché (Nicolas-Armand-Martial),Psyché de village (La),comédie,4,TRUE,prose,TRUE
+5639,"Robbe, Jacques",Rapinière ou l'intéressé (La),comédie,5,FALSE,vers,FALSE
+5640,L'Affichard (Thomas),"Rencontre imprévue, ou la Surprise des amants (La)",comédie,3,FALSE,prose,FALSE
+5641,Baron (Michel Boyron dit),Répétition (La),comédie,1,FALSE,,FALSE
+5642,Le Mascrier (Jean-Baptiste),Caprice et la Ressource (Le),prologue,1,FALSE,vers,FALSE
+5643,Marivaux (Pierre de),Réunion des amours (La),comédie héroïque,1,FALSE,prose,FALSE
+5644,Champmeslé (Charles Chevillet dit),Rue Saint-Denis (La),comédie,1,FALSE,prose,FALSE
+5645,Audierne (Jacques),Suivante désintéressée (La),comédie,1,TRUE,prose,FALSE
+5646,Racine (Jean),Thébaïde ou les Frères ennemis (La),tragédie,5,FALSE,vers,FALSE
+5647,Corneille (Pierre),Toison d'or (La),tragédie,5,TRUE,vers,TRUE
+5648,Auvigny (Jean du Castre d'),Tragédie en prose ou la Tragédie extravagante (La),comédie,1,FALSE,prose,TRUE
+5649,Dancourt (Florent Carton dit),Trahison punie (La),comédie,5,FALSE,vers,FALSE
+5650,Jolly (François-Antoine),Vengeance de l'amour (La),comédie,5,FALSE,vers,FALSE
+5651,Champmeslé (Charles Chevillet dit),Veuve (La),comédie,1,FALSE,prose,FALSE
+5652,Boisrobert (François Le Métel de),Vraie Didon ou La Didon chaste (La),tragédie,5,FALSE,vers,FALSE
+5653,Bernard (Catherine),"Laodamie, reine d'Epire",tragédie,5,FALSE,vers,FALSE
+5654,Anonyme,Badaud (Le),comédie,1,FALSE,prose,FALSE
+5655,Boissy (Louis de),Badinage (Le),comédie,1,FALSE,vers,FALSE
+5656,Du Fresny (Charles),Bailli marquis (Le),comédie,1,FALSE,prose,TRUE
+5657,Boindin (Nicolas),Bal d'Auteuil (Le),comédie,3,TRUE,prose,TRUE
+5658,"Palaprat (Jean de, sieur de Bigot)",Ballet extravagant (Le),comédie,1,FALSE,prose,TRUE
+5659,Corneille (Thomas),Baron des Fondrières (Le),comédie,5,FALSE,vers,FALSE
+5660,Regnard (Jean-François),Bourgeois de Falaise (Le),comédie,1,FALSE,vers,TRUE
+5661,Anonyme,Bourget (Le),comédie,1,FALSE,prose,TRUE
+5662,Anonyme,Brutal de sang froid / sens froid  (Le),comédie,1,FALSE,prose,FALSE
+5663,Anonyme,Cadet de Gascogne (Le),comédie,5,FALSE,,FALSE
+5664,Anonyme,Cadet de Gascogne (Le),comédie,1,FALSE,,FALSE
+5665,Rousseau (Jean-Baptiste),Café (Le),comédie,1,FALSE,prose,FALSE
+5666,Grandval (Nicolas Racot de),Camp de Porché-Fontaine (Le),comédie,1,FALSE,prose,TRUE
+5667,Gillet de La Tessonerie,Campagnard (Le),comédie,5,FALSE,vers,FALSE
+5668,Rousseau (Jean-Baptiste),Capricieux ou les Apparences trompeuses (Le),comédie,5,FALSE,vers,FALSE
+5669,Dancourt (Florent Carton dit),Carnaval de Venise (Le),comédie héroïque,5,FALSE,,FALSE
+5671,Autreau (Jacques),Chevalier Bayard (Le),comédie héroïque,5,FALSE,vers,FALSE
+5672,Du Fresny (Charles),Chevalier joueur (Le),comédie,5,FALSE,prose,FALSE
+5674,"Montfleury (Antoine Jacob, dit)",Comédien poète (Le),comédie,5,FALSE,vers,TRUE
+5675,Baron (Michel Boyron dit),Débauché (Le),comédie,1,FALSE,vers,FALSE
+5676,Anonyme,Dédit (Le),comédie,5,FALSE,vers,FALSE
+5678,Dancourt (Florent Carton dit),Diable boiteux (Le),comédie,1,TRUE,prose,TRUE
+5679,Champmeslé (Charles Chevillet dit),Divorce (Le),comédie,5,FALSE,vers,TRUE
+5680,Pellegrin (Simon-Joseph),Divorce de l'amour et de la raison ou le Vieux monde (Le),comédie,3,TRUE,vers,TRUE
+5681,Avisse (Étienne-François),Divorce ou les Époux mécontents (Le),comédie,3,TRUE,vers,TRUE
+5682,Beauregard,Docteur extravagant (Le),comédie,5,FALSE,vers,FALSE
+5683,Barbier (Marie-Anne),Faucon (Le),comédie,1,FALSE,vers,FALSE
+5684,Raisin (Jacques),Faux Gascon (Le),comédie,1,FALSE,prose,FALSE
+5685,Du Fresny (Charles),Faux honnête homme (Le),comédie,3,FALSE,prose,FALSE
+5686,Du Fresny (Charles),Faux instinct (Le),comédie,3,FALSE,prose,TRUE
+5687,Du Fresny (Charles),Faux sincère (Le),comédie,5,FALSE,vers,FALSE
+5688,"Hauteroche (Noël Lebreton, sieur de)","Feint polonais, ou la Veuve impertinente (Le)",comédie,3,FALSE,prose,FALSE
+5689,Rousseau (Jean-Baptiste),Flatteur (Le),comédie,5,FALSE,prose,FALSE
+5690,Poisson (Raymond),Fou de qualité (Le) ou Le Fou raisonnable,comédie,1,FALSE,vers,TRUE
+5691,Anonyme,Gênois (Le),comédie,1,FALSE,,FALSE
+5692,Anonyme,Gentilhomme meunier (Le),comédie,1,FALSE,,FALSE
+5693,Corneille (Thomas),Geôlier de soi-même ou Jodelet prince (Le),comédie,5,FALSE,vers,FALSE
+5694,Anonyme,Gros lot de Marseille (Le),comédie,1,FALSE,prose,FALSE
+5695,Baron (Michel Boyron dit),Jaloux (Le),comédie,5,FALSE,vers,FALSE
+5696,Deschamps (François-Michel-Chrétien),Caton d'Utique,tragédie,5,FALSE,vers,FALSE
+5696,Du Fresny (Charles),Jaloux honteux de l'être (Le),comédie,5,FALSE,prose,FALSE
+5697,"Brécourt (Guillaume Marcoureau, sieur de Brécourt, dit)",Jaloux invisible (Le),comédie,3,FALSE,vers,TRUE
+5698,Anonyme,Jaloux masqué (Le),comédie,3,FALSE,,TRUE
+5699,Anonyme,Jeune homme (Le),comédie,1,FALSE,prose,FALSE
+5701,Anonyme,Maréchal médecin (Le) ou Les Houssards ou Le Médecin de Mantes,comédie,1,FALSE,prose,FALSE
+5702,Allainval (Léonor-Jean-Christine Soulas d'),Mari curieux (Le),comédie,1,FALSE,prose,TRUE
+5703,Audierne (Jacques),Mari égaré (Le),comédie,1,TRUE,prose,FALSE
+5704,Donneau de Vizé (Jean),Mariage de Bacchus et d'Ariane (Le),comédie héroïque,3,TRUE,vers,TRUE
+5705,Montfleury (Antoine Jacob dit),Mariage de rien (Le),comédie,1,FALSE,vers,TRUE
+5706,Poisson (Philippe),Mariage fait par lettre de change (Le),comédie,1,FALSE,vers,TRUE
+5707,Fagan (Barthélemy-Christophe),Marié sans le savoir (Le),comédie,1,FALSE,prose,FALSE
+5708,Anonyme,Marquis de l'industrie (Le),comédie,5,FALSE,vers,FALSE
+5709,Guyot de Merville (Michel),Médecin de l'esprit (Le),comédie,1,FALSE,prose,FALSE
+5710,Anonyme,Médecin de village (Le),comédie,1,FALSE,prose,TRUE
+5711,Boursault (Edme),Médecin volant (Le),comédie,1,FALSE,vers,FALSE
+5712,Du Fresny (Charles),Négligent (Le),comédie,3,TRUE,prose,TRUE
+5713,Raisin (Jacques),Niais de Sologne (Le),comédie,1,FALSE,prose,FALSE
+5714,Dancourt (Florent Carton dit),Notaire obligeant (Le),comédie,3,FALSE,prose,FALSE
+5715,Tristan L'Hermite,Parasite (Le),comédie,5,FALSE,vers,FALSE
+5716,"Launay, De",Paresseux (Le),comédie,3,TRUE,vers,FALSE
+5717,Champmeslé (Charles Chevillet dit),Parisien (Le),comédie,5,FALSE,vers,FALSE
+5718,Pellegrin (Simon-Joseph),Pastor-fido (Le),pastorale héroïque,3,TRUE,vers,FALSE
+5719,Pellegrin (Simon-Joseph),Père intéressé ou les Vrais amis (Le),comédie,5,FALSE,vers,FALSE
+5720,Anonyme,Père supposé (Le),comédie,1,FALSE,,FALSE
+5721,Raisin (Jacques),Petit homme de la foire (Le),comédie,1,FALSE,prose,FALSE
+5722,Anonyme,Petit maître de campagne ou le Vicomte de Génicourt (Le),comédie,1,FALSE,prose,FALSE
+5723,Marivaux (Pierre de),Petit-maître corrigé (Le),comédie,3,FALSE,prose,FALSE
+5724,Lesage (Alain-René),Point d'honneur (Le),comédie,5,FALSE,prose,FALSE
+5725,Boissy (Louis de),Pouvoir de la sympathie (Le),comédie,3,FALSE,vers,FALSE
+5726,Aigueberre (Jean Dumas d'),Prince de Noisy (Le),comédie héroïque,3,TRUE,prose,TRUE
+5727,Dancourt (Florent Carton dit),Prix de l'arquebuse (Le),comédie,1,FALSE,prose,TRUE
+5728,Fuzelier (Louis),Procès des Sens (Le),comédie,1,FALSE,vers,FALSE
+5729,"La Grange (ou Lagrange, Nicolas [de])",Rajeunissement inutile (Le),comédie,3,FALSE,vers,TRUE
+5730,La Fontaine (Jean de),Rendez-vous (Le),comédie,1,FALSE,vers,FALSE
+5731,Baron (Michel Boyron dit),Rendez-vous des Tuileries ou le Coquet trompé (Le),comédie,3,TRUE,prose,TRUE
+5732,Voisenon (Claude-Henri de Fusée de),Retour de l'Ombre de Molière (Le),comédie,1,FALSE,vers,FALSE
+5733,Poisson (Philippe),Réveil d'Épiménide (Le),comédie,3,TRUE,vers,FALSE
+5734,Anonyme,Rival de son maître (Le),comédie,5,FALSE,vers,FALSE
+5735,Desforges,Rival secrétaire (Le),comédie,1,TRUE,vers,FALSE
+5736,Dancourt (Florent Carton dit),"Second chapitre du ""Diable boiteux"" (Le)",comédie,2,TRUE,prose,TRUE
+5737,"Palaprat (Jean de, sieur de Bigot)",Secret révélé (Le),comédie,1,FALSE,prose,FALSE
+5738,Montfleury (Antoine Jacob dit),Semblable à soi-même (Le),comédie,1,FALSE,vers,FALSE
+5739,Brueys (David-Augustin de),Sot toujours sot ou le Marquis paysan (Le),comédie,1,FALSE,prose,FALSE
+5740,"Hauteroche (Noël Lebreton, sieur de)",Souper mal apprêté (Le),comédie,1,FALSE,vers,FALSE
+5741,La Motte (Antoine Houdar de),Talisman (Le),comédie,1,FALSE,prose,TRUE
+5742,Legrand (Marc-Antoine),Temps présent ou le Triomphe du temps présent (Le),comédie,1,FALSE,prose,TRUE
+5743,Anonyme,Triomphe de l'hiver (Le),comédie,1,FALSE,prose,FALSE
+5744,La Fontaine (Jean de),Veau perdu (Le),comédie,1,FALSE,prose,FALSE
+5745,Dancourt (Florent Carton dit),Vert galant (Le),comédie,1,FALSE,prose,TRUE
+5746,Donneau de Vizé (Jean),Vieillard couru ou les Différents caractères des femmes (Le),comédie,5,FALSE,prose,FALSE
+5747,"Longchamp (Charlotte Legrand, épouse Pitel de)",Voleur ou Titapapouf (Le),comédie,1,FALSE,prose,FALSE
+5748,L'Affichard (Thomas),Acteurs déplacés ou l'Amant comédien (Les),comédie,1,TRUE,prose,TRUE
+5749,Baron (Michel Boyron dit),Adelphes ou L'École des pères (Les),comédie,5,FALSE,vers,FALSE
+5750,Dancourt (Florent Carton dit),Agioteurs (Les),comédie,3,FALSE,prose,FALSE
+5751,Aunillon (Pierre-Charles-Fabiot),Amants déguisés (Les),comédie,3,FALSE,prose,FALSE
+5752,Molière (Jean-Baptiste Poquelin dit),Amants magnifiques (Les),comédie-ballet,5,TRUE,prose,TRUE
+5753,Legrand (Marc-Antoine),Amants ridicules (Les) ou Les Triomphes du temps passé,comédie,1,FALSE,vers,FALSE
+5754,Donneau de Vizé (Jean),Amours de Vénus et d'Adonis (Les),tragédie,5,TRUE,vers,TRUE
+5755,Fuzelier (Louis),Amusements de l'automne ou les Temples d'Éphèse et de Gnide (Les),comédie,4,TRUE,prose,TRUE
+5756,"Hauteroche (Noël Lebreton, sieur de)",Bourgeoises de qualité (Les),comédie,5,FALSE,vers,FALSE
+5757,"Saint-Glas (Pierre de, abbé de Saint-Ussans)",Bouts-rimés (Les),comédie,1,FALSE,prose,FALSE
+5758,Roy (Pierre-Charles) ; La Font (Joseph de),Captifs (Les),comédie,3,TRUE,vers,TRUE
+5759,Fagan (Barthélemy-Christophe),Caractères de Thalie (Les),comédie,3,TRUE,prose / vers,TRUE
+5761,Montauban (Jacques Pousset de),"Charmes de Félicie, tirés de la Diane de Montemayor (Les)",pastorale,5,FALSE,vers,TRUE
+5762,Piron (Alexis),Courses de Tempé (Les),pastorale,1,FALSE,vers,TRUE
+5763,Corneille (Thomas) ; Donneau de Vizé (Jean),Dames vengées ou la Dupe de soi-même (Les),comédie,5,FALSE,prose,FALSE
+5764,Dancourt (Florent Carton dit),Eaux de Bourbon (Les),comédie,1,FALSE,prose,TRUE
+5765,Brueys (David-Augustin de) ; Palaprat (Jean de),Empiriques (Les),comédie,3,FALSE,prose,FALSE
+5766,Baron (Michel Boyron dit),Enlèvements (Les),comédie,1,FALSE,prose,FALSE
+5767,Guyot de Merville (Michel),Époux réunis ou la Veuve fille et femme (Les),comédie,5,FALSE,vers,FALSE
+5768,Molière (Jean-Baptiste Poquelin dit),Fâcheux (Les),comédie-ballet,3,TRUE,vers,TRUE
+5769,Dancourt (Florent Carton dit),Fêtes du cours (Les),comédie,1,TRUE,prose,TRUE
+5770,Baron (Michel Boyron dit),Fontanges maltraitées ou les Vapeurs (Les),comédie,1,FALSE,prose,FALSE
+5771,Poisson (Raymond),Fous divertissants (Les),comédie,3,FALSE,vers,TRUE
+5772,Champmeslé (Charles Chevillet dit),Fragments de Molière (Les),comédie,2,FALSE,prose,FALSE
+5773,Champmeslé (Charles Chevillet dit),Grisettes ou Crispin chevalier (Les),comédie,1,FALSE,vers,FALSE
+5774,Brie (de),Héraclides (Les),tragédie,5,FALSE,vers,FALSE
+5775,Danchet (Antoine),Héraclides (Les),tragédie,5,FALSE,vers,FALSE
+5776,Champmeslé (Charles Chevillet dit),Joueurs (Les),comédie,5,FALSE,vers,FALSE
+5777,Le Clerc de La Bruère (Charles-Antoine),Mécontents (Les),comédie,1,TRUE,vers,TRUE
+5778,Saint-Yon (pièce attribuée à Palaprat (Jean),Mœurs du temps (Les) ou Les Façons du temps,comédie,5,FALSE,prose,FALSE
+5779,Boursault (Edme),Mots à la mode (Les),comédie,1,FALSE,vers,FALSE
+5780,Boursault (Edme),Nicandres ou les Menteurs qui ne mentent point (Les),comédie,3,FALSE,vers,FALSE
+5781,"Hauteroche (Noël Lebreton, sieur de)",Nouvellistes (Les),comédie,1,FALSE,prose,FALSE
+5782,Anonyme,Petits Maîtres d'été (Les),comédie,1,FALSE,prose,FALSE
+5783,Destouches (Philippe Néricault dit),Philosophes amoureux (Les),comédie,5,FALSE,vers,FALSE
+5784,Poisson (Raymond),Pipeurs ou les Femmes coquettes (Les),comédie,5,FALSE,vers,FALSE
+5785,L'Affichard (Thomas); Allainval (Léonor-Jean-Christine Soulas d'),Réjouissances publiques ou le Gratis (Les),comédie,1,FALSE,prose,TRUE
+5786,Anonyme,Rivaux d'eux-mêmes (Les),comédie,1,FALSE,vers,FALSE
+5787,Marivaux (Pierre de),Serments indiscrets (Les),comédie,5,FALSE,prose,FALSE
+5788,Anonyme,Sœurs rivales (Les),comédie,1,FALSE,vers,FALSE
+5789,Aigueberre (Jean Dumas d'),"Trois spectacles (Les) ou Polixène, tragédie, L'Avare amoureux, comédie et Pan et Doris, pastorale héroïque",tragédie-comédie-pastorale héroïque,3,TRUE,prose / vers,TRUE
+5790,Danchet (Antoine),Tyndarides (Les),tragédie,5,FALSE,vers,FALSE
+5791,Anonyme,Usuriers (Les),comédie,1,FALSE,vers,FALSE
+5792,Desmarets de Saint-Sorlin (Jean),Visionnaires (Les),comédie,5,FALSE,vers,FALSE
+5793,Fagan (Barthélemy-Christophe),Lucas et Perrette,comédie,1,FALSE,prose,TRUE
+5794,Caux de Montlebert (Gilles de),Lysimachus,tragédie,5,FALSE,vers,FALSE
+5795,Dancourt (Florent Carton dit),Madame Artus,comédie,5,FALSE,vers,FALSE
+5796,Chateaubrun (Jean-Baptiste Vivien de),Mahomet second,tragédie,5,FALSE,vers,FALSE
+5797,Nadal (Augustin),Mariamne,tragédie,5,FALSE,vers,FALSE
+5798,Tronchin (François),"Marie Stuart, reine d'Écosse",tragédie,5,FALSE,vers,FALSE
+5799,Boursault (Edme),"Marie Stuart, reine d'Écosse ",tragédie,5,FALSE,vers,FALSE
+5800,La Chaussée (Pierre-Claude),Maximien,tragédie,5,FALSE,vers,FALSE
+5801,Deschamps (François-Michel-Chrétien),Médus,tragédie,5,FALSE,vers,FALSE
+5802,La Grange-Chancel (François-Joseph de),Méléagre,tragédie,5,FALSE,vers,FALSE
+5803,Dancourt (Florent Carton dit),Merlin déserteur,comédie,1,FALSE,prose,FALSE
+5804,Dancourt (Florent Carton dit),Merlin la Chaconne,comédie,3,FALSE,,TRUE
+5805,"La Tuillerie (Jean-François Juvenon de La Tuillerie, dit)",Merlin peintre,comédie,1,FALSE,prose,FALSE
+5806,Ferrier de la Martinière (Louis),Montézume dernier roi du Mexique,tragédie,5,FALSE,vers,FALSE
+5807,Belin (François),Mustapha et Zéangir,tragédie,5,FALSE,vers,FALSE
+5808,Guérin d'Estriché (Nicolas-Armand-Martial),Myrtil et Mélicerte,pastorale héroïque,3,TRUE,vers,TRUE
+5809,Danchet (Antoine),Nitétis,tragédie,5,FALSE,vers,FALSE
+5810,Anonyme,Nitocris,tragédie,5,FALSE,vers,FALSE
+5811,La Motte (Antoine Houdar de),Œdipe,tragédie,5,FALSE,vers,FALSE
+5812,Corneille (Pierre),Œdipe,tragédie,5,FALSE,vers,FALSE
+5813,"Boyer (Claude, abbé) ; Le Clerc (Michel)",Oreste,tragédie,5,FALSE,vers,FALSE
+5814,La Grange-Chancel (François-Joseph de),Oreste et Pylade,tragédie,5,FALSE,vers,FALSE
+5815,Corneille (Pierre),Othon,tragédie,5,FALSE,vers,FALSE
+5816,Saint-Foix (Germain-François Poullain de),Pandore,comédie,1,FALSE,vers,TRUE
+5817,Pousset de Montauban (Jacques),Panurge ou Les Aventures et le mariage de Panurge,comédie,5,FALSE,,TRUE
+5818,Pellegrin (Simon-Joseph),Pélopée,tragédie,5,FALSE,vers,FALSE
+5820,Boursault (Edme),Phaéton,comédie,5,FALSE,vers,FALSE
+5821,Cahusac (Louis de),Pharamond,tragédie,5,FALSE,vers,FALSE
+5822,Campistron (Jean Galbert de),Phocion,tragédie,5,FALSE,vers,FALSE
+5823,Legrand (Marc-Antoine),Plutus,comédie,3,FALSE,vers,TRUE
+5824,Pellegrin (Simon-Joseph),Polydore,tragédie,5,FALSE,vers,FALSE
+5825,Genest (Charles-Claude),Polymneste ou Polymnestre,tragédie,5,FALSE,vers,FALSE
+5826,La Fosse (Antoine de),Polixène,tragédie,5,FALSE,vers,FALSE
+5827,Molière (Jean-Baptiste Poquelin dit),Psyché,tragédie,5,TRUE,vers,TRUE
+5828,Pradon (Nicolas),Pyrame et Thisbé,comédie,5,FALSE,vers,FALSE
+5829,La Fontaine (Jean de),Ragotin ou le Roman comique,comédie,5,FALSE,vers,FALSE
+5830,Pradon (Nicolas),Régulus,tragédie,5,FALSE,vers,FALSE
+5831,Dancourt (Florent Carton dit),Renaud et Armide,comédie,1,FALSE,prose,TRUE
+5832,La Motte (Antoine Houdar de),Romulus,tragédie,5,FALSE,vers,FALSE
+5833,Richer (Henri),Sabinus et Éponine,tragédie,5,FALSE,vers,FALSE
+5834,Du Fresny (Charles),Sancho Pança,comédie,3,FALSE,prose,TRUE
+5835,Dancourt (Florent Carton dit),Sancho Pança gouverneur,comédie,5,FALSE,vers,TRUE
+5836,Nadal (Augustin),Saül,tragédie,5,FALSE,vers,FALSE
+5838,Pradon (Nicolas),Scipion l'Africain,tragédie,5,FALSE,vers,FALSE
+5839,Gomez (Madeleine-Angélique de),Sémiramis,tragédie,5,FALSE,vers,FALSE
+5840,Crébillon (Prosper Jolyot de),Sémiramis,tragédie,5,FALSE,vers,FALSE
+5841,Longepierre (Hilaire-Bernard de),Sésostris,tragédie,5,FALSE,vers,FALSE
+5842,"La Tuillerie La Tuillerie (Jean-François Juvenon de La Tuillerie, dit)",Soliman,tragédie,5,FALSE,vers,FALSE
+5843,La Grange-Chancel (François-Joseph de),Sophonisbe,tragédie,5,FALSE,vers,FALSE
+5844,Corneille (Thomas),Stilicon,tragédie,5,FALSE,vers,FALSE
+5845,Corneille (Pierre),"Suréna, général des Parthes",tragédie,5,FALSE,vers,FALSE
+5846,Pradon (Nicolas),Tarquin,tragédie,5,FALSE,vers,FALSE
+5847,Morand (Pierre de),Téglis,tragédie,5,FALSE,vers,FALSE
+5848,La Chapelle (Jean de),Téléphonte,tragédie,5,FALSE,vers,FALSE
+5849,Lebrun (Denise),Thélamire,tragédie,5,FALSE,vers,FALSE
+5850,La Fosse (Antoine de),Thésée,tragédie,5,FALSE,vers,FALSE
+5851,Barbier (Marie-Anne),Tomyris,tragédie,5,FALSE,vers,FALSE
+5852,Pellegrin (Simon-Joseph),Tibère,tragédie,5,FALSE,vers,FALSE
+5853,"Brécourt (Guillaume Marcoureau, sieur de Brécourt, dit)",Timon,comédie,1,FALSE,vers,FALSE
+5854,Lesage (Alain-René),Tontine (La),comédie,1,FALSE,prose,FALSE
+5855,Campistron (Jean Galbert de),Tiridate,tragédie,5,FALSE,vers,FALSE
+5856,Riupeirous (Théodore de),Valérien,tragédie,5,FALSE,vers,FALSE
+5857,Dupuy,Varron,comédie,5,FALSE,vers,FALSE
+5858,Campistron (Jean Galbert de),Virginie,tragédie,5,FALSE,vers,FALSE
+5859,Belin (François),"Vononez, roi des Parthes",tragédie,5,FALSE,vers,FALSE
+5860,Crébillon (Prosper Jolyot de),Xerxès ou Xercès,tragédie,5,FALSE,vers,FALSE
+5861,La Chapelle (Jean de),Zaïde,tragédie,5,FALSE,vers,FALSE
+5862,Genest (Charles-Claude),"Zélonide, princesse de Sparte",tragédie,5,FALSE,vers,FALSE
+5863,Anonyme,Zénobie,tragédie,5,FALSE,vers,FALSE
+5865,Corneille (Pierre),Sophonisbe,tragédie,5,FALSE,vers,FALSE

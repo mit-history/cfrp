@@ -2,9 +2,10 @@ Cfrp::Application.routes.draw do
   devise_for :users, :path_names => { :sign_out => 'logout' }
 
   faceting_for :plays
+  faceting_for :registers
+  faceting_for :people
 
   resources :registers
-  # resources :plays
 
   resources :plays do
     collection { post :import }
