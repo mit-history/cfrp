@@ -231,7 +231,6 @@ ActiveRecord::Schema.define(:version => 20140421114457) do
     t.string   "irregular_receipts_name_9"
     t.string   "irregular_receipts_name_10"
     t.integer  "total_receipts_recorded_d"
-    t.integer  "_packed_id",                                :null => false
   end
 
   add_index "registers", ["register_period_id"], :name => "index_registers_on_register_period_id"
