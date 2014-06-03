@@ -11,11 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20140421114457) do
-=======
-ActiveRecord::Schema.define(:version => 20140314184038) do
->>>>>>> bd437cb... Create the PlayTicketSales view to answer questions
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -148,6 +144,11 @@ ActiveRecord::Schema.define(:version => 20140314184038) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "register_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "orientation"
   end
 
   create_table "register_period_seating_categories", :force => true do |t|
@@ -230,6 +231,7 @@ ActiveRecord::Schema.define(:version => 20140314184038) do
     t.string   "irregular_receipts_name_9"
     t.string   "irregular_receipts_name_10"
     t.integer  "total_receipts_recorded_d"
+    t.integer  "_packed_id",                                :null => false
   end
 
   add_index "registers", ["register_period_id"], :name => "index_registers_on_register_period_id"
