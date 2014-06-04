@@ -18,11 +18,8 @@ class RegisterImage < ActiveRecord::Base
       :large => "600x400"
   }
   has_one :register, counter_cache: true
-  validates_attachment_content_type :image,
-    content_type: [ 'image/jpg', 'image/jpeg' ]
-  validates_inclusion_of :orientation, in: ['left', 'recto','verso'],
-    allow_blank: true
-
+  validates_attachment_content_type :image, content_type: [ 'image/jpg', 'image/jpeg' ]
+  validates_inclusion_of :orientation, in: ['left', 'recto','verso'], allow_blank: true
   attr_accessible :orientation, :filepath, :register_id, :image
 end
 
