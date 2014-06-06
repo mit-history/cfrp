@@ -45,7 +45,7 @@ def save_register_image(register_image, orientation)
     print "Register image: #{register_image.inspect} \n"
     register_image.save!
   rescue StandardError => e
-    puts "\nCouldn't save #{register_image.errors.full_messages.join(',')}"
+    puts e.inspect
   end
 
 
@@ -66,7 +66,7 @@ def save_register_image(register_image, orientation)
       print "New register image: #{new_image.inspect} \n"
       new_image.save!
     rescue StandardError => e
-      puts "\nCouldn't save new image" # #{new_image.errors.full_messages.join(',')}"
+      puts e.inspect
     end
   end
 end
