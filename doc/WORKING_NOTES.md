@@ -13,12 +13,12 @@
 # Deployment Procedure:
 
 After:
-# 1) The custom entry form can preview, add, and update register_images paperclip images,
-2) The activeadmin views can display and manage paperclip images,
-# 3) You've configured a thumbnail style for a preview,
-# DONE 4) Configured paperclip to use s3 storage via config/initializer/paperclip.rb (look at annotation studio config)
-5) Fixed views that render content to use paperclip paths
-6) Fixed code to use the simplified method of figuring out if an image is recto or verso via something like 
+1. The custom entry form can preview, add, and update register_images paperclip images,
+2. The activeadmin views can display and manage paperclip images,
+3. You've configured a thumbnail style for a preview,
+4. Configured paperclip to use s3 storage via config/initializer/paperclip.rb (look at annotation studio config) [DONE]
+5. Fixed views that render content to use paperclip paths
+6. Fixed code to use the simplified method of figuring out if an image is recto or verso via something like 
 
 class Register
   def recto_image

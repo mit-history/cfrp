@@ -67,7 +67,7 @@
         $(e.currentTarget).val('');
       }
 
-    <% unless @register.register_images[1].nil? %>
+    <% unless @register.recto_image.nil? %>
         $("img#left_hand_page").hide();
         $("img#register_image2").hide();
         $("ul.image-tabs a.back").click(function(e) {

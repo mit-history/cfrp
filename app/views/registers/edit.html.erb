@@ -33,7 +33,7 @@ $(function() {
         //$.cookie("imgHeight", imgHeight);
     }
 
-    // Ensure the container holding the form is reset so we get a scrollbar, 
+    // Ensure the container holding the form is reset so we get a scrollbar,
     // among other things.
     hReset();
 
@@ -62,18 +62,22 @@ $(function() {
     $(".ui-resizable-handle").mouseover(function() {
       $(this).css('cursor', 'move');
     }).mouseout(function() {
-      $(this).css('cursor', 'auto'); 
+      $(this).css('cursor', 'auto');
     });
 });
 </script>
 
   <div id="ri_resizer">
-    <% if !@register.previous.nil? and !@register.previous.register_images[1].nil? %>
-      <img id="left_hand_page" data-src="http://images.cfregisters.org/<%= @register.previous.register_images[1].filepath %>" src="http://images.cfregisters.org/<%= @register.previous.register_images[1].filepath %>" />
+    <% if !@register.left_image.nil? %>
+      <img id="left_hand_page" data-src="<%= @register.left_image.image.url(:original) %>" src="<%= @register.left_image.image.url(:original) %>" />
     <% end %>
-    <img id="register_image" data-src="http://images.cfregisters.org/<%= @register.register_images[0].filepath %>" src="http://images.cfregisters.org/<%= @register.register_images[0].filepath %>" />
-    <% unless @register.register_images[1].nil? %>
-      <img id="register_image2" src="http://images.cfregisters.org/<%= @register.register_images[1].filepath %>" />
+
+    <% unless @register.recto_image.nil? %>
+      <img id="register_image" data-src="<%= @register.recto_image.image.url(:original) %>" src="<%= @register.recto_image.image.url(:original) %>" />
+    <% end %>
+
+    <% unless @register.verso_image.nil? %>
+      <img id="register_image2" src="<%= @register.verso_image.image.url(:original) %>" />
     <% end %>
   </div>
 
