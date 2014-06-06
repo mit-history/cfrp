@@ -156,8 +156,8 @@ ActiveAdmin.register Register do
       f.inputs "Images", :multipart => true do
         f.has_many :register_images, :allow_destroy => true do |ri|
           # binding.pry
-          ri.input :image, :as => :file, :hint => ri.object.filepath.present? \
-            ? ri.template.image_tag("http://images.cfregisters.org/#{ri.object.filepath}", width: "200")
+          ri.input :image, :as => :file, :hint => ri.object.image.present? \
+            ? ri.template.image_tag(ri.object.image.url(:large))
             : ri.template.content_tag(:span, "Pas d'images jusqu'à présent")
           ri.input :orientation, :as => :select, :collection => ['recto','verso','left']
           # binding.pry

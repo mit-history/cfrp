@@ -103,8 +103,6 @@ class Register < ActiveRecord::Base
   facet :author1, joins(:plays).joins(:register_plays).where('register_plays.ordering = 1').group('plays.author')
   facet :author2, joins(:plays).joins(:register_plays).where('register_plays.ordering = 2').group('plays.author')
 
-
-
   def self.unique_seasons
     order(:season).uniq(:season).pluck(:season)
   end
@@ -136,6 +134,51 @@ class Register < ActiveRecord::Base
   def rhp_image_number
     image_filepath = self.register_images[0].filepath
     rhp_image_number = /M119_02_R(\d+)\/M119_02_R(\d+)_(\d+)([rv]).jpg/.match(image_filepath)[3]
+  end
+
+  def recto_image
+    oriented_image = self.register_images.where(orientation: 'recto').first
+    if (!oriented_image.nil?)
+      recto_image = oriented_image
+    else
+      my_first_image = self.register_images[0]
+      if (!my_first_image.nil? && my_first_image.rv_flag == 'r')
+        recto_image = my_first_image
+      else
+        recto_image = nil
+      end
+    end
+    return recto_image
+  end
+
+  def left_image
+    oriented_image = self.register_images.where(orientation: 'left').first
+    if (!oriented_image.nil?)
+      left_image = oriented_image
+    else
+      last_register_verso = self.previous.verso_image
+      if (!last_register_verso.nil? && last_register_verso.rv_flag == 'v')
+        left_image = last_register_verso
+      else
+        left_image = nil
+      end
+    end
+    return left_image
+  end
+
+  def verso_image
+    oriented_image = self.register_images.where(orientation: 'verso').first
+    if (!oriented_image.nil?)
+      verso_image = oriented_image
+    else
+      my_second_image = self.register_images[1]
+      if (!my_second_image.nil? && my_second_image.rv_flag == 'v')
+        verso_image = my_second_image
+      else
+        verso_image = nil
+      end
+    end
+    verso_image
   end
 
   def self.play_authors

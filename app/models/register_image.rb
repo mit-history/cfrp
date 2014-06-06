@@ -21,6 +21,13 @@ class RegisterImage < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: [ 'image/jpg', 'image/jpeg' ]
   validates_inclusion_of :orientation, in: ['left', 'recto','verso'], allow_blank: true
   attr_accessible :orientation, :filepath, :register_id, :image
+
+
+  def rv_flag
+    image_filepath = self.filepath
+    rv_flag = /M[\w\d\_\/]+([rv]).jpg/.match(image_filepath)[1]
+  end
+
 end
 
 # Define thumb styles for paperclip
