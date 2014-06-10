@@ -155,12 +155,10 @@ ActiveAdmin.register Register do
       end
       f.inputs "Images", :multipart => true do
         f.has_many :register_images, :allow_destroy => true do |ri|
-          # binding.pry
+          ri.input :orientation, :as => :select, :collection => ['left','recto','verso',]
           ri.input :image, :as => :file, :hint => ri.object.image.present? \
             ? ri.template.image_tag(ri.object.image.url(:large))
             : ri.template.content_tag(:span, "Pas d'images jusqu'à présent")
-          ri.input :orientation, :as => :select, :collection => ['recto','verso','left']
-          # binding.pry
         end
       end
       f.actions

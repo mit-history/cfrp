@@ -1,7 +1,7 @@
 namespace :filepath do
   desc 'Migrate images to paperclip-managed storage'
   task migrate_to_paperclip: :environment do
-    Register.order(:id).offset(9990).limit(100).each do |register|
+    Register.order(:id).offset(9990).limit(100).find_each do |register|
       print "\n\n============\n #{register.id} \n"
 
 
@@ -66,7 +66,7 @@ def save_register_image(register_image, orientation)
       print "New register image: #{new_image.inspect} \n"
       new_image.save!
     rescue StandardError => e
-      puts e.inspect
+        puts e.inspect
     end
   end
 end

@@ -22,6 +22,7 @@ class RegisterImage < ActiveRecord::Base
   validates_inclusion_of :orientation, in: ['left', 'recto','verso'], allow_blank: true
   attr_accessible :orientation, :filepath, :register_id, :image
 
+  default_scope order('orientation ASC')
 
   def rv_flag
     image_filepath = self.filepath
