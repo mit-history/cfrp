@@ -127,13 +127,13 @@ class Register < ActiveRecord::Base
   end
 
   def volume_number
-    image_filepath = self.register_images[1].filepath
-    volume_number = /M119_02_R(\d+)/.match(image_filepath)[1]
+    image_filename = self.register_images[1].image_filename
+    volume_number = /M111?9_02_R(\d+)/.match(image_filename)[1]
   end
 
   def rhp_image_number
-    image_filepath = self.register_images[0].filepath
-    rhp_image_number = /M119_02_R(\d+)\/M119_02_R(\d+)_(\d+)([rv]).jpg/.match(image_filepath)[3]
+    image_filename = self.register_images[0].image_filename
+    rhp_image_number = /M111?9_02_R(\d+)_(\d+)([rv]).jpg/.match(image_filename)[2]
   end
 
   def recto_image

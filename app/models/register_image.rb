@@ -24,9 +24,16 @@ class RegisterImage < ActiveRecord::Base
 
   default_scope order('orientation ASC')
 
+  def image_filename
+    if !self.filepath.nil?
+      filepath = self.filepath
+    else
+      filepath = self.image_file_name
+    end
+  end
+
   def rv_flag
-    image_filepath = self.filepath
-    rv_flag = /M[\w\d\_\/]+([rv]).jpg/.match(image_filepath)[1]
+    rv_flag = /M[\w\d\_\/]+([rv]).jpg/.match(self.image_filename)[1]
   end
 
 end
