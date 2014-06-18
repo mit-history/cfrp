@@ -72,7 +72,7 @@ namespace :img do
             puts ri_v.inspect
           end
 
-          if (!register.previous.nil?)
+          if (!register.previous.nil? and !register.previous.verso_image.nil?)
             ri_l = RegisterImage.new(
               orientation: 'left',
               register_id: register.id,
