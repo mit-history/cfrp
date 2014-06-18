@@ -33,7 +33,7 @@ class RegisterImage < ActiveRecord::Base
   end
 
   def rv_flag
-    rv_flag = /M[\w\d\_\/]+([rv]).jpg/.match(self.image_filename)[1]
+    rv_flag = /M[\w\d\_\/]+([rv]).jpg/.match(self.image_file_name)[1]
   end
 
 end
