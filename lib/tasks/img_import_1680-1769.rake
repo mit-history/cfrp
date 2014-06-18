@@ -28,6 +28,12 @@ namespace :img do
 
       # Go through every image in the directory, creating a register and two ri's for each.
       bucket.objects.with_prefix(season_dir).collect(&:key).sort.each do |recto_file|
+        # skip ones that have already been done
+        recto_file =~ /(M119_02_R\d{2}_\d{3}r\.jpg)/
+        puts $1
+        next if RegisterImage.find_by_image_file_name($1)
+        puts "...not found, processing..."
+
         if recto_file =~ /M119_02_R(\d{2})_(\d{3})r\.jpg/
           register = Register.new(
             {

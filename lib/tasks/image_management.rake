@@ -3,7 +3,10 @@ namespace :filepath do
   task migrate_to_paperclip: :environment do
 
     Register.find_each do |register|
+      # if there's an orientation on the first image, it's been processed; skip it.
       print "\n\n============\n #{register.id} \n"
+      next if (!register.register_images[0].orientation.nil?)
+      puts "...not processed yet, processing..."
       recto = register.recto_image
       verso = register.verso_image
       left = register.left_image
