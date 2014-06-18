@@ -1,5 +1,4 @@
 require 'date'
-# require 'aws-sdk'
 
 namespace :img do
   desc "Imports Puce & Plume Images for seasons from 1680 to 1744"
@@ -19,7 +18,7 @@ namespace :img do
 
     def season_images(dirnum, season, period)
       bucket_url = "https://s3.amazonaws.com/last-six-seasons"
-      season_dir = "M1119_02_R#{dirnum}"
+      season_dir = "M119_02_R#{dirnum}"
       year = season.split("-")[0].to_i
       period = RegisterPeriod.find_by_period(period)
       date = DateTime.parse("#{year}-05-01")
@@ -28,8 +27,8 @@ namespace :img do
       bucket = s3.buckets[bucket_name] # no request made
 
       # Go through every image in the directory, creating a register and two ri's for each.
-      bucket.objects.with_prefix(season_dir).collect(&:key).each do |recto_file|
-        if recto_file =~ /M1119_02_R(\d{2})_(\d{3})r\.jpg/
+      bucket.objects.with_prefix(season_dir).collect(&:key).sort.each do |recto_file|
+        if recto_file =~ /M119_02_R(\d{2})_(\d{3})r\.jpg/
           register = Register.new(
             {
               date:                  date,
@@ -42,7 +41,7 @@ namespace :img do
 
           imgnum = $2
           recto_url = bucket_url + '/' + recto_file
-          verso_file = season_dir + '/' + "M1119_02_R#{dirnum}_#{"%03d" % (imgnum.to_i + 1)}v.jpg"
+          verso_file = season_dir + '/' + "M119_02_R#{dirnum}_#{"%03d" % (imgnum.to_i + 1)}v.jpg"
           verso_url = bucket_url + '/' + verso_file
 
           puts "\n Register:"
@@ -71,6 +70,16 @@ namespace :img do
            	)
             ri_v.save
             puts ri_v.inspect
+          end
+
+          if (!register.previous.nil?)
+            ri_l = RegisterImage.new(
+              orientation: 'left',
+              register_id: register.id,
+              image: register.previous.verso_image.image.url
+            )
+            ri_r.save
+            puts ri_r.inspect
           end
 
           puts "\n"

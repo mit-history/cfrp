@@ -128,12 +128,12 @@ class Register < ActiveRecord::Base
 
   def volume_number
     image_filename = self.register_images[1].image_filename
-    volume_number = /M111?9_02_R(\d+)/.match(image_filename)[1]
+    volume_number = /M119_02_R(\d+)/.match(image_filename)[1]
   end
 
   def rhp_image_number
     image_filename = self.register_images[0].image_filename
-    rhp_image_number = /M111?9_02_R(\d+)_(\d+)([rv]).jpg/.match(image_filename)[2]
+    rhp_image_number = /M119_02_R(\d+)_(\d+)([rv]).jpg/.match(image_filename)[2]
   end
 
   def recto_image
@@ -155,13 +155,15 @@ class Register < ActiveRecord::Base
     oriented_image = self.register_images.where(orientation: 'left').first
     if (!oriented_image.nil?)
       left_image = oriented_image
-    else
+    elsif (!self.previous.nil?)
       last_register_verso = self.previous.verso_image
       if (!last_register_verso.nil? && last_register_verso.rv_flag == 'v')
         left_image = last_register_verso
       else
         left_image = nil
       end
+    else
+      left_image = nil
     end
     return left_image
   end

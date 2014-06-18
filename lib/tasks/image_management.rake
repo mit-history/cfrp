@@ -1,10 +1,9 @@
 namespace :filepath do
   desc 'Migrate images to paperclip-managed storage'
   task migrate_to_paperclip: :environment do
-    Register.order(:id).offset(9990).limit(10).find_each do |register|
+
+    Register.find_each do |register|
       print "\n\n============\n #{register.id} \n"
-
-
       recto = register.recto_image
       verso = register.verso_image
       left = register.left_image
