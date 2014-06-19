@@ -157,7 +157,8 @@ class Register < ActiveRecord::Base
       left_image = oriented_image
     elsif (!self.previous.nil?)
       last_register_verso = self.previous.verso_image
-      if (!last_register_verso.nil? && last_register_verso.rv_flag == 'v')
+      # binding.pry
+      if (!last_register_verso.nil? && !last_register_verso.rv_flag.nil? && last_register_verso.rv_flag == 'v')
         left_image = last_register_verso
       else
         left_image = nil

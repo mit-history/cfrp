@@ -1,8 +1,7 @@
 namespace :filepath do
   desc 'Migrate images to paperclip-managed storage'
   task migrate_to_paperclip: :environment do
-
-    Register.find_each do |register|
+    Register.two_images.find_each do |register|
       # if there's an orientation on the first image, it's been processed; skip it.
       print "\n\n============\n #{register.id} \n"
       next if (!register.register_images[0].orientation.nil?)
@@ -29,28 +28,25 @@ namespace :filepath do
         create_register_image(register, left, 'left')
       end
     end
-    # puts
-  end
-end
-
-def save_register_image(register_image, orientation)
-  begin
-    print "\n******* \n Existing\n"
-    print "Register: #{register_image.register_id} \n"
-    print "Register image: #{register_image.id} \n"
-    print "Register image filepath: #{register_image.filepath} \n"
-    print "Requested orientation: #{orientation} \n"
-    print "Register image rv flag: #{register_image.rv_flag} \n"
-
-    register_image.orientation = orientation
-    register_image.image = "http://images.cfregisters.org/#{register_image.filepath}"
-    print "Register image: #{register_image.inspect} \n"
-    register_image.save!
-  rescue StandardError => e
-    puts e.inspect
   end
 
+  def save_register_image(register_image, orientation)
+    begin
+      print "\n******* \n Existing\n"
+      print "Register: #{register_image.register_id} \n"
+      print "Register image: #{register_image.id} \n"
+      print "Register image filepath: #{register_image.filepath} \n"
+      print "Requested orientation: #{orientation} \n"
+      print "Register image rv flag: #{register_image.rv_flag} \n"
 
+      register_image.orientation = orientation
+      register_image.image = "http://images.cfregisters.org/#{register_image.filepath}"
+      print "Register image: #{register_image.inspect} \n"
+      register_image.save!
+    rescue StandardError => e
+      puts e.inspect
+    end
+  end
   def create_register_image(register, register_image, orientation)
     begin
       print "\n++++++ \n New\n"
@@ -63,12 +59,12 @@ def save_register_image(register_image, orientation)
         orientation: orientation,
         register_id: register.id,
         image: "http://images.cfregisters.org/#{register_image.filepath}"
-      )
+        )
 
       print "New register image: #{new_image.inspect} \n"
       new_image.save!
     rescue StandardError => e
-        puts e.inspect
+      puts e.inspect
     end
   end
 end
