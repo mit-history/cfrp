@@ -235,7 +235,7 @@ ActiveAdmin.setup do |config|
         end
 
         def per_page
-          return 1000 if %w(text/csv application/xml application/json).include?(request.format)
+          return 2000 if %w(text/csv application/xml application/json).include?(request.format)
 
           return max_per_page if active_admin_config.paginate == false
 
