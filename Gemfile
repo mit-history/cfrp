@@ -13,6 +13,7 @@ gem 'paperclip'
 gem 'unicorn'
 gem 'newrelic_rpm'
 gem 'aws-sdk', '~> 1.5.7'
+gem 'delayed_job_active_record'
 
 # jQuery is the default JavaScript library in Rails 3.1
 gem 'jquery-rails'
