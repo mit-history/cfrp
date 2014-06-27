@@ -17,6 +17,8 @@ Cfrp::Application.routes.draw do
 
   resources :play_ticket_sales, only: [:index]
 
+  resources :play_performances, only: [:index]
+
   root to: "admin/registers#index"
 
   # devise_for :admin_users, ActiveAdmin::Devise.config
