@@ -35,8 +35,11 @@ gem 'twitter-bootstrap-rails'
 
 # gem 'repertoire-groups', :git => 'git@github.com:repertoire/Repertoire-Groups.git', :branch => 'bootstrap-flavor'
 gem 'repertoire-groups', '0.0.1', :path => 'vendor/repertoire-groups-0.0.1' #, :require => 'repertoire-groups'
-gem 'repertoire-faceting', '~>0.7.0'
+gem 'repertoire-faceting', '~>0.7.4'
 gem 'acts-as-taggable-on'
+
+# enable CORS, for use in CFRP data-essays
+gem 'rack-cors', :require => 'rack/cors'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators

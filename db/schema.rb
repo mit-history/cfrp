@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140421114457) do
+ActiveRecord::Schema.define(:version => 20140619103352) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -128,6 +128,7 @@ ActiveRecord::Schema.define(:version => 20140421114457) do
     t.string   "url"
     t.date     "date_de_creation"
     t.boolean  "expert_validated"
+    t.integer  "_packed_id",            :null => false
   end
 
   create_table "register_contributors", :force => true do |t|
@@ -231,9 +232,11 @@ ActiveRecord::Schema.define(:version => 20140421114457) do
     t.string   "irregular_receipts_name_9"
     t.string   "irregular_receipts_name_10"
     t.integer  "total_receipts_recorded_d"
+    t.integer  "_packed_id",                                :null => false
   end
 
   add_index "registers", ["register_period_id"], :name => "index_registers_on_register_period_id"
+  add_index "registers", ["updated_at"], :name => "registers_updated_at_ndx"
   add_index "registers", ["verification_state_id"], :name => "index_registers_on_verification_state_id"
 
   create_table "roles", :force => true do |t|
