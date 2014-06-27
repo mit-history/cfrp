@@ -22,24 +22,61 @@ h2 {
 }
 
 div#results {
-  margin: 20px;
+  margin: 10px;
+  text-align: center;
+  overflow-y:hidden; /** CY: necessary to enable facet value scrollers **/
 }
 
 div#results_nav {
   text-align: center;
-  margin-bottom: 12px;
+  margin: 12px;
 }
 
-div#results div.rep {
-  margin-bottom: 40px;
+/* feedback during visualization aggregation */
+div#results.loading div.rep {
+  background: url(/images/spinner_lg.gif) no-repeat center center;
 }
 
-.rep div.facet {
+div.rep div.facet {
   width: 300px;
+  display: inline-block;
 }
 
-div.facet {
-  display: inline-block;
+/* Three column layout. */
+/* [ Change as necessary to fit existing CFRP practice ] */
+div.container > div.sidebar {
+  position: relative;
+  top: 0;
+  left:auto;
+}
+
+div.left {
+  float:left;
+}
+
+div.right {
+  float:right;
+}
+
+div.container > div.content {
+  margin: 0 310px; /* width of sidebars + 10px of margin */
+}
+
+/** Visualization Presentation **/
+.days path,
+.weeks path,
+.months path {
+  stroke: #fff;
+  stroke-width: 1px;
+}
+
+.months text {
+  font-size: 11px;
+}
+
+.axis text {
+  font-size: 7px;
+  font-weight: 300;
 }
 
 div.register_data {

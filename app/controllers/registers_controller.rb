@@ -42,19 +42,23 @@ class RegistersController < ApplicationController
     limit  = params[:limit]  || false
     offset = params[:offset] || false
 
-    @total = base.refine(filter)
-    @refined = @total.limit(limit) if limit
-    @refined = @refined.offset(offset) if offset
-    @results = @refined.to_a
+    if stale?(base.facet_cache_key)
+      @refined = base.refine(filter)
 
-    @count = @total.count
+      @results = @refined
+      @refined = @results.limit(limit) if limit
+      @refined = @results.offset(offset) if offset
 
-    respond_to do |format|
-      format.html { render @results, :layout => false }
-      format.json { render :json => @results }
+      @tickets_by_date = @refined.joins(:ticket_sales).select(['EXTRACT(MONTH FROM date) AS month',
+                                                               'EXTRACT(DAY FROM date) AS day',
+                                                               'SUM(total_sold) AS tickets']).group('month', 'day')
+
+      respond_to do |format|
+        format.html { render @results, :layout => false }
+        format.json { render :json => @tickets_by_date }
+      end
     end
   end
-
 
   protected
   def base
