@@ -3,7 +3,7 @@
 // Christopher York, June 2014
 
 //
-// Should be presented to the CR people, and interated as appropriate. Points to note:
+// Should be presented to the CR people, and iterated as appropriate. Points to note:
 //
 //   - current rollup is via date within the year, but this data seems to orient more to
 //     days in the week, and the catholic saints' calendar. Need to devise a way of aggregating
@@ -11,13 +11,17 @@
 //
 //   - an x/y calendar is almost certainly better for than a radial visualization. However,
 //     we need a way to visualize aggregations across many years (i.e. the standard calendar
-//     format will not work.)
+//     format will not work since days of the week are not stable across years.)
 //
 //   - repertoire-faceting is a faceted search tool, not an OLAP tool: it's for finding a needle
-//     in a haystack, not slicing and dicing the haystack to look for correlations. So data
-//     analysis should probably be done via the database tables, and suggestive visualizations
-//     then connected as endpoints to the faceted browser.
+//     in a haystack, not slicing and dicing the haystack to look for correlations. Repertoire-
+//     faceting's bitset data types could be extended to cover OLAP aggregations and use cases,
+//     but this is an open task.
 //
+//   - N.B. Data is bucketed into 9 equal-sized bins, which are then assigned colors. This gives
+//     a good color dispersal for the visualization at any refinement. In reality, the data is
+//     more homogeneous than this implies. Augmenting the color legend to show the distribution
+//     of *values* (not items) would clarify this for users.
 
 
 //= require d3.v3.min.js
@@ -41,7 +45,9 @@ visualize_registers = function(registers, $elem, options) {
       shortFormat = d3.time.format("%d %B"),
       numFormat = d3.format("0,000");
 
-  /* map everything onto a 1904 - a leap year */
+  /* map everything onto a 1904 - a leap year.
+     n.b. aggregating dates across years has many edge cases. this approach
+         works, but converting data to a leap-week calendar might be simpler. */
   var beginDate = format.parse('1904-01-01'),
       endDate = format.parse('1905-01-01'),
       plotDate = function (d) {
@@ -52,9 +58,10 @@ visualize_registers = function(registers, $elem, options) {
   var rotation = Math.PI,
       rScale = d3.time.scale()
                  .domain([beginDate, endDate])
-                 .range([2.0 * Math.PI + rotation, rotation]),
+                 .range([2.0 * Math.PI + rotation, rotation])
+                 .clamp(true),
       colors = colorbrewer.RdYlBu[9],
-      colorScale = d3.scale.quantile().range(colors);
+      colorScale = d3.scale.quantile().range(colors.reverse());
 
   var rings = { months : {
                   agg : function(d) { return d.month; },
@@ -64,13 +71,16 @@ visualize_registers = function(registers, $elem, options) {
                   title : function(d) { return monthNames[+d.key] + " : " + numFormat(d.values) + " billets"; },
                   label : function(d) { return monthNames[+d.key] } },
                 weeks : {
-                  agg : function(d) { return Math.min(52, d3.time.weekOfYear(plotDate(d))) - 1; },
-                  deagg : function(week) { return d3.time.week.offset(beginDate, week); },
+                  // N.B. d3 weekOfYear is equivalent to sundayOfYear - not what we mean!
+                  //      also, after week 7 these results vary slightly from the equivalent SQL query
+                  //      due to the presence of Feb 29 (the leap day).
+                  agg : function(d) { return Math.floor( d3.time.dayOfYear(plotDate(d)) / 7); },
+                  deagg : function(week) { return d3.time.day.offset(beginDate, week * 7); },
                   arc : d3.svg.arc().outerRadius(radius - 50)
                                     .innerRadius(radius - 80),
                   title : function(d) { return "semaine " + (+d.key + 1) + " : " + numFormat(d.values) + " billets"; } },
                 days : {
-                  agg : function(d) { return Math.min(365, d3.time.dayOfYear(plotDate(d))) - 1; },
+                  agg : function(d) { return d3.time.dayOfYear(plotDate(d)); },
                   deagg : function(day) { return d3.time.day.offset(beginDate, day); },
                   arc : d3.svg.arc().outerRadius(radius - 10)
                                     .innerRadius(radius - 40),
