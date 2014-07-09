@@ -49,6 +49,22 @@ class RegistersController < ApplicationController
       @refined = @results.limit(limit) if limit
       @refined = @results.offset(offset) if offset
 
+      # N.B. Doing this as a faceted query happens to capture the semantics we want (aggregation
+      #      over different seating categories but not across all performances in a double bill ticket).
+      #      In bare SQL, separating refinement and aggregation into a subquery is the most direct
+      #      translation, e.g.:
+      #
+      #        SELECT EXTRACT(MONTH FROM date) AS month, EXTRACT(DAY FROM date) AS day, SUM(total_sold) AS tickets
+      #        FROM registers JOIN ticket_sales ON (registers.id = ticket_sales.register_id)
+      #        WHERE registers.id IN
+      #              (SELECT register_id
+      #               FROM register_plays
+      #               JOIN plays ON (plays.id = play_id)
+      #               WHERE plays.author = 'Desforges'
+      #               AND ordering = 1)
+      #        GROUP BY month, day
+      #        ORDER BY month, day;
+      #
       @tickets_by_date = @refined.joins(:ticket_sales).select(['EXTRACT(MONTH FROM date) AS month',
                                                                'EXTRACT(DAY FROM date) AS day',
                                                                'SUM(total_sold) AS tickets']).group('month', 'day')
