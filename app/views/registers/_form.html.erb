@@ -96,17 +96,21 @@
         <!-- Images -->
         <div class="row">
             <div class="span12">
-              <% if !@register.register_images[1].nil? %>
               <div class="tabbable tabs-below">
                 <ul class="nav nav-tabs image-tabs">
+                  <% if !@register.left_image.nil? %>
                   <li><a class='left' href="">Page de gauche</a></li>
+                  <% end %>
+                  <% if !@register.recto_image.nil? %>
                   <li><a class='front' href="">Page de droite</a></li>
+                  <% end %>
+                  <% if !@register.rhp_image_number.nil? %>
                   <li class="pull-right">
                       <%= link_to "Open Flip Book in New Window", "http://hyperstudio.mit.edu/cfrp/flip_books/R#{@register.volume_number}/index.html#page/#{@register.rhp_image_number}/mode/2up", :target => 'top' %>
                   </li>
+                  <% end %>
                 </ul>
               </div>
-              <% end %>
           </div><!-- End span12-->
         </div><!-- End row -->
         <!-- End Images -->
