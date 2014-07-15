@@ -139,8 +139,8 @@ class Register < ActiveRecord::Base
   def rhp_image_number
     if (!self.recto_image.nil?)
       image_filename = self.recto_image.image_file_name
-      if (/M119_02_R(\d+)_(\d+)([rv]).jpg/.match(image_filename)[2])
-        rhp_image_number = /M119_02_R(\d+)_(\d+)([rv]).jpg/.match(image_filename)[2]
+      if (/M119_02_R(\d+)_(\d+)([rv])?.jpg/.match(image_filename)[2])
+        rhp_image_number = /M119_02_R(\d+)_(\d+)([rv])?.jpg/.match(image_filename)[2]
       else
         rhp_image_number = nil
       end
