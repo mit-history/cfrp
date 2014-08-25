@@ -93,15 +93,26 @@ class Register < ActiveRecord::Base
   scope :one_image, image_count(1)
   scope :no_image, image_count(0)
 
-  facet :season
-  facet :weekday
   facet :season, order(:season)
   # Thank you: http://postgresql.1045698.n5.nabble.com/GENERAL-sort-character-data-in-arbitrary-order-td1855410.html
   facet :weekday, order("weekday = 'Dimanche'").order("weekday = 'Samedi'").order("weekday = 'Vendredi'").order("weekday = 'Jeudi'").order("weekday = 'Mercredi'").order("weekday = 'Mardi'").order("weekday = 'Lundi'")
-  facet :title1, joins(:plays).joins(:register_plays).where('register_plays.ordering = 1').group('plays.title')
-  facet :title2, joins(:plays).joins(:register_plays).where('register_plays.ordering = 2').group('plays.title')
-  facet :author1, joins(:plays).joins(:register_plays).where('register_plays.ordering = 1').group('plays.author')
-  facet :author2, joins(:plays).joins(:register_plays).where('register_plays.ordering = 2').group('plays.author')
+  facet :title1, joins(:plays, :register_plays).where('register_plays.ordering = 1').group('plays.title')
+  facet :title2, joins(:plays, :register_plays).where('register_plays.ordering = 2').group('plays.title')
+  facet :author1, joins(:plays, :register_plays).where('register_plays.ordering = 1').group('plays.author')
+  facet :author2, joins(:plays, :register_plays).where('register_plays.ordering = 2').group('plays.author')
+  facet :genre1, joins(:plays, :register_plays).where('register_plays.ordering = 1').group('plays.genre')
+  facet :genre2, joins(:plays, :register_plays).where('register_plays.ordering = 2').group('plays.genre')
+  facet :total_receipts, group("'₤ ' || bucket(total_receipts_recorded_l, 100, 5, 'Inconnu')").order(:total_receipts)
+
+  # Listing seating category ids directly in code is obviously a sub-par approach... however, (a) while the investigators' interpretations
+  # of periods and seating categories is still under transition, I decided it was best to avoid changing the database or adding new columns;
+  # (b) the kinds of aggregations necessary for measures like receipts are not possible with a faceted browser, so best to make it easy to
+  # back and adopt a real multidimensional indexer.
+
+  # see the appropriate migration for definitions of amalgamated sales and bucket
+  facet :parterre_receipts,      joins('JOIN amalgamated_sales ON (registers.id = register_id)').where("section = 'parterre'").group("'₤ ' || bucket(receipts, 100, 5, 'Inconnu')").order(:parterre_receipts)
+  facet :premiere_loge_receipts, joins('JOIN amalgamated_sales ON (registers.id = register_id)').where("section = 'premiere-loge'").group("'₤ ' || bucket(receipts, 100, 5, 'Inconnu')").order(:premiere_loge_receipts)
+
 
   def self.unique_seasons
     order(:season).uniq(:season).pluck(:season)

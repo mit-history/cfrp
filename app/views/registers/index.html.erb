@@ -9,33 +9,119 @@ $().ready(function() {
      mandatory to take advantage of the rest of the faceting framework. It's perfectly possible
      (even pleasant) to build a faceted browser directly on D3 and the JSON facet data feeds. */
 
+  //
+  // Bar chart facet visualization
+  //
+  // Options: As for facet value count widget, plus
+  //   - height
+  //   - width
+  //
+  repertoire.bar_facet = function($facet, options) {
+    var self = repertoire.facet($facet, options);
+
+    var $template_fn = self.render;
+    self.render = function(counts) {
+      var $markup       = $template_fn([]);
+      var values_canvas = $markup.find('.facet .values')[0];
+
+      var bar_offset = 75,
+          right_offset = 15;
+
+      var w = options.width,
+          h = options.height,
+          x = pv.Scale.linear(0, pv.max(counts, function(d) { return d[1] }))
+                      .range(0, w - bar_offset - right_offset),
+          y = pv.Scale.linear(0, counts.length)
+                      .range(0, counts.length * 23)
+
+      var vis = new pv.Panel()
+          .canvas(values_canvas)
+          .width(w).height(h);
+
+      var bar = vis.add(pv.Bar)
+          .data(counts)
+          .top(function() { return y(this.index) })
+          .left(bar_offset)
+          .width(function(d) { return x(d[1]) })
+          .height(18)
+         .event("click", function(d) {
+            var filter = self.refinements(self.facet_name());
+            var context = self.context();
+            context.toggle(self.facet_name(), d[0]);
+            context.trigger('changed');
+            return false;
+           }).cursor("pointer");
+
+         bar.anchor("left").add(pv.Label)
+          .textAlign("right")
+          .textStyle("#555")
+          .text(function(d) { return d[0] });
+
+         var inside = function(d) { return x(d[1]) > 30 };
+
+         bar.anchor("right").add(pv.Label)
+           .textStyle(function(d) { return inside(d) ? "#fff" : "#aaa" } )
+           .textAlign(function(d) { return inside(d) ? "right" : "left" })
+           .text(function(d) { return d[1] });
+
+      vis.render();
+
+      return $markup;
+    };
+
+    // end of faceting widget factory method
+    return self;
+  };
+
+  // Bar facet plugin
+  $.fn.bar_facet = repertoire.plugin(repertoire.bar_facet);
+  $.fn.bar_facet.defaults = {
+    height:    200,
+    width:     300,
+    thickness: 30
+  };
+
+
   /* temporary: delay load until urls parsed */
   repertoire.defaults.delay_loading = true;
 
   $('#registers').facet_context(function() {
     return {
-      search: $("#search").val(),
-      // limit: 10,
-      // offset: 10,
       utf8: "%E2%9C%93"
     }
   });
 
-  $('.facet').facet();
-  $('.nested_facet').nested_facet();
+  // $('.facet').facet();
+  $('#season').facet({ title : "Saison"});
+  $('#author1').facet({ title : "Auteur 1"});
+  $('#title1').facet({ title : "Pièce 1"});
+//  $('#genre1').facet({ title : "Genre 1"});
+  $('#weekday').facet({ title : "Jour de la semaine" });
+  $('#author2').facet({ title : "Auteur 2" });
+  $('#title2').facet({ title : "Pièce 2" });
+//  $('#genre2').facet({ title : "Genre 2"});
 
-  $('#results').results({
-    // limit: 10,
-    // offset: 0
+  $('#total_receipts').bar_facet( { width : 160, height : 600 } );
+  $('#parterre_receipts').bar_facet( { width : 160, height : 600 } );
+  $('#premiere_loge_receipts').bar_facet( { width : 160, height : 600 } );
+
+  // regular list view
+  $('#results').results({ type: 'html' });
+
+  // time-based visualization view
+  $('#timeline').results({
     type: 'json',
     injectors: {
-      /* injectors add custom markup (here, a timeline) to elements in the widget matching the css selector. */
-      /* see the Repertoire Faceting FAQ for further info */
       'div.rep': function(self, registers) {
-        visualize_registers(registers, $(this), { height: 800, width: 600 });
+        visualize_registers(registers, $(this), { height: 600, width: 600 });
       }
     }
   });
+  $('#timeline').hide();
+
+  // script to toggle results views
+  $('#results-tab').click(function() { $('#results').show(); $('#timeline').hide(); });
+  $('#timeline-tab').click(function()  { $('#results').hide(); $('#timeline').show(); });
 
   $('#registers').urls();
 
@@ -43,21 +129,24 @@ $().ready(function() {
 
 </script>
 <div id='registers'>
-  <div class='sidebar left'>
-    <div id='season' class='facet' title='Saison'></div>
-    <div id='title1' class='facet' title='Pièce 1'></div>
-    <div id='author1' class='facet' title='Auteur 1'></div>
+  <div id='results'></div>
+  <div id='timeline'></div>
+  <div id='navbar'><span id="results-tab">liste</span><span id="timeline-tab">graphique</span><img class="spinner" src="/assets/repertoire-faceting/spinner_sm.gif"></img></div>
+  <div id='facets1'>
+    <div id='season' class='facet'></div>
+    <div id='author1' class='facet'></div>
+    <div id='title1' class='facet'></div>
+    <!-- <div id='genre1' class='facet' title='Genre 1'></div> -->
   </div>
-  <div class='sidebar right'>
-    <div id='weekday' class='facet' title='Jour de la semaine'></div>
-    <div id='title2' class='facet' title='Pièce 2'></div>
-    <div id='author2' class='facet' title='Auteur 2'></div>
+  <div id='facets2'>
+    <div id='weekday' class='facet'></div>
+    <div id='author2' class='facet'></div>
+    <div id='title2' class='facet'></div>
+    <!-- <div id='genre2' class='facet' title='Genre 2'></div> -->
   </div>
-  <div class='content'>
-    <div id='results_nav'>Billets vendus, par date</div>
-    <div id='results'>
-      <!-- temporary: feedback during visualization aggregation -->
-      <img src='/assets/repertoire-faceting/spinner_sm.gif'>&nbsp;Loading
-    </div>
+  <div id='facets3'>
+    <div id='total_receipts' class='bar_facet' title='Recettes totales (jours)'></div>
+    <div id='parterre_receipts' class='bar_facet' title='de la parterre'></div>
+    <div id='premiere_loge_receipts' class='bar_facet' title='du première loge'></div>
   </div>
 </div>

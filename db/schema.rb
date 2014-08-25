@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140619103352) do
+ActiveRecord::Schema.define(:version => 20140826120348) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -67,6 +67,22 @@ ActiveRecord::Schema.define(:version => 20140619103352) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0, :null => false
+    t.integer  "attempts",   :default => 0, :null => false
+    t.text     "handler",                   :null => false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "lhp_category_assignments", :force => true do |t|
     t.integer  "register_id",       :null => false
@@ -158,6 +174,7 @@ ActiveRecord::Schema.define(:version => 20140619103352) do
     t.integer  "ordering",            :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "physical_name"
   end
 
   add_index "register_period_seating_categories", ["register_period_id"], :name => "index_register_period_seating_categories_on_register_period_id"

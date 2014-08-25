@@ -39,15 +39,17 @@ class RegistersController < ApplicationController
 
   def results
     filter = params[:filter] || {}
-    limit  = params[:limit]  || false
+    limit  = params[:limit]  || 20                  # ... avoid returning the entire data set
     offset = params[:offset] || false
 
-    if stale?(base.facet_cache_key)
+#    if stale?(base.facet_cache_key)
       @refined = base.refine(filter)
 
-      @results = @refined
-      @refined = @results.limit(limit) if limit
-      @refined = @results.offset(offset) if offset
+      @result_count = @refined.count
+
+      @results = @refined.order(:date).includes(:ticket_sales, :plays, :register_images)
+      @results = @results.limit(limit) if limit
+      @results = @results.offset(offset) if offset
 
       # N.B. Doing this as a faceted query happens to capture the semantics we want (aggregation
       #      over different seating categories but not across all performances in a double bill ticket).
@@ -65,20 +67,34 @@ class RegistersController < ApplicationController
       #        GROUP BY month, day
       #        ORDER BY month, day;
       #
-      @tickets_by_date = @refined.joins(:ticket_sales).select(['EXTRACT(MONTH FROM date) AS month',
-                                                               'EXTRACT(DAY FROM date) AS day',
-                                                               'SUM(total_sold) AS tickets']).group('month', 'day')
+      # @tickets_by_date = @refined.joins(:ticket_sales).select(['EXTRACT(MONTH FROM date) AS month',
+      #                                                          'EXTRACT(DAY FROM date) AS day',
+      #                                                          'SUM(total_sold) AS tickets']).group('month', 'day')
+
+      # For the Sept 1. release: use total receipts
+      @measure_by_date = @refined.select(['EXTRACT(MONTH FROM date) AS month',
+                                          'EXTRACT(DAY FROM date) AS day',
+                                          'SUM(total_receipts_recorded_l) AS measure']).group('month', 'day')
+
+      # oh god... for christs sake!?! kill me now
+      @seat_order = []
+      @seat_names = []
+      RegisterPeriodSeatingCategory.joins(:register_period).joins(:seating_category).order(:period, :ordering).select([:seating_category_id, :name]).each_with_index do |rec, i|
+        @seat_order[rec.seating_category_id] = i
+        @seat_names[rec.seating_category_id] = rec.name
+      end
 
       respond_to do |format|
         format.html { render @results, :layout => false }
-        format.json { render :json => @tickets_by_date }
+        format.json { render :json => @measure_by_date }
       end
-    end
+#    end
   end
 
   protected
   def base
-    Register
+    # N.B. to be removed later: for Sept 1 release, only include cleaned data
+    Register.where("date >= '1740-04-01' AND date <= '1793-03-26'")
   end
 
 end

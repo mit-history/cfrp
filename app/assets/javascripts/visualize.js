@@ -68,7 +68,7 @@ visualize_registers = function(registers, $elem, options) {
                   deagg : function(month) { return d3.time.month.offset(beginDate, month); },
                   arc : d3.svg.arc().outerRadius(radius - 90)
                                     .innerRadius(radius - 120),
-                  title : function(d) { return monthNames[+d.key] + " : " + numFormat(d.values) + " billets"; },
+                  title : function(d) { return monthNames[+d.key] + " : ₤ " + numFormat(d.values); },
                   label : function(d) { return monthNames[+d.key] } },
                 weeks : {
                   // N.B. d3 weekOfYear is equivalent to sundayOfYear - not what we mean!
@@ -78,14 +78,14 @@ visualize_registers = function(registers, $elem, options) {
                   deagg : function(week) { return d3.time.day.offset(beginDate, week * 7); },
                   arc : d3.svg.arc().outerRadius(radius - 50)
                                     .innerRadius(radius - 80),
-                  title : function(d) { return "semaine " + (+d.key + 1) + " : " + numFormat(d.values) + " billets"; } },
+                  title : function(d) { return "semaine " + (+d.key + 1) + " : ₤ " + numFormat(d.values); } },
                 days : {
                   agg : function(d) { return d3.time.dayOfYear(plotDate(d)); },
                   deagg : function(day) { return d3.time.day.offset(beginDate, day); },
                   arc : d3.svg.arc().outerRadius(radius - 10)
                                     .innerRadius(radius - 40),
                   title : function(d) { var date = d3.time.day.offset(beginDate, +d.key);
-                                          return date.getDate() + " " + monthNames[date.getMonth()] + " : " + numFormat(d.values) + " billets"; } },
+                                          return date.getDate() + " " + monthNames[date.getMonth()] + " : ₤ " + numFormat(d.values); } },
               };
 
   /* drawing surface */
@@ -106,9 +106,17 @@ visualize_registers = function(registers, $elem, options) {
        .enter().append("g")
          .attr("class", "legend");
 
+  lg.append("text")
+    .attr("x", -130)
+    .attr("y", 20)
+    .attr("dy", "1em")
+    .attr("text-anchor", "begin")
+    .attr("transform", "rotate(-90)")
+    .text("recettes par date")
+
   lg.append("rect")
     .attr("x", 10)
-    .attr("y", function (d, ndx) { return  12 * (9 - ndx); })
+    .attr("y", function (d, ndx) { return  12 * (10 - ndx); })
     .attr("width", 10)
     .attr("height", 10)
     .style("fill", function (d) { return d; });
@@ -136,13 +144,13 @@ visualize_registers = function(registers, $elem, options) {
   /* massage data into good format */
   registers.forEach(function (d) { d.day = +d.day;
                                    d.month = +d.month;
-                                   d.tickets = +d.tickets });
+                                   d.measure = +d.measure });
 
   /* process each ring in turn */
   for (var i in rings) {
     var ring = rings[i],
         aggData = d3.nest().key(ring.agg)
-                      .rollup(function (xs) { return d3.sum(xs, function(d) { return d.tickets; }) })
+                      .rollup(function (xs) { return d3.sum(xs, function(d) { return d.measure; }) })
                       .entries(registers);
         ringColors = colorScale.copy().domain(d3.extent(aggData, function(d) { return d.values; }));
 

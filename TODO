@@ -1,0 +1,40 @@
+TODO.
+
+-- reorganize the facets into two columns on right              DONE
+-- translate the bar widget into D3 and rotate it vertically    DONE
+-- draft a simple text representation for the register entries
+-- make list of text registers use infinite scrolling
+
+-- migration for register_period_seating_categories             NOT TO DO
+-- move extra column for seating categories into query          DONE
+
+-- center the visualization                                     DONE
+-- label for the visualization?                                 DONE
+
+-- infinite scrolling
+-- list number of results?
+-- results in an iframe?                                        DONE
+
+-- link associations so results render faster                   DONE
+
+-- link width of content area to window size
+   (relative positioning)
+
+-- flipbook page link wrongly brings up visualization
+-- facet counts and values are line breaking                    DONE
+-- bar chart facets aren't scrolling all the way                DONE
+
+-- timeline is too large, date values are clipping
+
+
+DUE DILIGENCE.
+
+-- urlencode the facet value refinements
+
+-- parterre and premiere loge aggregations are wrong
+
+-- what is a denier? do they need to be added in with livres?
+
+-- make sure the payment note formats correctly in all cases
+
+-- make sure css changes aren't going to interfere with Jamie's code
