@@ -1,8 +1,21 @@
 class SeatingCategoryAggregation < ActiveRecord::Migration
   def up
+
+    # Listing seating category ids directly is obviously a sub-par approach... however,
+    #
+    #   (a) while the investigators' interpretations of periods and seating categories
+    #       is still under transition, I decided it was best to avoid adding new columns
+    #       or denormalizing the schema
+    #
+    #   (b) the kinds of aggregations necessary for measures like receipts are not
+    #       possible with a faceted browser, so best to make it easy to back out later
+    #       and adopt a real multidimensional indexer.
+
     execute <<-SQL
-      CREATE FUNCTION bucket(val int, size int, padding int, nullval TEXT) RETURNS text AS $$
-        SELECT COALESCE(lpad((round(val / size) * size) :: text, padding) || '-' || (round(val / size) * size + (size - 1)) :: text, nullval);
+
+      CREATE FUNCTION bucket(val INT, size INT, fmt TEXT, nullval TEXT) RETURNS TEXT AS $$
+        SELECT COALESCE(
+          to_char(round(val / size) * size, fmt) || '-' || to_char(round(val / size) * size + size - 1, fmt), nullval);
       $$ LANGUAGE SQL IMMUTABLE;
 
       CREATE VIEW category_sales AS
@@ -26,7 +39,7 @@ class SeatingCategoryAggregation < ActiveRecord::Migration
 
   def down
     execute <<-SQL
-      DROP FUNCTION bucket(INT, INT, INT, TEXT);
+      DROP FUNCTION bucket(INT, INT, TEXT, TEXT);
       DROP VIEW category_sales;
       DROP VIEW amalgamated_sales;
     SQL

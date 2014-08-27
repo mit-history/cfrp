@@ -1,0 +1,247 @@
+/** Facet Presentation Overrides **/
+
+/* facet controls */
+.facet .title .banner {
+  cursor: pointer;
+}
+
+.facet .title .clear_facet {
+  cursor: pointer;
+}
+
+.facet.loading .title .clear_facet {
+  display:none;
+}
+
+/* facet value lists */
+
+.facet.collapsed .values {
+  display: none;                  /* allow collapsable facets... */
+}
+
+.facet .values .value {
+  white-space: nowrap;            /* keep long authors and titles on same line */
+}
+
+.facet .values .value.selected .label {
+  font-weight: bold;              /* indicate selected values */
+}
+
+/* Over-ride default bootstrap .label
+   styles so it looks like Christopher intended */
+.facet .values .value .label {
+  position: static; /* Not sure why this is needed, as it *isn't overriding anything in bootstrap...? */
+  background-color: #fff;
+  color: #000099;
+  padding: 0px;
+  font-size: 12px;
+  line-height: 18px;
+  text-shadow: 0 0 0 rgba(0, 0, 0, 0.25);
+  font-weight: normal;
+}
+
+.bar_facet .facet .values {
+  overflow-x: hidden;
+}
+
+/* title and navigation for faceted browser */
+
+#registers #navbar {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 650px;
+  margin: 10px;
+  padding-right: 40px;
+}
+
+
+#registers #navbar #banner {
+  font-size: 24px;
+  font-weight: 200;
+  color: #777;
+  text-shadow: 0 1px 0 #fff;
+  float:left;
+  clear:none;
+}
+
+#registers #navbar #tabs {
+  float:right;
+  clear:none;
+}
+
+#registers #navbar #tabs span {
+  margin: 5px;
+}
+
+#registers #navbar #tabs span:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#registers #results {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 700px;
+  margin: 0;
+  text-align: left;
+  overflow-y: scroll;
+  height: 950px;                  /* to match all open facets */
+  margin-top: 35px;
+  /* margin-bottom:45px;             accommodate bootstrap login footer */
+  border-top: 1px solid #CCC;
+}
+
+/* feedback during visualization aggregation */
+#registers #results:not(.loading) ~ #navbar img.spinner {
+  visibility: hidden;
+}
+
+.register_all {
+  padding: 2px;
+  background: #FCFCFC;
+  margin: 5px;
+}
+
+.register_all dl.dl-horizontal {
+  padding: 5px;
+  margin: 5px;
+  border: thin #aaaadd dotted;
+}
+
+.register_all dt {
+  font-size: 12px;
+  font-weight: normal;
+  float: left;
+  width: 120px;
+  color: #aaaadd;
+}
+
+.register_all .accession_info {
+  font-size: 8px;
+  color: gray;
+  display: block;
+  clear: both;
+}
+
+.register_all .accession_info .results_num {
+  float: left;
+  clear: none;
+}
+
+.register_all .accession_info .register_num {
+  float: right;
+  clear: none;
+}
+
+.register_all .receipts {
+  cursor: pointer;
+}
+
+.register_all .date {
+  margin-bottom: 8px;
+}
+
+.register_all .date .icon-camera {
+  margin-left: -25px;
+  color: #aaaadd;
+}
+
+.register_all .receipts {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.register_all .play {
+  margin-bottom: 10px;
+}
+
+.register_all .quantity {
+  display: inline;
+  margin-right: 4px;
+  font-size: 9pt;
+  color: black;
+}
+
+.register_all .price {
+  text-align: left;
+  font-size: 9pt;
+  float: left;
+}
+
+.register_all .total {
+  text-align: right;
+  border-bottom: thin #aaaadd dotted;
+  width: 240px;
+}
+
+#registers #facets {
+  position: relative;
+  left: 700px;
+  top: 0px;
+  width: 500px;
+}
+
+#facets .bar {
+  clear: both;
+}
+
+#facets .facet {
+  margin-left: 2px;
+  float: left;
+}
+
+/* facets with low cardinality need extra space */
+#facets #genre1 .count,
+#facets #genre2 .count {
+  padding-right: 12px;
+}
+
+#facets .bar_facet .values { width: 158px; height: 276px; }
+#facets .bar_facet .facet { width: 158px }
+
+
+/** Visualization Presentation **/
+
+
+#registers #timeline {
+  position: absolute;
+  left: 30px;
+  top: 30px;
+  width: 750px;
+  height: 750px;
+  margin-top: 20px;
+/*  margin-bottom:40px; */
+}
+
+#timeline .legend text {
+  font-size: 7px;
+  font-weight: 300;
+}
+
+#timeline .legend text.units {
+  font-size: 11px;
+}
+
+#timeline .days path,
+#timeline .weeks path,
+#timeline .months path {
+  stroke: #fff;
+  stroke-width: 1px;
+}
+
+#timeline .months text {
+  font-size: 11px;
+}
+
+#timeline .axis text {
+  font-size: 7px;
+  font-weight: 300;
+}
+
+#timeline .register_data {
+  border-top: 1px solid black;
+  font-size: 14px;
+}
+

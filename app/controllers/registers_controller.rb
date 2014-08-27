@@ -5,6 +5,8 @@ class RegistersController < ApplicationController
 
   def index
     @search = params[:search] || ''
+    
+    render :layout => 'registers'
   end
 
   def show
@@ -40,12 +42,11 @@ class RegistersController < ApplicationController
   def results
     filter = params[:filter] || {}
     limit  = params[:limit]  || 20                  # ... avoid returning the entire data set
-    offset = params[:offset] || false
+    offset = params[:offset] || 0
 
 #    if stale?(base.facet_cache_key)
       @refined = base.refine(filter)
-
-      @result_count = @refined.count
+      count = @refined.count
 
       @results = @refined.order(:date).includes(:ticket_sales, :plays, :register_images)
       @results = @results.limit(limit) if limit
@@ -77,6 +78,9 @@ class RegistersController < ApplicationController
                                           'SUM(total_receipts_recorded_l) AS measure']).group('month', 'day')
 
       # oh god... for christs sake!?! kill me now
+      # more properly: perhaps best option is to create a view denormalizing this part of the DB?
+      # ... decision delayed until we decide whether we are exporting all data to denormalized form for use in
+      # ... a multidimensional analysis tool anyway
       @seat_order = []
       @seat_names = []
       RegisterPeriodSeatingCategory.joins(:register_period).joins(:seating_category).order(:period, :ordering).select([:seating_category_id, :name]).each_with_index do |rec, i|
@@ -85,7 +89,9 @@ class RegistersController < ApplicationController
       end
 
       respond_to do |format|
-        format.html { render @results, :layout => false }
+        format.html { render :partial => 'register', :collection => @results,
+                             :locals => {:offset => offset, :total => count},
+                             :layout => false }
         format.json { render :json => @measure_by_date }
       end
 #    end

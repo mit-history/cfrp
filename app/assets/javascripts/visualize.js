@@ -60,15 +60,15 @@ visualize_registers = function(registers, $elem, options) {
                  .domain([beginDate, endDate])
                  .range([2.0 * Math.PI + rotation, rotation])
                  .clamp(true),
-      colors = colorbrewer.RdYlBu[9],
-      colorScale = d3.scale.quantile().range(colors.reverse());
+      colors = colorbrewer.RdYlBu[9].slice(0).reverse()
+      colorScale = d3.scale.quantile().range(colors);
 
   var rings = { months : {
                   agg : function(d) { return d.month; },
                   deagg : function(month) { return d3.time.month.offset(beginDate, month); },
                   arc : d3.svg.arc().outerRadius(radius - 90)
                                     .innerRadius(radius - 120),
-                  title : function(d) { return monthNames[+d.key] + " : ₤ " + numFormat(d.values); },
+                  title : function(d) { return monthNames[+d.key] + " : " + numFormat(d.values) + " l."; },
                   label : function(d) { return monthNames[+d.key] } },
                 weeks : {
                   // N.B. d3 weekOfYear is equivalent to sundayOfYear - not what we mean!
@@ -78,14 +78,14 @@ visualize_registers = function(registers, $elem, options) {
                   deagg : function(week) { return d3.time.day.offset(beginDate, week * 7); },
                   arc : d3.svg.arc().outerRadius(radius - 50)
                                     .innerRadius(radius - 80),
-                  title : function(d) { return "semaine " + (+d.key + 1) + " : ₤ " + numFormat(d.values); } },
+                  title : function(d) { return "semaine " + (+d.key + 1) + " : " + numFormat(d.values) + " l."; } },
                 days : {
                   agg : function(d) { return d3.time.dayOfYear(plotDate(d)); },
                   deagg : function(day) { return d3.time.day.offset(beginDate, day); },
                   arc : d3.svg.arc().outerRadius(radius - 10)
                                     .innerRadius(radius - 40),
                   title : function(d) { var date = d3.time.day.offset(beginDate, +d.key);
-                                          return date.getDate() + " " + monthNames[date.getMonth()] + " : ₤ " + numFormat(d.values); } },
+                                          return date.getDate() + " " + monthNames[date.getMonth()] + " : " + numFormat(d.values) + " l."; } },
               };
 
   /* drawing surface */
@@ -107,16 +107,27 @@ visualize_registers = function(registers, $elem, options) {
          .attr("class", "legend");
 
   lg.append("text")
-    .attr("x", -130)
-    .attr("y", 20)
+    .attr("class", "units")
+    .attr("x", -115)
+    .attr("y", 30)
     .attr("dy", "1em")
     .attr("text-anchor", "begin")
     .attr("transform", "rotate(-90)")
-    .text("recettes par date")
+    .text("recettes totales")
+
+    lg.append("text")
+    .attr("x", 18).attr("y", 10)
+    .attr("text-anchor", "end")
+    .text("100%");
+
+    lg.append("text")
+    .attr("x", 18).attr("y", 120)
+    .attr("text-anchor", "end")
+    .text("0%");
 
   lg.append("rect")
-    .attr("x", 10)
-    .attr("y", function (d, ndx) { return  12 * (10 - ndx); })
+    .attr("x", 20)
+    .attr("y", function (d, ndx) { return 12 * (10 - ndx) - 15; })
     .attr("width", 10)
     .attr("height", 10)
     .style("fill", function (d) { return d; });
@@ -151,7 +162,7 @@ visualize_registers = function(registers, $elem, options) {
     var ring = rings[i],
         aggData = d3.nest().key(ring.agg)
                       .rollup(function (xs) { return d3.sum(xs, function(d) { return d.measure; }) })
-                      .entries(registers);
+                      .entries(registers),
         ringColors = colorScale.copy().domain(d3.extent(aggData, function(d) { return d.values; }));
 
     var g = svg.selectAll("." + i)

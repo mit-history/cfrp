@@ -2,12 +2,89 @@
 
 $().ready(function() {
 
-  /* For more examples of configuring the faceting widgets, see the repertoire faceting example
-     application.
+  //
+  // Infinite scroll results
+  //
+  repertoire.infinite_results = function($results, options) {
+    // inherit basic facet widget behaviour
+    var self = repertoire.facet_widget($results, options);
 
-     This javascript MVC framework pre-dates much recent work on the web. Using it is not
-     mandatory to take advantage of the rest of the faceting framework. It's perfectly possible
-     (even pleasant) to build a faceted browser directly on D3 and the JSON facet data feeds. */
+    // count of items already loaded
+    var cur_offset = options.scroll;
+
+    //
+    // Update query results from webservice
+    //
+    // By default, the url is '/<context>/results'
+    //
+    self.fetch = function(type, callback, $elem, extra_params) {
+      var context = self.context(),
+          url = context.facet_url('results'),
+          params = $.extend({}, self.params(), extra_params || {});
+
+      // package up the faceting state and send back to results rendering service
+      context.fetch(params, url, type, callback, $elem);
+    };
+
+    //
+    // Ajax callback for results
+    //
+    self.reload = function(callback) {
+      cur_offset = options.scroll;
+      self.fetch(options.type, callback, $results);
+    };
+
+    //
+    // Render fetched html
+    //
+    var $template_fn = self.render;
+    self.render = function(data) {
+      var $markup = $template_fn();
+
+      // if html returned, use it; otherwise defer to a custom injector
+      if (options.type == 'html') {
+        $markup.append(data);
+      }
+
+      // opacity mask (for loading)
+      $markup.append('<div class="mask"/>')
+
+      return $markup;
+    };
+
+    // Listen for scroll to bottom of the page
+    var loading = false,
+        loadStamp = Date.now();
+    if (options.scroll) {
+      $results.scroll(function() {
+        var top = $results.scrollTop(),
+            inner = $results.innerHeight(),
+            scroll = $results.prop('scrollHeight');
+        if ((top + inner + 250 >= scroll) && !loading && (Date.now() > loadStamp + 1000)) {
+          loading = true;
+          var callback = function(data) {
+            var $markup = self.render(data);
+            $results.append($markup);
+            cur_offset += options.scroll;
+            loading = false;
+            loadStamp = Date.now();
+          };
+          self.fetch(options.type, callback, $results, { offset: cur_offset, limit: options.scroll });
+        };
+      });
+    };
+
+    // end of results factory function
+    return self;
+  };
+
+  // Results plugin
+  $.fn.infinite_results = repertoire.plugin(repertoire.infinite_results);
+  $.fn.infinite_results.defaults = {
+    type: 'html',          /* jquery ajax type: html, json, xml */
+    scroll: 20              /* page size */
+  };
+
 
   //
   // Bar chart facet visualization
@@ -28,11 +105,11 @@ $().ready(function() {
           right_offset = 15;
 
       var w = options.width,
-          h = options.height,
+          h = counts.length * options.thickness,
           x = pv.Scale.linear(0, pv.max(counts, function(d) { return d[1] }))
                       .range(0, w - bar_offset - right_offset),
           y = pv.Scale.linear(0, counts.length)
-                      .range(0, counts.length * 23)
+                      .range(0, h)
 
       var vis = new pv.Panel()
           .canvas(values_canvas)
@@ -43,7 +120,8 @@ $().ready(function() {
           .top(function() { return y(this.index) })
           .left(bar_offset)
           .width(function(d) { return x(d[1]) })
-          .height(18)
+          .height(options.thickness - 5)
+          .fillStyle("#ffbb78")
          .event("click", function(d) {
             var filter = self.refinements(self.facet_name());
             var context = self.context();
@@ -76,9 +154,8 @@ $().ready(function() {
   // Bar facet plugin
   $.fn.bar_facet = repertoire.plugin(repertoire.bar_facet);
   $.fn.bar_facet.defaults = {
-    height:    200,
     width:     300,
-    thickness: 30
+    thickness: 23
   };
 
 
@@ -91,22 +168,48 @@ $().ready(function() {
     }
   });
 
-  // $('.facet').facet();
-  $('#season').facet({ title : "Saison"});
-  $('#author1').facet({ title : "Auteur 1"});
-  $('#title1').facet({ title : "Pièce 1"});
-//  $('#genre1').facet({ title : "Genre 1"});
-  $('#weekday').facet({ title : "Jour de la semaine" });
-  $('#author2').facet({ title : "Auteur 2" });
-  $('#title2').facet({ title : "Pièce 2" });
-//  $('#genre2').facet({ title : "Genre 2"});
+  /* toggle collapsing all facets in a bar together */
+  $('.bar .facet').on('click', '.title .banner', function() {
+    $(this).closest('.bar').find('> .facet').toggleClass('collapsed');
+  });
 
-  $('#total_receipts').bar_facet( { width : 160, height : 600 } );
-  $('#parterre_receipts').bar_facet( { width : 160, height : 600 } );
-  $('#premiere_loge_receipts').bar_facet( { width : 160, height : 600 } );
+  var close_injectors = {
+      injectors: {
+        '.title .controls' : function(self, data) {
+          var name = self.facet_name();
+          if (self.refinements(name).length > 0) {
+            $(this).append('<i class="clear_facet icon-remove-circle"></i>');
+          };
+        }
+      },
+      handlers: {
+        'click!.clear_facet' : function(self) {
+          var name = self.facet_name(),
+              context = self.context();
+          context.refinements(name).length = 0;
+          context.trigger('changed');
+          return false;
+        }
+      }
+    };
+
+  $('#season').facet($.extend({}, close_injectors, { title : "Saison" }));
+  $('#author1').facet($.extend({}, close_injectors, { title : "Auteur 1" }));
+  $('#title1').facet($.extend({}, close_injectors, { title : "Pièce 1" }));
+  $('#genre1').facet($.extend({}, close_injectors, { title : "Genre 1" }));
+  $('#weekday').facet($.extend({}, close_injectors, { title : "Jour de la semaine" }));
+  $('#author2').facet($.extend({}, close_injectors, { title : "Auteur 2" }));
+  $('#title2').facet($.extend({}, close_injectors, { title : "Pièce 2" }));
+  $('#genre2').facet($.extend({}, close_injectors, { title : "Genre 2"}));
+
+  $('#total_receipts').bar_facet($.extend({}, close_injectors, { width : 155 } ));
+  $('#parterre_receipts').bar_facet($.extend({}, close_injectors, { width : 155 } ));
+  $('#premiere_loge_receipts').bar_facet($.extend({}, close_injectors, { width : 155 } ));
 
   // regular list view
-  $('#results').results({ type: 'html' });
+  $('#results').infinite_results({ type: 'html' });
+
+  $('#results').on('click', '.receipts', function() { $(this).find('.line-items').toggle(); });
 
   // time-based visualization view
   $('#timeline').results({
@@ -123,6 +226,7 @@ $().ready(function() {
   $('#results-tab').click(function() { $('#results').show(); $('#timeline').hide(); });
   $('#timeline-tab').click(function()  { $('#results').hide(); $('#timeline').show(); });
 
+  // provide history support
   $('#registers').urls();
 
 });
@@ -131,22 +235,35 @@ $().ready(function() {
 <div id='registers'>
   <div id='results'></div>
   <div id='timeline'></div>
-  <div id='navbar'><span id="results-tab">liste</span><span id="timeline-tab">graphique</span><img class="spinner" src="/assets/repertoire-faceting/spinner_sm.gif"></img></div>
-  <div id='facets1'>
-    <div id='season' class='facet'></div>
-    <div id='author1' class='facet'></div>
-    <div id='title1' class='facet'></div>
-    <!-- <div id='genre1' class='facet' title='Genre 1'></div> -->
+  <div id='navbar'>
+    <div id="banner">Projet des registres de la Comédie-Française</div>
+    <div id="tabs">
+      <span id="results-tab"><i class="icon-list"></i></span>
+      <span id="timeline-tab"><i class="icon-cog"></i></span>
+      <img class="spinner" src="/assets/repertoire-faceting/spinner_sm.gif"></img>
+    </div>
   </div>
-  <div id='facets2'>
-    <div id='weekday' class='facet'></div>
-    <div id='author2' class='facet'></div>
-    <div id='title2' class='facet'></div>
-    <!-- <div id='genre2' class='facet' title='Genre 2'></div> -->
-  </div>
-  <div id='facets3'>
-    <div id='total_receipts' class='bar_facet' title='Recettes totales (jours)'></div>
-    <div id='parterre_receipts' class='bar_facet' title='de la parterre'></div>
-    <div id='premiere_loge_receipts' class='bar_facet' title='du première loge'></div>
+  <div id="facets">
+    <div class="bar">
+      <div id='season' class='facet'></div>
+      <div id='weekday' class='facet'></div>
+    </div>
+    <div class="bar">
+      <div id='author1' class='facet collapsed'></div>
+      <div id='author2' class='facet collapsed'></div>
+    </div>
+    <div class="bar">
+      <div id='title1' class='facet collapsed'></div>
+      <div id='title2' class='facet collapsed'></div>
+    </div>
+    <div class="bar">
+      <div id='genre1' class='facet collapsed'></div>
+      <div id='genre2' class='facet collapsed'></div>
+    </div>
+    <div class="bar">
+      <div id='total_receipts' class='facet bar_facet' title='Recette journalière'></div>
+      <div id='parterre_receipts' class='facet bar_facet' title='au parterre'></div>
+      <div id='premiere_loge_receipts' class='facet bar_facet' title='aux premières loges'></div>
+    </div>
   </div>
 </div>

@@ -102,16 +102,13 @@ class Register < ActiveRecord::Base
   facet :author2, joins(:plays, :register_plays).where('register_plays.ordering = 2').group('plays.author')
   facet :genre1, joins(:plays, :register_plays).where('register_plays.ordering = 1').group('plays.genre')
   facet :genre2, joins(:plays, :register_plays).where('register_plays.ordering = 2').group('plays.genre')
-  facet :total_receipts, group("'₤ ' || bucket(total_receipts_recorded_l, 100, 5, 'Inconnu')").order(:total_receipts)
+  facet :total_receipts, group("bucket(total_receipts_recorded_l, 100, '09999', 'Inconnu') || ' l.'").order(:total_receipts)
 
-  # Listing seating category ids directly in code is obviously a sub-par approach... however, (a) while the investigators' interpretations
-  # of periods and seating categories is still under transition, I decided it was best to avoid changing the database or adding new columns;
-  # (b) the kinds of aggregations necessary for measures like receipts are not possible with a faceted browser, so best to make it easy to
-  # back and adopt a real multidimensional indexer.
+  # c.f. the amalgamated_sales view in the migration for "seating_category_aggregation"
 
   # see the appropriate migration for definitions of amalgamated sales and bucket
-  facet :parterre_receipts,      joins('JOIN amalgamated_sales ON (registers.id = register_id)').where("section = 'parterre'").group("'₤ ' || bucket(receipts, 100, 5, 'Inconnu')").order(:parterre_receipts)
-  facet :premiere_loge_receipts, joins('JOIN amalgamated_sales ON (registers.id = register_id)').where("section = 'premiere-loge'").group("'₤ ' || bucket(receipts, 100, 5, 'Inconnu')").order(:premiere_loge_receipts)
+  facet :parterre_receipts,      joins('JOIN amalgamated_sales ON (registers.id = register_id)').where("section = 'parterre'").group("bucket(receipts, 100, '09999', 'Inconnu') || ' l.'").order(:parterre_receipts)
+  facet :premiere_loge_receipts, joins('JOIN amalgamated_sales ON (registers.id = register_id)').where("section = 'premiere-loge'").group("bucket(receipts, 100, '09999', 'Inconnu') || ' l.'").order(:premiere_loge_receipts)
 
 
   def self.unique_seasons
@@ -138,25 +135,17 @@ class Register < ActiveRecord::Base
   end
 
   def volume_number
-    if (!self.recto_image.nil?)
-      image_filename = self.recto_image.image_file_name
-      volume_number = /M119_02_R(\d+)/.match(image_filename)[1]
-    else
-      volume_number = nil
-    end
-    return volume_number
+    result   = self.recto_image
+    result &&= result.image_filename
+    result &&= result[/M119_02_R(\d+)/, 1]
+    result
   end
 
   def rhp_image_number
-    if (!self.recto_image.nil?)
-      image_filename = self.recto_image.image_file_name
-      if (/M119_02_R(\d+)_(\d+)([rv])?.jpg/.match(image_filename)[2])
-        rhp_image_number = /M119_02_R(\d+)_(\d+)([rv])?.jpg/.match(image_filename)[2]
-      else
-        rhp_image_number = nil
-      end
-    end
-    return rhp_image_number
+    result   = self.recto_image
+    result &&= result.image_filename
+    result &&= result[/M119_02_R(\d+)_(\d+)([rv])?.jpg/, 2]
+    result
   end
 
   def recto_image

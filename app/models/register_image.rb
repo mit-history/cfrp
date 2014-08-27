@@ -33,14 +33,9 @@ class RegisterImage < ActiveRecord::Base
   end
 
   def rv_flag
-    if (!self.image_file_name.nil?)
-      rv_flag = /M119_02_R\d{2,3}_\d{3}([rv])?.jpg/.match(self.image_file_name)[1]
-    elsif (!self.filepath.nil?)
-      rv_flag = /M119_02_R\d{2,3}_\d{3}([rv])?.jpg/.match(self.filepath)[1]
-    else
-      rv_flag = nil
-    end
-    return rv_flag
+    result   = self.image_file_name || self.filepath
+    result &&= result[/M119_02_R\d{2,3}_\d{3}([rv])?.jpg/, 1]
+    result
   end
 
 end

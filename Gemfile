@@ -35,7 +35,7 @@ gem 'twitter-bootstrap-rails'
 
 # gem 'repertoire-groups', :git => 'git@github.com:repertoire/Repertoire-Groups.git', :branch => 'bootstrap-flavor'
 gem 'repertoire-groups', '0.0.1', :path => 'vendor/repertoire-groups-0.0.1' #, :require => 'repertoire-groups'
-gem 'repertoire-faceting', '~>0.7.4'
+gem 'repertoire-faceting', '~>0.7.6'
 gem 'acts-as-taggable-on'
 
 # enable CORS, for use in CFRP data-essays

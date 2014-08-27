@@ -1,46 +1,68 @@
 <% def format_money(l, s, d) %>
-  <% s = "₤ #{ l },#{ s }" %>
+  <% s = "L. #{ l },#{ s }" %>
   <% s += " (#{d})" if d.present? && d > 0 %>
   <% s %>
-<% end %>
-
-<% def flipbook_url(r) %>
-  <% "http://hyperstudio.mit.edu/cfrp/flip_books/R#{r.volume_number}/index.html#page/#{r.rhp_image_number}/mode/1up" %>
 <% end %>
 
 <div class="register_all row">
   <dl class="dl-horizontal">
 
-    <div align="right"><small><%= [ register.register_num, register.representation, register.id ].compact.join(' / ') %></small></div>
+    <div class="accession_info">
+      <div class="results_num"><%= offset.to_i + register_counter.to_i %> / <%= total.to_i %></div>
+      <div class="register_num"><%= [ register.register_num, register.representation, register.id ].compact.join(' / ') %></div>
+    </div>
+
+    <br/>
 
     <div class="date">
       <dt>Date</dt>
-      <dd><%= link_to "%s (%s)" % [ register.date.strftime("%d/%m/%Y"), register.weekday ], flipbook_url(register), :target => 'top' %></dd>
+      <dd>
+        <% if (vol = register.volume_number) && (im = register.rhp_image_number) %>
+          <%= link_to "http://hyperstudio.mit.edu/cfrp/flip_books/R#{vol.to_i}/index.html#page/#{im.to_i}/mode/1up", :target => "top" do %>
+            <i class="icon-camera"></i>
+          <% end %>
+        <% end %>
+        <%= "%s (%s)" % [ register.date.strftime("%d/%m/%Y"), register.weekday ] %>
+      </dd>
     </div>
 
     <% register.register_plays.sort {|a, b| a.ordering <=> b.ordering }.each do |rp| %>
-    <div class="play">
+      <% notes = [] %>
+      <% notes << "Première représentation"       if rp.firstrun %>
+      <% notes << "Début"                         if rp.debut %>
+      <% notes << "Reprise #{rp.reprise_perfnum}" if rp.reprise %>
+      <div class="play">
         <dt>Pièce <%= rp.ordering %></dt>
         <dd><%= rp.play.title %></dd>
         <dt>Auteur</dt>
         <dd><%= rp.play.author %></dd>
         <dt>Genre</dt>
-        <dd><%= rp.play.genre %></dd>
+        <dd><%= rp.play.genre.capitalize if rp.play.genre.present? %><%= ", #{pluralize(rp.play.acts, "acte")} " if rp.play.acts.present?%></dd>
+        <% if rp.newactor.present? %>
+          <dt>Nouvel acteur</dt>
+          <dd><%= rp.newactor %></dd>
+        <% end %>
+        <% unless notes.empty? %>
+          <dt>Notes</dt>
+          <dd><%= notes.join(', ')  %>
+        <% end %>
     </div>
     <% end %>
 
     <div class="receipts">
-      <% register.ticket_sales.where('total_sold > 0').sort {|a, b| @seat_order[a.seating_category_id] <=> @seat_order[b.seating_category_id] }.each do |ts| %>
-        <dt><div class="quantity"><%= ts.total_sold %></div><%= @seat_names[ts.seating_category_id] %></dt>
-        <dd><div class="price"><%= format_money(ts.price_per_ticket_l, ts.price_per_ticket_s, "") %></div><div class="total"><%= format_money(ts.recorded_total_l, ts.recorded_total_s, "") %></div></dd>
-      <% end %>
+      <div class="line-items" style="display:none">
+        <% register.ticket_sales.where('total_sold > 0').sort {|a, b| @seat_order[a.seating_category_id] <=> @seat_order[b.seating_category_id] }.each do |ts| %>
+          <dt><div class="quantity"><%= ts.total_sold %></div><%= @seat_names[ts.seating_category_id] %></dt>
+          <dd><div class="price"><%= format_money(ts.price_per_ticket_l, ts.price_per_ticket_s, "") %></div><div class="total"><%= format_money(ts.recorded_total_l, ts.recorded_total_s, "") %></div></dd>
+        <% end %>
+        <% if register.payment_notes.present? %>
+          <dt>Note du Recette</dt>
+          <dd><%= register.payment_notes %></dd>
+        <% end %>
+      </div>
 
       <dt>Recettes</dt>
-      <dd><div class="total"><%= format_money(register.total_receipts_recorded_l, register.total_receipts_recorded_s, register.total_receipts_recorded_d) %></div></dd>
-      <% if register.payment_notes.present? %>
-        <dt>Note du Recette</dt>
-        <dd><%= register.payment_notes %></dd>
-      <% end %>
+      <dd><div class="daily total"><%= format_money(register.total_receipts_recorded_l, register.total_receipts_recorded_s, register.total_receipts_recorded_d) %></div></dd>
     </div>
 
   </dl>

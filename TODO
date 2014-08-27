@@ -11,20 +11,34 @@ TODO.
 -- center the visualization                                     DONE
 -- label for the visualization?                                 DONE
 
--- infinite scrolling
+-- infinite scrolling                                           DONE
 -- list number of results?
 -- results in an iframe?                                        DONE
 
 -- link associations so results render faster                   DONE
 
--- link width of content area to window size
+-- link width of content area to window size                    NOT TO DO
    (relative positioning)
 
--- flipbook page link wrongly brings up visualization
+-- flipbook page link wrongly brings up visualization           DONE
 -- facet counts and values are line breaking                    DONE
 -- bar chart facets aren't scrolling all the way                DONE
 
 -- timeline is too large, date values are clipping
+
+-- clear facet box                                              DONE
+
+-- clear facet box still triggering toggle                      DONE
+
+-- flip books off by one
+-- faulty image names                                           DONE
+-- The graph does not show using Safari on Mac OS               DONE
+
+-- bar graphs: register clicks on labels as well
+-- facet titles: register clicks on background as well
+-- spinner at bottom of load for results
+
+-- clean up, esp css to make sure forms are safe
 
 
 DUE DILIGENCE.

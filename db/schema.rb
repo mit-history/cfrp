@@ -174,7 +174,6 @@ ActiveRecord::Schema.define(:version => 20140826120348) do
     t.integer  "ordering",            :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "physical_name"
   end
 
   add_index "register_period_seating_categories", ["register_period_id"], :name => "index_register_period_seating_categories_on_register_period_id"

@@ -1,6 +1,7 @@
 /* ...
 *= require_self
 *= require bootstrap_and_overrides
-*= require master
 *= require rep.faceting
+*= require master
+*= require faceting
 */
