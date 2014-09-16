@@ -13,6 +13,7 @@ ActiveAdmin.register RegisterImage do
   end
 
   index :as => :grid, :columns => 4 do |register_image|
+    # TODO: investigate missing images.
     image_tag(register_image.image.url(:thumb))
   end
 end
