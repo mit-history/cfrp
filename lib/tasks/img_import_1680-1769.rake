@@ -5,14 +5,16 @@ namespace :img do
   task :import => :environment do |t, args|
 
     seasons = {
-      '12' => { season: "1680-1681", period: '1680-81 to 1685-86' },
-      '76' => { season: "1718-1719", period: '1686-87 to 1754-55' },
-      '78' => { season: "1719-1720", period: '1686-87 to 1754-55' },
-      '80' => { season: "1719-1720", period: '1686-87 to 1754-55' },
-      '81' => { season: "1720-1721", period: '1686-87 to 1754-55' },
-      '82' => { season: "1720-1721", period: '1686-87 to 1754-55' },
-      '84' => { season: "1722-1723", period: '1686-87 to 1754-55' },
-      '85' => { season: "1722-1723", period: '1686-87 to 1754-55' },
+      # '12' => { season: "1680-1681", period: '1680-81 to 1685-86' },
+      # '76' => { season: "1718-1719", period: '1686-87 to 1754-55' },
+      # '77' => { season: "1718-1719", period: '1686-87 to 1754-55' },
+      '120' => { season: "1758-1759", period: '1758-59' },
+      # '78' => { season: "1719-1720", period: '1686-87 to 1754-55' },
+      # '80' => { season: "1719-1720", period: '1686-87 to 1754-55' },
+      # '81' => { season: "1720-1721", period: '1686-87 to 1754-55' },
+      # '82' => { season: "1720-1721", period: '1686-87 to 1754-55' },
+      # '84' => { season: "1722-1723", period: '1686-87 to 1754-55' },
+      # '85' => { season: "1722-1723", period: '1686-87 to 1754-55' },
       # 1739-1740: The season for which the register has been lost for over a century.
     }
 
@@ -29,12 +31,12 @@ namespace :img do
       # Go through every image in the directory, creating a register and two ri's for each.
       bucket.objects.with_prefix(season_dir).collect(&:key).sort.each do |recto_file|
         # skip ones that have already been done
-        recto_file =~ /(M119_02_R\d{2}_\d{3}r\.jpg)/
+        recto_file =~ /(M119_02_R\d{3}_\d{3}r\.jpg)/
         puts $1
         next if RegisterImage.find_by_image_file_name($1)
         puts "...not found, processing..."
 
-        if recto_file =~ /M119_02_R(\d{2})_(\d{3})r\.jpg/
+        if recto_file =~ /M119_02_R(\d{3})_(\d{3})r\.jpg/
           register = Register.new(
             {
               date:                  date,
