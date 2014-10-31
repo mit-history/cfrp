@@ -79,6 +79,8 @@ class Register < ActiveRecord::Base
   accepts_nested_attributes_for :register_plays, :allow_destroy => true
   # accepts_nested_attributes_for :page_de_gauches, :allow_destroy => true
 
+  before_create :set_packed_id
+
   validates :date, presence: true
 
   scope :verified, where(:verification_state_id => 1).order("id asc")
@@ -124,6 +126,10 @@ class Register < ActiveRecord::Base
     unless new_lhp_cat_ass.nil?
       self.lhp_category_assignments = new_lhp_cat_ass
     end
+  end
+
+  def set_packed_id
+    self._packed_id = self.class.connection.select_value("SELECT nextval('registers__packed_id_seq'::regclass)")
   end
 
   def previous
