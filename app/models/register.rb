@@ -79,7 +79,7 @@ class Register < ActiveRecord::Base
   accepts_nested_attributes_for :register_plays, :allow_destroy => true
   # accepts_nested_attributes_for :page_de_gauches, :allow_destroy => true
 
-  before_create :set_packed_id
+  before_create :set_packed_id # from: http://stackoverflow.com/a/11731205/271192
 
   validates :date, presence: true
 
@@ -128,6 +128,7 @@ class Register < ActiveRecord::Base
     end
   end
 
+  # from: http://stackoverflow.com/a/11731205/271192
   def set_packed_id
     self._packed_id = self.class.connection.select_value("SELECT nextval('registers__packed_id_seq'::regclass)")
   end
@@ -150,7 +151,7 @@ class Register < ActiveRecord::Base
   def rhp_image_number
     result   = self.recto_image
     result &&= result.image_filename
-    result &&= result[/M119_02_R(\d+)_(\d+)([rv])?.jpg/, 2]
+    result &&= result[/M119_02_R(\d+)(_II_1)?_(\d+)([rv])?.jpg/, 2]
     result
   end
 

@@ -54,7 +54,7 @@ namespace :img do
       date = DateTime.parse("#{year}-05-01")
 
       Dir.new("public/#{season_dir}").select {|f| f =~ /\.jpg$/}.each do |file|
-        if file =~ /M119_02_R(\d{3})_(\d{3})r\.jpg/
+        if file =~ /M119_02_R(\d{3})(_II_1)?_(\d{3})r\.jpg/
           register = Register.new({ date:                  date,
                                     season:                season,
                                     register_period_id:    period.id,

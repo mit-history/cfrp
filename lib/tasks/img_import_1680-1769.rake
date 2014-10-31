@@ -31,12 +31,12 @@ namespace :img do
       # Go through every image in the directory, creating a register and two ri's for each.
       bucket.objects.with_prefix(season_dir).collect(&:key).sort.each do |recto_file|
         # skip ones that have already been done
-        recto_file =~ /(M119_02_R\d{3}_\d{3}r\.jpg)/
+        recto_file =~ /(M119_02_R\d{3}(_II_1)?_\d{3}r\.jpg)/
         puts $1
         next if RegisterImage.find_by_image_file_name($1)
         puts "...not found, processing..."
 
-        if recto_file =~ /M119_02_R(\d{3})_(\d{3})r\.jpg/
+        if recto_file =~ /M119_02_R(\d{3})(_II_1)?_(\d{3})r\.jpg/
           register = Register.new(
             {
               date:                  date,
@@ -49,7 +49,7 @@ namespace :img do
 
           imgnum = $2
           recto_url = bucket_url + '/' + recto_file
-          verso_file = season_dir + '/' + "M119_02_R#{dirnum}_#{"%03d" % (imgnum.to_i + 1)}v.jpg"
+          verso_file = season_dir + '/' + "M119_02_R#{dirnum}(_II_1)?_#{"%03d" % (imgnum.to_i + 1)}v.jpg"
           verso_url = bucket_url + '/' + verso_file
 
           puts "\n Register:"
