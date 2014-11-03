@@ -20,7 +20,7 @@ namespace :img do
 
     def season_images(dirnum, season, period)
       bucket_url = "https://s3.amazonaws.com/last-six-seasons"
-      season_dir = "M119_02_R#{dirnum}"
+      season_dir = "M119_02_R#{dirnum}_II_1"
       year = season.split("-")[0].to_i
       period = RegisterPeriod.find_by_period(period)
       date = DateTime.parse("#{year}-05-01")
