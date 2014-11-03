@@ -17,22 +17,22 @@ class RegisterImporter
     left = register.left_image
 
     if verso.nil?
-      # print "Verso was nil for register: #{register.id} \n"
+      print "Verso was nil for register: #{register.id} \n"
     else
       save_register_image(verso, 'verso')
-      end
+    end
 
     if recto.nil?
-      # print "Recto was nil for register: #{register.id} \n"
+      print "Recto was nil for register: #{register.id} \n"
     else
       save_register_image(recto, 'recto')
-      end
+    end
 
     if left.nil?
-      # print "Left was nil for register: #{register.id} \n"
+      print "Left was nil for register: #{register.id} \n"
     else
       create_register_image(register, left, 'left')
-      end
+    end
   end
 
   private

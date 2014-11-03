@@ -91,6 +91,7 @@ class Register < ActiveRecord::Base
   scope :has_old_actor, includes(:register_plays).where("register_plays.newactor <> ''")
 
   scope :image_count, ->(count) { where("register_images_count = ?", count) }
+  scope :season, ->(season) { where("season = ?", season) }
   scope :two_images, image_count(2)
   scope :one_image, image_count(1)
   scope :no_image, image_count(0)
