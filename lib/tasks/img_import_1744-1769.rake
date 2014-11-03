@@ -63,12 +63,12 @@ namespace :img do
           puts register.inspect
 
           imgnum = $2
-          versa_file = "M119_02_R#{dirnum}_#{"%03d" % (imgnum.to_i + 1)}v.jpg"
+          verso_file = "M119_02_R#{dirnum}_II_1?_#{"%03d" % (imgnum.to_i + 1)}v.jpg"
 
           ri_r = RegisterImage.new({ register_id: register.id,
                                      filepath:    "#{season_dir}/#{file}" })
           ri_v = RegisterImage.new({ register_id: register.id,
-                                     filepath:    "#{season_dir}/#{versa_file}" })
+                                     filepath:    "#{season_dir}/#{verso_file}" })
 
           ri_r.save
           puts ri_r.inspect

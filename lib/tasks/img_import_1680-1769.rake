@@ -47,9 +47,9 @@ namespace :img do
           )
           register.save
 
-          imgnum = $2
+          imgnum = $3
           recto_url = bucket_url + '/' + recto_file
-          verso_file = season_dir + '/' + "M119_02_R#{dirnum}(_II_1)?_#{"%03d" % (imgnum.to_i + 1)}v.jpg"
+          verso_file = season_dir + '/' + "M119_02_R#{dirnum}_II_1?_#{"%03d" % (imgnum.to_i + 1)}v.jpg"
           verso_url = bucket_url + '/' + verso_file
 
           puts "\n Register:"
