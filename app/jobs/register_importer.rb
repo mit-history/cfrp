@@ -66,7 +66,7 @@ class RegisterImporter
       new_image = RegisterImage.new(
         orientation: orientation,
         register_id: register.id,
-        image: "http://images.cfregisters.org/#{register_image.filepath}"
+        image: "http://images.cfregisters.org/#{register_image.filepath}",
         image_content_type: "image/jpeg"
       )
 
