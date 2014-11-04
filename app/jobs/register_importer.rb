@@ -47,7 +47,7 @@ class RegisterImporter
       # print "Register image rv flag: #{register_image.rv_flag} \n"
 
       register_image.orientation = orientation
-      register_image.image = "http://images.cfregisters.org/#{register_image.filepath}"
+      register_image.image = "http://images.cfregisters.org/#{register_image.image_filename}"
       # print "Register image: #{register_image.inspect} \n"
       register_image.save!
     rescue StandardError => e
