@@ -8,8 +8,8 @@ class RegisterImporter
   def perform
     register = Register.find(@register_id)
     # if there's an orientation on the first image, it's been processed; skip it.
-    # print "\n\n============\n #{register.id} \n"
-   #  next if (!register.register_images[0].orientation.nil?)
+    print "\n\n============\n #{register.id} \n"
+    #  next if (!register.register_images[0].orientation.nil?)
 
     puts "...not processed yet, processing..."
     recto = register.recto_image
@@ -57,16 +57,17 @@ class RegisterImporter
 
   def create_register_image(register, register_image, orientation)
     begin
-      # print "\n++++++ \n New\n"
-      # print "Previous Register: #{register.id} \n"
-      # print "Old register image: #{register_image.id} \n"
-      # print "Requested orientation: #{orientation} \n"
-      # print "Register image rv flag: #{register_image.rv_flag} \n"
+      print "\n++++++ \n New\n"
+      print "Previous Register: #{register.id} \n"
+      print "Old register image: #{register_image.id} \n"
+      print "Requested orientation: #{orientation} \n"
+      print "Register image rv flag: #{register_image.rv_flag} \n"
 
       new_image = RegisterImage.new(
         orientation: orientation,
         register_id: register.id,
-        image: "http://images.cfregisters.org/#{register_image.image_file_path}",
+        # image: "http://images.cfregisters.org/#{register_image.image_filename}",
+        image: "http://images.cfregisters.org/#{register.left_image.image_filename}",
         image_content_type: "image/jpeg"
       )
 
