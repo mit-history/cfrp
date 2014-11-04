@@ -67,9 +67,10 @@ class RegisterImporter
         orientation: orientation,
         register_id: register.id,
         image: "http://images.cfregisters.org/#{register_image.filepath}"
-        )
+        image_content_type: "image/jpeg"
+      )
 
-      # print "New register image: #{new_image.inspect} \n"
+      print "New register image: #{new_image.inspect} \n"
       new_image.save!
     rescue StandardError => e
       puts e.inspect
