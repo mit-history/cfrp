@@ -1,10 +1,3 @@
-# For existing data:
-# rake db:migrate && rake seating_categories:irregular_receipts
-# this adds a number of new irregular_receipts columns to the register table
-# then adds rows to the RPSC table to map those new SCs to all RPs
-# this allows the addition of new irregular receipts to any register, up to 10 total.
-# not the cleanest or best solution to this problem, but 'twill serve
-
 namespace :missing_seasons do
 	desc "Adds irregular receipt seating category rows"
 	task :add => :environment do
