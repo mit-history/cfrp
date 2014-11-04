@@ -174,6 +174,7 @@ class Register < ActiveRecord::Base
   def left_image
     oriented_image = self.register_images.where(orientation: 'left').first
     if (!oriented_image.nil?)
+      # binding.pry
       left_image = oriented_image
     elsif (!self.previous.nil?)
       last_register_verso = self.previous.verso_image
@@ -184,6 +185,7 @@ class Register < ActiveRecord::Base
         left_image = nil
       end
     else
+      # binding.pry
       left_image = nil
     end
     return left_image
