@@ -87,6 +87,7 @@ class Register < ActiveRecord::Base
   scope :unverified, where(:verification_state_id => 2).order("id asc")
   scope :unentered, where(:verification_state_id => 5).order("id asc")
   scope :probleme, where(:verification_state_id => 6).order("id asc")
+  scope :archive, where(:verification_state_id => 7).order("id asc")
 
   scope :has_old_actor, includes(:register_plays).where("register_plays.newactor <> ''")
 
