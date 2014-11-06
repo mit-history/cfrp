@@ -7,8 +7,8 @@ namespace :img do
     seasons = {
       # '12' => { season: "1680-1681", period: '1680-81 to 1685-86' },
       # '76' => { season: "1718-1719", period: '1686-87 to 1754-55' },
-      # '77' => { season: "1718-1719", period: '1686-87 to 1754-55' },
-      '120' => { season: "1758-1759", period: '1758-59' },
+      '77' => { season: "1718-1719", period: '1686-87 to 1754-55' },
+      # '120' => { season: "1758-1759", period: '1758-59' },
       # '78' => { season: "1719-1720", period: '1686-87 to 1754-55' },
       # '80' => { season: "1719-1720", period: '1686-87 to 1754-55' },
       # '81' => { season: "1720-1721", period: '1686-87 to 1754-55' },
@@ -20,7 +20,8 @@ namespace :img do
 
     def season_images(dirnum, season, period)
       bucket_url = "https://s3.amazonaws.com/last-six-seasons"
-      season_dir = "M119_02_R#{dirnum}_II_1"
+      # season_dir = "M119_02_R#{dirnum}_II_1"
+      season_dir = "M119_02_R#{dirnum}"
       year = season.split("-")[0].to_i
       period = RegisterPeriod.find_by_period(period)
       date = DateTime.parse("#{year}-05-01")
@@ -31,12 +32,14 @@ namespace :img do
       # Go through every image in the directory, creating a register and two ri's for each.
       bucket.objects.with_prefix(season_dir).collect(&:key).sort.each do |recto_file|
         # skip ones that have already been done
-        recto_file =~ /(M119_02_R\d{3}(_II_1)?_\d{3}r\.jpg)/
+        # recto_file =~ /(M119_02_R\d{3}(_II_1)?_\d{3}r\.jpg)/
+        recto_file =~ /(M119_02_R\d{2,3}_\d{3}r\.jpg)/
         puts $1
         next if RegisterImage.find_by_image_file_name($1)
         puts "...not found, processing..."
 
-        if recto_file =~ /M119_02_R(\d{3})(_II_1)?_(\d{3})r\.jpg/
+        # if recto_file =~ /M119_02_R(\d{3})(_II_1)?_(\d{3})r\.jpg/
+        if recto_file =~ /M119_02_R(\d{2,3})_(\d{3})r\.jpg/
           register = Register.new(
             {
               date:                  date,
@@ -49,7 +52,8 @@ namespace :img do
 
           imgnum = $3
           recto_url = bucket_url + '/' + recto_file
-          verso_file = season_dir + '/' + "M119_02_R#{dirnum}_II_1_#{"%03d" % (imgnum.to_i + 1)}v.jpg"
+          # verso_file = season_dir + '/' + "M119_02_R#{dirnum}_II_1_#{"%03d" % (imgnum.to_i + 1)}v.jpg"
+          verso_file = season_dir + '/' + "M119_02_R#{dirnum}_#{"%03d" % (imgnum.to_i + 1)}v.jpg"
           verso_url = bucket_url + '/' + verso_file
 
           puts "\n Register:"
