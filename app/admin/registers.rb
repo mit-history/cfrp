@@ -11,7 +11,7 @@ ActiveAdmin.register Register do
   scope :unverified
   scope :probleme
   scope :verified
-  scope :archived
+  scope :archive
   scope :has_old_actor
 
   filter :id
