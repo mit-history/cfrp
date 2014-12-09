@@ -35,6 +35,8 @@ class Play < ActiveRecord::Base
   scope :comédie, where(:genre => "comédie").order("id asc")
   scope :expert_validated, where(:expert_validated => "true")
 
+  before_create :set_packed_id # from: http://stackoverflow.com/a/11731205/271192
+
   facet :acts
   facet :genre
   facet :author
@@ -45,6 +47,11 @@ class Play < ActiveRecord::Base
 
   def self.unique_authors
     expert_validated.order(:author).uniq(:author).pluck(:author)
+  end
+
+  # from: http://stackoverflow.com/a/11731205/271192
+  def set_packed_id
+    self._packed_id = self.class.connection.select_value("SELECT nextval('plays__packed_id_seq'::regclass)")
   end
 
   def self.import(file)
