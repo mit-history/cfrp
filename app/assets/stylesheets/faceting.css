@@ -50,7 +50,7 @@
   position: absolute;
   left: 0px;
   top: 0px;
-  width: 650px;
+  width: 670px;
   margin: 10px;
   padding-right: 40px;
 }
@@ -72,11 +72,6 @@
 
 #registers #navbar #tabs span {
   margin: 5px;
-}
-
-#registers #navbar #tabs span:hover {
-  text-decoration: underline;
-  cursor: pointer;
 }
 
 #registers #results {
@@ -200,48 +195,3 @@
 
 #facets .bar_facet .values { width: 158px; height: 276px; }
 #facets .bar_facet .facet { width: 158px }
-
-
-/** Visualization Presentation **/
-
-
-#registers #timeline {
-  position: absolute;
-  left: 30px;
-  top: 30px;
-  width: 750px;
-  height: 750px;
-  margin-top: 20px;
-/*  margin-bottom:40px; */
-}
-
-#timeline .legend text {
-  font-size: 7px;
-  font-weight: 300;
-}
-
-#timeline .legend text.units {
-  font-size: 11px;
-}
-
-#timeline .days path,
-#timeline .weeks path,
-#timeline .months path {
-  stroke: #fff;
-  stroke-width: 1px;
-}
-
-#timeline .months text {
-  font-size: 11px;
-}
-
-#timeline .axis text {
-  font-size: 7px;
-  font-weight: 300;
-}
-
-#timeline .register_data {
-  border-top: 1px solid black;
-  font-size: 14px;
-}
-

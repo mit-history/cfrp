@@ -106,13 +106,13 @@ class Register < ActiveRecord::Base
   facet :author2, joins(:plays, :register_plays).where('register_plays.ordering = 2').group('plays.author')
   facet :genre1, joins(:plays, :register_plays).where('register_plays.ordering = 1').group('plays.genre')
   facet :genre2, joins(:plays, :register_plays).where('register_plays.ordering = 2').group('plays.genre')
-  facet :total_receipts, group("bucket(total_receipts_recorded_l, 100, '09999', 'Inconnu') || ' l.'").order(:total_receipts)
+  facet :total_receipts, group("bucket(total_receipts_recorded_l, 100, '0999', 'Inconnu') || ' l.'").order(:total_receipts)
 
   # c.f. the amalgamated_sales view in the migration for "seating_category_aggregation"
 
   # see the appropriate migration for definitions of amalgamated sales and bucket
-  facet :parterre_receipts,      joins('JOIN amalgamated_sales ON (registers.id = register_id)').where("section = 'parterre'").group("bucket(receipts, 100, '09999', 'Inconnu') || ' l.'").order(:parterre_receipts)
-  facet :premiere_loge_receipts, joins('JOIN amalgamated_sales ON (registers.id = register_id)').where("section = 'premiere-loge'").group("bucket(receipts, 100, '09999', 'Inconnu') || ' l.'").order(:premiere_loge_receipts)
+  facet :parterre_receipts,      joins('JOIN amalgamated_sales ON (registers.id = register_id)').where("section = 'parterre'").group("bucket(receipts, 100, '0999', 'Inconnu') || ' l.'").order(:parterre_receipts)
+  facet :premiere_loge_receipts, joins('JOIN amalgamated_sales ON (registers.id = register_id)').where("section = 'premiere-loge'").group("bucket(receipts, 100, '0999', 'Inconnu') || ' l.'").order(:premiere_loge_receipts)
 
 
   def self.unique_seasons

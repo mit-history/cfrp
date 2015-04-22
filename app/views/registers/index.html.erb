@@ -115,6 +115,17 @@ $().ready(function() {
           .canvas(values_canvas)
           .width(w).height(h);
 
+      // protovis ignores clicks on labels. instead, add a
+      // translucent bar behind the label.
+      var bar0 = vis.add(pv.Bar)
+          .data(counts)
+          .top(function() { return y(this.index) })
+          .left(0)
+          .width(bar_offset)
+          .height(options.thickness - 5)
+          .fillStyle("rgba(255,255,255,0.001)")
+         .event("click", refine).cursor("pointer");
+
       var bar = vis.add(pv.Bar)
           .data(counts)
           .top(function() { return y(this.index) })
@@ -122,13 +133,7 @@ $().ready(function() {
           .width(function(d) { return x(d[1]) })
           .height(options.thickness - 5)
           .fillStyle("#ffbb78")
-         .event("click", function(d) {
-            var filter = self.refinements(self.facet_name());
-            var context = self.context();
-            context.toggle(self.facet_name(), d[0]);
-            context.trigger('changed');
-            return false;
-           }).cursor("pointer");
+         .event("click", refine).cursor("pointer");
 
          bar.anchor("left").add(pv.Label)
           .textAlign("right")
@@ -145,6 +150,14 @@ $().ready(function() {
       vis.render();
 
       return $markup;
+
+      function refine(d) {
+        var filter = self.refinements(self.facet_name());
+        var context = self.context();
+        context.toggle(self.facet_name(), d[0]);
+        context.trigger('changed');
+        return false;
+      }
     };
 
     // end of faceting widget factory method
@@ -211,21 +224,6 @@ $().ready(function() {
 
   $('#results').on('click', '.receipts', function() { $(this).find('.line-items').toggle(); });
 
-  // time-based visualization view
-  $('#timeline').results({
-    type: 'json',
-    injectors: {
-      'div.rep': function(self, registers) {
-        visualize_registers(registers, $(this), { height: 600, width: 600 });
-      }
-    }
-  });
-  $('#timeline').hide();
-
-  // script to toggle results views
-  $('#results-tab').click(function() { $('#results').show(); $('#timeline').hide(); });
-  $('#timeline-tab').click(function()  { $('#results').hide(); $('#timeline').show(); });
-
   // provide history support
   $('#registers').urls();
 
@@ -234,12 +232,9 @@ $().ready(function() {
 </script>
 <div id='registers'>
   <div id='results'></div>
-  <div id='timeline'></div>
   <div id='navbar'>
     <div id="banner">Projet des registres de la Comédie-Française</div>
     <div id="tabs">
-      <span id="results-tab"><i class="icon-list"></i></span>
-      <span id="timeline-tab"><i class="icon-cog"></i></span>
       <img class="spinner" src="/assets/repertoire-faceting/spinner_sm.gif"></img>
     </div>
   </div>

@@ -12,5 +12,3 @@
 //= require rep.faceting
 
 //= require protovis
-
-//= require visualize

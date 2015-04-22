@@ -44,63 +44,31 @@ class RegistersController < ApplicationController
     limit  = params[:limit]  || 20                  # ... avoid returning the entire data set
     offset = params[:offset] || 0
 
-#    if stale?(base.facet_cache_key)
-      @refined = base.refine(filter)
-      count = @refined.count
+    @refined = base.refine(filter)
+    count = @refined.count
 
-      @results = @refined.order(:date).includes(:ticket_sales, :plays, :register_images)
-      @results = @results.limit(limit) if limit
-      @results = @results.offset(offset) if offset
+    @results = @refined.order(:date).includes(:ticket_sales, :plays, :register_images)
+    @results = @results.limit(limit) if limit
+    @results = @results.offset(offset) if offset
 
-      # N.B. Doing this as a faceted query happens to capture the semantics we want (aggregation
-      #      over different seating categories but not across all performances in a double bill ticket).
-      #      In bare SQL, separating refinement and aggregation into a subquery is the most direct
-      #      translation, e.g.:
-      #
-      #        SELECT EXTRACT(MONTH FROM date) AS month, EXTRACT(DAY FROM date) AS day, SUM(total_sold) AS tickets
-      #        FROM registers JOIN ticket_sales ON (registers.id = ticket_sales.register_id)
-      #        WHERE registers.id IN
-      #              (SELECT register_id
-      #               FROM register_plays
-      #               JOIN plays ON (plays.id = play_id)
-      #               WHERE plays.author = 'Desforges'
-      #               AND ordering = 1)
-      #        GROUP BY month, day
-      #        ORDER BY month, day;
-      #
-      # @tickets_by_date = @refined.joins(:ticket_sales).select(['EXTRACT(MONTH FROM date) AS month',
-      #                                                          'EXTRACT(DAY FROM date) AS day',
-      #                                                          'SUM(total_sold) AS tickets']).group('month', 'day')
+    # retrieve line-item tallies by the correct seating order
+    @seat_order = []
+    @seat_names = []
+    RegisterPeriodSeatingCategory.joins(:register_period).joins(:seating_category).order(:period, :ordering).select([:seating_category_id, :name]).each_with_index do |rec, i|
+      @seat_order[rec.seating_category_id] = i
+      @seat_names[rec.seating_category_id] = rec.name
+    end
 
-      # For the Sept 1. release: use total receipts
-      @measure_by_date = @refined.select(['EXTRACT(MONTH FROM date) AS month',
-                                          'EXTRACT(DAY FROM date) AS day',
-                                          'SUM(total_receipts_recorded_l) AS measure']).group('month', 'day')
-
-      # oh god... for christs sake!?! kill me now
-      # more properly: perhaps best option is to create a view denormalizing this part of the DB?
-      # ... decision delayed until we decide whether we are exporting all data to denormalized form for use in
-      # ... a multidimensional analysis tool anyway
-      @seat_order = []
-      @seat_names = []
-      RegisterPeriodSeatingCategory.joins(:register_period).joins(:seating_category).order(:period, :ordering).select([:seating_category_id, :name]).each_with_index do |rec, i|
-        @seat_order[rec.seating_category_id] = i
-        @seat_names[rec.seating_category_id] = rec.name
-      end
-
-      respond_to do |format|
-        format.html { render :partial => 'register', :collection => @results,
-                             :locals => {:offset => offset, :total => count},
-                             :layout => false }
-        format.json { render :json => @measure_by_date }
-      end
-#    end
+    render :partial => 'register', :collection => @results,
+           :locals => {:offset => offset, :total => count},
+           :layout => false
   end
 
   protected
   def base
-    # N.B. to be removed later: for Sept 1 release, only include cleaned data
-    Register.where("date >= '1740-04-01' AND date <= '1793-03-26'")
+    # For May 1 2015 release, exclude archived or unchecked registers
+    # TODO.  ActiveRecord not respecting :joins clause, so we match directly on id
+    Register.where(:verification_state_id => [1,6])
   end
 
 end
