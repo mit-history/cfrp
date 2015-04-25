@@ -153,14 +153,7 @@ class Register < ActiveRecord::Base
   def rhp_image_number
     result   = self.recto_image
     result &&= result.image_filename
-
-    result &&= result[/M119_02_R\d{2,3}(_II_1)?_\d{3}([rv])?.jpg/, 2]
-    if result.nil?
-      result &&= result[/M119_02_R\d{2,3}_\d{3}([rv])?.jpg/, 1]
-    end
-
-    # result &&= result[/M119_02_R(\d+)(_II_1)?_(\d+)([rv])?.jpg/, 2]
-    # result &&= result[/M119_02_R(\d+)_(\d+)([rv])?.jpg/, 2]
+    result &&= result[/M119_02_R\d{2,3}(_II_1)?_(\d{3})([rv])?.jpg/, 2]
 
     result
   end
