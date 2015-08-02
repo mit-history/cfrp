@@ -1,5 +1,5 @@
 namespace :seating_categories do
-  desc "Flips the seating_categories for Parterre assis a 2 livres and Troisieme place a 2 livres"
+  desc "Flips the seating_categories for Parterre assis a 2 livres and Troisieme place a 2 livres for 1783-1784, 1784-1785 only."
   task :flip => :environment do |t, args|
   	changed_reg_count = 0
   	untouched_reg_count = 0
