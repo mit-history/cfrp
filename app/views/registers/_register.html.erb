@@ -18,7 +18,7 @@
       <dt>Date</dt>
       <dd>
         <% if (vol = register.volume_number) && (im = register.rhp_image_number) %>
-          <%= link_to "http://hyperstudio.mit.edu/cfrp/flip_books/R#{vol.to_i}/index.html#page/#{im.to_i}/mode/1up", :target => "top" do %>
+          <%= link_to register.recto_image.image.url(:original), :title => "<a href='http://hyperstudio.mit.edu/cfrp/flip_books/R#{vol.to_i}/index.html' class='season_link' target='top'>Season Flipbook</a>", :class => 'image-popup-vertical-fit' do %>
             <i class="icon-camera"></i>
           <% end %>
         <% end %>
@@ -67,3 +67,57 @@
 
   </dl>
 </div>
+<script type="text/javascript">
+$(document).ready(function() {
+
+  $('.image-popup-vertical-fit').magnificPopup({
+    type: 'image',
+    closeOnContentClick: true,
+    mainClass: 'mfp-img-mobile',
+    image: {
+      verticalFit: true
+    }
+    
+  });
+
+  $('.image-popup-fit-width').magnificPopup({
+    type: 'image',
+    closeOnContentClick: true,
+    image: {
+      verticalFit: false
+    }
+  });
+
+  $('.image-popup-no-margins').magnificPopup({
+    type: 'image',
+    closeOnContentClick: true,
+    closeBtnInside: false,
+    fixedContentPos: true,
+    mainClass: 'mfp-no-margins mfp-with-zoom', // class to remove default margin from left and right side
+    image: {
+      verticalFit: true
+    },
+    zoom: {
+      enabled: true,
+      duration: 300 // don't foget to change the duration also in CSS
+    }
+  });
+
+});  
+</script>
+<style type="text/css">
+  /* padding-bottom and top for image */
+.mfp-no-margins img.mfp-img {
+  padding: 0;
+}
+/* position of shadow behind the image */
+.mfp-no-margins .mfp-figure:after {
+  top: 0;
+  bottom: 0;
+}
+/* padding for main container */
+.mfp-no-margins .mfp-container {
+  padding: 0;
+}
+
+</style>

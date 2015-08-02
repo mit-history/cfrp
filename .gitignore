@@ -20,6 +20,9 @@ _archive/
 Gemfile.old.lock
 db/backups/
 public/system/
+11s/
+s3listing.txt
+app/views/layouts/website-wrapper.html.erb
 
 # Ignore application configuration
 /config/application.yml

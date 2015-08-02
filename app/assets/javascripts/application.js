@@ -8,6 +8,7 @@
 //= require twitter/bootstrap
 //= require "calculations.js"
 //= require jquery_nested_form
+//= require popup
 
 //= require rep.faceting
 
