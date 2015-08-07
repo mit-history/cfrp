@@ -40,6 +40,7 @@ class ExpertDataSource < ActiveRecord::Migration
                register_num
         FROM registers
         JOIN register_plays ON (registers.id = register_plays.register_id)
+        WHERE registers.verification_state_id IN (1,6)
         ORDER BY date, ordering;
 
       CREATE VIEW warehouse.sales AS
@@ -54,7 +55,6 @@ class ExpertDataSource < ActiveRecord::Migration
         JOIN seating_category_profile ON (seating_category_profile.id = seating_category_profile_id)
         ORDER BY date ASC, total_sold DESC;
 
-
         CREATE VIEW warehouse.images AS
           SELECT date,
                  register_id,
@@ -64,39 +64,7 @@ class ExpertDataSource < ActiveRecord::Migration
           JOIN registers ON (registers.id = register_id)
           WHERE register_images.id IN (SELECT min(id) FROM register_images WHERE orientation = 'recto' GROUP BY register_id)
           ORDER BY date;
-
     SQL
-
-=begin
-
-  http://s3.amazonaws.com/images.cfregisters.org/register_images/images/000/031/276/original/M119_02_R155_339r.jpg
-
-        CREATE VIEW warehouse.images AS
-          WITH temp0 AS (
-            SELECT (regexp_matches(coalesce(image_file_name, filepath), '([^/]*)$'))[1] AS filename, 
-            min(register_images.id) AS id
-            FROM register_images
-            GROUP BY filename
-          ), temp1 AS (
-            SELECT filename, id, (regexp_matches(filename, '_R(\d+)'))[1]::int AS volume FROM temp0
-          ), temp2 AS (
-            SELECT filename, id, volume, (row_number() over (partition by volume ORDER BY filename) - 1) AS page FROM temp1
-          ), temp3 AS (
-            SELECT min(register_images.id) AS id, date
-            FROM registers JOIN register_images ON (registers.id = register_id) 
-            WHERE orientation = 'recto' AND verification_state_id in (1,6)
-            GROUP BY register_id, date
-          ) SELECT filename,
-                   to_char(id, '099/999/999') AS id_partition,
-                   volume,
-                   page,
-                   date
-            FROM temp2 LEFT OUTER JOIN temp3 USING (id)
-            ORDER BY volume, page;
-
-=end
-
-
   end
 
   def down

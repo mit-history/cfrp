@@ -4,7 +4,7 @@ class SeatingCategoryProfiles < ActiveRecord::Migration
 
     -- NB * Profiles should partition the entire ticket sale data set! *
     -- Otherwise data analytics based on them will be incorrect.
-    CREATE TABLE seating_category_profiles(
+    CREATE TABLE seating_category_profile(
       id SERIAL PRIMARY KEY,
       profile TEXT NOT NULL,
       period TEXT NOT NULL,
@@ -19,32 +19,29 @@ class SeatingCategoryProfiles < ActiveRecord::Migration
     CREATE VIEW ticket_sales_by_profile AS
       WITH temp AS (
         SELECT ticket_sales.*, date, profile
-        FROM ticket_sales, registers, 
-             (SELECT DISTINCT profile FROM seating_category_profiles) AS profiles
+        FROM ticket_sales, registers,
+             (SELECT DISTINCT profile FROM seating_category_profile) AS profile
         WHERE register_id = registers.id)
-      SELECT temp.*, seating_category_profiles.id AS seating_category_profiles_id, category
-        FROM temp LEFT OUTER JOIN seating_category_profiles 
-          ON (date >= start_date AND date <= end_date 
+      SELECT temp.*, seating_category_profile.id AS seating_category_profile_id, category
+        FROM temp LEFT OUTER JOIN seating_category_profile
+          ON (date >= start_date AND date <= end_date
               AND seating_category_id = ANY(seating_category_ids));
 
     CREATE VIEW ticket_sales_by_profile_lint AS
       SELECT date, total_sold, seating_category_id, seating_categories.name, ticket_sales_by_profile.category, period
-      FROM ticket_sales_by_profile 
+      FROM ticket_sales_by_profile
       JOIN seating_categories ON (seating_category_id = seating_categories.id)
-      LEFT OUTER JOIN seating_category_profiles ON (seating_category_profiles.id = seating_category_profiles_id)
+      LEFT OUTER JOIN seating_category_profile ON (seating_category_profile.id = seating_category_profile_id)
       ORDER BY date;
-    SQL
 
-    say <<-MSG
-    now run this script to bulk load:"
-      db/scripts/2015.06.25.bulk_load_seating_category_profiles.sql
-    MSG
+SQL
+
   end
 
   def down
     execute <<-SQL
 
-    DROP TABLE IF EXISTS seating_category_profiles CASCADE;
+    DROP TABLE IF EXISTS seating_category_profile CASCADE;
 
     SQL
   end
