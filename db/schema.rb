@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150629092902) do
+ActiveRecord::Schema.define(:version => 20150809103045) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -84,6 +84,11 @@ ActiveRecord::Schema.define(:version => 20150629092902) do
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
+  create_table "fact_stamps", :force => true do |t|
+    t.text     "hash_stamp"
+    t.datetime "created_at"
+  end
+
   create_table "lhp_category_assignments", :force => true do |t|
     t.integer  "register_id",       :null => false
     t.integer  "page_de_gauche_id", :null => false
@@ -130,16 +135,21 @@ ActiveRecord::Schema.define(:version => 20150629092902) do
     t.string   "dates"
   end
 
-  create_table "plays", :id => false, :force => true do |t|
-    t.integer "play_id"
-    t.string  "author"
-    t.string  "title"
-    t.string  "genre"
-    t.integer "acts"
-    t.string  "prose_vers"
-    t.boolean "prologue"
-    t.boolean "musique_danse_machine"
-    t.date    "date_de_creation"
+  create_table "plays", :force => true do |t|
+    t.string   "author"
+    t.string   "title"
+    t.string   "genre"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "acts"
+    t.string   "prose_vers"
+    t.boolean  "prologue"
+    t.boolean  "musique_danse_machine"
+    t.string   "alternative_title"
+    t.string   "url"
+    t.date     "date_de_creation"
+    t.boolean  "expert_validated"
+    t.integer  "_packed_id",            :null => false
   end
 
   create_table "register_contributors", :force => true do |t|
