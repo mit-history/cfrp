@@ -2,40 +2,6 @@ require 'csv'
 
 class AnalyticsController < ApplicationController
 
-  DIMENSIONS = [
-  ]
-
-  AGGREGATES = [ 'Représentations(jours)',
-                 'Somme(recette)',
-                 'Moyenne(recette/jour)',
-                 'Moyenne(prix)' ]
-
-  def dimensions
-    @csv = CSV.generate do |csv|
-      csv << ['Dimension']
-      DIMENSIONS.each do |agg|
-        csv << [ agg ]
-      end
-    end
-
-    respond_to do |format|
-      format.csv { render :text => @csv }
-    end
-  end
-
-  def aggregates
-    @csv = CSV.generate do |csv|
-      csv << ['Aggregate']
-      AGGREGATES.each do |agg|
-        csv << [ agg ]
-      end
-    end
-
-    respond_to do |format|
-      format.csv { render :text => @csv }
-    end
-  end
-
   def dimension
   	dim = params[:dim]
 
@@ -48,10 +14,10 @@ class AnalyticsController < ApplicationController
 
     conn = ActiveRecord::Base.connection
 
-    warehouse_stamp = conn.select_value("SELECT hash_stamp FROM fact_stamps")    
+    warehouse_hash = conn.select_value("SELECT md5 FROM warehouse.warehouse_hash")
 
     # HTTP caching
-    if stale?(etag: warehouse_stamp, public: true) then
+    if stale?(etag: warehouse_hash, public: true) then
 
       # prepare params
 
@@ -101,23 +67,24 @@ class AnalyticsController < ApplicationController
   # library methods (location is temporary)
 
   def self.domain(connection, dim_name)
-    facts = Arel::Table.new(:facts)
+    sales_facts = Arel::Table.new('warehouse.sales_facts')
     sql_label = name.parameterize.underscore
     join_dims = []
     dim = dim_defn(dim_name, join_dims)
 
-    query = facts.project(dim.as(sql_label)).group(sql_label).order(sql_label)
+    query = sales_facts.project(dim.as(sql_label))
+                       .group(sql_label)
+                       .order(sql_label)
 
     connection.select_values(query.to_sql)
   end
 
   def self.aggregate(connection, agg, dim_names, filters={})
-    facts = Arel::Table.new(:facts)
+    sales_facts = Arel::Table.new('warehouse.sales_facts')
 
-    registers = Arel::Table.new(:registers)
-    plays = Arel::Table.new(:plays)
-    performances = Arel::Table.new(:register_plays)
-    seating_category_profile = Arel::Table.new(:seating_category_profile)
+    plays = Arel::Table.new('warehouse.play_dim')
+    performances = Arel::Table.new('warehouse.performance_dim')
+    seating_categories = Arel::Table.new('warehouse.seating_category_dim')
 
     # aggregate
 
@@ -125,17 +92,20 @@ class AnalyticsController < ApplicationController
       when /default/
         Arel.sql('*').count
       when /min\(date\)/
-        facts[:date].minimum
+        sales_facts[:date].minimum
       when /max\(date\)/
-        facts[:date].maximum
+        sales_facts[:date].maximum
       when /Représentations\(jours\)/
-        facts[:date].count(true)
+        sales_facts[:date].count(true)
       when /Somme\(recette\)/
-        (facts[:price] * facts[:sold]).sum
+        (sales_facts[:price] * sales_facts[:sold]).sum
       when /Moyenne\(recette\/jour\)/
-        (facts[:price] * facts[:sold]).average
+        # BUG IN AREL.  This circumlocution necessary because Arel assumes a single aggregate function per expression
+        # in a just world, it would be:  ([sales_facts[:price] * sales_facts[:sold]).sum / sales_facts[:date].count(true))
+        sum_function = Arel::Nodes::NamedFunction.new('SUM', [sales_facts[:price] * sales_facts[:sold]])
+        Arel::Nodes::Division.new( sum_function, sales_facts[:date].count(true))
       when /Moyenne\(prix\)/
-        facts[:price].average
+        sales_facts[:price].average
       else
         throw "Unkown aggregate: #{agg}"
       end
@@ -152,7 +122,7 @@ class AnalyticsController < ApplicationController
 
     # construct query
 
-    query = facts
+    query = sales_facts
 
     filters.each do |name, values|
       sql_label = name.parameterize.underscore
@@ -172,18 +142,16 @@ class AnalyticsController < ApplicationController
 
     join_dims.each do |name|
       case name
-      when /registers/
-        query = query.join(registers).on(registers[:id].eq(facts[:register_id]))
-        registers[:id]
       when /play_(\d+)/
         col = "play_#{$1}_id"
-        query = query.join(plays).on(plays[:id].eq(facts[col]))
+        query = query.join(plays).on(plays[:id].eq(sales_facts[col]))
       when /performance_(\d+)/
         col = "performance_#{$1}_id"
-        query = query.join(performances).on(performances[:id].eq(facts[col]))
-      when /(.+)_seating_category_profile/
-        col = "#{$1}_seating_category_profile_id"
-        query = query.join(seating_category_profile).on(seating_category_profile[:id].eq(facts[col]))
+        query = query.join(performances).on(performances[:id].eq(sales_facts[col]))
+      when /(.+)_seating_category/
+        col = "#{$1}_seating_category_id"
+        query = query.join(seating_categories)
+                     .on(seating_categories[:id].eq(sales_facts[col]))
       else
         throw "Unknown dimension key: #{name}"
       end
@@ -201,27 +169,25 @@ class AnalyticsController < ApplicationController
   end
 
   def self.dim_defn(name, join_dims)
-    facts = Arel::Table.new(:facts)
+    sales_facts = Arel::Table.new('warehouse.sales_facts')
 
-    registers = Arel::Table.new(:registers)
-    plays = Arel::Table.new(:plays)
-    performances = Arel::Table.new(:register_plays)
-    seating_category_profile = Arel::Table.new(:seating_category_profile)
+    plays = Arel::Table.new('warehouse.play_dim')
+    performances = Arel::Table.new('warehouse.performance_dim')
+    seating_categories = Arel::Table.new('warehouse.seating_category_dim')
 
     case name
     # Temps
     when 'Décennie'
-      decade = Arel::Nodes::NamedFunction.new "date_trunc", [ Arel.sql("'decade'"), facts[:date] ]
-      Arel::Nodes::NamedFunction.new "date_part", [ Arel.sql("'year'"), decade ]
+      decade = Arel::Nodes::NamedFunction.new "date_trunc", [ Arel.sql("'decade'"), sales_facts[:date] ]
+      Arel::Nodes::NamedFunction.new "to_char", [ decade, Arel.sql("'YYYY'") ]
     when 'Saison'
-      join_dims << 'registers'
-      registers[:season]
+      Arel::Nodes::NamedFunction.new "warehouse.cfrp_season", [ sales_facts[:date] ]
     when 'Mois'
-      Arel::Nodes::NamedFunction.new "date_part", [ Arel.sql("'month'"), facts[:date] ]
+      Arel::Nodes::NamedFunction.new "to_char", [ sales_facts[:date], Arel.sql("'MM'") ]
     when 'Jour'
-      facts[:date]
+      sales_facts[:date]
     when 'Jour de la semaine'
-      Arel::Nodes::NamedFunction.new "date_part", [ Arel.sql("'dow'"), facts[:date] ]
+      Arel::Nodes::NamedFunction.new "to_char", [ sales_facts[:date], Arel.sql("'D'") ]
 
     # Soirée
     when /Auteur_(\d+)/
@@ -283,11 +249,11 @@ class AnalyticsController < ApplicationController
 
     # Théâtre
     when /Théâtre \+ Period/
-      join_dims << "ravel_1_seating_category_profile"
-      seating_category_profile[:period]
+      join_dims << "ravel_1_seating_category"
+      seating_categories[:period]
     when /Place/
-      join_dims << "ravel_1_seating_category_profile"
-      seating_category_profile[:category]
+      join_dims << "ravel_1_seating_category"
+      seating_categories[:category]
 
     else
       throw "Unknown dimension: #{name}"
