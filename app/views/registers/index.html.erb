@@ -232,7 +232,7 @@ $().ready(function() {
       }
   }
 
-  $('#season').facet($.extend({}, close_injectors, { title : "Saison" }));
+  $('#season').facet($.extend({}, close_injectors, search_injectors, { title : "Saison" }));
   $('#author1').facet($.extend({}, close_injectors, search_injectors, { title : "Auteur 1" }));
   $('#title1').facet($.extend({}, close_injectors, search_injectors, { title : "Pièce 1" }));
   $('#genre1').facet($.extend({}, close_injectors, search_injectors, { title : "Genre 1" }));
