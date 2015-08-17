@@ -95,16 +95,16 @@ class AnalyticsController < ApplicationController
         sales_facts[:date].minimum
       when /max\(date\)/
         sales_facts[:date].maximum
-      when /Représentations\(jours\)/
+      when /performances_days/
         sales_facts[:date].count(true)
-      when /Somme\(recette\)/
+      when /sum_receipts/
         (sales_facts[:price] * sales_facts[:sold]).sum
-      when /Moyenne\(recette\/jour\)/
+      when /mean_receipts_day/
         # BUG IN AREL.  This circumlocution necessary because Arel assumes a single aggregate function per expression
         # in a just world, it would be:  ([sales_facts[:price] * sales_facts[:sold]).sum / sales_facts[:date].count(true))
         sum_function = Arel::Nodes::NamedFunction.new('SUM', [sales_facts[:price] * sales_facts[:sold]])
         Arel::Nodes::Division.new( sum_function, sales_facts[:date].count(true))
-      when /Moyenne\(prix\)/
+      when /mean_price/
         sales_facts[:price].average
       else
         throw "Unkown aggregate: #{agg}"
@@ -177,81 +177,75 @@ class AnalyticsController < ApplicationController
 
     case name
     # Temps
-    when 'Décennie'
+    when 'decade'
       decade = Arel::Nodes::NamedFunction.new "date_trunc", [ Arel.sql("'decade'"), sales_facts[:date] ]
       Arel::Nodes::NamedFunction.new "to_char", [ decade, Arel.sql("'YYYY'") ]
-    when 'Saison'
+    when 'season'
       Arel::Nodes::NamedFunction.new "warehouse.cfrp_season", [ sales_facts[:date] ]
-    when 'Mois'
+    when 'month'
       Arel::Nodes::NamedFunction.new "to_char", [ sales_facts[:date], Arel.sql("'MM'") ]
-    when 'Jour'
+    when 'day'
       sales_facts[:date]
-    when 'Jour de la semaine'
+    when 'weekday'
       Arel::Nodes::NamedFunction.new "to_char", [ sales_facts[:date], Arel.sql("'D'") ]
 
     # Soirée
-    when /Auteur_(\d+)/
+    when /author_(\d+)/
       join_dims << "play_#{$1}"
       plays[:author]
-    when /Pièce_(\d+)/
+    when /title_(\d+)/
       join_dims << "play_#{$1}"
       plays[:title]
-    when /Genre_(\d+)/
+    when /genre_(\d+)/
       join_dims << "play_#{$1}"
       plays[:genre]
-    when /Acte\(s\)_(\d+)/
+    when /acts_(\d+)/
       join_dims << "play_#{$1}"
       plays[:acts]
-    when /Prose\/Vers_(\d+)/
+    when /prose_vers_(\d+)/
       join_dims << "play_#{$1}"
       plays[:prose_vers]
-    when /Prologue_(\d+)/
+    when /prologue_(\d+)/
       join_dims << "play_#{$1}"
       plays[:prologue]
-    when /Musique\/Danse\/Machine_(\d+)/
+    when /musique_danse_machine_(\d+)/
       join_dims << "play_#{$1}"
       plays[:musique_danse_machine]
 
     # Soirée (supplémentaire)
-    when /Prologue_(\d+)/
-      join_dims << "performance_#{$1}"
-      performances[:prologue]
-    when /Musique\/Danse\/Machine_(\d+)/
-      join_dims << "performance_#{$1}"
-      performances[:musique_danse_machine]
-    when /Gratuit_(\d+)/
+    when /free_entry_(\d+)/
       join_dims << "performance_#{$1}"
       performances[:free_access]
-    when /Reprise_(\d+)/
+    when /reprise_(\d+)/
       join_dims << "performance_#{$1}"
       performances[:reprise]
-    when /Nouveau Acteur_(\d+)/
+    when /newactor_(\d+)/
       join_dims << "performance_#{$1}"
       performances[:newactor]
-    when /Début_(\d+)/
+    when /debut_(\d+)/
       join_dims << "performance_#{$1}"
       performances[:debut]
-    when /First Run_(\d+)/
+    when /firstrun_(\d+)/
       join_dims << "performance_#{$1}"
       performances[:firstrun]
-    when /Reprise_(\d+)/
+    when /reprise_(\d+)/
       join_dims << "performance_#{$1}"
       performances[:reprise]
-    when /Présence exceptionelle_(\d+)/
+    when /ex_attendance_(\d+)/
       join_dims << "performance_#{$1}"
       performances[:ex_attendance]
-    when /Répresentation exceptionelles_(\d+)/
+    when /ex_representation_(\d+)/
       join_dims << "performance_#{$1}"
       performances[:ex_representation]
-    when /ExPlace_(\d+)/
+    when /ex_place_(\d+)/
       join_dims << "performance_#{$1}"
       performances[:ex_place]
 
     # Théâtre
-    when /Théâtre \+ Period/
+    when /theater_period/
       join_dims << "ravel_1_seating_category"
       seating_categories[:period]
-    when /Place/
+    when /seat/
       join_dims << "ravel_1_seating_category"
       seating_categories[:category]
 
