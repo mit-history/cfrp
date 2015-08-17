@@ -10,7 +10,33 @@
 }
 
 .facet.loading .title .clear_facet {
-  display:none;
+  display: none;
+}
+
+.facet .title .spinner {
+  margin-top: 2px;
+}
+
+.facet .title .controls {
+  margin: 0;
+  margin-left: 5px;
+  padding: 0;
+}
+
+.facet input[type="search"] {
+  width: 100px;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.facet.collapsed input[type="search"] {
+  display: none;
+}
+
+/* workaround: bootstrap 2.3.2 clobbers proper HTML5 search box styling...
+               later versions may improve this issue */
+.facet input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: searchfield-cancel-button;
 }
 
 /* facet value lists */
