@@ -55,7 +55,6 @@
   padding-right: 40px;
 }
 
-
 #registers #navbar #banner {
   font-size: 24px;
   font-weight: 200;
@@ -63,6 +62,14 @@
   text-shadow: 0 1px 0 #fff;
   float:left;
   clear:none;
+}
+
+#registers #navbar a {
+  color: inherit;
+}
+
+#registers #navbar a:hover {
+  text-decoration: none;
 }
 
 #registers #navbar #tabs {
