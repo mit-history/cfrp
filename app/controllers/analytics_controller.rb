@@ -89,22 +89,22 @@ class AnalyticsController < ApplicationController
     # aggregate
 
     projection = case agg
-      when /default/
+      when /^default/
         Arel.sql('*').count
-      when /min\(date\)/
+      when /^min\(date\)/
         sales_facts[:date].minimum
-      when /max\(date\)/
+      when /^max\(date\)/
         sales_facts[:date].maximum
-      when /performances_days/
+      when /^performances_days/
         sales_facts[:date].count(true)
-      when /sum_receipts/
+      when /^sum_receipts/
         (sales_facts[:price] * sales_facts[:sold]).sum
-      when /mean_receipts_day/
+      when /^mean_receipts_day/
         # BUG IN AREL.  This circumlocution necessary because Arel assumes a single aggregate function per expression
         # in a just world, it would be:  ([sales_facts[:price] * sales_facts[:sold]).sum / sales_facts[:date].count(true))
         sum_function = Arel::Nodes::NamedFunction.new('SUM', [sales_facts[:price] * sales_facts[:sold]])
         Arel::Nodes::Division.new( sum_function, sales_facts[:date].count(true))
-      when /mean_price/
+      when /^mean_price/
         sales_facts[:price].average
       else
         throw "Unkown aggregate: #{agg}"
@@ -133,7 +133,8 @@ class AnalyticsController < ApplicationController
         expr = dim_defn(name, join_dims)        # TODO.  has side effects in join_dims...
       end
 
-      query = query.where(expr.in(values))
+      cond = pred(name, expr, values)
+      query = query.where(cond)
     end
 
     join_dims = join_dims.uniq
@@ -142,13 +143,13 @@ class AnalyticsController < ApplicationController
 
     join_dims.each do |name|
       case name
-      when /play_(\d+)/
+      when /^play_(\d+)/
         col = "play_#{$1}_id"
         query = query.join(plays).on(plays[:id].eq(sales_facts[col]))
-      when /performance_(\d+)/
+      when /^performance_(\d+)/
         col = "performance_#{$1}_id"
         query = query.join(performances).on(performances[:id].eq(sales_facts[col]))
-      when /(.+)_seating_category/
+      when /^(.+)_seating_category/
         col = "#{$1}_seating_category_id"
         query = query.join(seating_categories)
                      .on(seating_categories[:id].eq(sales_facts[col]))
@@ -168,6 +169,20 @@ class AnalyticsController < ApplicationController
     connection.select_rows(query.to_sql)
   end
 
+  def self.pred(name, expr, *values)
+    case name
+    when /\.lt$/
+      expr.lt_all(values)
+    when /\.gt$/
+      expr.gt_all(values)
+    when /\.in$/, /^[^\.]+$/
+      expr.in(values)
+
+    else
+      throw "Cannot parse operator ending #{name}"
+    end
+  end
+
   def self.dim_defn(name, join_dims)
     sales_facts = Arel::Table.new('warehouse.sales_facts')
 
@@ -177,75 +192,75 @@ class AnalyticsController < ApplicationController
 
     case name
     # Temps
-    when 'decade'
+    when /^decade/
       decade = Arel::Nodes::NamedFunction.new "date_trunc", [ Arel.sql("'decade'"), sales_facts[:date] ]
       Arel::Nodes::NamedFunction.new "to_char", [ decade, Arel.sql("'YYYY'") ]
-    when 'season'
+    when /^season/
       Arel::Nodes::NamedFunction.new "warehouse.cfrp_season", [ sales_facts[:date] ]
-    when 'month'
+    when /^month/
       Arel::Nodes::NamedFunction.new "to_char", [ sales_facts[:date], Arel.sql("'MM'") ]
-    when 'day'
+    when /^day/
       sales_facts[:date]
-    when 'weekday'
+    when /^weekday/
       Arel::Nodes::NamedFunction.new "to_char", [ sales_facts[:date], Arel.sql("'D'") ]
 
     # Soirée
-    when /author_(\d+)/
+    when /^author_(\d+)/
       join_dims << "play_#{$1}"
       plays[:author]
-    when /title_(\d+)/
+    when /^title_(\d+)/
       join_dims << "play_#{$1}"
       plays[:title]
-    when /genre_(\d+)/
+    when /^genre_(\d+)/
       join_dims << "play_#{$1}"
       plays[:genre]
-    when /acts_(\d+)/
+    when /^acts_(\d+)/
       join_dims << "play_#{$1}"
       plays[:acts]
-    when /prose_vers_(\d+)/
+    when /^prose_vers_(\d+)/
       join_dims << "play_#{$1}"
       plays[:prose_vers]
-    when /prologue_(\d+)/
+    when /^prologue_(\d+)/
       join_dims << "play_#{$1}"
       plays[:prologue]
-    when /musique_danse_machine_(\d+)/
+    when /^musique_danse_machine_(\d+)/
       join_dims << "play_#{$1}"
       plays[:musique_danse_machine]
 
     # Soirée (supplémentaire)
-    when /free_entry_(\d+)/
+    when /^free_entry_(\d+)/
       join_dims << "performance_#{$1}"
       performances[:free_access]
-    when /reprise_(\d+)/
+    when /^reprise_(\d+)/
       join_dims << "performance_#{$1}"
       performances[:reprise]
-    when /newactor_(\d+)/
+    when /^newactor_(\d+)/
       join_dims << "performance_#{$1}"
       performances[:newactor]
-    when /debut_(\d+)/
+    when /^debut_(\d+)/
       join_dims << "performance_#{$1}"
       performances[:debut]
-    when /firstrun_(\d+)/
+    when /^firstrun_(\d+)/
       join_dims << "performance_#{$1}"
       performances[:firstrun]
-    when /reprise_(\d+)/
+    when /^reprise_(\d+)/
       join_dims << "performance_#{$1}"
       performances[:reprise]
-    when /ex_attendance_(\d+)/
+    when /^ex_attendance_(\d+)/
       join_dims << "performance_#{$1}"
       performances[:ex_attendance]
-    when /ex_representation_(\d+)/
+    when /^ex_representation_(\d+)/
       join_dims << "performance_#{$1}"
       performances[:ex_representation]
-    when /ex_place_(\d+)/
+    when /^ex_place_(\d+)/
       join_dims << "performance_#{$1}"
       performances[:ex_place]
 
     # Théâtre
-    when /theater_period/
+    when /^theater_period/
       join_dims << "ravel_1_seating_category"
       seating_categories[:period]
-    when /seat/
+    when /^seat/
       join_dims << "ravel_1_seating_category"
       seating_categories[:category]
 
