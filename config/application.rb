@@ -48,5 +48,8 @@ module Cfrp
 
     # config.assets.precompile += ['*.js', '*.css', '*.png', '*.jpg']
     config.assets.initialize_on_precompile = false
+
+    # memcached store for AJAX API endpoints
+    config.cache_store = :dalli_store
   end
 end

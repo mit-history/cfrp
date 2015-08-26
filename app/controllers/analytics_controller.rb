@@ -3,25 +3,25 @@ require 'csv'
 class AnalyticsController < ApplicationController
 
   def dimension
-  	dim = params[:dim]
+    if stale?(warehouse_cache_key) then
 
-    conn = ActiveRecord::Base.connection
+      conn = ActiveRecord::Base.connection
 
-  	AnalyticsController.domain(conn, dim)
+      dim = params[:dim]
+
+      AnalyticsController.domain(conn, dim)
+
+    end
   end
 
   def aggregate
+    if stale?(warehouse_cache_key) then
 
-    conn = ActiveRecord::Base.connection
-
-    warehouse_hash = conn.select_value("SELECT md5 FROM warehouse.warehouse_hash")
-
-    # HTTP caching
-    if stale?(etag: warehouse_hash, public: true) then
+      conn = ActiveRecord::Base.connection
 
       # prepare params
 
-    	agg = params[:agg] || :default
+      agg = params[:agg] || :default
       dims = params[:axis] || []
 
       filter = {}
@@ -37,7 +37,7 @@ class AnalyticsController < ApplicationController
         logger.debug("#{key}: #{val}")
       end
 
-    	@data = AnalyticsController.aggregate(conn, agg, dims, filter)
+      @data = AnalyticsController.aggregate(conn, agg, dims, filter)
 
       @csv = CSV.generate do |csv|
         csv << dims + [agg]
@@ -49,7 +49,7 @@ class AnalyticsController < ApplicationController
       # output csv
 
       respond_to do |format|
-      	format.csv { render :text => @csv }
+        format.csv { render :text => @csv }
       end
 
     end
@@ -61,6 +61,16 @@ class AnalyticsController < ApplicationController
     @url = @register.recto_image.image.url(:original)
 
     render :text => @url
+  end
+
+  def warehouse_cache_key
+    conn = ActiveRecord::Base.connection
+    warehouse_stamp = conn.select_one("SELECT md5, created_at FROM warehouse.warehouse_hash")
+
+    next_refresh = warehouse_stamp['created_at'].to_time + 1.day + 30.minutes
+    expires_in(next_refresh - Time.current, public: true)
+    return { etag: warehouse_stamp['warehouse_hash'],
+             last_modified: warehouse_stamp['created_at'].to_time }
   end
 
 
