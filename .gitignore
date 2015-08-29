@@ -26,3 +26,5 @@ app/views/layouts/website-wrapper.html.erb
 
 # Ignore application configuration
 /config/application.yml
+missing-images.txt
+missing-images/**
