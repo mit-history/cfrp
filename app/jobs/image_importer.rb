@@ -24,10 +24,8 @@ class ImageImporter
 
       register_image.orientation = orientation
       register_image.image = "https://s3.amazonaws.com/seventies-nineties/#{register_image.image_filename}"
-      if (ENV['PAPERCLIP_ACTIVE'] == true)
-        register_image.save!
-        print "Register Image Saved. \n"
-      end
+      register_image.save!
+      print "Register Image Saved. \n"
       print "Register Image: #{register_image.inspect} \n"
     rescue StandardError => e
       puts e.inspect
