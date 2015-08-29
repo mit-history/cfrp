@@ -91,6 +91,7 @@ GEM
       execjs
     coffee-script-source (1.6.3)
     commonjs (0.2.7)
+    dalli (2.7.4)
     debug_inspector (0.0.2)
     delayed_job (4.0.1)
       activesupport (>= 3.0, < 4.2)
@@ -309,6 +310,7 @@ DEPENDENCIES
   cancan
   capybara
   coffee-rails (~> 3.2.1)
+  dalli
   delayed_job_active_record
   devise
   figaro
@@ -325,6 +327,7 @@ DEPENDENCIES
   paperclip
   pg
   pry
+  rack-cache
   rack-cors
   rails (~> 3.2)
   rails_12factor
@@ -340,3 +343,6 @@ DEPENDENCIES
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
   unicorn
+
+BUNDLED WITH
+   1.10.6

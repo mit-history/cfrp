@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150422155506) do
+ActiveRecord::Schema.define(:version => 20150829113121) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -265,6 +265,17 @@ ActiveRecord::Schema.define(:version => 20150422155506) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "seating_category_profile", :force => true do |t|
+    t.text   "profile",                                              :null => false
+    t.text   "period",                                               :null => false
+    t.date   "start_date",                                           :null => false
+    t.date   "end_date",                                             :null => false
+    t.string "seating_category_ids", :limit => nil,                  :null => false
+    t.text   "category",                                             :null => false
+    t.float  "estimated_seats",                     :default => 1.0
+    t.text   "note"
   end
 
   create_table "taggings", :force => true do |t|

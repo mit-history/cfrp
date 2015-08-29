@@ -24,8 +24,22 @@ Cfrp::Application.configure do
   # Use a different logger for distributed setups
   # config.logger = SyslogLogger.new
 
-  # Use a different cache store in production
-  # config.cache_store = :mem_cache_store
+  # Use memcachier for asset store in rack
+  client = Dalli::Client.new((ENV["MEMCACHIER_SERVERS"] || "").split(","),
+                             :username => ENV["MEMCACHIER_USERNAME"],
+                             :password => ENV["MEMCACHIER_PASSWORD"],
+                             :failover => true,
+                             :socket_timeout => 1.5,
+                             :socket_failure_delay => 0.2,
+                             :value_max_bytes => 10485760)
+  config.action_dispatch.rack_cache = {
+    :metastore    => client,
+    :entitystore  => client
+  }
+  config.static_cache_control = "public, max-age=2592000"
+
+  # Also use memcachier for Rails.cache
+  config.cache_store = :dalli_store
 
   # Enable serving of images, stylesheets, and javascripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
@@ -53,19 +67,19 @@ Cfrp::Application.configure do
   # Upgrading to 3.1/3.2: http://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html
   # Compress JavaScripts and CSS
   config.assets.compress = true
-  
+
   # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = true
-  
+
   # Generate digests for assets URLs
   config.assets.digest = true
-  
+
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
-  
+
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
-  
+
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
 
@@ -86,7 +100,7 @@ Cfrp::Application.configure do
     :password =>       ENV['MANDRILL_APIKEY'],
     :domain  =>       "heroku.com",
     :authentication => :plain,
-    :enable_starttls_auto => true  
+    :enable_starttls_auto => true
   }
 
 end

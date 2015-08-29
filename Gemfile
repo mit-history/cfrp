@@ -60,6 +60,10 @@ group :development, :test do
   gem 'shoulda-matchers'
 end
 
+# Caching, used for AJAX API endpoints
+gem 'rack-cache'
+gem 'dalli'
+
 gem 'nokogiri'
 gem 'activeadmin'
 gem "meta_search",    '>= 1.1.0.pre'

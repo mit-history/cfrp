@@ -19,6 +19,12 @@ Cfrp::Application.routes.draw do
 
   resources :play_performances, only: [:index]
 
+  get '/api/cfrp/aggregate/:agg', controller: 'analytics', action: 'aggregate'
+  get '/api/cfrp/dimension/:dim', controller: 'analytics', action: 'dimension'
+
+  # TODO.  should move to JSON property via registers url
+  get '/api/cfrp/image', controller: 'analytics', action: 'image_url'
+
   root to: "admin/registers#index"
 
   # devise_for :admin_users, ActiveAdmin::Devise.config

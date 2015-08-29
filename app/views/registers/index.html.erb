@@ -206,18 +206,44 @@ $().ready(function() {
       }
     };
 
-  $('#season').facet($.extend({}, close_injectors, { title : "Saison" }));
-  $('#author1').facet($.extend({}, close_injectors, { title : "Auteur 1" }));
-  $('#title1').facet($.extend({}, close_injectors, { title : "Pièce 1" }));
-  $('#genre1').facet($.extend({}, close_injectors, { title : "Genre 1" }));
-  $('#weekday').facet($.extend({}, close_injectors, { title : "Jour de la semaine" }));
-  $('#author2').facet($.extend({}, close_injectors, { title : "Auteur 2" }));
-  $('#title2').facet($.extend({}, close_injectors, { title : "Pièce 2" }));
-  $('#genre2').facet($.extend({}, close_injectors, { title : "Genre 2"}));
+  // search functionality: (via jquery only) toggle display of facet values that match search field
+  jQuery.expr[':'].containsCaseInsensitive = function(a,i,m){
+      return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase())>=0;
+  };
 
-  $('#total_receipts').bar_facet($.extend({}, close_injectors, { width : 155 } ));
-  $('#parterre_receipts').bar_facet($.extend({}, close_injectors, { width : 155 } ));
-  $('#premiere_loge_receipts').bar_facet($.extend({}, close_injectors, { width : 155 } ));
+  var search_injectors = {
+      injectors: {
+        '.title .controls' : function(self, data) {
+          $(this).append('<input type="search" name="search_values">')
+        }
+      },
+      handlers: {
+        'input!.title .controls input' : function(self) {
+          var filter = $(this).val().replace(')', '');
+          var $values = $(this).closest('.facet').find('.value');
+
+          if(filter) {
+            $values.find(":not(:containsCaseInsensitive(" + filter + "))").parent().hide();
+            $values.find(":containsCaseInsensitive(" + filter + ")").parent().show();
+          } else {
+            $values.show();
+          }
+        }
+      }
+  }
+
+  $('#season').facet($.extend({}, close_injectors, search_injectors, { title : "Saison" }));
+  $('#author1').facet($.extend({}, close_injectors, search_injectors, { title : "Auteur 1" }));
+  $('#title1').facet($.extend({}, close_injectors, search_injectors, { title : "Pièce 1" }));
+  $('#genre1').facet($.extend({}, close_injectors, search_injectors, { title : "Genre 1" }));
+  $('#weekday').facet($.extend({}, close_injectors, { title : "Jour de la semaine" }));
+  $('#author2').facet($.extend({}, close_injectors, search_injectors, { title : "Auteur 2" }));
+  $('#title2').facet($.extend({}, close_injectors, search_injectors, { title : "Pièce 2" }));
+  $('#genre2').facet($.extend({}, close_injectors, search_injectors, { title : "Genre 2"}));
+
+  $('#total_receipts').bar_facet($.extend({}, close_injectors, { width: 240 } ));
+  $('#parterre_receipts').bar_facet($.extend({}, close_injectors, { width: 240 } ));
+//  $('#premiere_loge_receipts').bar_facet($.extend({}, close_injectors, { width : 155 } ));
 
   // regular list view
   $('#results').infinite_results({ type: 'html' });
@@ -233,7 +259,7 @@ $().ready(function() {
 <div id='registers'>
   <div id='results'></div>
   <div id='navbar'>
-    <div id="banner">Projet des registres de la Comédie-Française</div>
+    <div id="banner"><%= link_to 'Projet des registres de la Comédie-Française' %></div>
     <div id="tabs">
       <img class="spinner" src="/assets/repertoire-faceting/spinner_sm.gif"></img>
     </div>
