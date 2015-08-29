@@ -11,10 +11,10 @@ namespace :filepath do
   #   end
   # end
   task migrate_seventies_nineties: :environment do
-    (134..158).each do |number|
+    (142..157).each do |number|
       RegisterImage.volume(number).unmigrated.orientation('r').find_each do |image|
         Delayed::Job.enqueue ImageImporter.new(image.id)
-        # puts image
+        # puts image.id
       end
     end
   end
