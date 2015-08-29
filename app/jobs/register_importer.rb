@@ -10,7 +10,7 @@ class RegisterImporter
     # if there's an orientation on the first image, it's been processed; skip it.
     print "\n\n============\n #{register.id} \n"
     
-    next if (!register.register_images[0].orientation.nil?)
+    # next if (!register.register_images[0].orientation.nil?)
 
     puts "...not processed yet, processing..."
     recto = register.recto_image
