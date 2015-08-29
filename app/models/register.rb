@@ -97,6 +97,8 @@ class Register < ActiveRecord::Base
   scope :one_image, image_count(1)
   scope :no_image, image_count(0)
 
+  # scope :volume, ->(number) { where("filepath ~ ?", "M119_02_R#{number}") }
+
   facet :season, order(:season)
   # Thank you: http://postgresql.1045698.n5.nabble.com/GENERAL-sort-character-data-in-arbitrary-order-td1855410.html
   facet :weekday, order("weekday = 'Dimanche'").order("weekday = 'Samedi'").order("weekday = 'Vendredi'").order("weekday = 'Jeudi'").order("weekday = 'Mercredi'").order("weekday = 'Mardi'").order("weekday = 'Lundi'")

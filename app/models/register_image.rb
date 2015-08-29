@@ -24,6 +24,8 @@ class RegisterImage < ActiveRecord::Base
 
   default_scope order('orientation ASC')
 
+  scope :volume, ->(number) { where("filepath ~ ?", "M119_02_R#{number}") }
+
   def image_filename
     if !self.filepath.nil?
       filepath = self.filepath

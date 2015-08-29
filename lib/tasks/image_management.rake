@@ -1,5 +1,5 @@
 namespace :filepath do
-  desc 'enqueue Registers for migration'
+  desc 'enqueue RegisterImages for migration'
   # task migrate_all_two_image_registers_to_paperclip: :environment do
   #   Register.two_images.find_each do |register|
   #     Delayed::Job.enqueue RegisterImporter.new(register.id)
@@ -11,8 +11,11 @@ namespace :filepath do
   #   end
   # end
   task migrate_seventies_nineties: :environment do
-    Register.volume_number.between?(134,158).find_each do |register|
-      Delayed::Job.enqueue RegisterImporter.new(register.id)
+    (134..158).each do |number|
+      RegisterImage.volume(number).find_each do |image|
+        Delayed::Job.enqueue ImageImporter.new(image.id)
+        # puts image
+      end
     end
   end
 end
