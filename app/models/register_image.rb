@@ -26,6 +26,7 @@ class RegisterImage < ActiveRecord::Base
 
   scope :volume, ->(number) { where("filepath ~ ?", "M119_02_R#{number}") }
   scope :unmigrated, where("image_file_name IS NULL")
+  scope :orientation, ->(value) { where("filepath ~ ?", "#{value}.jpg") }
 
   def image_filename
     if !self.filepath.nil?
