@@ -31,5 +31,4 @@ class ImageImporter
       puts e.inspect
     end
   end
-
 end
