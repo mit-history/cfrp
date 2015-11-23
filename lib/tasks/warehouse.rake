@@ -206,7 +206,7 @@ namespace :db do
              'DD.MM.YYYY'
             );
           END;
-          $$ LANGUAGE plpgsql;
+          $$ LANGUAGE plpgsql IMMUTABLE;
 
           CREATE FUNCTION warehouse.easter_floor(d0 date) RETURNS DATE AS $$
           DECLARE
@@ -221,7 +221,7 @@ namespace :db do
               RETURN warehouse.easter(yr-1);
             END IF;
           END;
-          $$ LANGUAGE plpgsql;
+          $$ LANGUAGE plpgsql IMMUTABLE;
 
           CREATE FUNCTION warehouse.cfrp_season(d0 date) RETURNS TEXT AS $$
           DECLARE
@@ -230,7 +230,9 @@ namespace :db do
             yr := date_part('year', warehouse.easter_floor(d0));
             RETURN yr::TEXT || '-' || (yr+1)::TEXT;
           END;
-          $$ LANGUAGE plpgsql;
+          $$ LANGUAGE plpgsql IMMUTABLE;
+
+          CREATE INDEX sales_facts_cfrp_season_idx ON warehouse.sales_facts( warehouse.cfrp_season(date) );
         SQL
 
       end
