@@ -101,6 +101,11 @@ class AnalyticsController < ApplicationController
       performances[i] = Arel::Table.new('warehouse.performance_dim').alias("performance_#{i}")
     end
 
+    # dimensions
+
+    dims = {}
+    join_dims = []
+
     # aggregate
 
     projection = case agg
@@ -121,14 +126,15 @@ class AnalyticsController < ApplicationController
         Arel::Nodes::Division.new( sum_function, sales_facts[:date].count(true))
       when /^mean_price/
         sales_facts[:price].average
+      when /^count_authors_(\d+)/
+        join_dims << "play_#{$1}"
+        plays[$1.to_i][:author].count(true)
+      when /^count_titles_(\d+)/
+        join_dims << "play_#{$1}"
+        plays[$1.to_i][:title].count(true)
       else
         throw "Unkown aggregate: #{agg}"
       end
-
-    # dimensions
-
-    dims = {}
-    join_dims = []
 
     # construct query
 
