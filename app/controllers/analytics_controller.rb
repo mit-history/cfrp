@@ -69,8 +69,10 @@ class AnalyticsController < ApplicationController
 
     next_refresh = warehouse_stamp['created_at'].to_time + 1.day + 30.minutes
     expires_in(next_refresh - Time.current, public: true)
-    return { etag: warehouse_stamp['warehouse_hash'],
-             last_modified: warehouse_stamp['created_at'].to_time }
+    return { etag: warehouse_stamp['warehouse_hash'] }
+#  NB Default is to invalidate only based on hash of database contents.
+#     To invalidate cache every time warehouse updates, uncomment this line:
+#           ... last_modified: warehouse_stamp['created_at'].to_time }
   end
 
 

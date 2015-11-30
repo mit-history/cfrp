@@ -80,14 +80,16 @@ namespace :db do
                    debut
             FROM register_plays
             JOIN registers ON (registers.id = register_id)
-            WHERE verification_state_id IN (1,6);
+            WHERE verification_state_id IN (1,6)
+            ORDER BY date;
           ALTER TABLE warehouse.performance_dim ADD PRIMARY KEY (id);
 
           CREATE TABLE warehouse.seating_category_dim AS
             SELECT id,
                    period,
                    category
-            FROM seating_category_profile;
+            FROM seating_category_profile
+            ORDER BY period, category;
           ALTER TABLE warehouse.seating_category_dim ADD PRIMARY KEY (id);
         SQL
 
@@ -127,10 +129,10 @@ namespace :db do
             SELECT md5(t1.s || t2.s || t3.s || t4.s),
                    now() AS created_at
             FROM
-              (SELECT count(id)::text || max(created_at)::text AS s FROM ticket_sales) AS t1,
-              (SELECT count(id)::text || max(created_at)::text AS s FROM registers) AS t2,
-              (SELECT count(id)::text || max(created_at)::text AS s FROM register_plays) AS t3,
-              (SELECT count(id)::text || max(created_at)::text AS s FROM plays) AS t4;
+              (SELECT md5(array_agg(t.* ORDER BY date)::text) AS s FROM warehouse.sales_facts t) AS t1,
+              (SELECT md5(array_agg(t.* ORDER BY id)::text) AS s FROM warehouse.play_dim t) AS t2,
+              (SELECT md5(array_agg(t.* ORDER BY id)::text) AS s FROM warehouse.performance_dim t) AS t3,
+              (SELECT md5(array_agg(t.* ORDER BY id)::text) AS s FROM warehouse.seating_category_dim t) AS t4;
         SQL
 
         # Utility function for querying by season
