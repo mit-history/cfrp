@@ -110,28 +110,34 @@ class AnalyticsController < ApplicationController
 
     # aggregate
 
+    # BUG IN AREL.  Circumlocutions necessary because Arel assumes a single aggregate function per expression
+    # e.g., mean_receipts in a just world:  ([sales_facts[:price] * sales_facts[:sold]).sum / sales_facts[:date].count(true))
+
     projection = case agg
-      when /^default/
+      when /^default$/
         Arel.sql('*').count
-      when /^min\(date\)/
+      when /^min\(date\)$/
         sales_facts[:date].minimum
-      when /^max\(date\)/
+      when /^max\(date\)$/
         sales_facts[:date].maximum
-      when /^performances_days/
+      when /^performances_days$/
         sales_facts[:date].count(true)
-      when /^sum_receipts/
+      when /^sum_receipts_weighted$/, /^sum_receipts$/                # simple form is for Laval
+        (sales_facts[:price] * sales_facts[:sold] * sales_facts[:weighting]).sum
+      when /^sum_receipts_unweighted$/
         (sales_facts[:price] * sales_facts[:sold]).sum
-      when /^mean_receipts_day/
-        # BUG IN AREL.  This circumlocution necessary because Arel assumes a single aggregate function per expression
-        # in a just world, it would be:  ([sales_facts[:price] * sales_facts[:sold]).sum / sales_facts[:date].count(true))
+      when /^mean_receipts_day_weighted$/, /^mean_receipts_day$/      # simple form is for Laval
+        sum_function = Arel::Nodes::NamedFunction.new('SUM', [sales_facts[:price] * sales_facts[:sold] * sales_facts[:weighting]])
+        Arel::Nodes::Division.new( sum_function, sales_facts[:date].count(true) )
+      when /^mean_receipts_day_unweighted$/
         sum_function = Arel::Nodes::NamedFunction.new('SUM', [sales_facts[:price] * sales_facts[:sold]])
         Arel::Nodes::Division.new( sum_function, sales_facts[:date].count(true))
-      when /^mean_price/
+      when /^mean_price$/
         sales_facts[:price].average
-      when /^count_authors_(\d+)/
+      when /^count_authors_(\d+)$/
         join_dims << "play_#{$1}"
         plays[$1.to_i][:author].count(true)
-      when /^count_titles_(\d+)/
+      when /^count_titles_(\d+)$/
         join_dims << "play_#{$1}"
         plays[$1.to_i][:title].count(true)
       else
@@ -278,7 +284,7 @@ class AnalyticsController < ApplicationController
     when /\.gt$/
       expr.gt_all(values)
     when /\.in$/, /^[^\.]+$/
-      expr.in(values)
+      expr.in(*values)
 
     else
       throw "Cannot parse operator ending #{name}"

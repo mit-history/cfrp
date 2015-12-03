@@ -118,6 +118,9 @@ namespace :db do
           conn.execute("UPDATE warehouse.sales_facts SET play_#{i}_id = (SELECT min(play_id) FROM register_plays WHERE ordering = #{i} AND register_plays.register_id = sales_facts.register_id)")
         end
 
+        conn.execute("ALTER TABLE warehouse.sales_facts ADD COLUMN weighting REAL")
+        conn.execute("UPDATE warehouse.sales_facts SET weighting = (SELECT COALESCE(1.0 / max(ordering)::REAL, 0.0) FROM register_plays WHERE register_plays.register_id = sales_facts.register_id)::REAL")
+
         conn.execute("ALTER TABLE warehouse.sales_facts DROP COLUMN register_id")
         conn.execute("ALTER TABLE warehouse.sales_facts DROP COLUMN raw_seating_category_id")
 
