@@ -241,6 +241,7 @@ namespace :db do
           $$ LANGUAGE plpgsql IMMUTABLE;
 
           CREATE INDEX sales_facts_cfrp_season_idx ON warehouse.sales_facts( warehouse.cfrp_season(date) );
+          CREATE INDEX plays_dim_season_creation_idx ON warehouse.play_dim( warehouse.cfrp_season(date_de_creation) );
         SQL
 
       end

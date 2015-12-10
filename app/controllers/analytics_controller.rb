@@ -189,6 +189,9 @@ class AnalyticsController < ApplicationController
       when /^musique_danse_machine_(\d+)/
         join_dims << "play_#{$1}"
         plays[$1.to_i][:musique_danse_machine]
+      when /^creation_season_(\d+)/
+        join_dims << "play_#{$1}"
+        Arel::Nodes::NamedFunction.new "warehouse.cfrp_season", [ plays[$1.to_i][:date_de_creation] ]
 
       # Soirée (supplémentaire)
       when /^free_entry_(\d+)/
