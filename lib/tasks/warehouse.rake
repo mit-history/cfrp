@@ -63,21 +63,24 @@ namespace :db do
             ORDER BY author, title;
           ALTER TABLE warehouse.play_dim ADD PRIMARY KEY (id);
 
+-- NB defaults for NULL may not be semanticaly correct!  Check with Sara Harvey.
+--   COALESCE operation maps empty entries onto FALSE
+
           CREATE TABLE warehouse.performance_dim AS
             SELECT register_plays.id,
                    ouverture,
                    cloture,
                    free_access,
-                   firstrun,
+                   COALESCE(firstrun, false) AS firstrun,
                    firstrun_perfnum,
-                   reprise,
+                   COALESCE(reprise, false) AS reprise,
                    reprise_perfnum,
                    newactor,
                    actorrole,
+                   COALESCE(debut, false) AS debut,
                    ex_attendance,
                    ex_representation,
-                   ex_place,
-                   debut
+                   ex_place
             FROM register_plays
             JOIN registers ON (registers.id = register_id)
             WHERE verification_state_id IN (1,6)
