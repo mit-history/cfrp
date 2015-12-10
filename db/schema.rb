@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150830052227) do
+ActiveRecord::Schema.define(:version => 20160520210813) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -265,6 +265,7 @@ ActiveRecord::Schema.define(:version => 20150830052227) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "loge"
   end
 
   create_table "seating_category_profile", :force => true do |t|
