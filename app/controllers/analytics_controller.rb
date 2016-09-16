@@ -133,7 +133,9 @@ class AnalyticsController < ApplicationController
         sum_function = Arel::Nodes::NamedFunction.new('SUM', [sales_facts[:price] * sales_facts[:sold]])
         Arel::Nodes::Division.new( sum_function, sales_facts[:date].count(true))
       when /^mean_price$/
-        sales_facts[:price].average
+        sum_function1 = Arel::Nodes::NamedFunction.new('SUM', [sales_facts[:price] * sales_facts[:sold]])
+        sum_function2 = Arel::Nodes::NamedFunction.new('SUM', [sales_facts[:sold]])
+        Arel::Nodes::Division.new( sum_function1, sum_function2 )
       when /^count_authors_(\d+)$/
         join_dims << "play_#{$1}"
         plays[$1.to_i][:author].count(true)
