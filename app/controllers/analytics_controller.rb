@@ -4,19 +4,14 @@ class AnalyticsController < ApplicationController
 
   def dimension
     if stale?(warehouse_cache_key) then
-
       conn = ActiveRecord::Base.connection
-
       dim = params[:dim]
-
       AnalyticsController.domain(conn, dim)
-
     end
   end
 
   def aggregate
     if stale?(warehouse_cache_key) then
-
       conn = ActiveRecord::Base.connection
 
       # prepare params
@@ -94,13 +89,13 @@ class AnalyticsController < ApplicationController
   def self.aggregate(connection, agg, dim_names, filters={})
     sales_facts = Arel::Table.new('warehouse.sales_facts')
 
-    plays              = []
-    performances       = []
+    plays              = {}
+    performances       = {}
 
     seating_categories = Arel::Table.new('warehouse.seating_category_dim')
-    (1..4).each do |i|
-      plays[i]        = Arel::Table.new('warehouse.play_dim').alias("play_#{i}")
-      performances[i] = Arel::Table.new('warehouse.performance_dim').alias("performance_#{i}")
+    [1,2,3,4,'n'].each do |i|
+      plays[i.to_s]        = Arel::Table.new('warehouse.play_dim').alias("play_#{i}")
+      performances[i.to_s] = Arel::Table.new('warehouse.performance_dim').alias("performance_#{i}")
     end
 
     # dimensions
@@ -136,12 +131,6 @@ class AnalyticsController < ApplicationController
         sum_function1 = Arel::Nodes::NamedFunction.new('SUM', [sales_facts[:price] * sales_facts[:sold]])
         sum_function2 = Arel::Nodes::NamedFunction.new('SUM', [sales_facts[:sold]])
         Arel::Nodes::Division.new( sum_function1, sum_function2 )
-      when /^count_authors_(\d+)$/
-        join_dims << "play_#{$1}"
-        plays[$1.to_i][:author].count(true)
-      when /^count_titles_(\d+)$/
-        join_dims << "play_#{$1}"
-        plays[$1.to_i][:title].count(true)
       else
         throw "Unkown aggregate: #{agg}"
       end
@@ -170,59 +159,59 @@ class AnalyticsController < ApplicationController
         Arel::Nodes::NamedFunction.new "to_char", [ sales_facts[:date], Arel.sql("'D'") ]
 
       # Soirée
-      when /^author_(\d+)/
+      when /^author_(\d|n)/
         join_dims << "play_#{$1}"
-        plays[$1.to_i][:author]
-      when /^title_(\d+)/
+        plays[$1][:author]
+      when /^title_(\d|n)/
         join_dims << "play_#{$1}"
-        plays[$1.to_i][:title]
-      when /^genre_(\d+)/
+        plays[$1][:title]
+      when /^genre_(\d|n)/
         join_dims << "play_#{$1}"
-        plays[$1.to_i][:genre]
-      when /^acts_(\d+)/
+        plays[$1][:genre]
+      when /^acts_(\d|n)/
         join_dims << "play_#{$1}"
-        plays[$1.to_i][:acts]
-      when /^prose_vers_(\d+)/
+        plays[$1][:acts]
+      when /^prose_vers_(\d|n)/
         join_dims << "play_#{$1}"
-        plays[$1.to_i][:prose_vers]
-      when /^prologue_(\d+)/
+        plays[$1][:prose_vers]
+      when /^prologue_(\d|n)/
         join_dims << "play_#{$1}"
-        plays[$1.to_i][:prologue]
-      when /^musique_danse_machine_(\d+)/
+        plays[$1][:prologue]
+      when /^musique_danse_machine_(\d|n)/
         join_dims << "play_#{$1}"
-        plays[$1.to_i][:musique_danse_machine]
-      when /^creation_season_(\d+)/
+        plays[$1][:musique_danse_machine]
+      when /^creation_season_(\d|n)/
         join_dims << "play_#{$1}"
-        Arel::Nodes::NamedFunction.new "warehouse.cfrp_season", [ plays[$1.to_i][:date_de_creation] ]
+        Arel::Nodes::NamedFunction.new "warehouse.cfrp_season", [ plays[$1][:date_de_creation] ]
 
       # Soirée (supplémentaire)
-      when /^free_entry_(\d+)/
+      when /^free_entry_(\d|n)/
         join_dims << "performance_#{$1}"
-        performances[$1.to_i][:free_access]
-      when /^reprise_(\d+)/
+        performances[$1][:free_access]
+      when /^reprise_(\d|n)/
         join_dims << "performance_#{$1}"
-        performances[$1.to_i][:reprise]
-      when /^newactor_(\d+)/
+        performances[$1][:reprise]
+      when /^newactor_(\d|n)/
         join_dims << "performance_#{$1}"
-        performances[$1.to_i][:newactor]
-      when /^debut_(\d+)/
+        performances[$1][:newactor]
+      when /^debut_(\d|n)/
         join_dims << "performance_#{$1}"
-        performances[$1.to_i][:debut]
-      when /^firstrun_(\d+)/
+        performances[$1][:debut]
+      when /^firstrun_(\d|n)/
         join_dims << "performance_#{$1}"
-        performances[$1.to_i][:firstrun]
-      when /^reprise_(\d+)/
+        performances[$1][:firstrun]
+      when /^reprise_(\d|n)/
         join_dims << "performance_#{$1}"
-        performances[$1.to_i][:reprise]
-      when /^ex_attendance_(\d+)/
+        performances[$1][:reprise]
+      when /^ex_attendance_(\d|n)/
         join_dims << "performance_#{$1}"
-        performances[$1.to_i][:ex_attendance]
-      when /^ex_representation_(\d+)/
+        performances[$1][:ex_attendance]
+      when /^ex_representation_(\d|n)/
         join_dims << "performance_#{$1}"
-        performances[$1.to_i][:ex_representation]
-      when /^ex_place_(\d+)/
+        performances[$1][:ex_representation]
+      when /^ex_place_(\d|n)/
         join_dims << "performance_#{$1}"
-        performances[$1.to_i][:ex_place]
+        performances[$1][:ex_place]
 
       # Théâtre
       when /^theater_period/
@@ -244,14 +233,16 @@ class AnalyticsController < ApplicationController
 
     join_dims.each do |name|
       case name
-      when /^play_(\d+)/
-        tbl = plays[$1.to_i]
-        col = "play_#{$1}_id"
-        query = query.join(tbl).on(tbl[:id].eq(sales_facts[col]))
-      when /^performance_(\d+)/
-        tbl = performances[$1.to_i]
-        col = "performance_#{$1}_id"
-        query = query.join(tbl).on(tbl[:id].eq(sales_facts[col]))
+      when /^play_(\d|n)/
+        tbl = plays[$1]
+        subs = $1=='n' ? 1..4 : [$1]
+        cols = subs.map { |i| "play_#{i}_id" }
+        query = query.join(tbl).on(tbl[:id].in(cols.map { |col| sales_facts[col] }))
+      when /^performance_(\d|n)/
+        tbl = performances[$1]
+        subs = $1=='n' ? 1..4 : [$1]
+        cols = subs.map { |i| "performance_#{i}_id" }
+        query = query.join(tbl).on(tbl[:id].in(cols.map { |col| sales_facts[col] }))
       when /^(.+)_seating_category/
         col = "#{$1}_seating_category_id"
         query = query.join(seating_categories)
