@@ -105,8 +105,19 @@ class AnalyticsController < ApplicationController
 
     # aggregate
 
+    # N.B. aggregate definitions need to accommodate the outlier case when
+    #      duplicate fact rows are returned because a value matches multiple dimensions
+    #      e.g. for a night with play-1: Voltaire, play-2: Voltaire, the sum of receipts
+    #      is not double.  'distinct_facts' gives the proportion of facts that are
+    #      duplicate, for use in weighting.
+    distinct_facts = Arel::Nodes::Division.new( sales_facts[:ticket_sales_id].count(true), sales_facts[:ticket_sales_id].count(false) )
+
     # BUG IN AREL.  Circumlocutions necessary because Arel assumes a single aggregate function per expression
-    # e.g., mean_receipts in a just world:  ([sales_facts[:price] * sales_facts[:sold]).sum / sales_facts[:date].count(true))
+    # e.g., unweighted mean_receipts in a just world:  ([sales_facts[:price] * sales_facts[:sold]).sum / sales_facts[:date].count(true))
+
+    raw_receipts_function = Arel::Nodes::NamedFunction.new('SUM', [sales_facts[:price] * sales_facts[:sold]])
+    distinct_receipts_function = Arel::Nodes::Multiplication.new(raw_receipts_function, distinct_facts)
+    weighted_receipts_function = Arel::Nodes::NamedFunction.new('SUM', [sales_facts[:price] * sales_facts[:sold] * sales_facts[:weighting]])
 
     projection = case agg
       when /^default$/
@@ -117,20 +128,18 @@ class AnalyticsController < ApplicationController
         sales_facts[:date].maximum
       when /^performances_days$/
         sales_facts[:date].count(true)
-      when /^sum_receipts_weighted$/, /^sum_receipts$/                # simple form is for Laval
-        (sales_facts[:price] * sales_facts[:sold] * sales_facts[:weighting]).sum
-      when /^sum_receipts_unweighted$/
-        (sales_facts[:price] * sales_facts[:sold]).sum
-      when /^mean_receipts_day_weighted$/, /^mean_receipts_day$/      # simple form is for Laval
-        sum_function = Arel::Nodes::NamedFunction.new('SUM', [sales_facts[:price] * sales_facts[:sold] * sales_facts[:weighting]])
-        Arel::Nodes::Division.new( sum_function, sales_facts[:date].count(true) )
-      when /^mean_receipts_day_unweighted$/
-        sum_function = Arel::Nodes::NamedFunction.new('SUM', [sales_facts[:price] * sales_facts[:sold]])
-        Arel::Nodes::Division.new( sum_function, sales_facts[:date].count(true))
+      when /^sum_receipts$/
+        distinct_receipts_function
+      when /^sum_receipts_weighted$/
+        weighted_receipts_function
+      when /^mean_receipts_day$/
+        Arel::Nodes::Division.new( distinct_receipts_function, sales_facts[:date].count(true) )
+      when /^mean_receipts_day_weighted$/
+        Arel::Nodes::Division.new( weighted_receipts_function, sales_facts[:date].count(true))
       when /^mean_price$/
-        sum_function1 = Arel::Nodes::NamedFunction.new('SUM', [sales_facts[:price] * sales_facts[:sold]])
-        sum_function2 = Arel::Nodes::NamedFunction.new('SUM', [sales_facts[:sold]])
-        Arel::Nodes::Division.new( sum_function1, sum_function2 )
+        # do not need to weight by distinct facts because numerator and denomenator cancel
+        raw_sold_function = Arel::Nodes::NamedFunction.new('SUM', [ sales_facts[:sold] ])
+        Arel::Nodes::Division.new( raw_receipts_function, raw_sold_function )
       else
         throw "Unkown aggregate: #{agg}"
       end
