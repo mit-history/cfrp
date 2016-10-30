@@ -105,18 +105,10 @@ class AnalyticsController < ApplicationController
 
     # aggregate
 
-    # N.B. aggregate definitions need to accommodate the outlier case when
-    #      duplicate fact rows are returned because a value matches multiple dimensions
-    #      e.g. for a night with play-1: Voltaire, play-2: Voltaire, the sum of receipts
-    #      is not double.  'distinct_facts' gives the proportion of facts that are
-    #      duplicate, for use in weighting.
-    distinct_facts = Arel::Nodes::Division.new( sales_facts[:ticket_sales_id].count(true), sales_facts[:ticket_sales_id].count(false) )
-
     # BUG IN AREL.  Circumlocutions necessary because Arel assumes a single aggregate function per expression
     # e.g., unweighted mean_receipts in a just world:  ([sales_facts[:price] * sales_facts[:sold]).sum / sales_facts[:date].count(true))
 
-    raw_receipts_function = Arel::Nodes::NamedFunction.new('SUM', [sales_facts[:price] * sales_facts[:sold]])
-    distinct_receipts_function = Arel::Nodes::Multiplication.new(raw_receipts_function, distinct_facts)
+    receipts_function = Arel::Nodes::NamedFunction.new('SUM', [sales_facts[:price] * sales_facts[:sold]])
     weighted_receipts_function = Arel::Nodes::NamedFunction.new('SUM', [sales_facts[:price] * sales_facts[:sold] * sales_facts[:weighting]])
 
     projection = case agg
@@ -129,17 +121,16 @@ class AnalyticsController < ApplicationController
       when /^performances_days$/
         sales_facts[:date].count(true)
       when /^sum_receipts$/
-        distinct_receipts_function
+        receipts_function
       when /^sum_receipts_weighted$/
         weighted_receipts_function
       when /^mean_receipts_day$/
-        Arel::Nodes::Division.new( distinct_receipts_function, sales_facts[:date].count(true) )
+        Arel::Nodes::Division.new( receipts_function, sales_facts[:date].count(true) )
       when /^mean_receipts_day_weighted$/
         Arel::Nodes::Division.new( weighted_receipts_function, sales_facts[:date].count(true))
       when /^mean_price$/
-        # do not need to weight by distinct facts because numerator and denomenator cancel
-        raw_sold_function = Arel::Nodes::NamedFunction.new('SUM', [ sales_facts[:sold] ])
-        Arel::Nodes::Division.new( raw_receipts_function, raw_sold_function )
+        sold_function = Arel::Nodes::NamedFunction.new('SUM', [ sales_facts[:sold] ])
+        Arel::Nodes::Division.new( receipts_function, sold_function )
       else
         throw "Unkown aggregate: #{agg}"
       end
@@ -262,10 +253,19 @@ class AnalyticsController < ApplicationController
       end
     end
 
+    # N.B. aggregate definitions need to accommodate the outlier case when
+    #      duplicate fact rows are returned because a value matches multiple dimensions
+    #      e.g. for a night with play-1: Voltaire, play-2: Voltaire, the sum of receipts
+    #      is not double.  distinct in a subquery accomplishes this.
+
+    shellquery = sales_facts
+    query = query.project(sales_facts[:ticket_sales_id])
+
     dim_names.each do |name|
       sql_label = name.parameterize.underscore
       expr = dims[sql_label].dup
-      query = query.project(expr.as(sql_label)).group(sql_label).order(sql_label)
+      query = query.project(expr.as(sql_label))
+      shellquery = shellquery.project(sql_label).group(sql_label).order(sql_label)
     end
 
     filters.each do |name, values|
@@ -275,11 +275,15 @@ class AnalyticsController < ApplicationController
       query = query.where(cond)
     end
 
-    query = query.project(projection.as('value'))
+    query.distinct
+    query = query.as('distinct_facts')
+
+    shellquery = shellquery.join(query).on(sales_facts[:ticket_sales_id].eq(query[:ticket_sales_id]))
+    shellquery = shellquery.project(projection.as('value'))
 
     # execute
 
-    connection.select_rows(query.to_sql)
+    connection.select_rows(shellquery.to_sql)
   end
 
   def self.pred(name, expr, *values)
