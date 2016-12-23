@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.0.0'
+ruby '2.3.0'
 
 gem 'rake'
 gem 'rails', '~> 3.2'
@@ -31,10 +31,11 @@ group :assets do
 end
 
 gem 'less-rails'
-gem 'twitter-bootstrap-rails'
+gem 'twitter-bootstrap-rails', '~>2.2.8'
 
 # gem 'repertoire-groups', :git => 'git@github.com:repertoire/Repertoire-Groups.git', :branch => 'bootstrap-flavor'
-gem 'repertoire-groups', '0.0.1', :path => './vendor/repertoire-groups-0.0.1' #, :require => 'repertoire-groups'
+# gem 'repertoire-groups', '0.0.1', :path => './vendor/repertoire-groups-0.0.1' #, :require => 'repertoire-groups'
+gem 'repertoire-groups', '0.0.1', :path => 'vendor/repertoire-groups-0.0.1' #, :require => 'repertoire-groups'
 gem 'repertoire-faceting', '~>0.7.6'
 gem 'acts-as-taggable-on'
 
@@ -45,6 +46,7 @@ gem 'rack-cors', :require => 'rack/cors'
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development, :test do
+  gem 'test-unit', '~> 3.0'
   gem 'capybara'
   # gem 'autotest'
   # gem 'autotest-growl'
@@ -63,11 +65,7 @@ end
 # Caching, used for AJAX API endpoints
 gem 'rack-cache'
 gem 'dalli'
-
 gem 'nokogiri'
 gem 'activeadmin'
-gem "meta_search",    '>= 1.1.0.pre'
 gem 'pry'
-gem 'mandrill-api'
-gem "figaro"
 

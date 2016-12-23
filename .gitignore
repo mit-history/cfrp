@@ -29,3 +29,4 @@ app/views/layouts/website-wrapper.html.erb
 missing-images.txt
 missing-images/**
 missing-images-list.txt
+.env*

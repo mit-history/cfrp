@@ -1,0 +1,74 @@
+{
+  "name": "CFRP",
+  "description": "",
+  "repository": "https://github.com/mit-history/cfrp",
+  "scripts": {
+    "postdeploy": "pg_dump $STAGING_DATABASE_URL | psql $DATABASE_URL && bundle exec rake db:migrate"
+  },
+  "env": {
+    "STAGING_DATABASE_URL": {
+      "required": true
+    },
+    "HEROKU_APP_NAME": {
+      "required": true
+    },
+    "HEROKU_PARENT_APP_NAME": {
+      "required": true
+    },
+
+    "AWS_ACCESS_KEY_ID": {
+      "required": true
+    },
+    "AWS_SECRET_ACCESS_KEY": {
+      "required": true
+    },
+    "AWS_REGION": {
+      "required": true
+    },
+    "EMAIL_DOMAIN": {
+      "required": true
+    },
+    "GOOGLE_ANALYTICS_CODE": {
+      "required": false
+    },
+    "GOOGLE_VERIFICATION_CODE": {
+      "required": false
+    },
+    "LANG": "en_US.UTF-8",
+    "S3_BUCKET_NAME": {
+      "required": true
+    },
+    "SECRET_KEY_BASE": {
+      "required": true
+    },
+    "SENDGRID_PASSWORD": {
+      "required": true
+    },
+    "SENDGRID_USERNAME": {
+      "required": true
+    },
+    "UNICORN_BACKLOG": "16"
+  },
+  "addons": [
+    "sendgrid:starter",
+    "heroku-postgresql:standard-0",
+    "librato:development",
+    "memcachier:250",
+    "newrelic:wayne",
+    "papertrail:choklad",
+    "scheduler:standard"
+  ],
+  "formation": {
+    "worker": {
+      "quantity": 1
+    },
+    "web": {
+      "quantity": 1
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ]
+}
