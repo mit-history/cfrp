@@ -1,4 +1,4 @@
-# Comedie-Francaise Registers Project
+# Comédie-Française Registers Project
 
 ## Creating User Accounts On The Command-line
 
