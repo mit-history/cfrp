@@ -1,0 +1,13 @@
+lagrange_authors
+lagrange_doc_authors
+lagrange_docs
+normalized_genres
+play_person
+person_altlabels
+person_depictions
+person_same_as
+play_same_as
+rcf_lagrange_authors
+
+
+person

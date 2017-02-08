@@ -1,0 +1,120 @@
+  id  | acts | expert_validated |                       title                        |                                             author                                              |       genre
+------+------+------------------+----------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------
+  935 |      |                  |                                                    | Jean-François Cailhava d’Estendoux                                                              |
+  476 |      |                  |                                                    | Sauvigny                                                                                        | tragedie
+  856 |      |                  |                                                    |                                                                                                 |
+ 5247 |      | f                |                                                    |                                                                                                 |
+ 1368 |      |                  |                                                    | M. Duis                                                                                         |
+ 3611 |      |                  | ??                                                 |                                                                                                 |
+ 4511 |      |                  | ??                                                 |                                                                                                 |
+ 1577 |      |                  | Agis                                               |                                                                                                 |
+ 3585 |      |                  | Au Proffit?                                        |                                                                                                 |
+ 3557 |      |                  | Au Proffit?                                        |                                                                                                 |
+ 3571 |      |                  | Au Proffit?                                        |                                                                                                 |
+ 3537 |      |                  | Au Proffit?                                        |                                                                                                 |
+ 3588 |      |                  | Chazette?                                          |                                                                                                 |
+ 3542 |      |                  | Chazette?                                          |                                                                                                 |
+ 3560 |      |                  | Chazette?                                          |                                                                                                 |
+ 3574 |      |                  | Chazette?                                          |                                                                                                 |
+ 4827 |      |                  | Crispin brulé                                      |                                                                                                 |
+ 4445 |      |                  | Crispin brulé                                      |                                                                                                 |
+ 4498 |      |                  | crispin brûlé?                                     |                                                                                                 |
+ 5917 |      | t                | Danse de Gigogne                                   | Anonyme                                                                                         | divertissement
+ 4397 |      |                  | Democrite à la cour                                |                                                                                                 |
+ 4489 |      |                  | Dezede?                                            |                                                                                                 |
+   20 |      |                  | Dom Juan ou Le Festin de Pierre                    | Jean-Baptiste Poquelin dit Molière                                                              | comédie
+ 4136 |      |                  | famlle                                             |                                                                                                 |
+ 1374 |      |                  | Feythere                                           | Voltaire                                                                                        | tragedie
+ 1352 |      |                  | Gaston et Bayard                                   |                                                                                                 |
+ 4416 |      |                  | Intermedes                                         |                                                                                                 |
+ 4241 |      |                  | Intermedes?                                        |                                                                                                 |
+ 4427 |      |                  | Intermèdes                                         |                                                                                                 |
+ 1617 |      |                  | La [...] campagne                                  |                                                                                                 |
+ 1248 |      |                  | La [...] campagne                                  |                                                                                                 |
+ 1348 |      |                  | La Comtesse d'Escarbagnas                          |                                                                                                 |
+ 1461 |      |                  | La Coquette                                        |                                                                                                 |
+ 1217 |      |                  | La Coquette                                        |                                                                                                 |
+ 1612 |      |                  | La Coquette                                        |                                                                                                 |
+ 1586 |      |                  | La Coquette                                        |                                                                                                 |
+ 1243 |      |                  | La Coquette                                        |                                                                                                 |
+ 1059 |      |                  | La Coquette                                        |                                                                                                 |
+ 4328 |      |                  | La Fausse [...]                                    |                                                                                                 |
+ 3612 |      |                  | La Philosophie                                     | M. Alexandre-Louis-Bertrand Robineau dit Beaunoir                                               | drame
+  215 |      |                  | La Reprise de Toulon ou Les Patriotes provinciaux  | André Pépin Bellement                                                                           |
+ 1715 |      |                  | Le Bienfait anonyme ou le faux généreux            | M. Alexandre-Guillaume Moulier de Moissy                                                        | comédie
+ 1343 |      | f                | Le Cercle ou la Soirée à la mode                   |                                                                                                 |
+ 1574 |      |                  | Le [...] de campagne                               |                                                                                                 |
+ 1205 |      |                  | Le [...] de campagne                               |                                                                                                 |
+ 5677 |      | t                | Le Désespoir extravagant                           | Subligny (Adrien-Thomas Perdou de)                                                              | comédie
+  931 |      |                  | Le Glorieux                                        | Marc-Antoine Legrand / Le Grand                                                                 | comédie
+  938 |      |                  | Legre                                              |                                                                                                 |
+ 4529 |      |                  | Le Jaloux                                          |                                                                                                 |
+ 4533 |      |                  | Le Jaloux                                          |                                                                                                 |
+ 4539 |      |                  | Le Jaloux                                          |                                                                                                 |
+ 4717 |      |                  | Le Jaloux                                          |                                                                                                 |
+ 5154 |      |                  | Le Médecin de l'amour                              | Anseaume (Louis) ; Marcouville (Pierre-Augustin Lefèvre de Marcouville dit)                     | musique
+ 4514 |      |                  | Les Agrements???                                   |                                                                                                 |
+ 4400 |      |                  | Les Agrements???                                   |                                                                                                 |
+  267 |      |                  | Les Amants brouillés par Arlequin messager balourd | Michel Procope-Couteaux                                                                         | comédie
+ 1022 |      |                  | Les Amants brouillés par Arlequin messager balourd | Michel Procope-Couteaux                                                                         | comédie
+ 4463 |      |                  | Les [...] de Crispin                               |                                                                                                 |
+ 4804 |      |                  | Les Épreuves                                       |                                                                                                 |
+ 4780 |      |                  | Les Hommes du jour                                 | M. Henri-Alex. Allaire                                                                          | vaudeville
+ 1714 |      |                  | Les Horaces                                        | M. François-Guillaume Ducray-Duminil                                                            | tragédie
+  930 |      |                  | Le Siège de Calais                                 | Florent Carton dit Dancourt                                                                     | comédie
+ 4426 |      |                  | Les Intermèdes                                     |                                                                                                 |
+ 1591 |      |                  | Les Journalistes                                   |                                                                                                 |
+ 1222 |      |                  | Les Journalistes                                   |                                                                                                 |
+ 1589 |      |                  | Les Journalistes Anglois                           |                                                                                                 |
+ 1220 |      |                  | Les Journalistes Anglois                           |                                                                                                 |
+ 1219 |      |                  | Les Journalistes Anglois                           |                                                                                                 |
+ 1600 |      |                  | Les Journalistes Anglois                           |                                                                                                 |
+ 1587 |      |                  | Les Journalistes Anglois                           |                                                                                                 |
+ 1225 |      |                  | Les Journalistes Anglois                           |                                                                                                 |
+ 1594 |      |                  | Les Journalistes Anglois                           |                                                                                                 |
+ 1231 |      |                  | Les Journalistes Anglois                           |                                                                                                 |
+ 1588 |      |                  | Les Journalistes Anglois                           |                                                                                                 |
+ 4303 |      |                  | Les Meprises                                       |                                                                                                 |
+ 4304 |      |                  | Les Meprises                                       |                                                                                                 |
+  159 |      |                  | Les Noms changés ou l'Indifférent corrigé          | Pierre Nicolas Brunet Debaines                                                                  | comédie
+ 4167 |      |                  | Les physiciennes?                                  |                                                                                                 |
+  706 |      |                  | Les Poupées                                        | Marc-Antoine Legrand / Le Grand                                                                 | comédie
+ 4418 |      |                  | Les Rivaux amis                                    | Abbé François Le Métel de Boisrobert                                                            | tragi comédie
+  751 |      |                  | Les Soubrettes                                     | Laujon                                                                                          | comédie en 5 actes
+  752 |      |                  | Les Soubrettes                                     | Laujon                                                                                          | comédie en 5 actes
+  753 |      |                  | Les Soubrettes                                     | Laujon                                                                                          | comédie en 5 actes
+ 1177 |      |                  | Les Trois tuteurs                                  |                                                                                                 |
+ 1548 |      |                  | Les Trois tuteurs                                  |                                                                                                 |
+ 1544 |      |                  | Les Trois tuteurs                                  |                                                                                                 |
+ 1179 |      |                  | Les Trois tuteurs                                  |                                                                                                 |
+ 1546 |      |                  | Les Trois tuteurs                                  |                                                                                                 |
+ 1175 |      |                  | Les Trois tuteurs                                  |                                                                                                 |
+ 4179 |      |                  | Les Trois tuteurs                                  |                                                                                                 |
+ 4186 |      |                  | Les Trois tuteurs                                  |                                                                                                 |
+ 4196 |      |                  | Les Trois tuteurs                                  |                                                                                                 |
+ 4504 |      |                  | Les Vacances des procureurs                        | Sieur Florent Carton dit Dancourt                                                               | comédie
+   60 |      | f                | L'Ile déserte                                      | Jean-Baptiste Collet de Messine                                                                 | comédie
+ 4393 |      |                  | L’Oestre                                           |                                                                                                 |
+ 1711 |      |                  | Marius ou Marius à Cyrthe                          | Sieur Gilles de Caux de Montlebert et M. Charles-Jean-François Hénault dit le Président Hénault | tragédie
+ 1169 |      |                  | Molière à la nouvelle salle                        |                                                                                                 |
+ 1170 |      |                  | Molière à la nouvelle salle                        |                                                                                                 |
+ 4133 |      |                  | nouvea#                                            |                                                                                                 |
+ 4312 |      |                  | Philoctete                                         |                                                                                                 |
+ 4555 |      |                  | Philoctete                                         |                                                                                                 |
+ 4568 |      |                  | Philoctete                                         |                                                                                                 |
+ 4273 |      |                  | Philoctete                                         |                                                                                                 |
+ 4332 |      |                  | Philoctete                                         |                                                                                                 |
+ 4324 |      |                  | Philoctete                                         |                                                                                                 |
+ 4277 |      |                  | Philoctete                                         |                                                                                                 |
+ 4414 |      |                  | Philoctète                                         |                                                                                                 |
+ 4465 |      |                  | Philoctète                                         |                                                                                                 |
+ 4468 |      |                  | Philoctète                                         |                                                                                                 |
+ 4475 |      |                  | Philoctète                                         |                                                                                                 |
+  186 |      |                  | Sophonisbe                                         | François-Marie Arouet dit Voltaire                                                              | tragédie
+ 5878 |      | t                | Suivante généreuse (La)                            | Sablier (Charles)                                                                               | comédie
+  933 |      |                  | Turcaret                                           | Jean Racine                                                                                     | tragédie
+  221 |      |                  | unidentified                                       | unidentified                                                                                    | unidentified
+ 4323 |      |                  | [...] Verneuil                                     |                                                                                                 |
+ 1139 |      |                  | Zélémide                                           | Abbé Claude-Henri de Fusée de Voisenon                                                          |
+  216 |      |                  | Zélémide                                           | Abbé Claude-Henri de Fusée de Voisenon                                                          |
+(117 rows)
