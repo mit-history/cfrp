@@ -52,7 +52,15 @@
     <div class="receipts">
       <div class="line-items" style="display:none">
         <% register.ticket_sales.where('total_sold > 0').sort {|a, b| @seat_order[a.seating_category_id] <=> @seat_order[b.seating_category_id] }.each do |ts| %>
-          <dt><div class="quantity"><%= ts.total_sold %></div><%= @seat_names[ts.seating_category_id] %></dt>
+          <% sc = SeatingCategory.find(ts.seating_category_id) %>
+          <% seat_name = "" %>
+          <% if helper.irregular_receipt?(sc) %>
+            <% field_name = helper.irregular_receipt_field_name(sc) %>
+            <% field_label = register[field_name] %>
+          <% else  %>
+            <% seat_name = @seat_names[ts.seating_category_id] %>
+          <% end  %>
+          <dt><div class="quantity"><%= ts.total_sold %></div><%= seat_name %></dt>
           <dd><div class="price"><%= format_money(ts.price_per_ticket_l, ts.price_per_ticket_s, "") %></div><div class="total"><%= format_money(ts.recorded_total_l, ts.recorded_total_s, "") %></div></dd>
         <% end %>
         <% if register.payment_notes.present? %>
