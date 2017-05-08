@@ -54,8 +54,8 @@
         <% register.ticket_sales.where('total_sold > 0').sort {|a, b| @seat_order[a.seating_category_id] <=> @seat_order[b.seating_category_id] }.each do |ts| %>
           <% sc = SeatingCategory.find(ts.seating_category_id) %>
           <% seat_name = "" %>
-          <% if helper.irregular_receipt?(sc) %>
-            <% field_name = helper.irregular_receipt_field_name(sc) %>
+          <% if register.irregular_receipt?(sc) %>
+            <% field_name = register.irregular_receipt_field_name(sc) %>
             <% field_label = register[field_name] %>
           <% else  %>
             <% seat_name = @seat_names[ts.seating_category_id] %>
