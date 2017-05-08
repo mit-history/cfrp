@@ -56,7 +56,7 @@
           <% seat_name = "" %>
           <% if irregular_receipt?(sc) %>
             <% field_name = irregular_receipt_field_name(sc) %>
-            <% field_label = register[field_name] %>
+            <% seat_name = register[field_name] %>
           <% else  %>
             <% seat_name = @seat_names[ts.seating_category_id] %>
           <% end  %>
