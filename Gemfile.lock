@@ -1,5 +1,5 @@
 PATH
-  remote: ./vendor/repertoire-groups-0.0.1
+  remote: vendor/repertoire-groups-0.0.1
   specs:
     repertoire-groups (0.0.1)
 
@@ -362,4 +362,4 @@ RUBY VERSION
    ruby 2.3.0p0
 
 BUNDLED WITH
-   1.13.6
+   1.14.6
