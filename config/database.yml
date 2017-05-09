@@ -11,7 +11,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: cfrp-staging
+  database: cfrp-production-05-10-17
   pool: 5
   # username: cfrp
   # password: cfrp$02139
