@@ -14,7 +14,7 @@ ActiveAdmin.register RegisterPlay do
     # column :ex_attendance
     # column :ex_representation
     # column :ex_place
-    default_actions
+    actions
   end
 
 end

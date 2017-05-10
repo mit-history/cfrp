@@ -5,7 +5,7 @@ ActiveAdmin.register PageDeGauche do
   index :title => 'Pages De Gauche' do
     column :id
     column :category
-    default_actions
+    actions
   end
 
 end

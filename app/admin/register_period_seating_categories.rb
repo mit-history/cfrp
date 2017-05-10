@@ -6,7 +6,7 @@ ActiveAdmin.register RegisterPeriodSeatingCategory do
     column :register_period_id
     column :seating_category_id
     column :ordering
-    default_actions
+    actions
   end
 
   form do |f|

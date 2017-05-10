@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160520210813) do
+ActiveRecord::Schema.define(:version => 20170215161410) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -51,6 +51,14 @@ ActiveRecord::Schema.define(:version => 20160520210813) do
     t.integer  "role_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "authorships", :force => true do |t|
+    t.integer  "play_id"
+    t.integer  "person_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "ext_id"
   end
 
   create_table "comment_types", :force => true do |t|
@@ -128,6 +136,33 @@ ActiveRecord::Schema.define(:version => 20160520210813) do
     t.string   "alias"
     t.string   "societaire_pensionnaire"
     t.string   "dates"
+    t.integer  "birthyear"
+    t.integer  "deathyear"
+    t.string   "pref_label"
+    t.string   "orig_label"
+    t.text     "bnf_notes"
+    t.integer  "ext_id"
+  end
+
+  create_table "person_altlabels", :force => true do |t|
+    t.integer  "ext_id"
+    t.string   "label"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "person_depictions", :force => true do |t|
+    t.integer  "ext_id"
+    t.string   "url"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "person_same_as", :force => true do |t|
+    t.integer  "ext_id"
+    t.string   "url"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "plays", :force => true do |t|

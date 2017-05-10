@@ -4,7 +4,8 @@
 // ...
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui.min
+//= require jquery-ui
+//= require jquery-ui/datepicker
 //= require twitter/bootstrap
 //= require "calculations.js"
 //= require jquery_nested_form

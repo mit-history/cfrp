@@ -5,6 +5,6 @@ ActiveAdmin.register RegisterPeriod do
     selectable_column
     column :id
     column :period
-    default_actions
+    actions
   end
 end

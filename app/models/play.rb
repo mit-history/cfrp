@@ -27,9 +27,14 @@ class Play < ActiveRecord::Base
   has_many :register_plays
   has_many :registers, :through => :register_plays
 
+  has_one :authorship
+  has_one :person, :through => :authorship
+
+  accepts_nested_attributes_for :authorship
+
   attr_accessible :author, :title, :genre, :acts, :prose_vers, :prologue,
   :musique_danse_machine, :created_at, :updated_at, :alternative_title, :url,
-  :date_de_creation, :expert_validated
+  :date_de_creation, :expert_validated, :authorship_attributes
 
   scope :tragédie, where(:genre => "tragédie").order("id asc")
   scope :comédie, where(:genre => "comédie").order("id asc")

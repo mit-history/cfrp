@@ -12,10 +12,15 @@ ActiveAdmin.register Play do
   scope :comédie
   scope :expert_validated
 
-  filter :author
   filter :title
   filter :genre
   filter :expert_validated
+  filter :person, 
+    label: 'Auteur',
+    :as => :select,
+    :collection => proc { 
+      Person.is_author.order(:last_name).map{|p| [p.name, p.id] } 
+  }
 
   config.batch_actions = true
   # batch_action :destroy, false
@@ -23,7 +28,10 @@ ActiveAdmin.register Play do
   index do
     selectable_column
     column :id
-    column :author
+    column "Auteur" do |play|
+      link_to play.person.name, admin_person_path(play.person)
+    end
+
     column :title
     column :genre
     column :acts
@@ -32,13 +40,25 @@ ActiveAdmin.register Play do
     column :musique_danse_machine
     column :updated_at
     column :expert_validated
-    default_actions
+    actions
   end
+
+  # sidebar "Performance Dates", only: :show do
+  #   table_for play.registers do
+  #     column :date
+  #   end
+  # end
+
+  # show do
 
 
   form do |f|
+      f.inputs "Auteur", for: [:authorship, f.object.authorship || Authorship.new] do |author_form|
+        author_form.input :person, :as => :select, :collection => Person.is_author.order(:last_name).map{|p| [p.name, p.ext_id]}, label: "Auteur"
+      end
+
       f.inputs "Details", :multipart => true do
-        f.input :author
+        f.input :author, input_html: { disabled: true }, label: "Auteur (reference seulement; veuillez selectionner au-dessus)"
         f.input :title
         f.input :genre
         f.input :acts
@@ -52,5 +72,4 @@ ActiveAdmin.register Play do
       end
       f.actions
     end
-
 end

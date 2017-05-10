@@ -115,32 +115,32 @@ ActiveAdmin.register Register do
     link_to(image_tag("http://images.cfregisters.org/#{register.register_images[0].filepath}", width: "200"), "/registers/#{register.id}/edit", target: "_blank")
   end
 
-  show do |register|
-    attributes_table do
-      row :date
-      row :weekday
-      row :season
-      row :register_num
-      row :payment_notes
-      row :page_text
-      row :total_receipts_recorded_l
-      row :total_receipts_recorded_s
-      row :representation
-      row :signatory
-      row :misc_notes
-      row :for_editor_notes
-      row :ouverture
-      row :cloture
-      row :register_period_id
-      row :verification_state_id
-      row :rep_privacy_list
-      row :rep_group_list
-      row :irregular_receipts_name
-      row :register_images
-      row :created_at
-      row :updated_at
-    end
-  end
+  # show do |register|
+  #   attributes_table do
+  #     row :date
+  #     row :weekday
+  #     row :season
+  #     row :register_num
+  #     row :payment_notes
+  #     row :page_text
+  #     row :total_receipts_recorded_l
+  #     row :total_receipts_recorded_s
+  #     row :representation
+  #     row :signatory
+  #     row :misc_notes
+  #     row :for_editor_notes
+  #     row :ouverture
+  #     row :cloture
+  #     row :register_period_id
+  #     row :verification_state_id
+  #     row :rep_privacy_list
+  #     row :rep_group_list
+  #     # row :irregular_receipts_name
+  #     row :register_images
+  #     row :created_at
+  #     row :updated_at
+  #   end
+  # end
 
   form do |f|
       f.inputs "Details", :multipart => true do

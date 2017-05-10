@@ -17,6 +17,8 @@ gem 'delayed_job_active_record'
 
 # jQuery is the default JavaScript library in Rails 3.1
 gem 'jquery-rails'
+# gem 'jquery-ui-rails', '5.0.0'
+gem 'jquery-ui-rails', '~> 5.0'
 gem 'therubyracer' # bundle can't find this one, even though it's a dependency?
 
 # GOSH I HOPE THIS WORKS
@@ -67,6 +69,8 @@ end
 gem 'rack-cache'
 gem 'dalli'
 gem 'nokogiri'
-gem 'activeadmin'
+# gem 'activeadmin'
+gem 'activeadmin', '~> 1.0.0.pre4'
+gem 'activeadmin_addons'
 gem 'pry'
 

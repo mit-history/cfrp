@@ -11,6 +11,6 @@ ActiveAdmin.register TicketSale do
     column :price_per_ticket_s
     column :recorded_total_l
     column :recorded_total_s
-    default_actions
+    actions
   end
 end
