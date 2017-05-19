@@ -13,11 +13,6 @@ ActiveAdmin.register Person do
   index :title => 'Personnes' do
     column "ID", :id
     column "ID Externe", :ext_id
-    # column 'Image' do |person|
-    #   if person.person_depictions.any?
-    #     image_tag(person.person_depictions.first.url, width: "100")
-    #   end
-    # end
     column "Date de Naissance", :birthyear
     column "Date de Mort", :deathyear
     column "Prenom", :first_name
@@ -28,4 +23,18 @@ ActiveAdmin.register Person do
     column "Notes BnF", :bnf_notes
     actions
   end
+
+  show do |person|
+    attributes_table do
+      row :name
+      row 'Image' do |person|
+        if person.person_depictions.any?
+          image_tag(person.person_depictions.first.url)
+        end
+      end
+      row :created_at
+      row :updated_at
+    end
+  end
+  
 end
