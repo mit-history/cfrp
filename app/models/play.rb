@@ -36,9 +36,9 @@ class Play < ActiveRecord::Base
   :musique_danse_machine, :created_at, :updated_at, :alternative_title, :url,
   :date_de_creation, :expert_validated, :authorship_attributes
 
-  scope :tragédie, where(:genre => "tragédie").order("id asc")
-  scope :comédie, where(:genre => "comédie").order("id asc")
   scope :expert_validated, where(:expert_validated => "true")
+  scope :tragédie, expert_validated.where(:genre => "tragédie").order("id asc")
+  scope :comédie, expert_validated.where(:genre => "comédie").order("id asc")
 
   before_create :set_packed_id # from: http://stackoverflow.com/a/11731205/271192
 

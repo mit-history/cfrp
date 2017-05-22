@@ -3,6 +3,8 @@ class PeopleController < ApplicationController
 
 	def index
 		@search = params[:search] || ''
+		@actors = people.is_actor
+		@authors = people.is_author
 	end
 
 	def show

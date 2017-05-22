@@ -36,6 +36,7 @@ class Person < ActiveRecord::Base
   has_many :person_same_as, :foreign_key => :ext_id, :primary_key => :ext_id
 
   scope :is_author, where("ext_id is not NULL")
+  scope :is_actor, where("ext_id is NULL")
   scope :with_name, !name.blank?
   # validates_presence_of :full_name
 

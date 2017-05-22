@@ -2,6 +2,8 @@ ActiveAdmin.register Person do
   # menu false
 
   scope :all, :default => true
+  scope "Acteurs", :is_actor
+  scope "Auteurs", :is_author
 
   # filter :birthyear 
   # filter :deathyear 

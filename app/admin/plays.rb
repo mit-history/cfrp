@@ -7,10 +7,10 @@ ActiveAdmin.register Play do
 
   config = Cfrp::Application.config
 
-  scope :all, :default => true
+  scope :expert_validated, :default => true
   scope :tragédie
   scope :comédie
-  scope :expert_validated
+  scope :all
 
   filter :title
   filter :genre
