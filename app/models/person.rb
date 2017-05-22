@@ -26,7 +26,8 @@ class Person < ActiveRecord::Base
 
   attr_accessible :first_name, :full_name, :honorific,
   :last_name, :pseudonym, :url, :alias, :societaire_pensionnaire, :dates,
-  :birthyear, :deathyear, :pref_label, :orig_label, :bnf_notes, :ext_id
+  :birthyear, :deathyear, :pref_label, :orig_label, :bnf_notes, :ext_id, 
+  :is_author, :is_actor
 
   has_many :authorships, :foreign_key => :ext_id, :primary_key => :ext_id
   has_many :plays, :through => :authorships
@@ -35,8 +36,8 @@ class Person < ActiveRecord::Base
   has_many :person_depictions, :foreign_key => :ext_id, :primary_key => :ext_id
   has_many :person_same_as, :foreign_key => :ext_id, :primary_key => :ext_id
 
-  scope :is_author, where("ext_id is not NULL")
-  scope :is_actor, where("ext_id is NULL")
+  scope :is_author, where("is_author is true")
+  scope :is_actor, where("is_actor is true")
   scope :with_name, !name.blank?
   # validates_presence_of :full_name
 

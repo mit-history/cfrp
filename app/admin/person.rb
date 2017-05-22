@@ -1,7 +1,7 @@
 ActiveAdmin.register Person do
   # menu false
 
-  scope :all, :default => true
+  scope "Tous", :all, :default => true
   scope "Acteurs", :is_actor
   scope "Auteurs", :is_author
 

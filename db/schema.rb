@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170215161410) do
+ActiveRecord::Schema.define(:version => 20170522092456) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -142,6 +142,8 @@ ActiveRecord::Schema.define(:version => 20170215161410) do
     t.string   "orig_label"
     t.text     "bnf_notes"
     t.integer  "ext_id"
+    t.boolean  "is_actor"
+    t.boolean  "is_author"
   end
 
   create_table "person_altlabels", :force => true do |t|
