@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 ruby '2.3.4'
 
 gem 'rake'
-gem 'rails', '~> 3.2'
+gem 'rails', '~> 4.2'
 gem 'pg'
 gem 'devise'
 gem 'cancan'
@@ -12,7 +12,7 @@ gem 'paperclip'
 
 gem 'unicorn'
 gem 'newrelic_rpm'
-gem 'aws-sdk', '~> 1.5.7'
+gem 'aws-sdk'
 gem 'delayed_job_active_record'
 
 # jQuery is the default JavaScript library in Rails 3.1
@@ -27,13 +27,13 @@ gem 'nested_form'
 gem 'rails_12factor', group: :production
 
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier',     '>= 1.0.3'
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
 end
 
 gem 'less-rails'
-gem 'twitter-bootstrap-rails', '~>2.2.8'
+gem 'twitter-bootstrap-rails'
 
 # gem 'repertoire-groups', :git => 'git@github.com:repertoire/Repertoire-Groups.git', :branch => 'bootstrap-flavor'
 # gem 'repertoire-groups', '0.0.1', :path => './vendor/repertoire-groups-0.0.1' #, :require => 'repertoire-groups'
@@ -44,7 +44,7 @@ gem 'acts-as-taggable-on'
 # enable CORS, for use in CFRP data-essays
 gem 'rack-cors', :require => 'rack/cors'
 
-gem 'test-unit', '~> 3.0'
+gem 'test-unit'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
@@ -58,7 +58,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'annotate'
   gem 'guard-rspec'
-  gem 'rb-fsevent', '~> 0.9.1'
+  gem 'rb-fsevent'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
@@ -70,7 +70,7 @@ gem 'rack-cache'
 gem 'dalli'
 gem 'nokogiri'
 # gem 'activeadmin'
-gem 'activeadmin', '~> 1.0.0.pre4'
+gem 'activeadmin'
 gem 'activeadmin_addons'
 gem 'pry'
 
