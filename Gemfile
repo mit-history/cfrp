@@ -70,7 +70,7 @@ gem 'rack-cache'
 gem 'dalli'
 gem 'nokogiri'
 # gem 'activeadmin'
-gem 'activeadmin', '~> 1.0.0.pre4'
+gem 'activeadmin', '~> 1.0.0.pre5'
 gem 'activeadmin_addons'
 gem 'pry'
 

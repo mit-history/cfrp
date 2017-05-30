@@ -1,4 +1,5 @@
 ActiveAdmin.register PersonAltlabel do
+  menu parent: "Personnes", priority: 5
   filter :person, 
     label: 'Personne',
     :as => :select,

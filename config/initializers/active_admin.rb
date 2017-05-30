@@ -173,10 +173,10 @@ ActiveAdmin.setup do |config|
 
   config.namespace :admin do |admin|
     admin.build_menu :default do |menu|
-      menu.add label: "Registres", url: "/admin/registers", priority: 1
-      menu.add label: "Pieces", url: "/admin/plays", priority: 2
-      # menu.add label: "Acteurs/Actrices", url: "/admin/people", priority: 2
-      menu.add label: "Pages de Gauche", url: "/admin/page_de_gauches", priority: 3
+      menu.add label: "Registres", priority: 1
+      menu.add label: "Pieces", priority: 2
+      menu.add label: "Personnes", priority: 3
+      menu.add label: "Lagrange", priority: 4
     end
   end
 

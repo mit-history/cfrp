@@ -4,5 +4,4 @@ class Participation < ActiveRecord::Base
   belongs_to :person
   belongs_to :register_play
 
-  # validates_presence_of :person, :register_play
 end

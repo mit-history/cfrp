@@ -1,4 +1,6 @@
 ActiveAdmin.register RegisterImage do
+  menu parent: "Registres", priority: 4
+
   config.filters = false
 
   index do

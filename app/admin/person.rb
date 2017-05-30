@@ -1,5 +1,5 @@
 ActiveAdmin.register Person do
-  # menu false
+  menu parent: "Personnes", priority: 1
 
   scope "Tous", :all, :default => true
   scope "Acteurs", :is_actor
@@ -23,6 +23,9 @@ ActiveAdmin.register Person do
     column :orig_label
     column "Pseudonyme", :pseudonym
     column "Notes BnF", :bnf_notes
+    # list_column "Images" do |person|
+    #   person.person_depictions.map { |depiction| image_tag(depiction.url, width: "200") }
+    # end
     actions
   end
 

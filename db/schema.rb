@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170522092456) do
+ActiveRecord::Schema.define(:version => 20170606185040) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -92,12 +92,73 @@ ActiveRecord::Schema.define(:version => 20170522092456) do
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
+  create_table "lagrange_authors", :force => true do |t|
+    t.string   "ext_id",            :limit => 16,  :null => false
+    t.string   "etype",             :limit => 32
+    t.string   "birth_death_years", :limit => 64
+    t.string   "mainrole",          :limit => 64
+    t.string   "mainform",          :limit => 64
+    t.string   "firstname",         :limit => 64
+    t.string   "firstname1",        :limit => 64
+    t.string   "formcompl",         :limit => 64
+    t.string   "lastname",          :limit => 64
+    t.string   "firstname2",        :limit => 64
+    t.string   "computedform",      :limit => 128
+    t.string   "url",               :limit => 128
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
+
+  add_index "lagrange_authors", ["computedform"], :name => "lagrange_authors_computedform_idx"
+  add_index "lagrange_authors", ["firstname"], :name => "lagrange_authors_firstname_idx"
+  add_index "lagrange_authors", ["firstname1"], :name => "lagrange_authors_firstname1_idx"
+  add_index "lagrange_authors", ["firstname2"], :name => "lagrange_authors_firstname2_idx"
+  add_index "lagrange_authors", ["formcompl"], :name => "lagrange_authors_formcompl_idx"
+  add_index "lagrange_authors", ["lastname"], :name => "lagrange_authors_lastname_idx"
+  add_index "lagrange_authors", ["mainform"], :name => "lagrange_authors_mainform_idx"
+  add_index "lagrange_authors", ["mainrole"], :name => "lagrange_authors_mainrole_idx"
+
+  create_table "lagrange_doc_authors", :force => true do |t|
+    t.string   "lagrange_doc_ext_id"
+    t.string   "lagrange_author_ext_id"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+    t.integer  "lagrange_author_id"
+    t.integer  "lagrange_doc_id"
+  end
+
+  add_index "lagrange_doc_authors", ["lagrange_author_ext_id"], :name => "lagrange_doc_authors_aut_idx"
+  add_index "lagrange_doc_authors", ["lagrange_doc_ext_id"], :name => "lagrange_doc_authors_doc_idx"
+
+  create_table "lagrange_docs", :force => true do |t|
+    t.string   "ext_id",     :limit => 32,  :null => false
+    t.string   "etype",      :limit => 64
+    t.string   "title",      :limit => 256
+    t.string   "title2",     :limit => 256
+    t.string   "subtitle",   :limit => 256
+    t.string   "imgref",     :limit => 128
+    t.string   "imgurl",     :limit => 128
+    t.string   "url",        :limit => 128
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "lagrange_docs", ["etype"], :name => "lagrange_authors_etype_idx"
+
   create_table "lhp_category_assignments", :force => true do |t|
     t.integer  "register_id",       :null => false
     t.integer  "page_de_gauche_id", :null => false
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
   end
+
+  create_table "normalized_genres", :id => false, :force => true do |t|
+    t.string "genre",      :limit => 64
+    t.string "normalized", :limit => 64
+  end
+
+  add_index "normalized_genres", ["genre"], :name => "normalized_genres_genre_idx"
+  add_index "normalized_genres", ["normalized"], :name => "normalized_genres_normalized_idx"
 
   create_table "page_de_gauches", :force => true do |t|
     t.string   "category",   :null => false
@@ -183,6 +244,18 @@ ActiveRecord::Schema.define(:version => 20170522092456) do
     t.boolean  "expert_validated"
     t.integer  "_packed_id",            :null => false
   end
+
+  create_table "rcf_lagrange_authors", :force => true do |t|
+    t.string   "person_id"
+    t.string   "lagrange_author_ext_id"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+    t.integer  "lagrange_author_id"
+    t.integer  "rcf_ext_id"
+  end
+
+  add_index "rcf_lagrange_authors", ["lagrange_author_ext_id"], :name => "rcf_lagrange_authors_lagrange_idx"
+  add_index "rcf_lagrange_authors", ["person_id"], :name => "rcf_lagrange_authors_rcf_idx"
 
   create_table "register_contributors", :force => true do |t|
     t.integer  "register_id"

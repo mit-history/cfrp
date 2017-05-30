@@ -1,4 +1,4 @@
 ActiveAdmin.register Participation do
-  menu false
+  menu parent: "Personnes", priority: 3
   config.filters = false
 end

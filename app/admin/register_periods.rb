@@ -1,5 +1,5 @@
 ActiveAdmin.register RegisterPeriod do
-  menu false
+  menu parent: "Registres", priority: 3
   # config.filters = false
   index do
     selectable_column

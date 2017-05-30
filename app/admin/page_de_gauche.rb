@@ -1,6 +1,6 @@
 ActiveAdmin.register PageDeGauche do
 
-  menu false
+  menu parent: "Registres", priority: 5
 
   index :title => 'Pages De Gauche' do
     column :id

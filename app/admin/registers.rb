@@ -1,5 +1,5 @@
 ActiveAdmin.register Register do
-  menu false
+  menu parent: "Registres", priority: 1
   # menu :priority => 1
   config.per_page = 20
   actions :all #, :except => [:new]

@@ -1,4 +1,5 @@
 ActiveAdmin.register PersonSameAs do
+  menu parent: "Personnes", priority: 6
   filter :person, 
     label: 'Personne',
     :as => :select,

@@ -1,6 +1,6 @@
 ActiveAdmin.register Play do
 
-  menu false
+  menu parent: "Pieces", priority: 1
 
   config.per_page = 20
   actions :all#, :except => [:new]

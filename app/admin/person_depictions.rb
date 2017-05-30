@@ -1,4 +1,5 @@
 ActiveAdmin.register PersonDepiction do
+  menu parent: "Personnes", priority: 4
   filter :person, 
     label: 'Personne',
     :as => :select,

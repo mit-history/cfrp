@@ -1,5 +1,5 @@
 ActiveAdmin.register RegisterPlay do
-  menu false
+  menu parent: "Registres", priority: 2
   config.filters = false
   index do
     selectable_column
