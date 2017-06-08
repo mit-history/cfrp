@@ -1,4 +1,4 @@
-- Deploy [v1.0.0-b2](https://github.com/mit-history/cfrp/tree/v1.0.0-b1)
+- Deploy [v1.0.0-b2](https://github.com/mit-history/cfrp/tree/v1.0.0-b2)
 - `heroku run rake db:migrate -r staging`
 - `heroku pg:psql < db/rcf_ui/data/author_inserts.sql -r staging`
 - `heroku pg:psql < db/rcf_ui/data/authorships.sql -r staging`
