@@ -1,0 +1,15 @@
+- Deploy master
+- `heroku run rake db:migrate -r staging`
+- `heroku pg:psql < db/rcf_ui/data/author_inserts.sql -r staging`
+- `heroku pg:psql < db/rcf_ui/data/authorships.sql -r staging`
+- `heroku pg:psql < db/rcf_ui/data/people_associations.sql -r staging`
+- `heroku pg:psql`
+- `update people set is_actor = true where ext_id is null;`
+- `update people set is_author = true where ext_id is not null;`
+- `heroku run:detached rake lagrange:import_authors -r staging`
+- `heroku run:detached rake lagrange:import_docs -r staging`
+- `heroku run:detached rake lagrange:import_doc_authors -r staging`
+- `heroku run:detached rake lagrange:import_rcf_lagrange_authors -r staging`
+- `heroku run:detached rake lagrange:copy_doc_author_join_keys -r staging`
+- `heroku run:detached rake lagrange:copy_rcf_lagrange_author_join_keys -r staging`
+- `heroku ps:scale worker=10 -r staging`
