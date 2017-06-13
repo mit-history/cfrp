@@ -37,7 +37,7 @@ namespace :rcf_ui do
 
 
           CREATE MATERIALIZED VIEW performances AS
-                 SELECT a.id AS author_id, a.pref_label AS author_name,
+                 SELECT a.ext_id AS author_id, a.pref_label AS author_name,
                         r.id as register_id, r.date, r.weekday, r.season,
                         (COALESCE(r.total_receipts_recorded_l, 0) * 240 +
                          COALESCE(r.total_receipts_recorded_s, 0) * 12 +
@@ -47,7 +47,7 @@ namespace :rcf_ui do
                  FROM registers r JOIN register_plays rp ON (r.id=rp.register_id)
                                   JOIN validated_plays p ON (rp.play_id=p.id)
                                   JOIN authorships au ON (au.play_id=p.id)
-                                  JOIN people a ON (au.person_id=a.ext_id);
+                                  JOIN people a ON (au.ext_id=a.ext_id);
 
           CREATE INDEX performances_author_id_idx ON performances(author_id);
           CREATE INDEX performances_play_id_idx ON performances(play_id);
