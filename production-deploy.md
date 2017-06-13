@@ -1,4 +1,4 @@
-- Deploy [v1.0.0-b2](https://github.com/mit-history/cfrp/tree/v1.0.0-b2)
+- Deploy [v1.0.0](https://github.com/mit-history/cfrp/tree/v1.0.0)
 - `heroku run rake db:migrate -r staging`
 - `heroku pg:psql < db/rcf_ui/data/author_inserts.sql -r staging`
 - `heroku pg:psql < db/rcf_ui/data/authorships.sql -r staging`
@@ -12,4 +12,5 @@
 - `heroku run:detached rake lagrange:import_rcf_lagrange_authors -r staging`
 - `heroku run:detached rake lagrange:copy_doc_author_join_keys -r staging`
 - `heroku run:detached rake lagrange:copy_rcf_lagrange_author_join_keys -r staging`
+- `heroku pg:psql < db/rcf_ui/tables/pgviews.sql  -r staging`
 - `heroku ps:scale worker=10 -r staging`

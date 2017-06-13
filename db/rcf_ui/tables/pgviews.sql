@@ -11,7 +11,7 @@ CREATE INDEX validated_plays_genre_idx ON validated_plays(genre);
 
 
 CREATE MATERIALIZED VIEW person_agg AS
-       SELECT p.id, p.first_name AS givenName, p.last_name AS familyName,
+       SELECT p.ext_id AS id, p.first_name AS givenName, p.last_name AS familyName,
               p.honorific, p.birthyear AS birthDate, p.deathyear AS deathDate,
               p.pref_label AS name, p.bnf_notes, p.orig_label,
               array_agg(DISTINCT psa.url) AS ext_uris,
@@ -20,7 +20,7 @@ CREATE MATERIALIZED VIEW person_agg AS
        FROM people p LEFT OUTER JOIN person_altlabels alt ON (p.ext_id=alt.ext_id)
                      LEFT OUTER JOIN person_depictions depict ON (p.ext_id=depict.ext_id)
                      LEFT OUTER JOIN person_same_as psa ON (p.ext_id=psa.ext_id)
-                     JOIN authorships au ON (au.person_id=p.ext_id)
+                     JOIN authorships au ON (au.ext_id=p.ext_id)
                      JOIN validated_plays vp ON (au.play_id=vp.id)
        GROUP BY p.id;
 
