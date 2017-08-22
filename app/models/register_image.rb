@@ -27,6 +27,8 @@ class RegisterImage < ActiveRecord::Base
   scope :volume, ->(number) { where("filepath ~ ?", "M119_02_R#{number}") }
   scope :unmigrated, where("image_file_name IS NULL")
   scope :orientation, ->(value) { where("filepath ~ ?", "#{value}.jpg") }
+  scope :orphans, where("NOT EXISTS (SELECT 1 FROM registers WHERE register_images.register_id = registers.id AND registers.verification_state_id = 1 AND registers.season != '1739-1740')")
+  scope :has_parent, where("EXISTS (SELECT 1 FROM registers WHERE register_images.register_id = registers.id AND registers.verification_state_id = 1 AND registers.season != '1739-1740')")
 
   def image_filename
     if !self.filepath.nil?

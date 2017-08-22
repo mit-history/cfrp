@@ -3,6 +3,9 @@ ActiveAdmin.register RegisterImage do
 
   config.filters = false
 
+  scope :has_parent, :default => true
+  scope :orphans
+
   index do
     selectable_column
     column :id
