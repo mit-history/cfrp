@@ -241,6 +241,10 @@ $().ready(function() {
   $('#title2').facet($.extend({}, close_injectors, search_injectors, { title : "Pièce 2" }));
   $('#genre2').facet($.extend({}, close_injectors, search_injectors, { title : "Genre 2"}));
 
+  $('#author3').facet($.extend({}, close_injectors, search_injectors, { title : "Auteur 3" }));
+  $('#title3').facet($.extend({}, close_injectors, search_injectors, { title : "Pièce 3" }));
+  $('#genre3').facet($.extend({}, close_injectors, search_injectors, { title : "Genre 3"}));
+
   $('#total_receipts').bar_facet($.extend({}, close_injectors, { width: 240 } ));
   $('#parterre_receipts').bar_facet($.extend({}, close_injectors, { width: 240 } ));
 //  $('#premiere_loge_receipts').bar_facet($.extend({}, close_injectors, { width : 155 } ));
@@ -280,6 +284,13 @@ $().ready(function() {
     <div class="bar">
       <div id='genre1' class='facet collapsed'></div>
       <div id='genre2' class='facet collapsed'></div>
+    </div>
+    <div class="bar">
+      <div id='author3' class='facet collapsed'></div>
+      <div id='title3' class='facet collapsed'></div>
+    </div>
+    <div class="bar">
+      <div id='genre3' class='facet collapsed'></div>
     </div>
     <div class="bar">
       <div id='total_receipts' class='facet bar_facet' title='Recette journalière'></div>

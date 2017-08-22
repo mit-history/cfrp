@@ -104,10 +104,13 @@ class Register < ActiveRecord::Base
   facet :weekday, order("weekday = 'Dimanche'").order("weekday = 'Samedi'").order("weekday = 'Vendredi'").order("weekday = 'Jeudi'").order("weekday = 'Mercredi'").order("weekday = 'Mardi'").order("weekday = 'Lundi'")
   facet :title1, joins(:plays, :register_plays).where('register_plays.ordering = 1').group('plays.title')
   facet :title2, joins(:plays, :register_plays).where('register_plays.ordering = 2').group('plays.title')
+  facet :title3, joins(:plays, :register_plays).where('register_plays.ordering = 3').group('plays.title')
   facet :author1, joins(:plays, :register_plays).where('register_plays.ordering = 1').group('plays.author')
   facet :author2, joins(:plays, :register_plays).where('register_plays.ordering = 2').group('plays.author')
+  facet :author3, joins(:plays, :register_plays).where('register_plays.ordering = 3').group('plays.author')
   facet :genre1, joins(:plays, :register_plays).where('register_plays.ordering = 1').group('plays.genre')
   facet :genre2, joins(:plays, :register_plays).where('register_plays.ordering = 2').group('plays.genre')
+  facet :genre3, joins(:plays, :register_plays).where('register_plays.ordering = 3').group('plays.genre')
   facet :total_receipts, group("bucket(total_receipts_recorded_l, 100, '0999', 'Inconnu') || ' l.'").order(:total_receipts)
 
   # c.f. the amalgamated_sales view in the migration for "seating_category_aggregation"
