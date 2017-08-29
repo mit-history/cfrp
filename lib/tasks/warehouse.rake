@@ -59,7 +59,7 @@ namespace :db do
                    musique_danse_machine,
                    date_de_creation
             FROM plays
---            WHERE expert_validated
+            WHERE expert_validated is true
             ORDER BY author, title;
           ALTER TABLE warehouse.play_dim ADD PRIMARY KEY (id);
 
