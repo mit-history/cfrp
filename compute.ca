@@ -1,0 +1,5 @@
+[3/14/18, 5:32:32 PM] Belaid: 206.12.100.190
+[3/14/18, 5:32:39 PM] Belaid: user ubuntu
+[3/14/18, 5:33:07 PM] Belaid: ssh -i .ssh/private_key ubuntu@206.12.100.190
+[3/14/18, 5:33:51 PM] Belaid: 80
+[3/14/18, 5:33:54 PM] Belaid: 22

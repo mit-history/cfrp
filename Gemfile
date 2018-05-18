@@ -9,7 +9,7 @@ gem 'devise'
 gem 'cancan'
 gem 'iconv'
 gem 'paperclip'
-
+gem 'dotenv-rails'
 gem 'unicorn'
 gem 'newrelic_rpm'
 gem 'aws-sdk', '~> 1.5.7'
@@ -73,4 +73,3 @@ gem 'nokogiri'
 gem 'activeadmin', '~> 1.0.0.pre5'
 gem 'activeadmin_addons'
 gem 'pry'
-
